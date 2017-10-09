@@ -1,6 +1,6 @@
 <!--I have idea for background-->
 <!--cracked rock with pink outline and different shades of black-->
-<!--additional jquery animation in footer -->
+<!--Here I got divider using function programming -->
 
 <html >
     <head>
@@ -36,6 +36,10 @@
                 
             }
             
+            a:hover {
+                
+            }
+            /*make sure blue underline event gets taken out*/
 
             
 
@@ -231,8 +235,8 @@
                         },2000);
                         
     
+                    }
                 }
-            }
             $(window).scroll(wait_animate);
                 // $(".move_8").hover(function() {
                 //     $(this).delay(2000).animate(
@@ -252,13 +256,21 @@
             // alert(document.body.scrollTop);
             $("body").click(function() {
                 console.log(document.body.scrollTop);
-                alert($(window).scrollTop());
+                alert($(window).scrollTop()).hide();
 
 
                 
                 
                 });
-            $("body").followTo(300);
+            // $("body").followTo(300);
+            $(".move_6").delegate(" div:last","click",function() {
+                $("h1").css("color","rgba(0,0,0,.8)");
+                $(this).css("background-color","pink");
+                $("html").delay(20000);
+                // console.log(this)
+                
+                });
+            //action triggered to move to the form
             });
             
 
@@ -267,6 +279,7 @@
     </head>
     
     <body style = "max-height:300px; overflow:scroll">
+        
         <div class="container">
             <div class="well title" id ="web_colors" style ="height: 250px; margin-top:50px;  text-align:center; font-size: 70px; padding:70px; display:none;">Tobologz.com
             </div>
@@ -342,10 +355,13 @@
              <div class="well " id ="web_colors" style ="height: 300px; width: 750px; margin-left:350px; margin-top: -720px"   >
 
              </div>
-            <div class="well" id ="web_colors" style ="height: 200px; width: 650px; margin-left:400px; margin-top: -270px"   >
+            
+            <a href ="./customer_form.html">
+            <div class="well " id ="web_colors" style ="height: 200px; width: 650px; margin-left:400px; margin-top: -270px"   >
                 <h1 class = "start" style = "font-size:200px; text-align:center; margin-top:-30px "> Start</h1>
                 
              </div>
+             </a>
 
         </div>
         <div class="container move_7" style = "position:relative">
