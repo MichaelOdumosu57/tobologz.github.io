@@ -1,6 +1,7 @@
 <!--I have idea for background-->
 <!--cracked rock with pink outline and different shades of black-->
-<!--Here I got divider using function programming -->
+<!--Here I got dividers working as I liked them to but these are heavy objects so be careful -->
+
 
 <html>
     <head>
@@ -49,6 +50,7 @@
             
                 }
                 title();
+                console.log($("div"));
                 function sq_clone () {
                     var i = 0;
                     $(".square_bullets").css("display","block");
@@ -75,49 +77,46 @@
                     }
                 }
             sq_clone();
-             
-            function custom_divider ()  {   //this function makes the divider for the middle well of the page
-                var i = 0;
-                var change_i = 295
+            var pen = $(".custom_divider_hidden");
+            $(".custom_divider").hide();            // the hiden coppies are used but not the default ones so you have to hide them
+ 
+            function custom_divider (height_offset, box_container)  {   //this function makes the divider for the middle well of the page
+                var i = 0;                  //variables that stay constant throughout the drawing process
+                var change_i = height_offset;
                 var change_ii = -22;
-                var pen = $(".custom_divider_hidden");
 
-                                
-                
-            
-                console.log(pen)
+                console.log(pen)   //keep outside so pen margin will reset
                 while( i != 200){
-                        var canvas = $(".container_divisers");
+                        var canvas = $(box_container);               //take from hidden because copy wont make double
                         var canvas_hidden = $(".container_divisers_hidden");
-                    if (i < 50) {
+                    if (i < 50) {                //to make the rectangle
                         var sndArg = "px";
-                        // change_i += 50;
-                        // change_ii += 22;
-                        // sndArg = change_i.toString() + sndArg;
-                        // pen.css({"margin-left": sndArg, "display": "block"});
-                        sndArg = change_ii.toString() + "px";
-                        pen.css({ "height": "1px", "display":"block"});
+                        sndArg = change_i.toString() + "px";
+                        pen.css({ "margin-left": sndArg , "top": "50px" ,"height": "1px", "display":"block"});
                         
                         var single_copy = canvas_hidden.html();
-                        canvas.append(single_copy);
+                        canvas.delay(1).append(single_copy);
                         
 
                     }
-                    else {
+                    else {                                            //to create diagonal
                         change_i += 1;
                         sndArg = change_i.toString() + "px";
                         pen.css({ "margin-left": sndArg, "height": "1px", "display":"block"});
                         var single_copy = canvas_hidden.html();
-                        canvas.append(single_copy);
-                        
+                        canvas.delay(1).append(single_copy);
                         
                     }
                     i+= 1;
                 }
-                pen.css("margin-left","295px");
-                // pen.css("margin-top","-220px");
+                // pen.css("margin-left","295px");
+                pen.css("margin-top","0px");
             }
-            custom_divider();
+            custom_divider(250,".container_divisers_i");
+            custom_divider(500,".container_divisers_ii");
+            custom_divider(705 ,".container_divisers_iii");
+            // custom_divider(905);
+            
             
             });
             
@@ -169,7 +168,16 @@
                 <div style = "width: 1px; height: 200px; background-color:pink; margin-left:785px; margin-top:-200px">
                 </div>
              </div>
-             <div class ="container_divisers">
+             <div class ="container_divisers_i" style ="margin-top:-220px">
+                <div  class = "custom_divider" style = "width: 200px; height:1px; background-color:pink; margin-left:295px; margin-top: 221px; display:none "></div>
+             </div>
+             <div class ="container_divisers_ii" style ="margin-top:-200px">
+                <div  class = "custom_divider" style = "width: 200px; height:1px; background-color:pink; margin-left:295px; margin-top: -220px; "></div>
+             </div>
+             <div class ="container_divisers_iii" style ="margin-top:-220px">>
+                <div  class = "custom_divider" style = "width: 200px; height:1px; background-color:pink; margin-left:295px; margin-top: -220px; "></div>
+             </div>
+             <div class ="container_divisers_iv">
                 <div  class = "custom_divider" style = "width: 200px; height:1px; background-color:pink; margin-left:295px; margin-top: -220px; "></div>
              </div>
              <div class ="container_divisers_hidden">
