@@ -1,8 +1,15 @@
+<!--Got jquery bullets working-->
+<!--the default style of display is block-->
+<!--html() take only the children elements and give you back -->
+
+
 <html>
     <head>
-        <script src="./jquery-1.10.2.js"></script>
-        <script src="./jquery-ui.js"></script>
+        <!--<script src="./jquery-1.10.2.js"></script>-->
+        <script src="./jquery.min.js"></script>
+        
         <link rel="stylesheet" href="./bootstrap.min.css">
+
         
         <style>
             #web_colors{
@@ -13,15 +20,46 @@
                         
             }
             
+            .square_bullets {
+                             margin-top: 20px;
+                             margin-left: -5px;
+                             opacity:.5;
+                             background-color:pink;
+                             height:25px;
+                             width:25px;
+                
+            }
+            
+
+            
         </style>
         <script>
             $(document).ready(function() {
                 function title () {
-               $("div:first-child").fadeTo(10000, 1);
+               $(".title").fadeTo(10000, 1);
       
             
                 }
                 title();
+                function sq_clone () {
+                    var i = 0;
+                    $(".square_bullets").css("display","block");
+                    var sqj_clone = $(".container_square_bullets");
+                    // var list = document.getElementsByClassName("list");
+                    // console.log(sq_clone)
+                    // console.log(list)
+                    var sq_clone = sqj_clone.html();
+                    
+                    while (i != 8) {
+                        
+                        sqj_clone.append(sq_clone);
+                        console.log(sq_clone);
+                        
+                        
+                        i += 1;
+                    }
+                }
+                sq_clone();
             });
             
             
@@ -30,11 +68,19 @@
     
     <body>
         <div class="container">
-            <div class="well" id ="web_colors" style ="height: 250px; margin-top:50px;  text-align:center; font-size: 70px; padding:70px; display:none;">Tobologz.com
+            <div class="well title" id ="web_colors" style ="height: 250px; margin-top:50px;  text-align:center; font-size: 70px; padding:70px; display:none;">Tobologz.com
             </div>
         </div>
         <div class="container">
-             <div class="well" id ="web_colors" style ="height: 500px; width: 200px;"   >Hi! I am a Basic Well.</div>
+             <div class="well list" id ="web_colors"  style ="height: 500px; width: 200px;"   >
+                <h3 style = "text-align:center; color:rgba(0,0,0,.8); background-color:pink; ">  Heading A</h3>
+                <div class = "container_square_bullets">
+                    <div class = "square_bullets" style =" display: none">
+                        
+                    </div>
+                </div>
+             
+             </div>
         </div>
         <div class="container">
              <div class="well" id ="web_colors" style ="height: 200px; width: 600px; margin-left:250px; margin-top: -520px"   >Hi! I am a Basic Well.</div>
