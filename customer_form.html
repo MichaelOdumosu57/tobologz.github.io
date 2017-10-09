@@ -1,94 +1,205 @@
 <html>
     <head>
         <link rel="stylesheet" href="./bootstrap.min.css">
+        <script src="./jquery.min.js"></script>
+        <script>
+
+            // var baze;
+            
+            $(document).ready(function() {
+                var single = $(".form_copy").html();
+                function no_refresh ()  {
+                    $(".form_copy").append(single);
+                    $(".holder:last").hide();
+                    $(".holder:last").slideDown(2000)
+                };
+
+                $("body").click(function() {
+                    $(".form_copy").append("<h1> ___________________________________________________________</h1>" )
+                    no_refresh();
+                });
+
+            });
+            
+        </script>
     </head>
     <body>
         <h1 style = "background-color:rgba(0,0,0,.8); color:pink; font-weight:bold; text-indent: 10px ">        Tobologz.com </h1>
         <div class="container">
           <h2>Website Request Form</h2>
-          <h3 style ="text-indent:20px;"> Personal Information</h3>
           <form class="form-inline" role="form">
             <form style="width:300px">
-          <div class="form-group">
-              <label class="control-label col-sm-5" for="first_name">First Name:</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="email" placeholder="First Name">
+            <div class = "form_copy">
+            <div class = "holder">
+              <h3 style ="text-indent:20px;"> Personal Information</h3>
+              <div class="form-group">
+                  <label class="control-label col-sm-5" for="first_name">First Name:</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="email" placeholder="First Name">
+                  </div>
+                </div>
+              <div class="form-group">
+                  <label class="control-label col-sm-5" for="last_name">Last Name:</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="email" placeholder="Last Name">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-5" for="email">Email:</label>
+                  <div class="col-sm-10">
+                    <input type="email" class="form-control" id="pwd" placeholder="Enter email">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-12" for="email">Age:</label>
+                  <div class="col-sm-12">
+                    <input type="text" class="form-control" id="age" placeholder="Enter age">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2" for="email">Gender:</label>
+                  <div class="col-sm-12">
+                    <input type="text" class="form-control" id="gender" placeholder="Enter age">
+                  </div>
+                </div>
+    
+                <div class="form-group">
+                  <label class="control-label col-sm-5" for="email">Date of Birth:</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="gender" placeholder="MM/DD/YY">
+                  </div>
+                </div>
+    
+              <h1> ___________________________________________________________</h1>
+              <h3 style ="text-indent:20px;"> Location </h3>
+                <div class="form-group">
+                  <label class="control-label col-sm-12" for="email">Address:</label>
+                  <div class="col-sm-12">
+                    <input type="text" class="form-control" id="gender" placeholder="Enter Address">
+                  </div>
+                </div>
+                
+      <!------------------------------------------------------------------------          -->
+      
+      <!--hidding the spaces for proper formatting-->
+      
+                  
+                <div class="form-group" style = "color: transparent; background-color:transparent" >
+                  <label class="control-label col-sm-12" for="city">Hide A:</label>
+                  <div class="col-sm-12" >
+                    <!--<input style = "color: transparent; background-color:transparent" type="text" class="form-control" id="gender" placeholder="Enter City">-->
+                  </div>
+                </div>
+                
+                <div class="form-group" style = "color: transparent; background-color:transparent" >
+                  <label class="control-label col-sm-12" for="email">hIDE B:</label>
+                  <div class="col-sm-12" >
+                    <!--<input  type="text" class="form-control" id="gender" placeholder="Enter State">-->
+                  </div>
+                </div>
+                
+                <div class="form-group" style = "color: transparent; background-color:transparent" >
+                  <label class="control-label col-sm-12" for="email">hIDE B:</label>
+                  <div class="col-sm-12" >
+                    <!--<input  type="text" class="form-control" id="gender" placeholder="Enter State">-->
+                  </div>
+                </div>
+                
+                <div class="form-group" style = "color: transparent; background-color:transparent" >
+                  <label class="control-label col-sm-12" for="email">hIDE B:</label>
+                  <div class="col-sm-12" >
+                    <!--<input  type="text" class="form-control" id="gender" placeholder="Enter State">-->
+                  </div>
+                </div>
+      
+                  <div class="form-group" style = "color: transparent; background-color:transparent" >
+                  <label class="control-label col-sm-12" for="email">hIDE B:</label>
+                  <div class="col-sm-12" >
+                    <!--<input  type="text" class="form-control" id="gender" placeholder="Enter State">-->
+                  </div>
+                </div>
+                
+                  <div class="form-group" style = "color: transparent; background-color:transparent" >
+                  <label class="control-label col-sm-12" for="email">hIDE B:</label>
+                  <div class="col-sm-12" >
+                    <!--<input  type="text" class="form-control" id="gender" placeholder="Enter State">-->
+                  </div>
+                </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <!-------------------------------------------------------------------------->
+      
+      
+                
+                <div class="form-group">
+                  <label class="control-label col-sm-12" for="email">City:</label>
+                  <div class="col-sm-12">
+                    <input type="text" class="form-control" id="gender" placeholder="Enter City">
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label class="control-label col-sm-12" for="email">State:</label>
+                  <div class="col-sm-12">
+                    <input type="text" class="form-control" id="gender" placeholder="Enter State">
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label class="control-label col-sm-12" for="email">Zipcode:</label>
+                  <div class="col-sm-12">
+                    <input type="text" class="form-control" id="gender" placeholder="Enter Zipcode">
+                  </div>
+                </div>
+                
+                  <div class="form-group" style = "color: transparent; background-color:transparent" >
+                  <label class="control-label col-sm-12" for="email">hIDE B:</label>
+                  <div class="col-sm-12" >
+                    <!--<input  type="text" class="form-control" id="gender" placeholder="Enter State">-->
+                  </div>
+                </div>
               </div>
-            </div>
-          <div class="form-group">
-              <label class="control-label col-sm-5" for="last_name">Last Name:</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="email" placeholder="Last Name">
               </div>
-            </div>
+            
+          <h1> ___________________________________________________________</h1>
+          <h3 style ="text-indent:20px;"> Account Information</h3>
+          
             <div class="form-group">
-              <label class="control-label col-sm-5" for="email">Email:</label>
+              <label class="control-label col-sm-5" for="pwd">Username:</label>
               <div class="col-sm-10">
-                <input type="email" class="form-control" id="pwd" placeholder="Enter email">
+                <input type="password" class="form-control" id="pwd" placeholder="Enter username">
               </div>
             </div>
-            <div class="form-group">
-              <label class="control-label col-sm-5" for="email">Age:</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="age" placeholder="Enter age">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="control-label col-sm-5" for="email">Gender:</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="gender" placeholder="Enter age">
-              </div>
-            </div>
+            
             <div class="form-group">
               <label class="control-label col-sm-5" for="pwd">Password:</label>
               <div class="col-sm-10">
                 <input type="password" class="form-control" id="pwd" placeholder="Enter password">
               </div>
             </div>
-            <div class="form-group">
-              <label class="control-label col-sm-5" for="email">Date of Birth:</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="gender" placeholder="MM/DD/YY">
-              </div>
-            </div>
-
-          <h1> ___________________________________________________________</h1>
-          <h3 style ="text-indent:20px;"> Location </h3>
-            <div class="form-group">
-              <label class="control-label col-sm-12" for="email">Address:</label>
-              <div class="col-sm-12">
-                <input type="text" class="form-control" id="gender" placeholder="Enter Address">
-              </div>
-            </div>
             
             
-            
-            <div class="form-group">
-              <label class="control-label col-sm-12" for="email">City:</label>
-              <div class="col-sm-12">
-                <input type="text" class="form-control" id="gender" placeholder="Enter City">
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <label class="control-label col-sm-12" for="email">State:</label>
-              <div class="col-sm-12">
-                <input type="text" class="form-control" id="gender" placeholder="Enter State">
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <label class="control-label col-sm-12" for="email">Zipcode:</label>
-              <div class="col-sm-12">
-                <input type="text" class="form-control" id="gender" placeholder="Enter Zipcode">
-              </div>
-            </div>
             
           <div class="form-group">
-              <div class="col-sm-offset-12 col-sm-10">
+              <div class="col-sm-offset-6 col-sm-10">
                 <button type="submit" class="btn btn-default">Submit</button>
               </div>
             </div>
+
+          <div class="form-group">
+              <div class="col-sm-offset-6 col-sm-10">
+                <button class="btn btn-primary" onclick ="baze">Add another associate</button>
+              </div>
+            </div>
+
           </form>
         </div>
     </body>
