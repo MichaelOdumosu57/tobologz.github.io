@@ -1,7 +1,6 @@
 <!--I have idea for background-->
 <!--cracked rock with pink outline and different shades of black-->
-<!--Here I got dividers working as I liked them to but these are heavy objects so be careful -->
-
+<!--Here I finished divider which is showing appropriate markups -->
 
 <html>
     <head>
@@ -92,7 +91,10 @@
                     if (i < 50) {                //to make the rectangle
                         var sndArg = "px";
                         sndArg = change_i.toString() + "px";
-                        pen.css({ "margin-left": sndArg , "top": "50px" ,"height": "1px", "display":"block"});
+                        pen.css({ "margin-left": sndArg , "top": "50px" ,"height": "1px", "display":"block",  "background-color": "transparent", "border-left":"1px solid pink",  "border-right":"1px solid pink"}); //this changes the type of pen
+                        if (box_container === ".container_divisers_i") {
+                            pen.css("border-left-width","0px");
+                        }
                         
                         var single_copy = canvas_hidden.html();
                         canvas.delay(1).append(single_copy);
@@ -112,10 +114,10 @@
                 // pen.css("margin-left","295px");
                 pen.css("margin-top","0px");
             }
-            custom_divider(250,".container_divisers_i");
-            custom_divider(500,".container_divisers_ii");
-            custom_divider(705 ,".container_divisers_iii");
-            // custom_divider(905);
+            custom_divider(130,".container_divisers_i");
+            custom_divider(380,".container_divisers_ii");
+            custom_divider(630 ,".container_divisers_iii");
+            // custom_divider(900, ".container_divisers_iv");
             
             
             });
@@ -162,11 +164,11 @@
         </div>
         <div class="container ">
              <div class="well" id ="web_colors" style ="height: 200px; width: 850px; margin-left:250px; margin-top: -260px"   >
-                <div style = "width: 1px; height: 200px; background-color:pink; margin-left:25px; margin-top:-20px">
-                </div>
-
-                <div style = "width: 1px; height: 200px; background-color:pink; margin-left:785px; margin-top:-200px">
-                </div>
+                <!--<div style = "width: 1px; height: 200px; background-color:pink; margin-left:25px; margin-top:-20px">-->
+                <!--</div>-->
+                <!--lines for construction-->
+                <!--<div style = "width: 1px; height: 200px; background-color:pink; margin-left:785px; margin-top:-200px">-->
+                <!--</div>-->
              </div>
              <div class ="container_divisers_i" style ="margin-top:-220px">
                 <div  class = "custom_divider" style = "width: 200px; height:1px; background-color:pink; margin-left:295px; margin-top: 221px; display:none "></div>
@@ -174,14 +176,14 @@
              <div class ="container_divisers_ii" style ="margin-top:-200px">
                 <div  class = "custom_divider" style = "width: 200px; height:1px; background-color:pink; margin-left:295px; margin-top: -220px; "></div>
              </div>
-             <div class ="container_divisers_iii" style ="margin-top:-220px">>
-                <div  class = "custom_divider" style = "width: 200px; height:1px; background-color:pink; margin-left:295px; margin-top: -220px; "></div>
+             <div class ="container_divisers_iii" style ="margin-top:-200px">
+                <div  class = "custom_divider" style = "width: 200px; height:1px;  margin-left:295px; margin-top: -220px; "></div>
              </div>
-             <div class ="container_divisers_iv">
-                <div  class = "custom_divider" style = "width: 200px; height:1px; background-color:pink; margin-left:295px; margin-top: -220px; "></div>
-             </div>
+             <!--<div class ="container_divisers_iv" style ="margin-top:-200px">-->
+             <!--   <div  class = "custom_divider" style = "width: 200px; height:1px; background-color:pink; margin-left:295px; margin-top: -220px; "></div>-->
+             <!--</div>-->
              <div class ="container_divisers_hidden">
-                <div  class = "custom_divider_hidden" style = "width: 200px; display:none; height:0px; background-color:pink; margin-left:295px; margin-top: 0px; "></div>
+                <div  class = "custom_divider_hidden" style = "width: 250px; display:none; height:0px; background-color:pink; margin-left:295px; margin-top: 0px; "></div>
              </div>
         </div>
         
