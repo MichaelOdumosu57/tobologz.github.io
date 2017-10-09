@@ -1,9 +1,8 @@
 <!--I have idea for background-->
 <!--cracked rock with pink outline and different shades of black-->
-<!--Here I got divider using function programming -->
-<!--got divs to move accordingly, suggest you make page smaller so user can see all the divs move-->
+<!--additional jquery animation in footer -->
 
-<html>
+<html >
     <head>
         <!--<script src="./jquery-1.10.2.js"></script>-->
         <script src="./jquery.min.js"></script>
@@ -92,7 +91,7 @@
                     if (i < 50) {                //to make the rectangle
                         var sndArg = "px";
                         sndArg = change_i.toString() + "px";
-                        pen.css({ "margin-left": sndArg , "top": "50px" ,"height": "1px", "display":"block",  "background-color": "transparent", "border-left":"1px solid pink",  "border-right":"1px solid pink"}); //this changes the type of pen
+                        pen.css({ "margin-left": sndArg , "top": "50px" ,"height": "1px", "display":"block",  "background-color": "transparent", "border-left":"1px solid pink",  "border-right":"1px solid pink"}); //this changes the type of pen it hides the scaffolding
                         if (box_container === ".container_divisers_i") {
                             pen.css("border-left-width","0px");
                         }
@@ -145,8 +144,9 @@
             // $(".move_1").css({"margin-left" :"-100px" , "opacity" : ".5"});
             // $(".move_2").css({"margin-top" :"-100px" , "opacity" : ".5"});
             // $(".move_3").css({"margin-top" :"-100px" ,"margin-left" :"375px" , "opacity" : ".5"});
-            console.log($(".move_3").offset())
+            // console.log($(".move_3").offset())
             function animated_home_page () {
+            //using jquery to set initial positions
             $(".move_1").css({"margin-left" :"-100px" , "opacity" : ".5"});
             $(".move_2").css({"margin-top" :"-100px" , "opacity" : ".5"});
             $(".move_3").css({"margin-top" :"-100px" ,"margin-left" :"375px" , "opacity" : ".5"});
@@ -154,8 +154,10 @@
             $(".move_5").css({"margin-top" :"-200px" , "margin-left" :"0px" , "opacity" : ".5"});
             $(".move_6").css({ "margin-top": "200px",  "opacity" : ".5"});
             $(".move_7").css({"margin-top" :"200px" ,  "opacity" : ".5"});
+            $(".start").css("opacity","0");
+            //border must be othe letters
             
-                
+                // animation functions
                 $(".move_1").delay(2000).animate(
                     {
                         left: '200px',
@@ -207,27 +209,64 @@
 
                     },2000);
                     
-                $(".move_7").delay(2000).animate(
+                $(".start").delay(2000).animate(
                     {
-                        bottom: '200px',
+                        // bottom: '200px',
                         opacity : '1'
                         //top: '450px'
 
                     },2000);
-                                        
+
+                //want this to scroll to section instead of mouse hover
+
+            function wait_animate() {
+                if ($(window).scrollTop() >= 857)  {
+                        window.scrollTop = 857;
+                        $(".move_7").delay(1000).animate(
+                        {
+                            bottom: '200px',
+                            opacity : '1'
+                            //top: '450px'
+    
+                        },2000);
+                        
+    
+                }
+            }
+            $(window).scroll(wait_animate);
+                // $(".move_8").hover(function() {
+                //     $(this).delay(2000).animate(
+                //     {
+                //         bottom: '200px',
+                //         opacity : '1'
+                //         //top: '450px'
+
+                //     },2000);
+                    
+                // });
                     
                 }
             
             animated_home_page();
 
-            
+            // alert(document.body.scrollTop);
+            $("body").click(function() {
+                console.log(document.body.scrollTop);
+                alert($(window).scrollTop());
+
+
+                
+                
+                });
+            $("body").followTo(300);
             });
             
+
             
         </script>
     </head>
     
-    <body >
+    <body style = "max-height:300px; overflow:scroll">
         <div class="container">
             <div class="well title" id ="web_colors" style ="height: 250px; margin-top:50px;  text-align:center; font-size: 70px; padding:70px; display:none;">Tobologz.com
             </div>
@@ -304,7 +343,7 @@
 
              </div>
             <div class="well" id ="web_colors" style ="height: 200px; width: 650px; margin-left:400px; margin-top: -270px"   >
-                <h1 style = "font-size:200px; text-align:center; margin-top:-30px "> Start</h1>
+                <h1 class = "start" style = "font-size:200px; text-align:center; margin-top:-30px "> Start</h1>
                 
              </div>
 
