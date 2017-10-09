@@ -1,22 +1,43 @@
 <html>
     <head>
         <link rel="stylesheet" href="./bootstrap.min.css">
-        <script src="./jquery.min.js"></script>
+        <!--<script src="./jquery.min.js"></script>-->
+        <script src="./jquery-1.10.2.js"></script>
         <script>
 
             // var baze;
+            // function addition ();
             
             $(document).ready(function() {
-                var single = $(".form_copy").html();
-                function no_refresh ()  {
+                var single = $(".form_copy").html(); //to append additional associates
+                var counter = 2;
+                function addition ()  {           //bootstrap button still seems to refresh
                     $(".form_copy").append(single);
                     $(".holder:last").hide();
                     $(".holder:last").slideDown(2000)
                 };
-
-                $("body").click(function() {
-                    $(".form_copy").append("<h1> ___________________________________________________________</h1>" )
-                    no_refresh();
+                
+                function subtraction () {
+                    $(".holder:last").slideUp(2000, function(){
+                        $(this).remove();
+                    
+                    });
+                };
+                
+                $("h1").click(function() {
+                    
+                    $(".form_copy").append("<h1>Associate  " + counter.toString() +"<br> ___________________________________________________________</h1>" )
+                    addition();
+                    counter += 1;
+                });
+                
+                $("h2").click(function() {
+                   if (counter >= 3)  {
+                       $(".form_copy > h1:last").remove();  //needs to be selector not a parameter to the function
+                       subtraction();
+                       counter -= 1;
+                        }
+                    
                 });
 
             });
@@ -79,7 +100,7 @@
                   </div>
                 </div>
                 
-      <!------------------------------------------------------------------------          -->
+      <!-----------------------------------------------------------------  -------          -->
       
       <!--hidding the spaces for proper formatting-->
       
@@ -196,7 +217,13 @@
 
           <div class="form-group">
               <div class="col-sm-offset-6 col-sm-10">
-                <button class="btn btn-primary" onclick ="baze">Add another associate</button>
+                <button class="btn btn-primary" onclick ="addition();">Add another associate</button>
+              </div>
+            </div>
+            
+          <div class="form-group">
+              <div class="col-sm-offset-6 col-sm-10">
+                <button class="btn btn-primary" onclick ="return false;">Remove associate</button>
               </div>
             </div>
 
