@@ -1,8 +1,7 @@
 <!--I have idea for background-->
 <!--cracked rock with pink outline and different shades of black-->
-Did heading B,C,D with appropriate professional insertsS
-part e with get carousel
-If you do not come up with any good ideas work on the jquery animation
+<!--Here I got divider using function programming -->
+
 <html>
     <head>
         <!--<script src="./jquery-1.10.2.js"></script>-->
@@ -19,6 +18,13 @@ If you do not come up with any good ideas work on the jquery animation
                         
                         
             }
+
+            #heading {
+                        text-align:center;
+                        color:rgba(0,0,0,.8);
+                        background-color:pink;
+                
+            }
             
             .square_bullets {
                              margin-top: 20px;
@@ -29,6 +35,8 @@ If you do not come up with any good ideas work on the jquery animation
                              width:25px;
                 
             }
+            
+
             
 
             
@@ -66,7 +74,51 @@ If you do not come up with any good ideas work on the jquery animation
                         i += 1;
                     }
                 }
-                sq_clone();
+            sq_clone();
+             
+            function custom_divider ()  {   //this function makes the divider for the middle well of the page
+                var i = 0;
+                var change_i = 295
+                var change_ii = -22;
+                var pen = $(".custom_divider_hidden");
+
+                                
+                
+            
+                console.log(pen)
+                while( i != 200){
+                        var canvas = $(".container_divisers");
+                        var canvas_hidden = $(".container_divisers_hidden");
+                    if (i < 50) {
+                        var sndArg = "px";
+                        // change_i += 50;
+                        // change_ii += 22;
+                        // sndArg = change_i.toString() + sndArg;
+                        // pen.css({"margin-left": sndArg, "display": "block"});
+                        sndArg = change_ii.toString() + "px";
+                        pen.css({ "height": "1px", "display":"block"});
+                        
+                        var single_copy = canvas_hidden.html();
+                        canvas.append(single_copy);
+                        
+
+                    }
+                    else {
+                        change_i += 1;
+                        sndArg = change_i.toString() + "px";
+                        pen.css({ "margin-left": sndArg, "height": "1px", "display":"block"});
+                        var single_copy = canvas_hidden.html();
+                        canvas.append(single_copy);
+                        
+                        
+                    }
+                    i+= 1;
+                }
+                pen.css("margin-left","295px");
+                // pen.css("margin-top","-220px");
+            }
+            custom_divider();
+            
             });
             
             
@@ -80,7 +132,7 @@ If you do not come up with any good ideas work on the jquery animation
         </div>
         <div class="container">
              <div class="well list" id ="web_colors"  style ="height: 500px; width: 200px;"   >
-                <h3 style = "text-align:center; color:rgba(0,0,0,.8); background-color:pink; ">  Heading A</h3>
+                <h3 id ="heading">  Heading A</h3>
                 <div class = "container_square_bullets">
                     <div class = "square_bullets" style =" display: none">
                         
@@ -91,7 +143,7 @@ If you do not come up with any good ideas work on the jquery animation
         </div>
         <div class="container">
              <div class="well" id ="web_colors" style ="height: 200px; width: 600px; margin-left:250px; margin-top: -520px"   >
-                 <h3 style = "text-align:center; color:rgba(0,0,0,.8); background-color:pink; width:150px; margin-left: 200px; margin-top:-5px;">  Heading B
+                 <h3 id = "heading" style =" width:150px; margin-left: 200px; margin-top:-5px;">  Heading B
                  </h3>
                  <h1 style ="margin-top:-30px; margin-left:-17px; font-size:30px;"> ___________________________________
                  </h1>
@@ -102,21 +154,32 @@ If you do not come up with any good ideas work on the jquery animation
         </div>
         <div class="container">
              <div class="well" id ="web_colors" style ="height: 200px; width: 200px; margin-left:890px; margin-top: -520px"   >
-                 <h3 style = "text-align:center; color:rgba(0,0,0,.8); background-color:pink; width:150px; margin-left: 5px; margin-top:-5px;">  Heading C
+                 <h3  id = "heading" style = "width:150px; margin-left: 5px; margin-top:-5px;">  Heading C
                  </h3>
                  <div style= "border-radius:500px;   height:120px; width:120px; border:1px solid pink; margin-left:18px;">
                      
                  </div>
              </div>
         </div>
-        <div class="container">
+        <div class="container ">
              <div class="well" id ="web_colors" style ="height: 200px; width: 850px; margin-left:250px; margin-top: -260px"   >
-               
+                <div style = "width: 1px; height: 200px; background-color:pink; margin-left:25px; margin-top:-20px">
+                </div>
+
+                <div style = "width: 1px; height: 200px; background-color:pink; margin-left:785px; margin-top:-200px">
+                </div>
+             </div>
+             <div class ="container_divisers">
+                <div  class = "custom_divider" style = "width: 200px; height:1px; background-color:pink; margin-left:295px; margin-top: -220px; "></div>
+             </div>
+             <div class ="container_divisers_hidden">
+                <div  class = "custom_divider_hidden" style = "width: 200px; display:none; height:0px; background-color:pink; margin-left:295px; margin-top: 0px; "></div>
              </div>
         </div>
+        
         <div class="container">
              <div class="well " id ="web_colors" style ="height: 300px; width: 300px; "   >
-                 <h3 style = "text-align:center; color:rgba(0,0,0,.8); background-color:pink; width:150px; margin-left: 50px; margin-top:-5px;">  Heading D
+                 <h3 id = "heading" style = " width:150px; margin-left: 50px; margin-top:-5px;">  Heading D
                  </h3>
                  <div class = "container_bulletin">
                     <div class = "bulletin" style= "height:40px; width 100px; border: 3px solid pink">
