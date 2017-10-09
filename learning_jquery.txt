@@ -1,0 +1,2661 @@
+learning jquery
+
+
+
+Jquery Historry
+
+
+    jQuery was first released in January 2006 by John Resig at BarCamp NYC. It is currently headed by Timmy Wilson and maintained by a team of developers.
+    
+    Nowadays, jQuery is widely used technology. Most of the websites are using jQuery.
+    
+    jQuery Release History
+    
+    Let's see the release dates of jQuery versions.
+    
+    Version No.	Release Date
+    1.0	26,August,2006
+    1.1	14,January,2007
+    1.2	10, September, 2007
+    1.3	14, January, 2009
+    1.4	14, January, 2010
+    1.5	31, January, 2011
+    1.6	3, May, 2011
+    1.7	3, November, 2011
+    1.8	9, August, 2012
+    1.9	15, January, 2013
+    1.10	24,May, 2013
+    1.11	24, January, 2014
+    2.0	18, April, 2013
+    2.1	24, January, 2014
+
+
+First thing about Jquery
+
+   $(document).ready(function() {                 -- impt part
+   $("p").css("color", "red");
+   });
+
+  same as
+
+   $(function() {                        --impt part
+   $("p").css("color", "red");
+   });
+
+  file shortjquery.html
+
+
+Jquery Selectors
+  
+  used to  find or select HTML elements based on their id, classes, attributes, types and much more from a DOM.
+
+
+  starts with
+    $([element])
+
+  three basic selection blocks
+
+    Tag Name:	It represents a tag name available in the DOM.
+    ex:  $('[tag_name]') selects all [tag_name] document.
+    Tag ID:	It represents a tag available with a specific ID in the DOM.
+    For example: $('#[tag_ID]') selects a specific element in the document that has an ID of real-id.
+    Tag Class:	It represents a tag available with a specific class in the DOM.
+    For example: $('tag_class]') selects all elements in the document that have a class of real-class.
+
+    --can use jQuery in place of $ in  $() , can used be combination
+
+    Selectors
+
+                  *	                                           #id
+                $("*")	 	                                $("#firstname")
+    It is used to select all elements.     It will select the element with id="firstname"
+
+                .class                                      .class,.class
+             $(".primary")                              $(".primary,.secondary")
+    will select allwith class primary         Will select all with primary or secondary
+
+              element                                      el1,el2,el3
+            	$("p")                                      $("h1,div,p")
+    Will select all  elements                 will select all that were queried
+
+              :first                                         :last
+            $("p:first")                                  $("p:last")
+        select the first p element                  selects the last p element
+
+                :even                                         :odd
+            $("tr:even")                                  $("tr:odd")
+    This will select all even tr elements           select all odd tr elements
+
+              :first-child                               :first-of-type
+            $("p:first-child")                     	$("p:first-of-type")
+select all p that are first child of parent    select all p that are 1st p of parent
+
+          :last-child                                 :     last-of-type
+        $("p:last-child")                                 $("p:last-of-type")
+select all p that are last child of parent    select all p that are last p of parent
+
+          :nth-child(n)                               :nth-last-child(n)
+        $("p:nth-child(n)")                         $("p:nth-last-child(2)")
+select all p that are nth child of parent     select all p that are total - nth of parent
+
+          :nth-of-type(n)                            :nth-last-of-type(n)
+        $("p:nth-of-type(n)")                     $("p:nth-last-of-type(2)")
+select all p that are nth element of parent   select all p that are last -nth of parent
+
+        :only-child                                   :only-of-type
+      $("p:only-child")                           $("p:only-of-type")
+  select p that are only child of parent        select only p only type of its parent
+
+        parent > child                                 parent descendant
+         $("div > p")                                       $("div p")
+If div is parent it will select the p child    if div is an ancestor it will select the p
+
+        element + next                                  element ~ siblings
+          $("div + p")                                    $("div ~ p")
+selects all p elements next to div elements     selects all p siblings of div element
+
+          .eq(1)                                            :gt(no)
+        $("ul li").eq(n)                               $("ul li:gt(3)")
+It will select nth element                Select list elements with index > 3
+
+            :lt(no)                                       :not(selector)
+        $("ul li:lt(3)")                                $("input:not(:empty)")
+Select list elements with an index < 3        select the ones that do not meet condition
+
+          :header                                           :animated
+        $(":header")                                      $(":animated")
+    select all header elements                      Select all animated elements
+
+          :focus                                           :contains([text])
+        $(":focus")                                     $(":contains('Hello')")
+  Select element that currently has focus     Select all elements which contains the text
+
+        :has(selector)                                          :empty
+      	$("div:has(p)")                                        $(":empty")
+Select all div elements that have a p element     Select all elements that are empty
+
+          :parent                                             :hidden
+        $(":parent")                                        $("p:hidden")
+     select all parents                                 Select all hidden p elements
+
+          :visible                                            :root
+      $("table:visible")                                    $(":root")
+    select all visible tables                           select document root element
+
+          [attribute]                                       :lang(language)         $("[href]")                                     $("p:lang(de)")
+  Select all elements with a href attribute   select all  with lang atti starts with "de"
+
+        [attribute=value]                                 [attribute!=value]
+    $("[href='default.htm']")                         $("[href!='default.htm']")
+  select all attribute = value                        select all attr != value
+
+      [attribute$=value]	                               [attribute|=value]
+      $("[href$='.jpg']")                             $("[title|='Tomorrow']")
+    select all ending in jpg          kstarts with followed by a hyphen or attr value = ,Tomorrow
+
+      [attribute^=value]                                 [attribute~=value]	              $("[title^='Tom']")                              $("[title~='hello']")
+    select all starts with Tom                       select all that contain word hello
+
+      [attribute*=value]	                                        :input
+    $("[title*='hello']")                                       $(":input")
+  select all with word hello mixed in there               select all input elements
+
+                  :text                                         :password
+                $(":text")                                    $(":password")
+select all input elements with type="text"   select all input elements with type="password
+
+              :radio                                          :checkbox
+            $(":radio")                                    $(":checkbox")
+select all input elements with type="radio"  select all input elements with type=checkbox"
+
+              :enabled                                      :disabled
+          	$(":enabled")                                $(":disabled")
+    select all enabled input elements               select all disabled input elements
+ 
+            :selected                                     :checked
+          $(":selected")                              $(":checked")
+  select all selected input elements            It will select all checked input elements
+
+          element[attribute]
+          $( "input[type=text]" )
+  select all input tags with the attribute value
+
+  others will select all of the type
+
+    :submit
+    $(":submit")
+  
+    :reset
+    $(":reset")
+  
+    :button
+    $(":button")
+
+    :image
+    $(":image")
+
+    :file
+    $(":file")
+
+if anything use function version instead
+
+    file first_jquery_statement.html
+
+Jquery effects
+
+  jquery effects are what makes a webpage move
+
+  methods
+    
+    animate()         performs animation.
+    clearQueue()     removes all remaining queued functions from the selected elements.
+    delay()           sets delay execution for all  queued functions on the selected
+    dequeue()         used to remove the next function from the queue, and then execute it
+    fadein()         it fills in the selected elements to opaque
+    fadeout()        it fades out the selected elements to transparent
+    fadeTo()          adjusts opacity of element
+    fadetoggle()      toggle between fade in and out
+    finish()         It stops, removes and complete all queued animation for the selected
+    hide()            hides the matched or selected elements.
+    queue()         shows or manipulates the queue of methods for execution on selected
+    show()          shows selected
+    slideup()       hides the matched elements with slide.
+    slidedown()     shows elements as you slide
+    slidetoggle()   switch between slide up and down
+    stop()          stops animation running on elements
+    toggle()        it toggles between the hide() and show() methods.
+
+Jquery hide
+  
+  use hidden = true to initially hide an element
+
+  $(selector).hide();
+  $(selector).hide(speed, callback);
+  $(selector).hide(speed, easing, callback);
+
+  speed: It is an optional parameter. It specifies the speed of the delay. Its possible vales are slow, fast and milliseconds.
+  easing: It specifies the easing function to be used for transition.
+  callback: It is also an optional parameter. It specifies the function to be called after completion of hide() effect.
+
+  file jquery_hide.html
+
+Jquery show
+  
+  $(selector).show();
+  $(selector).show(speed, callback);
+  $(selector).show(speed, easing, callback);
+
+  related to above
+
+  file jquery_show.html
+
+Jquery toggle
+
+  $(selector).toggle();
+  $(selector).toggle(speed, callback);
+  $(selector).toggle(speed, easing, callback);
+  $(selector).toggle(display);
+
+  display: If true, it displays element. If false, it hides the element
+  
+  file jquery_toggle.html
+
+Jquery Fadein
+
+  $(selector).fadein();
+  $(selector).fadeIn(speed,callback);
+  $(selector).fadeIn(speed, easing, callback);
+
+  file jquery_fadein.html
+
+Jquery_Fadeout
+
+  $(selector).fadeOut();
+  $(selector).fadeOut(speed,callback);
+  $(selector).fadeOut(speed, easing, callback);
+
+  file jquery_fadeout.html
+
+
+
+Jquery fadeToggle
+
+  $(selector).fadeToggle();
+  $(selector).fadeToggle(speed,callback);
+  $(selector).fadeToggle(speed, easing, callback);
+
+  file jquery_fadeToggle.html
+
+jquery fadeTo
+
+  $(selector).fadeTo(speed, opacity);
+  $(selector).fadeTo(speed, opacity, callback);
+  $(selector).fadeTo(speed, opacity, easing, callback);
+
+  opacity: fade to a given opacity
+
+  --but it fades not gets opaque again
+  
+  file jquery_fadeTo.html
+
+  
+  --the default disapperance makes the elements move up as the others go away
+
+jquery slidedown
+
+  $(selector).slideDown(speed);
+  $(selector).slideDown(speed, callback);
+  $(selector).slideDown(speed, easing, callback);
+
+  file jquery_slidedown.html
+
+Jquery slideup
+
+  $(selector).slideUp(speed);
+  $(selector).slideUp(speed, callback);
+  $(selector).slideUp(speed, easing, callback);
+  
+  file jquery_slideUp.html
+
+jquery slideToggle
+
+  $(selector).slideToggle(speed);
+  $(selector).slideToggle(speed, callback);
+  $(selector).slideToggle(speed, easing, callback);
+
+  file jquery_slideToggle.html
+
+jquery animate
+
+  helps to provide animation. it makes your objects move
+
+  $(selector).animate({params}, speed, callback);
+
+    
+    --params are css attribute that you will see the picture change to when the program is run
+
+    --The default position of all HTML elements is static. If you want to manipulate their position, set the CSS position property to the element to relative, fixed or absolute.
+
+    jquery relative animate
+
+      --It provides continuous movement or change according the calcuation give look at the file
+
+    jquery predefined animate
+    
+      --jquery functions can be predefined in animation such as toggle to use
+        $("[element]").animate({
+            [css attribute]: 'toggle'
+        });
+
+
+
+  file jquery_simple_animate.html
+       jquery_multi_animate.html
+       jquery_relative_animate.html
+       jquery_predefined_animate.html
+       jquery_color_animate.html
+
+jquery delay
+  
+  $(selector).delay (speed, queueName)
+
+  queueName: It is also an optional parameter. It specifies[ the name of the queue. Its default value is "fx" the standard queue effect.
+
+  file: jquery_delay.html
+        jquery_delay_2.html
+
+jquery html
+
+  jQuery html() method is used to change the entire content of the selected elements. It replaces the selected element content with new contents.
+
+  $(selector).html()
+
+  $(selector).html(content)
+
+  content is an essential parameter. It is used to specify the new content for the                selected elements. It can also contain HTML tags.
+        	It is an optional parameter. It specifies a function that returns the new content for the selected elements.
+  
+  $(selector).html(function (index, currentcontent)
+
+  Index: It shows the index position of the element in the set.
+  Currentcontent: It shows the current HTML content of the selected element.
+
+  --when retuning returns content for first matched element
+  --when setting , it overwrites content
+
+  
+  file jquery_html.html
+       jquery_html_return.html
+       jquery_html_set.html
+  
+jquery text
+
+  used to return and set text according to relative definitions of jquery html
+  
+  --The jQuery text() method is used to set or return html content without HTML markup while, html() method is used to set or return the innerHtml (text + HTML markup).
+  --The jQuery text() method can be used in both XML and HTML document while jQuery html() method can't.
+
+  to return
+    $(selector).text()
+
+
+  to set
+    $(selector).text(content)
+
+  to set using a function
+    $(selector).text(function(index,currentcontent))
+
+    --same as relative with above
+
+    file jquery_text_return.html
+         jquery_text_set.html
+
+jquery val
+  
+  --It is used to get current value of the first element in the set of matched elements.
+  --It is used to set the value of every matched element.
+
+  $(selector).val()
+
+  to get
+    $(selector).val(value)
+
+  to set
+    $(selector).val(function(index,currentvalue))
+
+  Value	It is a mandatory parameter. It is used specify the value of the attribute.
+
+  file: jquery_val_get.html
+        jquery_val_get_multi.html
+        jquery_set.html
+
+jquery css
+
+  The jQuery CSS() method is used to get (return) or set style properties or values for selected elements.
+
+  return css property
+
+    css("propertyname");
+
+  set css property
+  
+    css("propertyname","value");
+
+  set multiple css properties
+    
+    css({"propertyname":"value","propertyname":"value",...});
+
+    file jquery_get_css.html
+        jquery_set_css.html
+        jquery_set_multi.html
+
+Jquery before
+
+  --The jQuery before() method is used to insert the specified content before the selected elements
+  --before and insertBefore are the same just different syntax and target placement
+
+
+  $(selector).before(content, function(index))
+
+
+    Content	  It is a mandatory parameter. It specifies the content to insert. Its                  possible values are:
+
+              HTML elements
+              jQuery objects
+              DOM elements
+
+    file: jquery_before.html
+
+Jquery prepend
+
+  puts stuff in front of text
+
+  set
+    $(selector).prepend(content,function(index,html))
+
+    function is optional
+      
+      Index:It is used to provide the index position of the element in the set.
+      Html: : It provides the current HTML of the selected element.
+
+      file jquery_prepend.html
+
+Jquery after
+  
+  The jQuery after() method is used to insert specified content after the selected element. It is just like jQuery append() method.
+
+  set
+    $(selector).after(content,function(index))
+
+  file jquery_after.html
+
+Jquery insertAfter
+
+  same as jquery after just different syntax
+
+  $(contentToBeInserted).insertAfter(target)
+  
+  set
+    $(content).insertAfter(selector)
+
+  file jquery_insert_After.html
+
+Jquery_append
+
+  The jQuery append() method is used to insert specified content as the last child (at the end of) the selected elements . in other words before the close tag
+  
+   append () and appendTo () same task different syntax
+
+  set
+    $(selector).append(content, function(index, html))
+
+    HTML: It returns the current HTML of the selected element.
+
+    file : jquery_append.html
+
+jquery appendTo
+
+  use
+  $(content).appendTo(selector)
+
+  file: jquery_append_To.html
+
+
+jquery clone
+
+  easy ,convenient way to duplicate elements on a page.
+
+  $(selector).clone(true|false)
+    
+  boolean; specifies whether an event should be copied or not
+
+  file: jquery_clone.html
+
+jquery remove
+
+  jQuery remove() removes selected elements out of the DOM.  removes selected element itself, as well as everything inside it (including all texts and child nodes).  method  removes its data and the events
+
+  use
+    $(selector).remove(selector)
+
+    selector : if you use more than one use a comma
+
+    file jquery_remove.html
+         jquery_remove_2.html
+
+jquery empty
+
+  used to remove all child nodes and content without removing the element and its attributes
+  
+  use
+    $(selector).empty()
+
+  file: jquery_empty.html
+        jquery_empty_2.html
+
+jquery detach
+
+  jQuery detach() method is used to remove the selected elements, including all texts and child nodes and keeps only inner data and events.
+
+  use
+    $(selector).detach()
+
+  file: jquery_detach.html
+        jquery_detach_2.html
+        jquery_detach_3.html
+
+jquery scroll
+
+        
+                function react_on_scroll_offset() {
+                if ($(window).scrollTop() >= value)  {
+                    //event or action triggered
+                        
+    
+                }
+            }
+            $(window).scroll(react_on_scroll_offset);
+
+jquery_scrollTop
+
+    The jQuery scrollTop method is used to set or return the vertical scrollbar position for the selected element.
+    top scrolltop = 0
+
+    return : return value for selection in question
+    set: sets all values for the element
+
+
+    Position	It specifies the vertical scrollbar position in pixels.
+
+    file:jquery_scrollTop_return.html
+         jquery_scrollTop_set.html
+
+jquery attr
+  the jQuery attr() method is used to set or return attributes and values of the selected elements.
+
+  return
+    $(selector).attr(attribute)
+ 
+  set
+    $(selector).attr(attribute,value)
+
+  set using a function
+    $(selector).attr(attribute,function(index,currentvalue))
+
+  set multiple values
+    $(selector).attr({attribute:value, attribute:value,...})
+
+  Attribute:	This parameter is used to specify the name of the attribute.
+
+  file: jquery_attr.html
+
+jquery prop
+
+  --It is used to return the value of a property for the first element in a set of matched elements.
+  --It is used to set one or more property value for a set of matched element.
+  --generally used to retrieve property values i.e. DOM properties (like tagName, nodeName, defaultChecked) or own custom made properties. not their visual attributes
+
+    removeProp used to remove a property
+
+    --generally used to retrieve property values i.e. DOM properties (like tagName, nodeName, defaultChecked) or own custom made properties.
+      
+
+    to return
+      $(selector).prop(property)
+
+    to set
+      $(selector).prop(property,value)
+
+    to set using a function
+      $(selector).prop(property,function(index,currentvalue))
+
+    to set using multiple values
+
+  Prop: It specifies the name of the property.
+
+    --the difference between attr and prop is that attr is used when you want to change
+      your defaults for a tag
+    
+    -- the prop is used when you want to change the DOM defaults for a tag
+
+    -- prop is generally simpler to deal withs
+
+  file : jquery_prop.html
+
+jquery offset
+
+  used to get current offset of first matched element relative to the document
+
+  return
+    coordinates for 1st matched element
+    $(selector).offset()
+
+    has top and left parameters
+
+  
+  set
+    coordinates for all elements
+    $(selector).offset({top:value,left:value})
+    $(selector).offset(function(index,currentoffset))
+  
+  file: jquery_offset.html
+        jquery_offset_2.html
+
+jquery position
+
+  used to get current position relative to the parent
+
+  $(selector).position()
+
+  file: jquery_position.html
+        jquery_position_2.html
+
+jquery addClass
+
+  The addclass() method is used to add one or more class name to the selected element.
+  If you want to add more than one class separate the class names with spaces.
+
+  $(selector).addClass(classname,function(index,oldclass))
+
+  Classname	It is a mandatory parameter. It specifies one or more class names which you             want to add.
+      
+            It is an optional parameter. It specifies a function that returns one or more class names to be added.
+
+  file : jquery_add_class.html
+
+jquery hasClass
+
+
+  $(selector).hasClass(classname)
+
+  className It returns TRUE if the specified class is present in any of the selected                elements otherwise it returns FALSE
+
+
+  file : jquery_has_class.html
+         jquery_has_class_2.html
+         jquery_has_class_3.html
+         jquery_has_class_4.html
+
+jquery toggleClass
+
+  toggle one or more classes If the class name is already set, it removes and if the class name is missing, it adds.
+
+  $(selector).toggleClass(classname,function(index,currentclass),switch)
+  
+  classname	It is a mandatory parameter. It specifies one or more class name to add or              remove. If you use several classes then separate them by space.
+
+            It is an optional parameter. It specifies one or more class names that you want to add or remove.
+
+  switch	It is also an optional parameter. It is a Boolean value which specifies whether         the class should be added (true) or removed (false).
+
+        file: jquery_toggle_Class.html
+              jquery_toggle_Class_2.html
+              jquery_toggle_Class_3.html
+
+jquery dimension
+--all dimensional function can be used to set the dimension
+
+  jquery width
+
+    return --first matched
+      $(selector).width()
+    
+    set -- every element
+      $(selector).width(value)
+
+    set width using a function
+      $(selector).width(function(index,currentwidth))
+
+    width in px, em, pt etc. The default value of jQuery width() method is px.
+
+  file jquery_width_return.html
+       jquery_width_set.html
+
+  jquery height
+
+    return  -- first matched
+      $(selector).height()
+
+    set --every element
+      $(selector).height(value)
+    
+    set using a function
+      $(selector).height(function(index,currentheight))
+
+  file jquery_height_return.html
+       jquery_height_set.html
+
+  jquery innerWidth
+
+  --jQuery innerWidth() method is used to return the inner width of the first matched
+  element without including border and margin.
+
+  --This method includes padding but excludes border and margin.
+
+  $(selector).innerWidth()
+
+  --for some reason innerwidth is longer than width even when usimg all the jquery js file options
+  might be the actual object is bigger than what you see in the dom
+
+  file : jquery_inner_Width.html
+         jquery_inner_Width_2.html
+  
+
+  jquery innerHeight
+
+    The jQuery innerHeight () method is used to return the inner height of first matched element. It includes padding but not border and margin.
+
+    can be used to set inner height just like the hight functiom
+
+    $(selector).innerHeight()
+    
+    file jquery_inner_Height.html
+         jquery_inner_Height_2.html
+
+  jquery outerWidth
+
+    --jQuery outerWidth() method is used to return the outer width of the first matched
+    element with padding and border.
+
+    --The jQuery outerWidth () method works for both visible and hidden elements.
+
+    $(selector).outerWidth(includeMargin)
+    
+    includeMargin: if true return the margin also , if not return dont return it
+
+    default is false
+
+    file jquery_outer_Width.html
+         jquery_outer_Width_2.html
+
+  jquery outerHeight
+
+    --The jQuery outerHeight () method is used to return the outer height of first matched element
+    --includes padding and border same rules with outerWidth
+
+    $(selector).outerHeight(includeMargin)
+
+    can also be used to set outer height
+
+jquery wrap
+
+  --jQuery wrap() method is used to wrap specified HTML elements around each selected element.
+  --The wrap () function can accept any string or object that could be passed through the $() factory function.
+
+  $(selector).wrap(wrappingElement,function(index))
+
+  wrappingElement -- HTML jQuery and DOM objects mandatory
+
+  -----________________________remember to finish jquery wrap
+
+  file: jquery_wrap.html
+        jquery_wrap_2.html
+
+jquery wrap_Inner
+
+  --The jQuery wrapInner() method basically places a tag inside another element as many times as needed
+
+  --you can wrap inside multiple elements
+
+  $(selector).wrapInner(wrappingElement,function(index))
+
+  file: jquery_wrap_Inner.html
+        jquery_wrap_inner_2.html
+        jquery_wrap_inner_3.html
+
+jquery wrap All
+
+  wraps all matching elements into one div element it even groups it above the other elements
+
+  $(selector).wrapAll(wrappingElement)
+
+  file jquery_wrap_all.html
+       jquery_wrap_all_2.html ( wrap all function does not wrap the div the div instead it maxes boxes on top of the div as if none met the case according to the console it prepends the wrapping element insteasd making it the new first child in the div
+
+jquery unwrap
+
+  remove parent element of selected elements
+
+  $(selector).unwrap()
+
+  file jquery_unwrap.html
+       jquery_unwrap_2.html
+
+      --when wrapping a different element all the others seem to be changed
+
+jquery serialize
+
+    text string in standard URL-encoded notation It serializes the form values so that its serialized values can be used in the URL query string while making an AJAX request.
+
+  $ (selector).serialize()
+
+  --used in form controls like <input>, <textarea>, <select>
+  --Only successful controls are serialized to the string. It is not possible to serialize the form submitted by a submit button unless the form was submitted using a button.
+
+  file jquery_serialize.html
+
+  
+
+  jquery serializeArray
+      
+    --The jQuery serializedArray() Method is used to create a JavaScript array of objects by serializing form values. It operates on a jQuery collection of forms and form controls. You can select one or more form elements such as <input>, <textarea> or the form element itself.
+
+  $(selector).serializeArray()
+  
+
+
+
+
+Jquery Events
+
+  --jQuery events are the actions that can be detected by your web application
+  --An event shows the exact moment when something happens.
+
+  to assign an element to an event
+  $("[element]").[event]();
+
+  when the event happens you need a function
+  $("[element]").[event]([function](){ }));
+
+  an important function
+
+    event.preventDefault() prevents certain events that have associated default actions
+    when their action happens
+
+  Jquery Click
+  
+    $(selector).click()
+
+    file: jquery_click.html
+          jquery_click_to_hide.html
+
+  
+  Jquery bind
+
+    another way to make event action when the regular functions cannot do it
+
+    $(selector).bind(event,data,function,map)
+
+    Event   	It is a mandatory parameter. It specifies one or more events to attach to the elements. If            you want to add multiple events they they must be separated by space.
+    Data	    It is an optional parameter. It specifies additional data to pass along to the function.
+    Function	It is a mandatory parameter. It executes the function to run when the event occurs.
+    Map	      It specifies an event map which contains one or more events or functions attached to the              element.
+
+    file: jquery_bind.html
+          jquery_bind_2.html
+
+
+  Jquery blur
+
+    
+    It seems to take things out of a certain focus but does not actually visually blur it
+    What happens when you navigate away from an element, the browser sees it as giving focus to something else otherwise known as a blur
+
+    $(selector).blur()
+
+    file jquery_blur.html
+
+  
+  Jquery focus
+
+    happens when you navigate to it or move the mouse to an element
+
+      $(selector).focus()
+
+      file jquery_focus.html
+           jquery_focus_prevention.html
+
+  
+  Jquery select
+      
+      --happens when a text is marked or selected in a text field
+      -- limited to  <input type="text"> fields and <textarea> boxes
+
+
+      $(selector).select()
+
+  Jquery change
+
+    For select boxes, checkboxes, and radio buttons: The event is fired immediately when the user makes a selection with the mouse.
+    For the other element types: The event is occurred when the field loses focus.
+
+    
+    $(selector).change()
+
+    file jquery_change.html
+         jquery_change_2.html
+
+    
+  Jquery submit
+
+    --jQuery submit event is sent to the element when the user attempts to submit a form
+    --only for form events
+
+    $(selector).submit()
+
+    file jquery_submit.html
+
+  Jquery keydown
+
+    When you press a key on the keyboard, the keydown() event is occurred
+
+    $(selector).keydown()
+  
+    file jquery_keydown.html
+
+  Jquery keypress
+
+    $(selector).keypress()
+    same thing as keydown
+
+    file jquery_keypress.html
+
+  
+  Jquery keyup
+
+    when a key is released
+    $(selector).keyup()
+
+    file jquery_keyup.html
+
+  
+  Jquery mouseenter
+
+    This function is executed, when the mouse pointer enters the HTML element.
+    $(selector).mouseenter()
+    file: jquery_mouseenter.html
+
+  Jquery  mouseleave
+
+    This function is executed, when the mouse pointer leaves the HTML element.
+    $(selector).mouseleave()
+    
+  Jquery hover
+    
+    --The jQuery hover() method executes two functions when you roam the mouse pointer over the selected element. The hover() method triggers both the mouseenter and mouseleave events.
+
+    $(selector).hover(inFunction,outFunction)
+
+    --If you specify only one function then it will be run for both the mouseenter and mouseleave event.
+
+      InFunction	It is a mandatory parameter. It is executed the function when                      mouseenter event occurs.
+
+      OutFunction	It is an optional parameter. It is executed the function when                      mouseleave event occurs.
+
+    file : jquery_hover.html
+           jquery_hover_effects.html
+
+
+  Jquery mousedown
+
+    This function is executed, when the left mouse button is pressed down, at the time while the mouse is over the HTML element.
+
+    $(selector).mousedown()
+  
+    file: jquery_mousedown.html
+
+  Jquery mouseup
+
+    The mouseup () event occurs when you release the pressed button of your mouse over a selected element.
+    
+    $(selector).mouseup()
+
+    file: jquery_mouseup.html
+
+  Jquery mouseover
+
+    The mouseover event is occurred when you put your mouse cursor into the selected element not leaving it from another child
+
+    mouseenter is only the selected elements, mouseover is selected elements along with child elements
+
+      $(selector).mouseover()
+
+      file: jquery_mouseover.html
+
+
+  Jquery mouseout
+
+    The mouseout event is occurred when you remove your mouse cursor from the selected element
+
+    The mouseleave event is only triggered if the mouse pointer leaves the selected element whereas the mouseout event triggers if the mouse cursor leaves any child elements as well as the selected element.
+
+    $(selector).mouseout()
+
+    file: jquery_mouseout.html
+
+  Jquery load
+
+    The load () method is used to load a specific element.
+
+    It is generally used with a URL (image, script, frame, iframe), and the window object.
+
+    --On some browsers, the load event did not trigger if the image is cached.
+
+    $(selector).load(function)
+
+    file jquery_load.html
+
+  Jquery unload
+
+    The jQuery unload() method is used to unload a specific element. It attaches an event handler to unload event. The unload event is sent to the window element when the user navigates away from the page.
+
+    what is basically called when you go to another website
+
+      $(selector).unload(function)
+
+      it does not seem to work though
+
+      file jquery_unload.html
+
+  
+  Jquery delegate
+
+    The delegate () method is used to attach one or more event handlers for specified elements which are the children of selected elements. This method executes a function to run when the event occurs.
+
+    $(selector).delegate(childSelector,event,data,function)
+
+      ChildSelector	It is a mandatory parameter that is used to specify one or more child               elements to attach the event handler.
+
+      Event	        It is also a mandatory parameter. It specifies one or more events to               attach to the elements. If you use multiple events then they must be               separated by space.
+
+      Data	        It is optional and specifies additional data to pass along to the                  function
+
+      Function	    It is executed when the event occurs.
+
+  file jquery_delegate.html
+
+scroll to 1200 to learn about jquery UI
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+jQuery UI
+
+  Good for highly interactive web applications
+  Open source and free to use
+  Powerful theme mechanism
+  Stable and maintenance friendly
+  Extensive browser support
+
+  file: jquery_ui.html
+
+  
+jQuery UI History
+
+  --It is a collection of animated visual effects, GUI widgets, and themes
+  --According to a survey it is used on over 176000 websites, making it the second most popular JavaScript library on the Web.
+  --jQueryUI is a free and open source software first published and released in September 2007. It is distributed by jQuery foundation under the MIT license.
+
+
+
+    
+jquery version no.      jquery  dependency       release date
+1.5	-------	Jun 8, 2008
+1.6	1.2.6	Apr 16, 2009
+1.7	1.3.2+	Mar 3, 2009
+1.8	1.3.2+	Mar 18, 2010
+1.8.9	1.3.2+	Jan 19, 2011
+1.8.10	1.3.2+	Feb 22, 2011
+1.8.11	1.3.2+	Mar 15, 2011
+1.8.12	1.3.2+	Apr 13, 2011
+1.8.13	1.3.2+	May 12, 2011
+1.8.14	1.3.2+	Jun 17, 2011
+1.8.15	1.3.2+	Aug 1, 2011
+1.8.16	1.3.2+	Aug 15, 2011
+1.8.17	1.3.2+	Jan 10, 2012
+1.8.18	1.3.2+	Feb 20, 2012
+1.8.19	1.3.2+	Apr 16, 2012
+1.8.20	1.3.2+	Apr 30, 2012
+1.8.21	1.3.2+	Jun 5, 2012
+1.8.22	1.3.2+	Jul 24, 2012
+1.8.23	1.3.2+	Aug 15, 2012
+1.8.24	1.3.2+	Sep 28, 2012
+1.9.0	1.6+	Oct 8, 2012
+1.9.1	1.6+	Oct 25, 2012
+1.9.2	1.6+	Nov 23, 2012
+1.10.0	1.6+	Jan 17, 2013
+1.10.1	1.6+	Feb 15, 2013
+1.10.2	1.6+	Mar 14, 2013
+1.10.3	1.6+	May 3, 2013
+1.10.4	1.6+	Jan 17, 2014
+1.11.0-beta.1	1.6+	Apr 25, 2014
+1.11.0-beta.2	1.6+	May 23, 2014
+1.11.0	1.6+	Jun 26, 2014
+1.11.1	1.6+	Aug 13, 2014
+1.11.2	1.6+	Oct 16, 2014
+1.11.3	1.6+	Feb 12, 2015
+
+Jquery UI Features
+
+  We can categorize the jQueryUI into four groups.
+
+  Interactions: Interactions are the set of plug-ins which facilitates users to                  interact with DOM elements. These are the mostly used interactions:
+
+  Widgets: Widgets are the jQuery plug-ins which makes you able to create user              interface elements like date picker, progress bar etc. These are the             mostly used widgets:
+
+  Effects: The internal jQuery effects contain a full suite of custom animation and          transition for DOM elements.
+
+  Utilities: Utilities are the modular tools, used by jQuery library internally
+
+Jquery Interactions
+  jQuery UI draggable
+        jQuery UI draggable() method is used to make any DOM element draggable
+
+  
+  $(selector, context).draggable (options) Method
+
+  --The draggable (option) method specifies that an HTML element can be moved in the HTML page. Here, the option parameter specifies the behavior of the elements involved.
+    
+
+    multiple use
+    $(selector, context).draggable({[option1]: [value1], [option2]: [value2]..... });
+
+Option	          Description
+
+addclasses	      If this option is set to false, it will prevent the UI-draggable                   class from being added in the list of selected DOM elements. By                    default its value is true.
+appendto	        It specifies the element in which the draggable helper should be                   appended to while dragging. By default its value is "parent".
+axis	            This option constrains dragging to either the horizontal (x) or                    vertical  (y) axis. Its possible values are:"x", "y".
+cancel	          This option is used to prevent dragging from starting on                           specified elements. By default its value is "input,textarea,                       button,select,option".
+connecttosortable	This option is used to specify a list whose elements are                           interchangeable. At the end of placement, the element is part of                   the list. By default its value is "false".
+containment	      Constrains dragging to within the bounds of the specified element                   or region. By default its value is "false".
+cursor	          It is used to specify the CSS property of the cursor when the                      element moves. It represents the shape of the mouse pointer. By                    default its value is "auto".
+cursorat	        It sets the offset of the dragging helper relative to the mouse                    cursor. Coordinates can be given as a hash using a combination of                   one or two keys: { top, left, right, bottom }. By default its                      value is "false".
+delay	            It specifies the delay in milliseconds, after which the first                      movement of the mouse is taken into account. The displacement may                   begin after that time. By default its value is "0".
+disabled	        It disables the ability to move items when set to true. Items                      cannot be moved until this function is enabled (using the                          draggable ("enable") instruction). By default its value is                         "false".
+distance	        The number of pixels that the mouse must be moved before the                       displacement is taken into account. By default its value is "1".
+grid	            It snaps the dragging helper to a grid, every x and y pixels. The                   array must be of the form [ x, y ]. By default its value is                        "false".
+handle          	If specified, restricts dragging from starting unless the                          mousedown occurs on the specified element(s). By default its                       value is "false".
+helper	          It allows for a helper element to be used for dragging display.                    By default its value is "original".
+iframefix	        It prevents iframes from capturing the mousemove events during a                   drag. By default its value is "false".
+opacity	          Opacity of the element moved when moving. By default its value is                   "false".
+refreshpositions	If set to true, all droppable positions are calculated on every                    mousemove. By default its value is "false".
+revert	          It indicates whether the element is moved back to its original                     position at the end of the move. By default its value is "false".
+revertduration	  It indicates the duration of displacement (in milliseconds) after                   which the element returns to its original position (see                            options.revert). By default its value is "500".
+scope	            It is used to group sets of draggable and droppable items, in                      addition to droppable's accept option. By default its value is                     "default".
+scroll	          when set to true (the default), the display will scroll if the                     item is moved outside the viewable area of the window. by default                   its value is "true".
+scrollsenstivity	It indicates how many pixels the mouse must exit the window to                     cause scrolling of the display. By default its value is "20".
+scrollspeed	      It indicates the scrolling speed of the display once scrolling                     begins. By default its value is "20".
+snap	            It adjusts the display of the item being moved on other elements                   (which are flown). By default its value is "false".
+snapmode	        It specifies how the adjustment should be made between the moved                   element and those indicated in options.snap. By default its value                   is "both".
+snaptolerance   	It specifies the maximum number of pixels in the difference in                     position necessary to establish the adjustment. By default its                     value is "20".
+stack	            It controls the z-index of the set of elements that match the                      selector, always brings the currently dragged item to the front.                   It is very useful in things like window managers. By default its                   value is "false".
+zindex	          z-index for the helper while being dragged. By default its value                   is "false".
+
+
+  The draggable (action, params) method is used to perform an action like prevent displacement.
+    $(selector, context).draggable ("action", params) Method
+    $(selector, context).draggable ("[action]", [params]);
+
+      Action
+      Description
+      destroy()
+      It is used to remove drag functionality completely. The elements are no longer movable. This will return the element back to its pre-init state.
+      
+      disable()
+      It is used to disable drag functionality. Elements cannot be moved until the next call to the draggable("enable") method.
+      
+      enable()
+      It is used to reactivates drag management. The elements can be moved again.
+      
+      option(optionname)
+      It gets the value currently associated with the specified optionname. Here optionname is name of the option to get and is of type string.
+      
+      option()
+      It gets an object containing key/value pairs representing the current draggable
+      options hash.
+      
+      option(optionname, value)
+      It sets the value of the draggable option associated with the specified optionname. Here optionname is the name of the option to set and value is the value to set for the option.
+      
+      option(options)
+      It sets one or more options for the draggable. Here options is a map of option-value pairs to set.
+      
+      widget()	It returns a jQuery object containing the draggable element
+
+      file: jquery_draggable_1.html
+            jquery_draggable_disable_distance_delay.html
+            jquery_draggable_clone.html
+            jquery_draggable_2.html
+            jquery_draggable_5.html
+
+  Jquery_droppable
+    
+    The droppable (options) method specifies that you can use an HTML element as an element in which you can drop other elements.
+    
+      single use
+        $(selector, context).droppable (options);
+
+      mutti use
+        $(selector, context).droppable({option1: value1, option2: value2..... });
+
+
+
+      Option
+      Description
+      accept
+      This option is used when you need to control which draggable elements are to be accepted for dropping. by default its value is *.
+
+      activeclass
+      This option is a string representing one or more css classes to be added to the droppable element when an accepted element (one of those indicated in options.accept) is being dragged. by default its value is false.
+
+      addclasses
+      This option when set to false will prevent the ui-droppable class from being added to the droppable elements. by default its value is true.
+
+      diasabled
+      This option when set to true disables the droppable. by default its value is false.
+
+      greedy
+      This option is used when you need to control which draggable elements are to be accepted for dropping on nested droppables. by default its value is false. if this option is set to true, any parent droppables will not receive the element.
+
+      hoverclass
+      This option is string representing one or more css classes to be added to the element of droppable when an accepted element (an element indicated in options.accept) moves into it. by default its value is false.
+
+      scope
+      This option is used to restrict the droppable action of draggable elements only to items that have the same options.scope (defined in draggable (options)). by default its value is "default".
+
+      tolerence
+      This option is a string that specifies which mode to use for testing whether a draggable is hovering over a droppable. By default its value is "intersect".
+
+
+  The droppable ("action", params) method is used to perform an action on droppable elements,. You have to pass an action specified as a string in the first argument.
+
+    $(selector, context).droppable ("action",[params]);
+
+    methods same as above
+
+
+    Event Method
+    Description
+    
+    activate(event, ui)	This event is triggered when the accepted draggable element starts dragging. this can be useful if you want to make the droppable "light up" when it can be dropped on.
+    
+    create(event,ui)	This event is triggered when a droppable element is created. ?where? event is of type event, and "ui" is of type object.
+    
+    deactivate(event,ui)	This event is triggered when an accepted draggable stops dragging. "Where" event is of type event, and ui is of type object.
+    
+    drop(event,ui)	This action is triggered when an element is dropped on the droppable. this is based on the tolerance option. "Where" event is of type event, and "ui" is of type object.
+    
+    out(event,ui)	This event is triggered when an accepted draggable element is dragged out of the droppable. this is based on the tolerance option. ?Where? event is of type event, and "ui" is of type object.
+    
+    over(event,ui)	This event is triggered when an accepted draggable element is dragged over the droppable. this is based on the tolerance option. "Where" event is of type event, and "ui" is of type object.
+
+    file: jquery_droppable_1.html
+          jquery_droppable_addclass_disabled_tolerance.html
+          jquery_droppable_only.html
+          jquery_droppable_toggle.html
+          jquery_droppable_5.html
+          jquery_droppable_6.html
+
+  jQuery UI resizable
+    jQuery UI resizable() method is used to resize any DOM element
+
+      $(selector, context).resizable (options);
+
+        Option
+        Description
+        
+        alsoResize
+        This option is of type selector, jQuery , or any DOM element. It represents elements that also resize when resizing the original object. By default its value is FALSE.
+        
+        animate
+        If you set this option to TRUE, it enables a visual effect during resizing when the mouse button is released. The default value is FALSE (no effect).
+        animateDuration	This option specifies the duration of the resizing effect in millisecond. It is used only when animate option is true. By default its value is "slow".
+        
+        animateEasing
+        This option specifies which easing should be applied when using the animate option. By default its value is "swing".
+        
+        aspectRatio
+        This option indicates the aspect (height and width) ratio for the item. By default its value is false.
+        
+        autoHide
+        This option is used to hide the magnification icon or handles, except when the mouse is over the item. By default its value is false.
+        
+        cancel
+        This option is used to prevent resizing on specified elements. By default its value is input, textarea, button, select, option.
+        
+        containment
+        This option is used restrict the resizing of elements within a specified element or region. By default its value is false.
+        
+        delay	This option is used to set tolerance or delay in milliseconds. After that, resizing or displacement will begin. By default its value is 0.
+        
+        disabled
+        If you set this option to TRUE, it disables the resizing mechanism. The mouse no longer resizes elements, until the mechanism is enabled, using the resizable ("enable"). By default its value is false.
+        
+        distance
+        This option specifies that the resizing will start only when the mouse moves a distance(pixels). By default its value is 1 pixel. This can help prevent unintended resizing when clicking on an element.
+        
+        ghost
+        If you set this option to TRUE, a semi-transparent helper element is shown for resizing. This ghost item will be deleted when the mouse is released. By default its value is false.
+        
+        grid
+        This option is of type array [x, y], indicating the number of pixels that the element expands horizontally and vertically during movement of the mouse. By default its value is false.
+        
+        handles
+        This option is a character string that specifies which sides or angles of the element can be resized. By default its values are e, s, se.
+        
+        helper
+        This option is used to add a CSS class to style the element which you want to resize. When the element is resized a new <div> element is created, which is the one that is scaled (UI-resizable-helper class). Once the resize is complete, the original element is sized and the <div> element disappears. By default its value is false.
+        
+        maxHeight
+        This option is used to set the maximum height the resizable should be allowed to resize to. By default its value is NULL.
+        
+        maxWidth
+        This option is used to set the maximum width the resizable should be allowed to resize to. By default its value is NULL.
+        
+        minHeight
+        This option is used to set the minimum height the resizable should be allowed to resize to. By default its value is 10.
+        
+        minWidth
+        This option is used to set the minimum width the resizable should be allowed to resize to. By default its value is 10.
+
+
+      other option
+      $(selector, context).resizable ("action", params);
+
+      The resizable ("action", params) method is used to perform an action on resizable elements. For example: allowing or preventing resizing functionality. The action is specified as a string in the first argument (e.g., "disable" to prevent the resize).
+
+      
+      Action
+      Description
+      
+      destroy
+      This action is used to destroy the resizable functionality of an element completely. This will return the element back to its pre-init state.
+      
+      disable
+      This action is used to disable the resizing functionality of an element. This method does not accept any arguments.
+      
+      enable
+      This action is used to enable the resizing functionality of an element. This method does not accept any arguments.
+      
+      option( optionName )
+      This action retrieves the value of the specified optionName. This option corresponds to one of those used with resizable (options).
+      
+      option()
+      This action is used to get an object containing key/value pairs representing the current resizable options hash. This action does not accept any arguments.
+      
+      option(optionName, value )
+      This action sets the value of the resizable option with the specified optionName. This option corresponds to one of those used with resizable (options).
+      
+      option( Options )
+      This action sets one or more options for the resizable.
+      
+      widget()
+      This action returns a jQuery object containing the resizable element. This method does not accept any arguments.
+
+
+      files: jquery_resizable.html
+             jquery_resizable_ghost_call_then_move.html
+             jquery_resizable_delay_distance_delay_magnification.html
+             jquery_resizable_clone.html
+             jquery_resizable_disable_no_destroy_move.html
+
+
+    jQuery UI Selectable
+
+      $(selector, context).selectable({option1: value1, option2: value2..... });
+
+        Option
+        Description
+        
+        appendTo
+        This option specifies which element the selection helper (the lasso) should be appended to. By default its value is body.
+        
+        autoRefresh
+        If you set this option to true, the position and size of each selectable item is computed at the beginning of a select operation. By default its value is true.
+        
+        cancel
+        This option forbids selecting if you start selection of elements. By default its value is input, textArea, button, select, option.
+        
+        delay
+        This option defines when the selecting should start. It sets the time in millisecond. This can be used to prevent unwanted selections. By default its value is 0.
+        
+        disabled	If you set this option to true, it disables the selection mechanism. You cannot select the elements until the mechanism is set to enable. able") By default its value is false.
+        
+        distance
+        This option is the distance (in pixels) the mouse must move to consider the selection in progress. This is useful, for example, to prevent simple clicks from being interpreted as a group selection. By default its value is 0.
+        
+        filter
+        This option is a selector indicating which elements can be part of the selection. By default its value is *.
+        
+        tolerance	This option specifies which mode to use for testing whether the selection helper (the lasso) should select an item. By default its value is touch.
+        
+
+
+      $(selector, context).selectable ("action", params)
+
+        The selectable ("action", params) method is used to perform an action on selectable elements, such as preventing selectable functionality. Here "action" is specified as a string in the first argument (e.g., "disable" to stop the selection).
+
+
+        Action
+        Description
+        
+        destroy
+        This action destroys functionality of an element completely. The elements return to their pre-init state.
+        
+        disable
+        This action is used to disable the selectable functionality of an element. This method does not accept any arguments.
+        
+        enable
+        This action enables the selectable functionality of an element. This method does not accept any arguments.
+        
+        option( optionName, value )
+        This action gets the value currently associated with the specified optionName.
+        
+        option()
+        This action gets an object containing key/value pairs representing the current selectable options hash.
+        
+        option( optionName, value )
+        This action sets the value of the selectable option associated with the specified optionName. The argument optionName is name of the option to be set and value is the value to be set for the option.
+        
+        option( options )
+        This action is sets one or more options for the selectable. The argument options is a map of option-value pairs to be set.
+        
+        refresh
+        This action causes the size and position of the selectable elements to be refreshed. It is used mostly when the autoRefresh option is disabled (set to false). This method does not accept any arguments.
+        
+        widget
+        This action returns a jQuery object containing the selectable element. This method does not accept any arguments.
+
+      file: jquery_selectable_functionality.html
+            jquery_selectable_disable_option.html
+            jquery_selectable.html
+            jquery_selectable_delay_and_distance.html
+
+
+    Jquery UI Sortable
+
+
+        $(selector, context).sortable (options);
+
+        Option
+        Description
+        
+        appendto
+        This option specifies the element in which the new element created with options.helper will be inserted during the time of the move/drag. By default its value is parent.
+        
+        axis
+        This option indicates an axis of movement ("x" is horizontal, "y" is vertical). By default its value is false.
+        
+        cancel
+        This option is used to prevent sorting of elements by clicking on any of the selector elements. By default its value is "input,textarea,button,select,option".
+        
+        connectwith
+        This option is a selector that identifies another sortable element that can accept items from this sortable. This allows items from one list to be moved to other lists, a frequent and useful user interaction. If omitted, no other element is connected. This is a one-way relationship. By default its value is false.
+        
+        containment
+        This option indicates an element within which the displacement takes place. The element will be represented by a selector (only the first item in the list will be considered), a DOM element, or the string "parent" (parent element) or "window" (html page).
+        
+        cursor
+        It specifies the cursor CSS property when the element moves. It represents the shape of the mouse pointer. By default its value is "auto".
+        
+        cursorat
+        It sets the offset of the dragging helper relative to the mouse cursor. Coordinates can be given as a hash using a combination of one or two keys: { top, left, right, bottom }. By default its value is "false".
+        
+        delay
+        It specifies delay in milliseconds, after which the first movement of the mouse is taken into account. The displacement may begin after that time. By default its value is "0".
+        
+        disabled
+        This option if set to true, disables the sortable functionality. By default its value is false.
+        
+        distance
+        It indicates the number of pixels that the mouse must be moved before the sorting starts. If specified, sorting will not start until after mouse is dragged beyond distance. By default its value is "1".
+        
+        droponempty
+        If you set this option to false, then items from this sortable can't be dropped on an empty connect sortable. By default its value is true.
+        
+        forcehelpersize
+        If you set this option to true, it forces the helper to have a size. By default its value is false.
+        
+        forceplaceholdersize
+        This option when set to true, takes into account the size of the placeholder when an item is moved. This option is only useful if options.placeholder is initialized. By default its value is false.
+        
+        grid
+        This option is an array [x, y] indicating the number of pixels that the sorting element moves horizontally and vertically during displacement of the mouse. By default its value is false.
+        
+        handle
+        If specified, restricts sort from starting unless the mousedown occurs on the specified element(s). By default its value is false.
+        
+        helper
+        It is allowed for a helper element to be used for dragging display. By default its value is original.
+        
+        items
+        This option specifies which items inside the DOM element to be sorted. By default its value is > *.
+        
+        opacity
+        This option is used to define the opacity of the helper while sorting. By default its value is false.
+        
+        placeholder
+        This option is used to class name that gets applied to the otherwise white space. By default its value is false.
+        
+        revert
+        This option decides whether the sortable items should revert to their new positions using a smooth animation. By default its value is false.
+        
+        scroll
+        This option is used to enable scrolling. If you set this option to true the page scrolls when coming to an edge. By default its value is true.
+        
+        scrollsenstivity
+        This option indicates how many pixels the mouse must exit the visible area to cause scrolling. By default its value is 20. This option is used only with options.scroll set to true.
+        
+        scrollspeed
+        This option indicates the scrolling speed of the display once the scrolling begins. By default its value is 20.
+        
+        tolerance
+        This option is a string that specifies which mode to use for testing whether the item being moved is hovering over another item. By default its value is "intersect".
+        
+        zIndex
+        This option represents z-Index for element/helper while being sorted. By default its value is 1000.
+
+      $(selector, context).sortable ("action", [params]);
+
+
+Action
+Description
+
+cancel()
+This action is used to cancel the current sort operation. This is most useful within handlers for the sort receive and sort stop events. This method does not accept any arguments.
+
+destroy()	This action is used to remove the sortability functionality completely. This will return the element back to its pre-init state. This method does not accept any arguments.
+
+disable()	This action is used to disable the sortability of any sortable elements in the wrapped set. It only disables the sortability of the elements not removed and it can be restored by calling the enable variant of this method. This method does not accept any arguments.
+
+enable()	This action is used to re-enable the sortability on any sortable elements in the wrapped set whose sortability has been disabled. You should note that this method won?t add sortability to any non-sortable elements. This method does not accept any arguments.
+
+option(optionName)	This action is used to get the value currently associated with the specified optionname. Here optionname is the name of the option to get.
+
+option()	It is used to get an object containing key/value pairs representing the current sortable options hash. This method does not accept any arguments.
+
+option(optionName, value)	This action is used to set the value of the sortable option associated with the specified optionname. Here optionname is the name of the option to set and value is the value to set for the option.
+
+option(options)	It sets one or more options for the sortable. Here options is a map of option-value pairs to set.
+
+refresh()	this action is used to refresh the list of items if necessary. This method does not accept any arguments. If you call this method then it will be added to the sortable to be recognized.
+
+toArray(options)	This method is used to return an array of the id values of the sortable elements in sorted order. This method takes options as parameter, to customize the serialization or sorted order.
+
+serialize(options)	This method returns a serialized query string (submittable via ajax) formed from the sortable.
+
+refreshPositions()	This method is used mostly internally to refresh the cached information of the sortable. This method does not accept any arguments.
+
+widget()	This method returns a jquery object containing the sortable element. This method does not accept any arguments.
+
+
+    event management
+
+      activate(event, ui)
+      this event is triggered on the sortable when a sort operation starts on connected sortable.
+    
+      beforestop(event, ui)
+      this event is triggered when the sort operation is about to end, with the helper and placeholder element reference still valid.
+      
+      change(event, ui)
+      this event is triggered when the sorted element changes position within the dom.
+      
+      create (event, ui)
+      this event is triggered when the sortable is created.
+      
+      deactivate (event, ui)
+      this event is triggered when a connected sort stops, propagated to the connected sortable.
+      
+      out(event, ui)
+      this event is triggered when the sort item is moved away from a connected list.
+
+      over(event, ui)
+      this event is triggered when a sort item moves into a connected list.
+      
+      recieve(event, ui)
+      this event is triggered when a connected list has received a sort item from another list.
+      
+      remove(event, ui)	this event is triggered when the sort item is removed from a connected list and is dragged into another.
+      
+      sort(event,ui)
+      this event is repeatedly triggered for mousemove events during a sort operation.
+      
+      start(event,ui)
+      this event is triggered when a sort operation starts.
+      
+      stop(event,ui)
+      this event is triggered when a sort operation has concluded.
+      
+      update(event, ui)
+      this event is triggered when a sort operation stops and the position of the item has been changed.
+
+
+    file : jquery_sortable.html
+           jquery_sortable_delay_and_distance.html
+           jquery_sortable_placeholder.html
+           jquery_connect_with_drop_on_empty.html
+           jquery_sortable_array.html
+           jquery_event_receive_start_stop.html
+
+
+  Jquery UI Accordion
+
+    $(selector, context).accordion (options);
+    $(selector, context).accordion({option1: value1, option2: value2..... });
+
+
+        The accordion (options) method specifies that an HTML element and its contents should be treated and managed as accordion menus
+
+        file: jquery_accordion.html
+
+
+  Jquery UI Autocomplete
+    
+    it like when the search box hepls you out in websites.
+
+
+        first option
+          
+          single argument
+            $(selector, context).autocomplete (options);
+          
+          mutliple arguments
+            $(selector, context).autocomplete({option1: value1, option2: value2..... });
+
+
+        Option
+        Description
+
+        appendTo
+        This option is used append an element to the menu. By default its value is null.
+        
+        autoFocus
+        If you set this option as TRUE, the first item of the menu will automatically be focused when the menu is shown. By default its value is FALSE.
+
+        delay
+        This option specifies the time delay in milliseconds to wait before trying to obtain the matching values (as specified by the source option). By default its value is 300.
+
+        disabled
+        If you set this option as true, the autocomplete widget is initially disabled. By default its value is false.
+      
+        minlength
+        It specifies the number of characters that must be entered before trying to obtain the matching values (as specified by the source option). By default its value is 1.
+    
+        position
+        This option identifies the position of the suggestions menu iaccording to the input element. By default its value is { my: "left top", at: "left bottom", collision: "none" }.
+
+        source
+        This option specifies the manner in which the data that matches the input data is obtained. You must have to provide a value or the autocomplete widget won?t be created. By default its value is none; must be specified.
+
+
+       files : jquery_autocomplete.html
+               jquery_autocomplete_autofocus.html
+               jquery_autocomplete_minlength_delay.html
+               jquery_autocomplete_label.html
+
+  Jquery UI Button
+    
+    transforms buttons into themable buttons
+
+      first metthod
+      The button (options) method specifies that an HTML element should be treated as button.
+        
+        single option
+        $(selector, context).button (options);
+
+        multiple option
+        $(selector, context).button({option1: value1, option2: value2..... });
+
+
+        Option
+        Description
+        
+        disabled
+        If you set this option to true, it deactivates the button. By default its value is false.
+        
+        icons
+        This option specifies that one or two icons are to be displayed in the button: Primary icons to the left, secondary icons to the right.Primary icon is identified by the primary property of the object, and the secondary icon is identified by the secondary property. By default its primary and seconadary value is set to NULL.
+    
+        label
+        This option specifies text to display on the button that overrides the natural label. In the case of radio buttons and checkboxes, the natural label is the <label> element associated with the control. By default its value is NULL.
+
+        text
+        This option specifies whether text is to be displayed on the button. If specified as false, text is suppressed if (and only if) the icons option specifies at least one icon. By default its value is true.
+
+    second method
+
+      used to perform actions on buttons
+      $(selector, context).button ("action", params);
+
+
+      Action
+      Description
+
+      destroy
+      This action is used to remove the button functionality of an element completely and enforces the elements return to their pre-init state. This method does not accept any arguments.
+
+      disable
+      This action is used to disable the button functionality of an element. This method does not accept any arguments.
+    
+      enable
+      This action is used to enable the button functionality of an element. This method does not accept any arguments.
+      
+      option( optionName )
+      This action retrieves the value of the option specified in optionName. Here optionName is a string.
+      
+      option
+      This action retrieves an object containing key/value pairs representing the current button options hash.
+      
+      option( optionName, value )
+      This action sets the value of the button option associated with the specified optionName.
+    
+      option( options )
+      This action sets one or more options for the button. Here options is map of option-value pairs to set.
+      
+      refresh
+      This action refreshes the display of the button. This is useful when the buttons are handled by the program and the display does not necessarily correspond to the internal state. This method does not accept any arguments.
+      
+      widget
+      This action returns a jQuery object containing the button element. This method does not accept any arguments.
+
+      file : jquery_ui_button.html
+             jquery_ui_button_icons_text_disabled.html
+             jquery_ui_button_destroy_disable.html
+
+
+  Jquery UI Datepicker
+    
+    jQuery UI datepicker widget facilitates users to enter dates easily and visually.
+
+
+      first method
+    
+        says element should act as a datepicker
+        
+          single
+          $(selector, context).datepicker(options);
+          multiple
+          $(selector, context).datepicker({option1: value1, option2: value2... });
+
+
+
+        Option
+        Description
+
+        altField
+        This option specifies a jQuery selector for a field that is also updated with any date selections. The altFormat option can be used to set the format for this value. This is quite useful for setting date values into a hidden input element to be submitted to the server, while displaying a more user-friendly format to the user. By default its value is "".
+
+        altFormat
+        This option is used when an altField option is specified. it provides the format for the value to be written to the alternate element. By default its value is "".
+
+        appendText
+        This option is a string value to be placed after the <input> element, intended to show instructions to the user. By default its value is "".
+
+        autoSize
+        This option when set to true resizes the <input> element to accommodate the datepicker?s date format as set with the dateformat option. By default its value is false.
+
+        beforeShow
+        This option is a callback function that?s invoked just before a datepicker is displayed, with the <input> element and datepicker instance passed as parameters. This function can return an options hash used to modify the datepicker. By default its value is "".
+        
+        beforeShowDay
+        This option is a callback function which takes a date as parameter, that?s invoked for each day in the datepicker just before it?s displayed, with the date passed as the only parameter. This can be used to override some of the default behavior of the day elements. This function must return a three-element array. By default its value is null.
+      
+        buttonImage
+        This option specifies the path to an image to be displayed on the button enabled by setting the showOn option to one of buttons or both. If buttonText is also provided, the button text becomes the alt attribute of the button. By default its value is "".
+    
+        buttonImageOnly
+        This option if set to true, specifies that the image specified by buttonImage is to appear standalone (not on a button). The showOn option must still be set to one of button or both for the image to appear. By default its value is false.
+
+        buttonText
+        This option specifies the caption for the button enabled by setting the showOn option to one of button or both. By default its value is "...".
+
+        calculateWeek
+        This option is a custom function to calculate and return the week number for a date passed as the lone parameter. The default implementation is that provided by the $.datepicker.iso8601week() utility function.
+        
+        changeMonth
+        This option if set to true, a month dropdown is displayed, allowing the user to directly change the month without using the arrow buttons to step through them. By default its value is false.
+        
+        changeYear
+        This option if set to true, a year dropdown is displayed, allowing the user to directly change the year without using the arrow buttons to step through them. The option yearRange can be used to control which years are made available for selection. By default its value is false.
+        
+        closeText
+        This option specifies the text to replace the default caption of done for the close button. It is used when the button panel is displayed via the showbuttonpanel option. By default its value is "done".
+        
+        constrainInput
+        This option if set true (the default), text entry into the <input> element is constrained to characters allowed by the current dateformat option. By default its value is true.
+        
+        currentText
+        This option specifies the text to replace the default caption of today for the current button. This is used if the button panel is displayed via the showButtonPanel option. By default its value is today.
+        
+        dateFormat
+        This option specifies the date format to be used. By default its value is mm/dd/yy.
+        
+        dayNames
+        This option is a 7-element array providing the full day names with the 0th element representing Sunday. It can be used to localize the control. by default its value is [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ].
+        
+        dayNamesMin
+        This option is a 7-element array providing the minimal day names with the 0th element representing Sunday, used as column headers. It can be used to localize the control. by default its value is [ "Su", "Mo", "Tu", "We", "Th", "Fr", "Sa" ].
+  
+        dayNamesShort
+        This option specifies a 7-element array providing the short day names with the 0th element representing Sunday. It can be used to localize the control. By default its value is [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ].
+    
+        defaultDate
+        This option sets the initial date for the control, overriding the default value of today, if the <input> element has no value. This can be a date instance, the number of days from today, or a string specifying an absolute or relative date. By default its value is null.
+        
+        duration
+        This option specifies the speed of the animation that makes the datepicker appear. It can be one of slow, normal, or fast, or the number of milliseconds for the animation to span. By default its value is normal.
+      
+        firstday
+        This option specifies which day is considered the first day of the week, and will be displayed as the left-most column. By default its value is 0.
+        gotocurrent	This option when set to true, the current day link is set to the selected date, overriding the default of today. By default its value is false.
+      
+        hideIfNoPrevNext
+        This option if set to true, hides the next and previous links (as opposed to merely disabling them) when they aren?t applicable, as determined by the settings of the mindate and maxdate options. By default its value is false.
+    
+        isRTL
+        If this option is set to true, it specifies the localizations as a right-to-left language. By default its value is false.
+        
+        maxDate
+        This option sets the maximum selectable date for the control. This can be a date instance, the number of days from today, or a string specifying an absolute or relative date. By default its value is null.
+          
+        minDate
+        This option sets the minimum selectable date for the control. This can be a date instance, the number of days from today, or a string specifying an absolute or relative date. By default its value is null.
+        
+        monthnames
+        This option is a 12-element array providing the full month names with the 0th element representing January. It can be used to localize the control. by default its value is [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ].
+
+        monthNamesShort
+        This option specifies a 12-element array providing the short month names with the 0th element representing January. It can be used to localize the control. by default its value is [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ].
+        
+        navigationAsDateFormat
+        If this option is set to true, the navigation links for nexttext, prevtext, and currenttext are passed through the $.datepicker.formatdate() function prior to display. This allows date formats to be supplied for those options that get replaced with the relevant values. By default its value is false.
+        
+        nexttext
+        This option specifies the text to replace the default caption of next for the next month navigation link. themeRoller replaces this text with an icon. By default its value is next.
+
+        numberOfMonths
+        This option specifies the number of months to show in the datepicker. By default its value is 1.
+
+        onChangeMonthYear
+        This option is a callback that?s invoked when the datepicker moves to a new month or year, with the selected year, month (1-based), and datepicker instance passed as parameters, and the function context is set to the input field element. By default its value is null.
+        
+        onClose
+        This option is a callback invoked whenever a datepicker is closed, passed the selected date as text (the empty string if there is no selection), and the datepicker instance, and the function context is set to the input field element. By default its value is null.
+      
+        onSelect
+        This option is a callback invoked whenever a date is selected, passed the selected date as text (the empty string if there is no selection), and the datepicker instance, and the function context is set to the input field element. By default its value is null.
+
+        prevText
+        This option specifies the text to replace the default caption of prev for the previous month navigation link. (note that the themeroller replaces this text with an icon). By default its value is PrevdefaultDatedayNamesMin.
+        
+        selectOtherMonths
+        This option if set to true, days shown before or after the displayed month(s) are selectable. Such days aren?t displayed unless the showOtherMonths option is true. by default its value is false.
+
+        shortYearCutoff
+        This option if its a number, specifies a value between 0 and 99 years before which any 2-digit year values will be considered to belong to the previous century. If this option is a string, the value undergoes a numeric conversion and is added to the current year. The default is +10 which represents 10 years from the current year.
+        
+        showAnim
+        This option specifies sets the name of the animation to be used to show and hide the datepicker. If specified, must be one of show (the default), fadein, slidedown, or any of the jquery ui show/hide animations. By default its value is show.
+        
+        showButtonPanel
+        This option if set to true, a button panel at the bottom of the datepicker is displayed, containing current and close buttons. The caption of these buttons can be provided via the currentText and closeText options. By default its value is false.
+
+        showCurrentAtPos
+        This option specifies the 0-based index, starting at the upper left, of where the month containing the current date should be placed within a multi-month display. By default its value is 0.
+  
+        showMonthAfterYear
+        This option specifies if set to true, the positions of the month and year are reversed in the header of the datepicker. By default its value is false.
+
+        showOn
+        This option specifies when the datepicker should appear. The possible values are focus, button or both. by default its value is focus.
+        showOptions	This option provides a hash to be passed to the animation when a jQuery UI animation is specified for the showAnim option. By default its value is {}.
+        
+        showOtherMonths
+        This option if set to true, dates before or after the first and last days of the current month are displayed. These dates aren't selectable unless the selectOtherMonths option is also set to true. By default its value is false.
+        
+        showWeek
+        This option if set to true, the week number is displayed in a column to the left of the month display. The calculateWeek option can be used to alter the manner in which this value is determined. By default its value is false.
+    
+        stepMonths
+        This option specifies how many months to move when one of the month navigation controls is clicked. By default its value is 1.
+        weekHeader	This option specifies the text to display for the week number column, overriding the default value of wk, when showWeek is true. By default its value is wk.
+    
+        yearRange
+        This option specifies limits on which years are displayed in the dropdown in the form: to when changeYear is true. The values can be absolute or relative (for example: 2005:+2, for 2005 through 2 years from now). The prefix c can be used to make relative values offset from the selected year rather than the current year (example: c-2:c+3). By default its value is c-10:c+10.
+    
+        yearSuffix
+        This option displays additional text after the year in the datepicker header. By default its value is "".
+
+
+
+      second method
+      The datepicker (action, params) method is used to perform an action on the calendar, such as selecting a new date.
+      
+        $(selector, context).datepicker ("action", [params]);
+
+
+
+          Action
+          Description
+
+            destroy()
+            This action removes the datepicker functionality completely. This will return the element back to its pre-init state. This method does not accept any arguments.
+              
+            dialog( Date [, onSelect ] [, settings ] [, Pos ] )
+            This action displays datepicker in a jQuery ui dialog box .
+
+            getDate()
+            This action returns the date corresponding to the selected date. This method does not accept any arguments.
+          
+            hide()	This action closes the previously opened date picker. This method does not accept any arguments.
+            isDisabled()	This action checks if the date picker functionality is disabled. This method does not accept any arguments.
+            option(optionName)	This action retrieves the value currently associated with the specified optionName.
+            option()	This action gets an object containing key/value pairs representing the current datepicker options hash. This method does not accept any arguments.
+            option(optionName, Value)
+            This action sets the value of the datepicker option associated with the specified optionName.
+            option(Options)	This action sets one or more options for the datepicker.
+            refresh()	This action redraws the date picker, after having made some external modifications. This method does not accept any arguments.
+            setdate(date)	This action sets the specified date as the current date of the datepicker.
+            show()	This action opens the date picker. If the datepicker is attached to an input, the input must be visible for the datepicker to be shown. This method does not accept any arguments.
+            widget()	This action returns a jQuery object containing the datepicker.
+
+    
+          files: jquery_ui_datepicker.html
+                 jquery_ui_datepicker_inline.html
+                 jquery_ui_datepicker_appendText_dateFormat_altField_altFormat.html
+                 jquery_ui_datepicker_showWeek_yearSuffix_showAnim.html
+                 jquery_ui_datepicker_set_date.html
+
+
+  Jquery UI Dialog
+
+    The dialog boxes are used to present information in a nice way on the HTML pages.
+
+
+      first method
+      The dialog(options) method specifies that you can use an HTML element in the form of a dialog box.
+        single use
+        $(selector, context).dialog(options);
+        multiple use
+        $(selector, context).dialog({option1: value1, option2: value2..... });
+  
+          Option	Description
+          appendto	If you set this option to false, it will prevent the UI-draggable class from being added in the list of selected DOM elements. By default its value is true.
+          autoopen	If you set this option to true, the dialog box is opened upon creation. when false, the dialog box will be opened upon a call to dialog('open'). By default its value is true.
+          buttons	This option adds buttons in the dialog box. These are listed as objects, and each property is the text on the button. The value is a callback function called when the user clicks the button. By default its value is {}.
+          closeonescape	Unless you set this option to false, the dialog box will be closed when the user presses the escape key while the dialog box has focus. By default its value is true.
+          closetext	This option contains text to replace the default of close for the close button. by default its value is "close".
+          dialogclass	If you set this option to false, it will prevent the UI-draggable class from being added in the list of selected dom elements. By default its value is "".
+          draggable	you set this option to false, dialog box will be draggable by clicking and dragging the title bar. By default its value is true.
+          height	This option sets the height of the dialog box. By default its value is "auto".
+          hide	This option is used to set the effect to be used when the dialog box is closed. By default its value is null.
+          maxheight	This option sets maximum height, in pixels, to which the dialog box can be resized. By default its value is false.
+          maxwidth	This option sets the maximum width to which the dialog can be resized, in pixels. By default its value is false.
+          minheight	This option is the minimum height, in pixels, to which the dialog box can be resized. By default its value is 150.
+          minwidth	This option is the minimum width, in pixels, to which the dialog box can be resized. By default its value is 150.
+          modal	If this option is set to true, the dialog will have modal behavior; other items on the page will be disabled, i.e., cannot be interacted with. modal dialogs create an overlay below the dialog but above other page elements. By default its value is false.
+          position	This option specifies the initial position of the dialog box. can be one of the predefined positions: center (the default), left, right, top, or bottom. can also be a 2-element array with the left and top values (in pixels) as [left,top], or text positions such as ['right','top']. by default its value is { my: "center", at: "center", of: window }.
+          resizeable	This option unless set to false, the dialog box is resizable in all directions. by default its value is true.
+          show	This option is an effect to be used when the dialog box is being opened. by default its value is null.
+          title	This option specifies the text to appear in the title bar of the dialog box. By default its value is null.
+          width	This option specifies the width of the dialog box in pixels. By default its value is 300.
+
+
+        second method
+        The dialog (action, params) method is used to perform an action on the dialog box, such as closing the box.
+
+
+          $(selector, context).dialog ("action", [params]) Method:
+
+Action
+Description
+close()	This action is used to close the dialog box. This method does not accept any arguments.
+destroy()	This action is used to removes the dialog box completely. This will return the element back to its pre-init state. This method does not accept any arguments.
+isOpen()	This action is used to check if the dialog box is open. This method does not accept any arguments.
+moveToTop()	This action is used to allocate position to the corresponding dialog boxes to the foreground (on top of the others). This method does not accept any arguments.
+open()	This action is used to opens the dialog box. This method does not accept any arguments.
+option(optionName)	this action gets the value currently associated with the specified optionName. where optionName is the name of the option to get.
+option()	This action gets an object containing key/value pairs representing the current dialog options hash. This method does not accept any arguments.
+option(optionName,value)	This action sets the value of the dialog option associated with the specified optionName.
+option( options)	This action sets one or more options for the dialog.
+widget()	This action is used to return the dialog box?s widget element; the element annotated with the ui-dialog class name. This method does not accept any arguments.
+
+
+        files: jquery_ui_dialog.html
+               jquery_ui_dialog_buttons_title_position.html
+               jquery_ui_dialog_isOpen_open_close.html
+               jquery_ui_dialog_hide_show_height.html
+
+  jQuery UI Menu
+    
+    These menus are created by using markup elements as long as the parent child relationship is maintained.
+
+      first method
+      
+        The menu (options) method specifies that an HTML element and its contents should be treated and managed as menus.
+
+          single option
+          $(selector, context).menu (options);
+
+          multiple option
+          $(selector, context).menu({option1: value1, option2: value2..... });
+
+  
+Option	Description
+disabled	If you set this option to true, it disables the menu. By default its value is false.
+icons	This option sets the icons for submenus. By default its value is { submenu: "ui-icon-carat-1-e" }.
+menus	This option is a selector for the elements that serve as the menu container, including sub-menus. By default its value is ul.
+position	This option sets the position of submenus in relation to the associated parent menu item. By default its value is { my: "left top", at: "right top" }.
+role	This option is used to customize the aria roles used for the menu and menu items. By default its value is menu.
+
+
+        second method
+        used to perform action on menus
+        $(selector, context).menu ("action", params);
+
+
+
+Action	Description
+blur( [event ] )	This action removes the focus from a menu. It triggers the menu's blur event by resetting any active element style. Here event is of type event and represents what triggered the menu to blur.
+collapse( [event ] )	This action closes the current active sub-menu. Here event is of type event and represents what triggered the menu to collapse.
+collapseall( [event ] [, all ] )	This action closes all the open submenus.
+destroy()	This action removes menu functionality completely. This will return the element back to its pre-init state. This method does not accept any arguments.
+disable()	This action disables the menu. This method does not accept any arguments.
+enable()	This action is used to enable the menu. This method does not accept any arguments.
+expand( [event ] )	This action is used to open the sub-menu below the currently active item, if one exists. Here event is of type event and represents what triggered the menu to expand.
+focus( [event ], item )	This action activates a particular menu item, begins opening any sub-menu if present and triggers the menu's focus event. Here event is of type event and represents what triggered the menu to gain focus and item is a jQuery object representing the menu item to focus/activate.
+isFirstItem()	This action returns a boolean value, which states if the current active menu item is the first menu item. This method does not accept any arguments.
+isLastItem()	This action returns a boolean value, which states if the current active menu item is the last menu item. This method does not accept any arguments.
+Next( [event ] )	This action delegates the active state to the next menu item. Here event is of type event and represents what triggered the focus to move.
+Nextpage( [event ] )	This action moves active state to first menu item below the bottom of a scrollable menu or the last item if not scrollable. Here event is of type event and represents what triggered the focus to move.
+option( optionName )	This action gets the value currently associated with the specified optionName. Here optionName is of type string and represents the name of the option to get.
+option()	This action gets an object containing key/value pairs representing the current menu options hash.
+option( optionName, value )	This action sets the value of the menu option associated with the specified optionName. Here optionName is of type string and represents name of option to set and value is of type object and represents value to set for the option.
+option( options )	This action sets one or more options for the menu. Here options is of type object and represents a map of option-value pairs to set.
+previous( [event ] )	This action moves active state to previous menu item. Here event is of type event and represents what triggered the focus to move.
+previouspage( [event ] )	This action moves active state to first menu item above the top of a scrollable menu or the first item if not scrollable. Here event is of type event and represents what triggered the focus to move.
+refresh()	This action initializes sub-menus and menu items that have not already been initialized. This method does not accept any arguments.
+select( [event ] )	This action selects the currently active menu item, collapses all sub-menus and triggers the menu's select event. Here event is of type event and represents what triggered the selection.
+widget()	This action returns a jQuery object containing the menu. This method does not accept any arguments.
+
+      files: jquery_ui_menu.html
+             jquery_ui_menu_icons_position.html
+             jquery_ui_focus_collaspeAll.html
+
+  
+  Jquery Progressbar
+    Progressbar can be categorized in two types:
+
+    Determinate progressbar
+      Determinate progress bar is only used in situation where the system can accurately update the current status. The determinate progress bar should never fill from left to right, then loop back to empty for a single process.
+  
+    Indeterminate progressbar
+      The Indeterminate progressbar is used to provide user feedback.
+
+      
+    first method
+      html tag shoud be managed as a progressbar
+        single option
+        $(selector, context).progressbar (options);
+        multiple option
+        $(selector, context).progressbar({option1: value1, option2: value2..... });
+
+
+Option	Description
+disabled	If you set this option to true then it disables the progress bars. By default its value is false.
+max	This option is used to set the maximum value for a progress bar. By default its value is 100.
+value	This option specifies the initial value of the progress bar. By default its value is 0.
+
+          file: jquery_ui_progressbar.html
+
+
+  Jquery UI Selectmenu
+
+    an upgraded select jquery ui feature
+
+    file: jquery_ui_selectmenu.html
+
+
+  jQuery UI Slider
+
+    jQuery UI slider is used to obtain a numeric value within a certain range.
+
+      first method
+        html object should be managed as a slider
+        $(selector, context).slider (options)
+
+Option	Description
+animate	If you set this option as true, it creates an animated effect when users click directly on the axis. By default its value is false.
+disabled	If you set this option as true, it disables the slider. By default its value is false.
+max	This option is used to specify the upper value of the range that the slider can attain?the value represented when the handle is moved to the far right (for horizontal sliders) or top (for vertical sliders). By default its value is 100.
+min	This option is used to specify the lower value of the range that the slider can attain?the value represented when the handle is moved to the far left (for horizontal sliders) or bottom (for vertical sliders). By default its value is 0.
+orientation	This option specifies the horizontal or vertical orientation of the slider. By default its value is horizontal.
+range	This option indicates whether the slider represents a range. By default its value is false.
+step	This option is used to specify discrete intervals between the minimum and maximum values that the slider is allowed to represent. By default its value is 1.
+value	This option is used to specify the initial value of a single-handle slider. In the case of multiple handles (see the values options), it specifies the value for the first handle. By default its value is 1.
+values	This option is of type array and causes multiple handles to be created and specifies the initial values for those handles. This option should be an array of possible values, one for each handle. By default its value is null.
+
+
+      second method
+        The slider ("action", params) method specifies an action on the slider, such as moving the cursor to a new location.
+            $(selector, context).slider ("action", params)
+
+
+Action	Description
+destroy	This action is used to destroy the slider functionality of an element completely. The elements return to their pre-init state. This method does not accept any arguments.
+disable	This action is used to disable the slider functionality. This method does not accept any arguments.
+enable	This action is used to enable the slider functionality. This method does not accept any arguments.
+option( optionName )	This action is used to retrieve the value of the specified param option. This option corresponds to one of those used with slider (options). Here optionName is the name of the option to get.
+option	This action gets an object containing key/value pairs representing the current slider options hash.
+option( optionName, value )	This action sets the value of the slider option associated with the specified optionName. The argument optionName is name of the option to be set and value is the value to be set for the option.
+option(options)	This action sets one or more options for the slider. The argument options is a map of option-value pairs to be set.
+value	This action is used to retrieve the current value of options.value (the slider). It is used only if the slider is unique (if not, use slider ("values")). This signature does not accept any arguments.
+value(value)	This action is used to set the value of the slider.
+values	This action retrieves the current value of options.values (the value of the sliders in an array). This signature does not accept any arguments.
+values(index)	This action gets the value for the specified handle. Here index is of type integer and is a zero-based index of the handle.
+values( index, value )	This action sets the value for the specified handle. Here index is the zero-based index of the handle and value is the value to set.
+values(values)	This action sets the value for all the handles.
+widget	This action returns a jQuery object containing the slider. This method does not accept any arguments.
+
+      files: jquery_ui_slider.html
+             jquery_ui_slider_value_animate_orientation.html
+             jquery_ui_slider_range_min_max.html
+             jquery_ui_silder_disable_value.html
+
+  Jquery Spinner
+      
+    jQuery UI spinner widgets are used to add a up/down arrow to the input box thus allowing the user to increase and decrease the value in the input box
+
+      first method
+        element should be treated like a spinner
+        
+          single
+          $(selector, context).spinner (options)
+
+          multiple
+          $(selector, context).spinner ({option1: value1, option2: value2.....});
+
+Option	Description
+culture	This option sets the culture to use for parsing and formatting the value. By default its value is null which means the currently set culture in globalize is used.
+disabled	If you set this option to true, it disables spinner. By default its value is false.
+icons	This option is used to set icons to use for buttons, matching an icon provided by the jQueryUI CSS framework. By default its value is { down: "ui-icon-triangle-1-s", up: "ui-icon-triangle-1-n" } .
+incremental	This option controls the number of steps taken when holding down a spin button. By default its value is true.
+max	This option is used to identify the maximum allowed value. By default its value is null which means there is no maximum enforced.
+min	This option is used to identify the minimum allowed value. By default its value is null which means there is no minimum enforced.
+numberFormat	This option specifies a format of numbers passed to globalize, if available. Most common are "n" for a decimal number and "c" for a currency value. By default its value is null.
+page	This option indicates the number of steps to take when paging via the pageup/pagedown methods. By default its value is 10.
+step	This option specifies the size of the step to take when spinning via buttons or via the stepup()/stepdown() methods. The element's step attribute is used if it exists and the option is not explicitly set.
+
+      second method
+
+        $(selector, context).spinner ("action", params)
+          The spinner ("action", params) method is used to perform an action on spinner elements, such as enabling/disabling the spinner.
+
+
+Action	Description
+destroy	This action is used to destroy the spinner functionality of an element completely and the elements return to their pre-init state. This method does not accept any arguments.
+disable	This action is used to disable the spinner functionality. This method does not accept any arguments.
+enable	This action is used to enable the spinner functionality. This method does not accept any arguments.
+option( optionName )	This action gets the value currently associated with the specified optionName. Here optionName is the name of the option to get.
+option	This action gets an object containing key/value pairs representing the current spinner options hash. This method does not accept any arguments.
+option(optionName, value)	This action sets the value of the spinner option associated with the specified optionName.
+option(options)	this action sets one or more options for the spinner.
+pageDown( [pages ] )	This action decrements the value by the specified number of pages, as defined by the page option.
+pageUp( [pages ] )	This action increments the value by the specified number of pages, as defined by the page option.
+stepDown( [steps ] )	This action is used to decrement the value by the specified number of steps.
+stepUp( [steps ] )	This action increments the value by the specified number of steps.
+value	This action gets the current value as a number. The value is parsed based on the numberFormat and culture options. This method does not accept any arguments.
+value(value)	This action is used to set the value.
+widget	This action is used to return the spinner widget element; the one annotated with the UI-spinner class name.
+
+      files: jquery_ui_spinner.html
+             jquery_ui_spinner_min_max_step.html
+             jquery_ui_spinner_stepUpDown_pageUpDown.html
+             jquery_ui_spinner_enable_disable.html
+
+
+    jQuery UI Tabs
+      
+      similar to accordions
+
+        first method
+        $(selector, context).tabs (options);
+
+        html content managed as tabs
+
+Option	Description
+active	This option indicates the current active tab/panel. By default its value is 0.
+collapsible	If you set this option to TRUE, it allows tabs to be deselected. When it is set to false (the default), clicking on a selected tab does not deselect (it remains selected). By default its value is false.
+disabled	This option uses an array to indicate index tabs that are disabled (and therefore cannot be selected). for example, use [0, 1] to disable the first two tabs. By default its value is false.
+event	This option is a name of the event that lets users select a new tab. If, for example, this option is set to "mouseover", passing the mouse over a tab will select it. By default its value is "click".
+heightStyle	This option controls the height of the tabs widget. By default its value is "content".
+hide	This option specifies how to animate hiding of panel. By default its value is null.
+show	This option specifies how to animate showing of panel. By default its value is NULL.
+
+
+        second method
+          
+          $(selector, context).tabs ("action", params);
+
+          The tabs ("action", params) method allows an action on the tabs (through a JavaScript program) to select, disable, add or remove a tab.
+
+
+Action	Description
+destroy	This action destroys the tabs functionality of an element completely and makes elements return to their pre-init state. This method does not accept any arguments.
+disable	This action disables all tabs. This method does not accept any arguments.
+disable( index )	This action is used to disable the specified tab. Here index is the tab to be disabled.
+enable	This action activates all the tabs. This signature does not accept any arguments.
+enable( index )	This action activates a specified tab. Here index is the tab to be enabled.
+load( index )	This action forces a reload of the indexed tab, ignoring the cache. Here index is the tab to load.
+option( optionName )	This action gets the value currently associated with the specified optionName.
+option	This action gets an object containing key/value pairs representing the current tabs options hash.
+option( optionName, value )	This action sets the value of the tabs option associated with the specified optionName. The argument optionName is name of the option to be set and value is the value of the option to be set.
+option( Options )	This action sets one or more options to the tabs.
+refresh	This action re-computes the height of the tab panels when any tabs that were added or removed directly in the DOM. Its result depends on the content and the heightStyle option.
+widget	This action returns the element serving as the tabs widget, annotated with the UI-tabs class name.
+  
+          files: jquery_ui_tabs.html
+                 jquery_ui_tabs_heightStyle_collaspible_hide.html
+                 jquery_ui_tabs_option_event.html
+                 jquery_ui_tabs_disable.html
+
+
+
+
+
+  Jquery UI Tooltip
+    
+    Tooltips are used with the element to display a title in the title box next to the element, when you hover the element with your mouse.
+
+    The jQuery UI tooltip() method adds tooltip to any element on which you want to display
+
+      first method
+        The tooltip (options) method specifies that a tooltip can be added to an HTML element
+
+        single option
+          $(selector, context).tooltip(options);
+
+        multiple options
+          $(selector, context).tooltip({option1: value1, option2: value2..... });
+
+Option	Description
+content	This option is used to represent the content of a tooltip. By default its value is function returning the title attribute.
+disabled	If you set this option to true, it disables the tooltip. By default its value is false.
+hide	This option is used to represent the animation effect when hiding the tooltip. By default its value is true.
+items	This option specifies which items can show tooltips. By default its value is [title].
+position	This option is used to indicate the position of the tooltip with respect to the associated target element. By default its value is function returning the title attribute. Its possible values are: my, at, of, collision, using, within.
+show	This option represents how to animate the showing of tooltip. By default its value is true.
+tooltipClass	This option is a class which can be added to the tooltip widget for tooltips such as warning or errors. By default its value is null.
+track	If you set this option to true, the tooltip follows/tracks the mouse. By default its value is false.
+
+
+    second method
+    
+      $(selector, context).tooltip ("action", [params]);
+
+      The tooltip (action, params) method is used to perform an action on the tooltip elements,
+
+Action	Description
+close()	This action is used to close the tooltip. This method does not accept any arguments.
+destroy()	This action is used to remove the tooltip functionality completely. This will return the element back to its pre-init state. This method does not accept any arguments.
+disable()	This action is used to deactivate the tooltip. This method does not accept any arguments.
+enable()	This action activates the tooltip. This method does not accept any arguments.
+open()	This action programmatically opens the tooltip. This method does not accept any arguments.
+option(optionName)	This action gets the value associated with optionName for the tooltip. This method does not accept any arguments.
+option()	This action gets an object containing key/value pairs representing the current tooltip options hash. This method does not accept any arguments.
+option(optionName, Value)	This action sets the value of the tooltip option associated with the specified optionName.
+option(Options)	This action sets one or more options for tooltip.
+widget()	This action returns a jQuery object containing the original element. This method does not accept any arguments.
+
+
+
+Event Method	Description
+create(event,ui)	It is triggered when the tooltip is created. Here event is of type event, and ui is of type object.
+close(event,ui)	It is triggered when the tooltip is closed. It is usually triggers on focusout or mouseleave. Here event is of type event, and ui is of type object.
+open(event,ui)	It is triggered when the tooltip is displayed or shown. It is usually triggered on focusin or mouseover. Here event is of type event, and ui is of type object.
+
+
+        files: jquery_ui_tooltip.html
+               jquery_ui_tooltip_position.html
+               jquery_ui_tooltip_content_track_disabled.html
+               jquery_ui_tooltip_open_close.html
+
+    Jquery UI hide
+
+      The jQuery hide() method is used to manage jQuery UI visual effects. It applies an animation effect to hide elements.
+
+        .hide( effect [, options ] [, duration ] [, complete ] )
+
+Effect: This parameter specifies the effects which are used for transition.
+Options: This is used for specifying the specific setting and easing for the effects. Each effect has its own set of options.
+Duration: This specifies the time duration and indicates the number of milliseconds of the effect. Its default value is 400.
+Complete: It is a callback method. It is called for each element when the effect is completed for the elements.
+
+    file: jquery_ui_hide.html
+
+    jQuery UI show
+      
+      The jQuery show() method is used to manage jQueryUI visual effects. It is intended to display an item using the indicated effect.
+
+      .show( effect [, options ] [, duration ] [, complete ] )
+
+Effect:This parameter specifies the effects which are used for transition.
+Options:This is used for specifying the specific setting and easing for the effects. Each effect has its own set of options.
+Duration: This specifies the time duration and indicates the number of milliseconds of the effect. Its default value is 400.
+Complete: It is a callback method. It is called for each element when the effect is completed for the elements.
+
+    file: jquery_ui_show.html
+
+
+    Jquery UI Toggle
+    
+      The jQuery toggle() method is used to toggle the show() or hide() method depending on whether the element is hidden or not.
+
+      .toggle( effect [, options ] [, duration ] [, complete ] )
+
+Effect:This parameter specifies the effects which are used for transition.
+Options: This is used for specifying the specific setting and easing for the effects. Each effect has its own set of options.
+Duration:This specifies the time duration and indicates the number of milliseconds of the effect. Its default value is 400.
+Complete:It is a callback method. It is called for each element when the effect is completed for the elements.
+
+      file : jquery_ui_toggle.html
+
+
+      Jquery UI Add Class
+        
+        The jQuery addclass() method is used to allow animating the changes to the CSS properties
+        added in version 1.0
+    
+          .addClass( className [, duration ] [, easing ] [, complete ] )
+
+ClassName: This is a string which contains one or more CSS classes. (In case of more CSS classes, they are separated by space.)
+Duration:This is used to specify the time duration in milliseconds. The 0 value takes the element directly to the new style, without progress. Its default value is 400.
+Easing: It is a type string and indicates the way to progress in the effect. Its default value is swing.
+Complete: It is a callback method call for each element when the when the effect is completed for this element.
+
+       version 1.9
+
+          .addClass( className [, options ] )  supports children option
+
+className: This is a string which contains one or more CSS classes. (In case of more CSS classes, they are separated by space.)
+
+options: It is used to specify all animation settings. All properties are optional. Its possible values are:
+
+Duration: This is a type of number or string and indicates the time duration of the effect. It is counted in millisecond. The value of 0 takes the element directly in the new style, without progress. Its default value is 400.
+Easing:It is a string. It specifies the way to progress in the effect. Its default value is swing.
+Complete:It is a callback method called for each element when the effect is done for this element.
+Children: This is a Boolean type and specifies whether the animation should additionally be applied to all descendants of the matched elements. Its default value is false.
+Queue:This is of Boolean type or string type and specifies whether to place the animation in the effects queue. Its default value is TRUE.
+
+
+      file: jquery_ui_addclass.html
+
+
+    Jquery UI removeClass
+
+      The jQuery removeClass() method is used to manage jQueryUI visual effects
+      version 1.0
+      .removeClass( className [, duration ] [, easing ] [, complete ] )
+
+ClassName: This is a string which contains one or more CSS classes. (In case of more CSS classes, they are separated by space.)
+Duration:This is used to specify the time duration in milliseconds. The 0 value takes the element directly to the new style, without progress. Its default value is 400.
+Easing: It is a type string and indicates the way to progress in the effect. Its default value is swing.
+Complete: It is a callback method call for each element when the when the effect is completed for this element.
+
+      version 1.9
+      .removeClass( className [, options ] )
+
+className:This is a string which contains one or more CSS classes. (In case of more CSS classes, they are separated by space.)
+
+options: It is used to specify all animation settings. All properties are optional. Its possible values are:
+
+Duration:This is a type of number or string and indicates the time duration of the effect. It is counted in millisecond. The value of 0 takes the element directly in the new style, without progress. Its default value is 400.
+Easing:It is a string. It specifies the way to progress in the effect. Its default value is swing.
+Complete:It is a callback method called for each element when the effect is done for this element.
+Children: This is a Boolean type and specifies whether the animation should additionally be applied to all descendants of the matched elements. Its default value is false.
+Queue:This is of Boolean type or string type and specifies whether to place the animation in the effects queue. Its default value is TRUE.
+
+
+        file: jquery_ui_remove_class.html
+
+    Jquery UI switchClass
+
+      same but to shift through classes
+
+        version 1.0
+        .switchClass( removeClassName, addClassName [, duration ] [, easing ] [, complete ] )
+
+Parameters of switchClass() method:
+
+removeClassName: It is a string. It represents the CSS class name or space demarcated list of class names, to be removed.
+
+addClassName: It is of type string. It represents one or more class names which are added to the class attribute of each matched element.
+
+duration: This is of type number or string and used to specify the time duration in millisecond. Its default value is 400.
+
+easing: It specifies the name of the easing function to be passed to the animate() method.
+
+complete: It is a callback method called for each element when the effect is completed for this element.
+
+
+        Syntax for jQuery switchClass() method: (Added in version 1.9) supports children option
+      
+         .switchClass( removeClassName, addClassName [, options ] )
+
+removeClassName: It is a string. It represents the CSS class name or space demarcated list of class names, to be removed.
+
+addClassName:It is of type string. It represents one or more class names which are added to the class attribute of each matched element.
+
+options: It is used to specify all animation settings. All properties are optional. Its possible values are:
+
+Duration:This is a string or number. It specifies how long the animation will run. Its default value is 400.
+Easing:It is a string which specifies the easing function used for transition. Its default value is swing.
+Complete:It is a callback method called for each element when the effect is completed for this element.
+Children: This is a Boolean type and specifies whether the animation should additionally be applied to all descendants of the matched elements. Its default value is FALSE.
+Queue:This is of Boolean type or string type and specifies whether to place the animation in the effects queue. Its default value is TRUE.
+
+
+      file: jquery_ui_switch_class.html
+
+
+    Jquery UI Color Animation
+ 
+      $( "#selector" ).animate(
+   { backgroundColor: "black",
+      color: "white"
+   }
+    );
+    
+backgroundColor :It is used to set the background color of the element.
+borderTopColor :It is used to set the color for top side of the element border.
+borderBottomColor :It is used to set the color for bottom side of the element border.
+borderLeftColor :It is used to set the color for left side of the element border.
+borderRightColor : It is used to set the color for right side of the element border.
+color :It is used to set the text color of the element.
+outlineColor : It is used to set the color for the outline; used to emphasize the element.
+
+    files: jquery_ui_color_animation.html
+           jquery_ui_color_animation_toggle.html
+
+  Jquery Easing
+    
+    jQueryUI Easing function is used to specify the rate of change of a parameter with respect to time.
+
+    CSS: CSS properties transition and animation facilitates users to pick easing functions. But they don?t support all easing functions and you have to specify the desired easing functions yourself. For example: Bezier curve
+
+    SCSS: Sass/SCSS can be used to describe animation also. Compass removes prefixes before the transition and animation properties, and the Compass Ceaser Plugin facilitates you pass the easing function by name.
+
+    Jquery Easing Plugin: jQuery with the jQuery Easing Plugins is the easiest way to describe animation with easing.
+
+      file: jquery_ui_easing.html
+
+    
+    Jquery UI Effect
+
+    The effect() method is used to apply an animation effect to the element without having to show or hide it.
+      .effect( effect [, options ] [, duration ] [, complete ] )
+
+
+
+
+Parameters of effect() method:
+
+Effect: This parameter specifies the effects which are used for transition.
+Options: This is used for specifying the specific setting and easing for the effects. Each effect has its own set of options.
+Duration: This specifies the time duration and indicates the number of milliseconds of the effect. Its default value is 400.
+Complete: It is a callback method. It is called for each element when the effect is completed for the elements.
+Most used jQuery UI effects:
+
+Add table:
+
+Effect	Description
+Blind	Shows or hides the element in the manner of a window blind: by moving the bottom edge down or up, or the right edge to the right or left, depending upon the specified direction and mode.
+Bounce	Causes the element to appear to bounce in the vertical or horizontal direction, optionally showing or hiding the element.
+Clip	Shows or hides the element by moving opposite borders of the element together until they meet in the middle, or vice versa.
+Explode	Shows or hides the element by splitting it into multiple pieces that move in radial directions as if imploding into, or exploding from, the page.
+Drop	Shows or hides the element by making it appear to drop onto, or drop off of, the page.
+Fade	Shows or hides the element by adjusting its opacity. this is the same as the core fade effects, but without options.
+Fold	Shows or hides the element by adjusting opposite borders in or out, and then doing the same for the other set of borders.
+Highlight	Calls attention to the element by momentarily changing its background color while showing or hiding the element.
+Puff	Expands or contracts the element in place while adjusting its opacity.
+Shake	Shakes the element back and forth, either vertically or horizontally.
+Scale	Expands or contracts the element by a specified percentage.
+Pulsate	Adjusts the opacity of the element on and off before ensuring that the element is shown or hidden as specified.
+Size	Resizes the element to a specified width and height. similar to scale except for how the target size is specified.
+Slide	Moves the element such that it appears to slide onto or off of the page.
+Transfer	Animates a transient outline element that makes the element appear to transfer to another element. the appearance of the outline element must be defined via css rules for the ui-effects-transfer class, or the class specified as an option.
+
+
+  
+
+
