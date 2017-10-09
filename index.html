@@ -1,6 +1,6 @@
 <!--I have idea for background-->
 <!--cracked rock with pink outline and different shades of black-->
-<!--Here I finished divider which is showing appropriate markups -->
+<!--Here I got footer copies using jquery -->
 
 <html>
     <head>
@@ -120,6 +120,25 @@
             // custom_divider(900, ".container_divisers_iv");
             
             
+            
+            function footer_boxes (recursive) {   //for different boxes below
+                var diff_sites = $("div:last");
+                var shift_right =  40;
+                var shift_top = -100;
+                while (recursive != 0) {
+                    var clone_diff_sites = diff_sites.clone();
+                    shift_right += 360;
+                    // shift_top -= 50;
+                    console.log(shift_right);
+                    // diff_sites.after(diff_sites.css("margin-left", shift_right.toString()+ "px"));
+                    clone_diff_sites.css({"margin-left": shift_right.toString() + "px", "margin-top" : shift_top.toString() + "px"});
+                    diff_sites.after(clone_diff_sites);
+                    recursive -=  1;
+                }
+            }
+            footer_boxes(2);
+
+            
             });
             
             
@@ -199,10 +218,33 @@
              </div>
         </div>
         <div class="container">
-             <div class="well" id ="web_colors" style ="height: 300px; width: 750px; margin-left:350px; margin-top: -320px"   >Hi! I am a Basic Well.</div>
+             <div class="well" id ="web_colors" style ="height: 300px; width: 750px; margin-left:350px; margin-top: -320px"   >
+
+             </div>
+            <div class="well" id ="web_colors" style ="height: 200px; width: 650px; margin-left:400px; margin-top: -270px"   >
+                <h1 style = "font-size:200px; text-align:center; margin-top:-30px "> Start</h1>
+                
+             </div>
+
         </div>
         <div class="container">
-             <div class="well" id ="web_colors" style ="height: 300px; width: 1100px; margin-top: 25px"   >Hi! I am a Basic Well.</div>
+            <div class="well" id ="web_colors" style ="height: 300px; width: 1100px; margin-top: 25px; text-align:center;"   >
+                  2017 Tobologz inc.
+                  <br> All rights reserved
+                  <br> Contact information
+                  <br> Phone 929-353-8278
+                  <br> All images on this site are owned by Tobologz and Tobologz studios incoporated
+                  <br> All copyright infrigement are subject to prosecution by laws and all applicable means
+                  <br> Tobologz has no affilate resources and uses bootstrap styling,jquery, css ,javascript and html5 technologies for its work
+                  <br> for additional information requring website development see below
+                  <div class ="footer_box">
+                        <div id = "web_colors"  style ="width:200px; height:100px; border-radius:0px; background-color:transparent; border: 1px solid pink; margin-left:40px;" >
+                                <br> Personal Website
+                                <br> Tel : xxx-xxx-xxxx
+                                <br> email: example@gmail.com
+                       </div>
+                  </div>
+            </div>
         </div>
         
         
