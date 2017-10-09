@@ -3,14 +3,40 @@
         <link rel="stylesheet" href="./bootstrap.min.css">
         <!--<script src="./jquery.min.js"></script>-->
         <script src="./jquery-1.10.2.js"></script>
+
         <script>
 
             // var baze;
             // function addition ();
             
             $(document).ready(function() {
+                // console.log($("button").eq(1));
+                // console.log($("div:has(div:has(#pwd)):last"));
+                var hidden_password = $("div:has(div:has(#pwd)):last");
+                var buttons = $("div:has(div:has(button))");
+                console.log(buttons.eq(1)); //to work with buttons
+                var bad = 4;
+                // hidden_password.after(buttons.eq(4).html().hide());
+                while (bad != 0) {  //to add the buttons
+                    
+                    hidden_password.after(buttons.eq(bad).html());
+                    buttons.eq(bad).detach();
+                    bad -= 1;
+                }
+
+                $("button:first").toggleClass("btn-default",false);
+                
+                //jquery workaround since removeClass is a ui and may cause problems
+                
+                    
+                    
+                    
+
+
                 var single = $(".form_copy").html(); //to append additional associates
                 var counter = 2;
+                // $("div:has(#pwd)").after($("div:has(#pwd)").html());                   //to put buttons in better spots
+                
                 function addition ()  {           //bootstrap button still seems to refresh
                     $(".form_copy").append(single);
                     $(".holder:last").hide();
@@ -24,28 +50,34 @@
                     });
                 };
                 
-                $("h1").click(function() {
+                $("button").eq(2).click(function(event) { //cheap workardound find selector that chooses a number from the list
                     
                     $(".form_copy").append("<h1>Associate  " + counter.toString() +"<br> ___________________________________________________________</h1>" )
                     addition();
+                    event.preventDefault();
                     counter += 1;
                 });
                 
-                $("h2").click(function() {
+                $("button:last").click(function(event) {
                    if (counter >= 3)  {
                        $(".form_copy > h1:last").remove();  //needs to be selector not a parameter to the function
                        subtraction();
                        counter -= 1;
+
+                       
                         }
+                    event.preventDefault();   //in case one associate and user presses remove button and saves thes users work
                     
                 });
+                
+                console.log($("a"))
 
             });
             
         </script>
     </head>
     <body>
-        <h1 style = "background-color:rgba(0,0,0,.8); color:pink; font-weight:bold; text-indent: 10px ">        Tobologz.com </h1>
+        <h1 style = "background-color:rgba(0,0,0,.8); color:pink; font-weight:bold; text-indent: 10px "><a href ="./index.html">        Tobologz.com </a></h1>
         <div class="container">
           <h2>Website Request Form</h2>
           <form class="form-inline" role="form">
@@ -200,32 +232,40 @@
               </div>
             </div>
             
-            <div class="form-group">
+            <div class="form-group" >
               <label class="control-label col-sm-5" for="pwd">Password:</label>
               <div class="col-sm-10">
                 <input type="password" class="form-control" id="pwd" placeholder="Enter password">
               </div>
             </div>
-            
+
+
+          <div class="form-group" >
+              <div class=" col-sm-10" style = "color: transparent; background-color:transparent">
+                <button type="submit" class="btn btn-default" style = "color: transparent; background-color:transparent"> Hidden button</button>
+              </div>
+            </div>
             
             
           <div class="form-group">
-              <div class="col-sm-offset-6 col-sm-10">
+              <div class=" col-sm-10">
                 <button type="submit" class="btn btn-default">Submit</button>
               </div>
             </div>
 
           <div class="form-group">
-              <div class="col-sm-offset-6 col-sm-10">
-                <button class="btn btn-primary" onclick ="addition();">Add another associate</button>
+              <div class="col-sm-10">
+                <button class="btn btn-primary" >Add another associate</button>
               </div>
             </div>
             
           <div class="form-group">
-              <div class="col-sm-offset-6 col-sm-10">
-                <button class="btn btn-primary" onclick ="return false;">Remove associate</button>
+              <div class=" col-sm-10">
+                <button class="btn btn-primary" >Remove associate</button>
               </div>
             </div>
+            
+
 
           </form>
         </div>
