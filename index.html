@@ -1,6 +1,7 @@
 <!--I have idea for background-->
-<!--cracked rock with pink outline and different shades of dark forest green-->
-<!--Here I got boxes to input different html-->
+<!--cracked rock with pink outline and different shades of black-->
+<!--Here I got divider using function programming -->
+<!--got divs to move accordingly, suggest you make page smaller so user can see all the divs move-->
 
 <html>
     <head>
@@ -139,6 +140,85 @@
                 }
             }
             footer_boxes(2);
+            
+
+            // $(".move_1").css({"margin-left" :"-100px" , "opacity" : ".5"});
+            // $(".move_2").css({"margin-top" :"-100px" , "opacity" : ".5"});
+            // $(".move_3").css({"margin-top" :"-100px" ,"margin-left" :"375px" , "opacity" : ".5"});
+            console.log($(".move_3").offset())
+            function animated_home_page () {
+            $(".move_1").css({"margin-left" :"-100px" , "opacity" : ".5"});
+            $(".move_2").css({"margin-top" :"-100px" , "opacity" : ".5"});
+            $(".move_3").css({"margin-top" :"-100px" ,"margin-left" :"375px" , "opacity" : ".5"});
+            $(".move_4").css({"margin-top" :"200px" , "margin-left" :"675px" , "opacity" : ".5"});
+            $(".move_5").css({"margin-top" :"-200px" , "margin-left" :"0px" , "opacity" : ".5"});
+            $(".move_6").css({ "margin-top": "200px",  "opacity" : ".5"});
+            $(".move_7").css({"margin-top" :"200px" ,  "opacity" : ".5"});
+            
+                
+                $(".move_1").delay(2000).animate(
+                    {
+                        left: '200px',
+                        opacity : '1'
+                        //top: '450px'
+
+                    },2000);
+                    
+                $(".move_2").delay(2000).animate(
+                    {
+                        top: '100px',
+                        opacity : '1'
+                        //top: '450px'
+
+                    },2000);
+                    
+                $(".move_3").delay(2000).animate(
+                    {
+                        right: '275px',
+                        top: '200px',
+                        opacity : '1'
+                        //top: '450px'
+
+                    },2000);
+
+                $(".move_4").delay(2000).animate(
+                    {
+                        right: '575px',
+                        opacity : '1'
+                        //top: '450px'
+
+                    },2000);
+                
+                $(".move_5").delay(2000).animate(
+                    {
+                        top: '200px',
+                        left: '100px',
+                        opacity : '1'
+                        //top: '450px'
+
+                    },2000);
+                    
+                $(".move_6").delay(2000).animate(
+                    {
+
+                        top: '400px',
+                        opacity : '1'
+                        //top: '450px'
+
+                    },2000);
+                    
+                $(".move_7").delay(2000).animate(
+                    {
+                        bottom: '200px',
+                        opacity : '1'
+                        //top: '450px'
+
+                    },2000);
+                                        
+                    
+                }
+            
+            animated_home_page();
 
             
             });
@@ -147,13 +227,13 @@
         </script>
     </head>
     
-    <body>
+    <body >
         <div class="container">
             <div class="well title" id ="web_colors" style ="height: 250px; margin-top:50px;  text-align:center; font-size: 70px; padding:70px; display:none;">Tobologz.com
             </div>
         </div>
-        <div class="container">
-             <div class="well list" id ="web_colors"  style ="height: 500px; width: 200px;"   >
+        <div class="container move_1" style = "position:relative;">
+             <div class="well list" id ="web_colors"  style ="height: 500px; width: 200px; "   >
                 <h3 id ="heading">  Heading A</h3>
                 <div class = "container_square_bullets">
                     <div class = "square_bullets" style =" display: none">
@@ -163,7 +243,7 @@
              
              </div>
         </div>
-        <div class="container">
+        <div class="container move_2"  style = "position:relative;">
              <div class="well" id ="web_colors" style ="height: 200px; width: 600px; margin-left:250px; margin-top: -520px"   >
                  <h3 id = "heading" style =" width:150px; margin-left: 200px; margin-top:-5px;">  Heading B
                  </h3>
@@ -174,7 +254,7 @@
              
              </div>
         </div>
-        <div class="container">
+        <div class="container move_3" style = "position:relative;">
              <div class="well" id ="web_colors" style ="height: 200px; width: 200px; margin-left:890px; margin-top: -520px"   >
                  <h3  id = "heading" style = "width:150px; margin-left: 5px; margin-top:-5px;">  Heading C
                  </h3>
@@ -183,7 +263,7 @@
                  </div>
              </div>
         </div>
-        <div class="container ">
+        <div class="container move_4" style = "position:relative;">
              <div class="well" id ="web_colors" style ="height: 200px; width: 850px; margin-left:250px; margin-top: -260px"   >
                 <!--<div style = "width: 1px; height: 200px; background-color:pink; margin-left:25px; margin-top:-20px">-->
                 <!--</div>-->
@@ -208,7 +288,7 @@
              </div>
         </div>
         
-        <div class="container">
+        <div class="container move_5" style = "position: relative">
              <div class="well " id ="web_colors" style ="height: 300px; width: 300px; "   >
                  <h3 id = "heading" style = " width:150px; margin-left: 50px; margin-top:-5px;">  Heading D
                  </h3>
@@ -219,8 +299,8 @@
                  </div>
              </div>
         </div>
-        <div class="container">
-             <div class="well" id ="web_colors" style ="height: 300px; width: 750px; margin-left:350px; margin-top: -320px"   >
+        <div class="container move_6" style ="position:relative">
+             <div class="well " id ="web_colors" style ="height: 300px; width: 750px; margin-left:350px; margin-top: -720px"   >
 
              </div>
             <div class="well" id ="web_colors" style ="height: 200px; width: 650px; margin-left:400px; margin-top: -270px"   >
@@ -229,8 +309,8 @@
              </div>
 
         </div>
-        <div class="container">
-            <div class="well" id ="web_colors" style ="height: 300px; width: 1100px; margin-top: 25px; text-align:center;"   >
+        <div class="container move_7" style = "position:relative">
+            <div class="well " id ="web_colors" style ="height: 300px; width: 1100px; margin-top: 25px; text-align:center;"   >
                   2017 Tobologz inc.
                   <br> All rights reserved
                   <br> Contact information
