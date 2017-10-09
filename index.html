@@ -1,6 +1,6 @@
 <!--I have idea for background-->
-<!--cracked rock with pink outline and different shades of black-->
-<!--Here I got footer copies using jquery -->
+<!--cracked rock with pink outline and different shades of dark forest green-->
+<!--Here I got boxes to input different html-->
 
 <html>
     <head>
@@ -14,7 +14,7 @@
             #web_colors{
                         color:pink;
                         background-color: rgba(0,0,0,.8);
-                        border-radius: 50px;
+                        border-radius: 25px;
                         
                         
             }
@@ -84,7 +84,7 @@
                 var change_i = height_offset;
                 var change_ii = -22;
 
-                console.log(pen)   //keep outside so pen margin will reset
+                // console.log(pen)   keep outside so pen margin will reset
                 while( i != 200){
                         var canvas = $(box_container);               //take from hidden because copy wont make double
                         var canvas_hidden = $(".container_divisers_hidden");
@@ -114,9 +114,9 @@
                 // pen.css("margin-left","295px");
                 pen.css("margin-top","0px");
             }
-            custom_divider(130,".container_divisers_i");
-            custom_divider(380,".container_divisers_ii");
-            custom_divider(630 ,".container_divisers_iii");
+            custom_divider(110,".container_divisers_i");
+            custom_divider(360,".container_divisers_ii");
+            custom_divider(610 ,".container_divisers_iii");
             // custom_divider(900, ".container_divisers_iv");
             
             
@@ -125,6 +125,8 @@
                 var diff_sites = $("div:last");
                 var shift_right =  40;
                 var shift_top = -100;
+                var diff_site = ["<br> Market Website <br> Tel : xxx-xxx-xxxx <br> email: example@gmail.com","<br> Business Website <br> Tel : xxx-xxx-xxxx <br> email: example@gmail.com"];
+
                 while (recursive != 0) {
                     var clone_diff_sites = diff_sites.clone();
                     shift_right += 360;
@@ -132,7 +134,7 @@
                     console.log(shift_right);
                     // diff_sites.after(diff_sites.css("margin-left", shift_right.toString()+ "px"));
                     clone_diff_sites.css({"margin-left": shift_right.toString() + "px", "margin-top" : shift_top.toString() + "px"});
-                    diff_sites.after(clone_diff_sites);
+                    diff_sites.after(clone_diff_sites.html(diff_site[recursive-1]));
                     recursive -=  1;
                 }
             }
