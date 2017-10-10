@@ -36,8 +36,11 @@
                 
             }
             
-            a:hover {
-                
+            a:visited, a:hover{                         /* disables unwanted  link changes */
+                color:pink;
+                text-decoration-line:none;
+                text-decoration-style: none;
+                text-decoration:none;
             }
             /*make sure blue underline event gets taken out*/
 
@@ -226,6 +229,7 @@
             function wait_animate() {
                 if ($(window).scrollTop() >= 857)  {
                         window.scrollTop = 857;
+                        
                         $(".move_7").delay(1000).animate(
                         {
                             bottom: '200px',
@@ -233,6 +237,7 @@
                             //top: '450px'
     
                         },2000);
+                        
                         
     
                     }
@@ -256,21 +261,47 @@
             // alert(document.body.scrollTop);
             $("body").click(function() {
                 console.log(document.body.scrollTop);
-                alert($(window).scrollTop()).hide();
+                // alert($(window).scrollTop()).hide();
 
 
                 
                 
                 });
             // $("body").followTo(300);
-            $(".move_6").delegate(" div:last","click",function() {
-                $("h1").css("color","rgba(0,0,0,.8)");
-                $(this).css("background-color","pink");
-                $("html").delay(20000);
-                // console.log(this)
-                
-                });
-            //action triggered to move to the form
+                // $(".move_6").click();
+                $(".move_6").delegate(" div:last","click",function(event) {
+                    event.preventDefault();
+
+                    $("h1").css("color","rgba(0,0,0,.8)");
+                    $(this).css("background-color","pink");
+                    $("h1").delay(2000).animate({
+                    
+                        bottom: '200px'
+                    }
+                        ,2000,link);
+                    function link () {
+                        window.location = $("a").attr("href");
+                    }
+                    //callback is the only thing that beats these things
+
+                    // console.log($(".move_6"));
+                    // $("html").delay(20000);
+                    
+                    // window.open($("a").attr('href'));
+                    // console.log(event);
+                    
+                    
+                    });
+
+            // $(".move_6").bind("click",delegation,function(event) {
+            //     event.preventDefault();
+            //     $(this).delay(20000);
+            //     delegation();
+            
+            
+            
+            // });
+            // action triggered to move to the form
             });
             
 
