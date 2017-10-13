@@ -21,7 +21,7 @@
                 // console.log($("div:has(div:has(#pwd)):last"));
                 var hidden_password = $("div:has(div:has(#pwd)):last");
                 var buttons = $("div:has(div:has(button))");
-                console.log(buttons.eq(1)); //to work with buttons
+                // console.log(buttons.eq(1)); to work with buttons
                 var bad = 4;
                 // hidden_password.after(buttons.eq(4).html().hide());
                 while (bad != 0) {  //to add the buttons
@@ -43,41 +43,124 @@
                 var single = $(".form_copy").html(); //to append additional associates
                 var counter = 2;
                 // $("div:has(#pwd)").after($("div:has(#pwd)").html());                   //to put buttons in better spots
+                var seguro = 0; // total amouut of clicks on remove
+                var max;
                 
                 function addition ()  {           //bootstrap button still seems to refresh
+                    
                     $(".form_copy").append(single);
                     $(".holder:last").hide();
                     $(".holder:last").slideDown(2000)
                 };
                 
-                function subtraction () {
-                    $(".holder:last").slideUp(2000, function(){
-                        $(this).remove();
+                var click_overload;
+                function subtraction (clicks, leftovers) {
+                    console.log("here are how many clicks I got " + clicks.toString());
+                    console.log("here is how long the holder is " + leftovers.toString())
+                    click_overload = clicks;
                     
-                    });
+                    //while leftovers is not equal to 1 or while clicks is not equal to zero
+                    while (click_overload != -1) {
+                        if(leftovers >= 2) {
+                            click_overload   -= 1;
+                            leftovers -= 1;
+                            // $(".holder:last").slideUp(2000);
+                            // $(".holder:last").delay(2000).remove();
+                            
+                            $(".holder:last").slideUp(2000, function(){
+                                $(this).remove();
+                            });
+                            break;
+                        }
+                    }
+                    //     $(".holder:last").slideUp(2000, function(){
+                    //         $(this).remove();
+
+                    console.log("so I processed the response action and this is the amount of clicks " + click_overload.toString())
+                    
+                    console.log("I took out the field section this is how much left you should have in the holder " + leftovers.toString())
+                    
+                    $(".holder:last").animate({
+                        bottom: '200px'
+                    },2000);
+                    max = $(".holder").length;
+                    console.log("but the holder has this much " + max.toString())
+                    
+                    // });
+                    
+
                 };
                 
                 $("button").eq(2).click(function(event) { //cheap workardound find selector that chooses a number from the list
-                    
+                    var x= 6;
+                    while (x != 0) {
                     $(".form_copy").append("<h1>Associate  " + counter.toString() +"<br> ___________________________________________________________</h1>" )
                     addition();
                     event.preventDefault();
+                    seguro = 0;  // way off helping browser know how much nodes to take off when necessary
                     counter += 1;
+                    x -=1;
+                    }
                 });
                 
+
                 $("button:last").click(function(event) {
-                   if (counter >= 3)  {
-                       $(".form_copy > h1:last").remove();  //needs to be selector not a parameter to the function
-                       subtraction();
-                       counter -= 1;
+                    if($(".holder").length <= 1) {
+                        event.preventDefault();
+                        return;
+                        
+                    }
+                     seguro += 1;
+                    //  console.log("this was the amout of clicks" + seguro.toString());
+                       //how many associte fields there are left
+                     max = $(".holder").length;
+                    //(counter >= 3)  {
+                     subtraction(seguro, max);
+                    //   console.log("this is how long your holder was "+max.toString());
+                     $(".form_copy > h1:last").remove();  //needs to be selector not a parameter to the function
+                     var h1 = $(".form_copy > h1");
+                     var holder = $(".form_copy > .holder");
+                     
+                     console.log(h1.length);
+                     console.log(holder.length);
+
+                     while ((holder.length - 2) != h1.length ){
+                         console.log("situation");
+                         var i = (holder.length - 2) - h1.length;
+                         console.log(i)
+                         console.log(holder)
+                         while (i != 0) {
+                            console.log(holder[holder.length - 2])
+                            holder[holder.length - 2].remove();
+                            // subtraction();
+                            i -= 1;
+                            
+                         }
+                         break;
+                        //  if ((holder.length - 2) > h1.length) {
+                        //      holder[holder.length].remove();
+                        //      console.log(h1.length);
+                        //      console.log(holder.length);
+                        //      return;
+                        //  }
+                        //  else {
+                        //      h1[h1.length ].remove();
+                        //     console.log(h1.length);
+                        //     console.log(holder.length);
+                        //     return;
+                        //  }
+                         
+                     }
+                     counter -= 1;
+                    //   console.log(counter);
 
                        
-                        }
+                        
                     event.preventDefault();   //in case one associate and user presses remove button and saves thes users work
                     
                 });
                 
-                console.log($("a"))
+                // console.log($("a"))
 
             });
             
