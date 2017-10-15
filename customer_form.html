@@ -17,6 +17,7 @@
             // function addition ();
             
             $(document).ready(function() {
+                
                 // console.log($("button").eq(1));
                 // console.log($("div:has(div:has(#pwd)):last"));
                 var hidden_password = $("div:has(div:has(#pwd)):last");
@@ -50,7 +51,9 @@
                     
                     $(".form_copy").append(single);
                     $(".holder:last").hide();
-                    $(".holder:last").slideDown(2000)
+                    $(".holder:last").slideDown(2000);
+                    $(".holder:last").addClass(counter.toString());   //need a way to differentate the classes since jquery given methods cannot do the job
+
                 };
                 
                 var click_overload;
@@ -60,16 +63,21 @@
                     click_overload = clicks;
                     
                     //while leftovers is not equal to 1 or while clicks is not equal to zero
-                    while (click_overload != -1) {
+                    while (click_overload != 0) {   //this needs to be changed to an onmouseup event function
                         if(leftovers >= 2) {
                             click_overload   -= 1;
                             leftovers -= 1;
                             // $(".holder:last").slideUp(2000);
                             // $(".holder:last").delay(2000).remove();
                             
-                            $(".holder:last").slideUp(2000, function(){
-                                $(this).remove();
-                            });
+                            console.log($(".holder").hasClass((leftovers).toString()));
+                            console.log($(" ." + (leftovers).toString()));
+                            console.log(leftovers )
+                            
+                                $("." + (leftovers - click_overload).toString()).slideUp(2000, function(){
+                                    $(this).remove();
+                                });
+                            
                             break;
                         }
                     }
@@ -80,9 +88,9 @@
                     
                     console.log("I took out the field section this is how much left you should have in the holder " + leftovers.toString())
                     
-                    $(".holder:last").animate({
-                        bottom: '200px'
-                    },2000);
+                    // $(".holder:last").animate({
+                    //     bottom: '200px'
+                    // },2000);
                     max = $(".holder").length;
                     console.log("but the holder has this much " + max.toString())
                     
@@ -93,6 +101,7 @@
                 
                 $("button").eq(2).click(function(event) { //cheap workardound find selector that chooses a number from the list
                     var x= 6;
+                    // console.log($(".form_copy > .holder:nth-last-child(2) "));
                     while (x != 0) {
                     $(".form_copy").append("<h1>Associate  " + counter.toString() +"<br> ___________________________________________________________</h1>" )
                     addition();
@@ -103,13 +112,18 @@
                     }
                 });
                 
-
+                $("h1").click(function () {
+                   $("holder:last").slideUp(2000);
+                });
+                
                 $("button:last").click(function(event) {
                     if($(".holder").length <= 1) {
                         event.preventDefault();
                         return;
                         
                     }
+                
+
                      seguro += 1;
                     //  console.log("this was the amout of clicks" + seguro.toString());
                        //how many associte fields there are left
@@ -131,8 +145,9 @@
                          console.log(holder)
                          while (i != 0) {
                             console.log(holder[holder.length - 2])
-                            holder[holder.length - 2].remove();
-                            // subtraction();
+                            // holder[holder.length - 2].remove();
+                            
+                            subtraction();
                             i -= 1;
                             
                          }
@@ -161,6 +176,7 @@
                 });
                 
                 // console.log($("a"))
+                
 
             });
             
