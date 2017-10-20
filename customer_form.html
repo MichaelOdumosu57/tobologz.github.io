@@ -57,47 +57,47 @@
                 };
                 
                 var click_overload;
-                function subtraction (clicks, leftovers) {
-                    console.log("here are how many clicks I got " + clicks.toString());
-                    console.log("here is how long the holder is " + leftovers.toString())
-                    click_overload = clicks;
+                // function subtraction (clicks, leftovers) {
+                //     console.log("here are how many clicks I got " + clicks.toString());
+                //     console.log("here is how long the holder is " + leftovers.toString())
+                //     click_overload = clicks;
                     
-                    //while leftovers is not equal to 1 or while clicks is not equal to zero
-                    while (click_overload != 0) {   //this needs to be changed to an onmouseup event function
-                        if(leftovers >= 2) {
-                            click_overload   -= 1;
-                            leftovers -= 1;
-                            // $(".holder:last").slideUp(2000);
-                            // $(".holder:last").delay(2000).remove();
+                //     //while leftovers is not equal to 1 or while clicks is not equal to zero
+                //     while (click_overload != 0) {   //this needs to be changed to an onmouseup event function
+                //         if(leftovers >= 2) {
+                //             click_overload   -= 1;
+                //             leftovers -= 1;
+                //             // $(".holder:last").slideUp(2000);
+                //             // $(".holder:last").delay(2000).remove();
                             
-                            console.log($(".holder").hasClass((leftovers).toString()));
-                            console.log($(" ." + (leftovers).toString()));
-                            console.log(leftovers )
+                //             console.log($(".holder").hasClass((leftovers).toString()));
+                //             console.log($(" ." + (leftovers).toString()));
+                //             console.log(leftovers )
                             
-                                $("." + (leftovers - click_overload).toString()).slideUp(2000, function(){
-                                    $(this).remove();
-                                });
+                //                 $("." + (leftovers - click_overload).toString()).slideUp(2000, function(){
+                //                     $(this).remove();
+                //                 });
                             
-                            break;
-                        }
-                    }
-                    //     $(".holder:last").slideUp(2000, function(){
-                    //         $(this).remove();
+                //             break;
+                //         }
+                //     }
+                //     //     $(".holder:last").slideUp(2000, function(){
+                //     //         $(this).remove();
 
-                    console.log("so I processed the response action and this is the amount of clicks " + click_overload.toString())
+                //     console.log("so I processed the response action and this is the amount of clicks " + click_overload.toString())
                     
-                    console.log("I took out the field section this is how much left you should have in the holder " + leftovers.toString())
+                //     console.log("I took out the field section this is how much left you should have in the holder " + leftovers.toString())
                     
-                    // $(".holder:last").animate({
-                    //     bottom: '200px'
-                    // },2000);
-                    max = $(".holder").length;
-                    console.log("but the holder has this much " + max.toString())
+                //     // $(".holder:last").animate({
+                //     //     bottom: '200px'
+                //     // },2000);
+                //     max = $(".holder").length;
+                //     console.log("but the holder has this much " + max.toString())
                     
-                    // });
+                //     // });
                     
 
-                };
+                // };
                 
                 $("button").eq(2).click(function(event) { //cheap workardound find selector that chooses a number from the list
                     var x= 6;
@@ -112,9 +112,13 @@
                     }
                 });
                 
-                $("h1").click(function () {
-                   $("holder:last").slideUp(2000);
-                });
+                // $("h1").click(function () {
+                //   $("holder:last").slideUp(2000);
+                // });
+                
+
+                
+
                 
                 $("button:last").click(function(event) {
                     if($(".holder").length <= 1) {
@@ -129,51 +133,63 @@
                        //how many associte fields there are left
                      max = $(".holder").length;
                     //(counter >= 3)  {
-                     subtraction(seguro, max);
+                    //  subtraction(seguro, max);
                     //   console.log("this is how long your holder was "+max.toString());
                      $(".form_copy > h1:last").remove();  //needs to be selector not a parameter to the function
-                     var h1 = $(".form_copy > h1");
-                     var holder = $(".form_copy > .holder");
+                    //  var h1 = $(".form_copy > h1");
+                    //  var holder = $(".form_copy > .holder");
                      
-                     console.log(h1.length);
-                     console.log(holder.length);
+                    //  console.log(h1.length);
+                    //  console.log(holder.length);
 
-                     while ((holder.length - 2) != h1.length ){
-                         console.log("situation");
-                         var i = (holder.length - 2) - h1.length;
-                         console.log(i)
-                         console.log(holder)
-                         while (i != 0) {
-                            console.log(holder[holder.length - 2])
-                            // holder[holder.length - 2].remove();
+                    //  while ((holder.length - 2) != h1.length ){
+                    //      console.log("situation");
+                    //      var i = (holder.length - 2) - h1.length;
+                    //      console.log(i)
+                    //      console.log(holder)
+                    //      while (i != 0) {
+                    //         console.log(holder[holder.length - 2])
+                    //         // holder[holder.length - 2].remove();
                             
-                            subtraction();
-                            i -= 1;
+                    //         subtraction();
+                    //         i -= 1;
                             
-                         }
-                         break;
-                        //  if ((holder.length - 2) > h1.length) {
-                        //      holder[holder.length].remove();
-                        //      console.log(h1.length);
-                        //      console.log(holder.length);
-                        //      return;
-                        //  }
-                        //  else {
-                        //      h1[h1.length ].remove();
-                        //     console.log(h1.length);
-                        //     console.log(holder.length);
-                        //     return;
-                        //  }
+                    //      }
+                    //      break;
+                    //     //  if ((holder.length - 2) > h1.length) {
+                    //     //      holder[holder.length].remove();
+                    //     //      console.log(h1.length);
+                    //     //      console.log(holder.length);
+                    //     //      return;
+                    //     //  }
+                    //     //  else {
+                    //     //      h1[h1.length ].remove();
+                    //     //     console.log(h1.length);
+                    //     //     console.log(holder.length);
+                    //     //     return;
+                    //     //  }
                          
-                     }
-                     counter -= 1;
-                    //   console.log(counter);
+                    //  }
+                    //  counter -= 1;
+                    // //   console.log(counter);
 
                        
                         
                     event.preventDefault();   //in case one associate and user presses remove button and saves thes users work
                     
                 });
+                
+                $("button:last").mouseup(function() {
+                    //on mouseup what happens is the browser gets the total information about the the associate forms , seguro gets how many clicks and subtracts it from the total - 1 because jquery function all are stack before variable changes. the number is a class unique to each holder, which remove it upon click the button in respect to the associate name. Can do this several times at once, because now the browser knows which holder to remove
+                    console.log(counter);
+                    console.log(seguro);
+                    var form_spot = "."+ (counter - seguro - 1).toString();
+                    $(form_spot).slideUp(2000, function() {
+                        $(this).remove();
+                    });
+                    console.log($(form_spot),form_spot);
+                    });
+                
                 
                 // console.log($("a"))
                 
