@@ -47,10 +47,16 @@
                 // $("div:has(#pwd)").after($("div:has(#pwd)").html());                   //to put buttons in better spots
                 var seguro = 0; // total amouut of clicks on remove
                 var max;
+                var information = [];
                 
                 function addition ()  {           //bootstrap button still seems to refresh
                     
-                    $(".form_copy").append(single);
+                    if (information[counter] == null) { //see if information was place there before
+                        $(".form_copy").append(single);
+                    }
+                    else {
+                        $(".form_copy").append(information[counter]);
+                    }
                     $(".holder:last").hide();
                     $(".holder:last").slideDown(2000);
                     $(".holder:last").addClass(counter.toString());   //need a way to differentate the classes since jquery given methods cannot do the job
@@ -194,9 +200,10 @@
                     console.log(seguro);
                     var form_spot = "."+ (last_total - seguro - 1).toString(); //finds and removes the associat form here
                     $(form_spot).slideUp(2000, function() {
-                        $(this).remove();
+                        information[last_total - seguro] = $(this).remove(); //holds information in case user needs it again
                     });
-                    console.log($(form_spot),form_spot);
+                    // console.log($(form_spot),form_spot);
+                    console.log(information);
                     });
                 
                 
