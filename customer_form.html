@@ -43,6 +43,7 @@
 
                 var single = $(".form_copy").html(); //to append additional associates
                 var counter = 2;
+                var last_total = counter;
                 // $("div:has(#pwd)").after($("div:has(#pwd)").html());                   //to put buttons in better spots
                 var seguro = 0; // total amouut of clicks on remove
                 var max;
@@ -100,16 +101,23 @@
                 // };
                 
                 $("button").eq(2).click(function(event) { //cheap workardound find selector that chooses a number from the list
-                    var x= 6;
+                    // var x= 6;
                     // console.log($(".form_copy > .holder:nth-last-child(2) "));
-                    while (x != 0) {
+                    
+                    if(last_total != counter){  //this makes sure that the broswer knows the total at each reset not all total ever since browser was loaded
+                        last_total = counter;
+                    }
+                    if(counter < 2){//make sure that if it sent back to zero the associate is the second
+                        counter = 2;
+                    }
                     $(".form_copy").append("<h1>Associate  " + counter.toString() +"<br> ___________________________________________________________</h1>" )
                     addition();
                     event.preventDefault();
                     seguro = 0;  // way off helping browser know how much nodes to take off when necessary
                     counter += 1;
-                    x -=1;
-                    }
+                    last_total += 1;
+                    // x -=1;
+                    
                 });
                 
                 // $("h1").click(function () {
@@ -170,7 +178,7 @@
                     //     //  }
                          
                     //  }
-                    //  counter -= 1;
+                     counter -= 1;
                     // //   console.log(counter);
 
                        
@@ -181,9 +189,10 @@
                 
                 $("button:last").mouseup(function() {
                     //on mouseup what happens is the browser gets the total information about the the associate forms , seguro gets how many clicks and subtracts it from the total - 1 because jquery function all are stack before variable changes. the number is a class unique to each holder, which remove it upon click the button in respect to the associate name. Can do this several times at once, because now the browser knows which holder to remove
-                    console.log(counter);
+                    
+                    console.log(last_total);
                     console.log(seguro);
-                    var form_spot = "."+ (counter - seguro - 1).toString();
+                    var form_spot = "."+ (last_total - seguro - 1).toString(); //finds and removes the associat form here
                     $(form_spot).slideUp(2000, function() {
                         $(this).remove();
                     });
@@ -210,13 +219,13 @@
               <div class="form-group">
                   <label class="control-label col-sm-5" for="first_name">First Name:</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="email" placeholder="First Name">
+                    <input type="text" class="form-control" id="first" placeholder="First Name">
                   </div>
                 </div>
               <div class="form-group">
                   <label class="control-label col-sm-5" for="last_name">Last Name:</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="email" placeholder="Last Name">
+                    <input type="text" class="form-control" id="last" placeholder="Last Name">
                   </div>
                 </div>
                 <div class="form-group">
@@ -253,7 +262,7 @@
                 <div class="form-group">
                   <label class="control-label col-sm-5" for="email">Date of Birth:</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="gender" placeholder="MM/DD/YY">
+                    <input type="text" class="form-control" id="DOB" placeholder="MM/DD/YY">
                   </div>
                 </div>
     
