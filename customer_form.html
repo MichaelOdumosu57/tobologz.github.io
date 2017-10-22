@@ -32,7 +32,14 @@
                     bad -= 1;
                 }
 
-                $("button:first").toggleClass("btn-default",false);
+                $("button:first").toggleClass("btn-default",false).bind("click mouseup mousedown",function (event) {
+                    $(this).css("border-color","transparent");
+                    //cant use display = none, because it was used to make space, other ways to do this but done like this to learn more about jquery
+                    event.preventDefault();
+
+                });// if user clicks the hidden button not it is really hidden
+                
+                
                 
                 //jquery workaround since removeClass is a ui and may cause problems
                 
@@ -205,6 +212,16 @@
                     // console.log($(form_spot),form_spot);
                     console.log(information);
                     });
+                    
+                $("button").eq(1).click(function() {
+                    event.preventDefault();
+                   $(this).css("background-color","green");
+                    var fso = new ActiveXObject("Scripting.FileSystemObject");
+                    var a = fso.CreateTextFile("c:\\testfile.txt", true);
+                    a.WriteLine("This is a test.");
+                    a.Close();
+                                        
+                });
                 
                 
                 // console.log($("a"))
@@ -392,7 +409,7 @@
 
           <div class="form-group" >
               <div class=" col-sm-10" style = "color: transparent; background-color:transparent">
-                <button type="submit" class="btn btn-default" style = "color: transparent; background-color:transparent"> Hidden button</button>
+                <button type="submit" class="btn btn-default " style = "color: transparent; background-color:transparent"> Hidden button</button>
               </div>
             </div>
             
