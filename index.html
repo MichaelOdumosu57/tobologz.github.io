@@ -60,6 +60,7 @@
                 function sq_clone () {
                     var i = 0;
                     $(".square_bullets").css("display","block");
+                    
                     $(".bulletin").css("margin-bottom","15px");
                     var sqj_clone = $(".container_square_bullets");
                     var bulj_clone = $(".container_bulletin");
@@ -70,9 +71,19 @@
                     var sq_clone = sqj_clone.html();
                     var bul_clone = bulj_clone.html();
                     
-                    while (i != 8) {
+                    var nav_list = ["Home","About","Technologies","Team","The Process ","Cost","Internships","Site Map","FAQ"];
+                    
+                    while (i != 9) {
                         
-                        sqj_clone.append(sq_clone);
+                        
+                        $(".square_bullets:last + p").text(nav_list[i]).css({"margin-left":"30px","opacity":"1", "margin-top":"-27px"}); // to add navigation links
+                        //had to place p after div because the background color of div was applied to the p element in text color, only way to nullify was take it out and make sure margin adjustments
+                        
+                        if(i < 8) {
+                            sqj_clone.append(sq_clone);
+                        }
+                        
+                        
                         if (i < 3) {
                             bulj_clone.append(bul_clone);
                         }
@@ -319,11 +330,15 @@
         </div>
         <div class="container move_1" style = "position:relative;">
              <div class="well list" id ="web_colors"  style ="height: 500px; width: 200px; "   >
-                <h3 id ="heading">  Heading A</h3>
+                <h3 id ="heading">  Navigation</h3>
                 <div class = "container_square_bullets">
                     <div class = "square_bullets" style =" display: none">
-                        
+                        <!--<p style ="font-size:20px; word-wrap:initial; width:200px;  "></p>-->
+                        <!--needed to set the width to 200 because p was only p inside the box-->
+                        <!--jquery is also not smart enough to set the margin to have the text placed next to the div margin. You had to do this but what was really needed was to extend the width of the p to remove the ostensible word-wrap -->
                     </div>
+                    <p style ="font-size:20px; word-wrap:initial; width:200px;  "></p>
+        
                 </div>
              
              </div>
