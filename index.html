@@ -73,11 +73,16 @@
                     
                     var nav_list = ["Home","About","Technologies","Team","The Process ","Cost","Internships","Site Map","FAQ"];
                     
+                    var connect_list = ["Your Account","Blog","Stories","Mails"];
+                    
                     while (i != 9) {
                         
                         
                         $(".square_bullets:last + p").text(nav_list[i]).css({"margin-left":"30px","opacity":"1", "margin-top":"-27px"}); // to add navigation links
                         //had to place p after div because the background color of div was applied to the p element in text color, only way to nullify was take it out and make sure margin adjustments
+                        
+                        
+                        
                         
                         if(i < 8) {
                             sqj_clone.append(sq_clone);
@@ -85,7 +90,10 @@
                         
                         
                         if (i < 3) {
+                            
                             bulj_clone.append(bul_clone);
+                            $(".bulletin:nth-last-of-type(2) > p").text(connect_list[i]);
+                            //done here becuase I needed to stop placing bulletin covers
                         }
                         console.log(sq_clone);
                         
@@ -268,7 +276,7 @@
                     
                 }
             
-            animated_home_page();
+            // animated_home_page();
 
             // alert(document.body.scrollTop);
             $("body").click(function() {
@@ -345,7 +353,7 @@
         </div>
         <div class="container move_2"  style = "position:relative;">
              <div class="well" id ="web_colors" style ="height: 200px; width: 600px; margin-left:250px; margin-top: -520px"   >
-                 <h3 id = "heading" style =" width:150px; margin-left: 200px; margin-top:-5px;">  Heading B
+                 <h3 id = "heading" style =" width:150px; margin-left: 200px; margin-top:-5px;">  How it works
                  </h3>
                  <h1 style ="margin-top:-30px; margin-left:-17px; font-size:30px;"> ___________________________________
                  </h1>
@@ -390,11 +398,12 @@
         
         <div class="container move_5" style = "position: relative">
              <div class="well " id ="web_colors" style ="height: 300px; width: 300px; "   >
-                 <h3 id = "heading" style = " width:150px; margin-left: 50px; margin-top:-5px;">  Heading D
+                 <h3 id = "heading" style = " width:170px; margin-left: 50px; margin-top:-5px;">  Communication
                  </h3>
                  <div class = "container_bulletin">
-                    <div class = "bulletin" style= "height:40px; width 100px; border: 3px solid pink">
-                     
+                    <div class = "bulletin" style= "height:40px; width 100px; border: 3px solid pink; ">
+                        <p style = "font-size:30px; text-align:center; height:50px; margin:-5px">Mail</p>
+                        <!--had to use margin there because bootstrap css was overriding things-->
                     </div>
                  </div>
              </div>
