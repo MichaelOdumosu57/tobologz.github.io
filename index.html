@@ -276,7 +276,7 @@
                     
                 }
             
-            animated_home_page();
+            // animated_home_page();
 
             // alert(document.body.scrollTop);
             $("body").click(function() {
@@ -326,7 +326,31 @@
             
             var people = $(".container_person");    //to make the people
             var bodies = $(".person").clone();
+            var skin = $(".body_overlap").clone();
             
+            var body_height = 0;
+            var body_width = 55;
+            var body_proper_look = -6;
+            console.log(body_proper_look)
+            while (body_height != 74) {     //loop thap makes the rest of the body
+                skin = skin.clone();
+                skin.css({
+                    "width": body_width.toString() + "px",
+                    "margin-top": "0px",
+                    "margin-left": body_proper_look.toString() + "px"
+                    
+                });
+                $(".person").append(skin);
+                
+                    if (body_height < 15) {
+                    body_width += 2;
+                    body_proper_look -= 1;
+                }
+                body_height += 1;
+            }
+            
+            people = $(".container_person");
+            var bodies = $(".person").clone();
             var body_position_x = 135; //so loop can take into accout the body z-index
             var body_position_y = 15;
             var body_position_z = 1;
@@ -392,9 +416,9 @@
                  </h1>
                  <div class = "container_person">
                      <div class = "person"  style= "position:absolute; border-radius:500px;   height:55px; width:55px; border:6px solid pink; margin-left:40px; background-color: black">
-                         <!--<div class = "body_overlap" style = "  height:6px; width:55px; border-left: 7px solid pink; border-right: 7px solid pink; margin-top:40px; margin-left:-8px">-->
+                         <div class = "body_overlap" style = "  height:1px; width:55px; border-left: 6px solid pink; border-right: 6px solid pink; margin-top:38px; margin-left:-6px">
                              
-                         <!--</div>-->
+                         </div>
                          
                      </div>
                  </div>
