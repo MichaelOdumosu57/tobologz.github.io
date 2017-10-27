@@ -276,7 +276,7 @@
                     
                 }
             
-            // animated_home_page();
+            animated_home_page();
 
             // alert(document.body.scrollTop);
             $("body").click(function() {
@@ -323,6 +323,39 @@
             
             // });
             // action triggepink to move to the form
+            
+            var people = $(".container_person");    //to make the people
+            var bodies = $(".person").clone();
+            
+            var body_position_x = 135; //so loop can take into accout the body z-index
+            var body_position_y = 15;
+            var body_position_z = 1;
+            
+            // console.log(bodies);
+            
+            while(true) {
+
+                bodies = bodies.clone(); //becuase bodies is just one clone
+                body_position_x += 40;
+                
+                if( body_position_y > 0) {
+                    body_position_y -= 15;
+                    body_position_z = 0;
+                }
+                
+                else {
+                    body_position_y += 15;
+                    body_position_z = 2;
+                }
+                if ( body_position_x > 360){
+                    break;
+                }
+                bodies.css({"margin-left": body_position_x.toString() + "px" ,"margin-top":  body_position_y.toString() + "px" ,"z-index": body_position_z.toString()});
+                $(".container_person").append(bodies);
+                console.log($(".person"));
+
+                
+            }
             });
             
 
@@ -352,13 +385,30 @@
              </div>
         </div>
         <div class="container move_2"  style = "position:relative;">
-             <div class="well" id ="web_colors" style ="height: 200px; width: 600px; margin-left:250px; margin-top: -520px"   >
+             <div class="well" id ="web_colors" style ="height: 230px; width: 600px; margin-left:250px; margin-top: -520px"   >
                  <h3 id = "heading" style =" width:150px; margin-left: 200px; margin-top:-5px;">  How it works
                  </h3>
                  <h1 style ="margin-top:-30px; margin-left:-17px; font-size:30px;"> ___________________________________
                  </h1>
-                 <div style ="width:1px; height:145px; background-color:pink;margin-left:160px; margin-top:-10px "></div>
-                 <div style ="width:1px; height:145px; background-color:pink;margin-left:400px; margin-top:-145px "></div>
+                 <div class = "container_person">
+                     <div class = "person"  style= "position:absolute; border-radius:500px;   height:55px; width:55px; border:6px solid pink; margin-left:40px; background-color: black">
+                         <!--<div class = "body_overlap" style = "  height:6px; width:55px; border-left: 7px solid pink; border-right: 7px solid pink; margin-top:40px; margin-left:-8px">-->
+                             
+                         <!--</div>-->
+                         
+                     </div>
+                 </div>
+
+                 
+                 <div style ="width:1px; height:175px; background-color:pink;margin-left:160px; margin-top:-10px "></div>
+                 <div style ="width:1px; height:175px; background-color:pink;margin-left:400px; margin-top:-175px "></div>
+                 <h1 style ="margin-top:-30px; margin-left:-17px; font-size:30px; margin-top:-70px"> ___________________________________</h1>
+                 <h3 id = "heading" style =" width:150px;  margin-top:-5px; font-size:21px">  Our Developer
+                 </h3>
+                 <h3 id = "heading" style =" width:150px; margin-left: 200px; margin-top:-35px;">  The Audience
+                 </h3>
+                 <h3 id = "heading" style =" width:150px; margin-left: 410px; margin-top:-35px;">  Your Website
+                 </h3>
              
              </div>
         </div>
@@ -415,7 +465,7 @@
             
             <a href ="./customer_form.html">
             <div class="well " id ="web_colors" style ="height: 200px; width: 650px; margin-left:400px; margin-top: -270px"   >
-                <h1 class = "start" style = "font-size:200px; text-align:center; margin-top:-30px "> Start</h1>
+                <h1 class = "start" style = "font-size:94px; text-align:center; margin-top:-30px "> Get Started Today</h1>
                 
              </div>
              </a>
