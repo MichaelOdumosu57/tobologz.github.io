@@ -279,15 +279,15 @@
             animated_home_page();
 
             // alert(document.body.scrollTop);
-            $("body").click(function() {
-                console.log(document.body.scrollTop);
-            // animated_home_page();
-                // alert($(window).scrollTop()).hide();
+            // $("body").click(function() {
+            //     console.log(document.body.scrollTop);
+            //     animated_home_page();
+            //     alert($(window).scrollTop()).hide();
 
 
                 
                 
-                });
+            //     });
             // $("body").followTo(300);
                 // $(".move_6").click();
                 $(".move_6").delegate(" div:last","click",function(event) {
@@ -399,7 +399,19 @@
 
                 
             }
-            console.log($(".person"));
+            // console.log($(".person"));
+            // var webpage_dividers = $(".body_dividers").clone();
+            // var index = 0;
+            
+            while(  $(".body_dividers").length != 8 ) {
+                var webpage_dividers = $(".body_dividers:last").clone();
+                $(".body_dividers:last").after(webpage_dividers);
+                // index += 1;
+                // console.log($(".body_dividers").length);
+                
+            }
+            console.log($(".body_dividers"))
+            console.log(webpage_dividers);
             });
             
 
@@ -443,6 +455,7 @@
                      </div>
                  </div>
 
+
                  
                  <div class = "body_borders" style ="width:1px; height:175px; background-color:pink;margin-left:160px; margin-top:-10px "></div>
                  <div class = "body_borders" style ="width:1px; height:175px; background-color:pink;margin-left:400px; margin-top:-175px "></div>
@@ -453,6 +466,13 @@
                  </h3>
                  <h3 id = "heading" style =" width:150px; margin-left: 410px; margin-top:-35px;">  Your Website
                  </h3>
+                 <div class = "webpage" style ="width:130px; height:100px; border:1px solid pink; margin-left:420px; margin-top:-160">
+                    <!--I am wdrawing the webpage from here-->
+                     <div style = "width:130px; height:10px; background-color:pink"></div>
+                     <div style = "width:1px; height:90px; background-color:pink; margin-left:60px; position:absolute "></div>
+                     <div class = "body_dividers" style = "width:60px; height:10px; border-bottom:1px solid pink"></div>
+                     
+                 </div>
              
              </div>
         </div>
