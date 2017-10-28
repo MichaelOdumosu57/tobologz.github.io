@@ -276,7 +276,7 @@
                     
                 }
             
-            // animated_home_page();
+            animated_home_page();
 
             // alert(document.body.scrollTop);
             $("body").click(function() {
@@ -332,7 +332,7 @@
             var body_width = 55;
             var body_proper_look = -6;
             console.log(body_proper_look)
-            while (body_height != 74) {     //loop thap makes the rest of the body
+            while (body_height != 74) {     //loop thap makes the rest of the body any clone adjustments must be done in the true loop
                 skin = skin.clone();
                 skin.css({
                     "width": body_width.toString() + "px",
@@ -343,9 +343,10 @@
                 $(".person").append(skin);
                 
                     if (body_height < 15) {
-                    body_width += 2;
-                    body_proper_look -= 1;
-                }
+                        body_width += 2;
+                        body_proper_look -= 1;
+                        
+                    }
                 body_height += 1;
             }
             
@@ -365,21 +366,40 @@
                 if( body_position_y > 0) {
                     body_position_y -= 15;
                     body_position_z = 0;
+                    while(body_height != 59 && $(".person").length != 1) { //altering loop algorithms
+                        body_height -= 1;
+                        
+                        $(".person > .body_overlap:last ").remove();
+                    }
+                    body_height = 74;
+
                 }
                 
                 else {
                     body_position_y += 15;
                     body_position_z = 2;
+
                 }
                 if ( body_position_x > 360){
+                    
+                    while (body_height != 12) {  //to fit in the last body
+                        $(".person:last > .body_overlap  ").eq(body_height).css({
+                            "width":"81",
+                            "margin-left": body_proper_look.toString() + "px"
+                            
+                        });
+                        body_height -= 1;
+                    }
+                    // console.log($(".person:last"))
                     break;
                 }
                 bodies.css({"margin-left": body_position_x.toString() + "px" ,"margin-top":  body_position_y.toString() + "px" ,"z-index": body_position_z.toString()});
                 $(".container_person").append(bodies);
-                console.log($(".person"));
+                
 
                 
             }
+            console.log($(".person"));
             });
             
 
@@ -424,8 +444,8 @@
                  </div>
 
                  
-                 <div style ="width:1px; height:175px; background-color:pink;margin-left:160px; margin-top:-10px "></div>
-                 <div style ="width:1px; height:175px; background-color:pink;margin-left:400px; margin-top:-175px "></div>
+                 <div class = "body_borders" style ="width:1px; height:175px; background-color:pink;margin-left:160px; margin-top:-10px "></div>
+                 <div class = "body_borders" style ="width:1px; height:175px; background-color:pink;margin-left:400px; margin-top:-175px "></div>
                  <h1 style ="margin-top:-30px; margin-left:-17px; font-size:30px; margin-top:-70px"> ___________________________________</h1>
                  <h3 id = "heading" style =" width:150px;  margin-top:-5px; font-size:21px">  Our Developer
                  </h3>
