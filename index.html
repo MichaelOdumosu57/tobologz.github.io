@@ -181,7 +181,7 @@
             $(".move_5").css({"margin-top" :"-200px" , "margin-left" :"0px" , "opacity" : ".5"});
             $(".move_6").css({ "margin-top": "-200px",  "opacity" : ".5"});
             $(".move_7").css({"margin-top" :"600px" ,  "opacity" : ".5"});
-            $(".start").css("opacity","0");
+            $(".start ,.move_2 > .heading").css("opacity","0");
             //border must be othe letters
             
                 // animation functions
@@ -236,7 +236,7 @@
 
                     },2000);
                     
-                $(".start").delay(2000).animate(
+                $(".start , .move_2 > .heading").delay(2000).animate(
                     {
                         // bottom: '200px',
                         opacity : '1'
@@ -402,16 +402,34 @@
             // console.log($(".person"));
             // var webpage_dividers = $(".body_dividers").clone();
             // var index = 0;
-            
+            var web_cyl = $(".webpage_final_touch:last").clone(); //needed to compact things to show two is done in one
             while(  $(".body_dividers").length != 8 ) {
                 var webpage_dividers = $(".body_dividers:last").clone();
                 $(".body_dividers:last").after(webpage_dividers);
+                if ($(".body_dividers").length == 4) {
+                    $(".body_dividers:last").css("width","130px");
+                }
+                else {
+                    $(".body_dividers:last").css("width","60px");
+                }
+                if ( $(".webpage_final_touch").length <= 2) {
+
+                    var adjust_y = $(".webpage_final_touch:first").css("margin-top").split("p")[0] * -1 * (1/($(".webpage_final_touch").length * 2)).toString() + "px";
+                    var adjust_x =  ($(".webpage_final_touch").length * 20).toString() + "px";
+                    // console.log(adjust);
+                    $(".webpage_final_touch:last").after(web_cyl.css({"margin-top": adjust_y,"margin-left":adjust_x}).clone());
+                        
+                    
+                }
                 // index += 1;
                 // console.log($(".body_dividers").length);
                 
             }
             console.log($(".body_dividers"))
             console.log(webpage_dividers);
+            
+            
+            
             });
             
 
@@ -471,6 +489,12 @@
                      <div style = "width:130px; height:10px; background-color:pink"></div>
                      <div style = "width:1px; height:90px; background-color:pink; margin-left:60px; position:absolute "></div>
                      <div class = "body_dividers" style = "width:60px; height:10px; border-bottom:1px solid pink"></div>
+                     <div style = "height:30px; width:60px; border: 1px solid pink; margin-left:65px; margin-top:-75px">
+                     <div style = "height:10px; width:10px; border: 1px solid pink; margin-left:2px; margin-top:2px"></div>
+                     <div class ="webpage_final_touch"  style = "height:20px; width:10px; border: 1px solid pink; margin-left:0px; margin-top:25px; border-top-left-radius: 50px; border-top-right-radius: 50px; border-bottom-left-radius: 50px; border-bottom-right-radius: 50px"></div>
+                     </div>
+                     </div>
+
                      
                  </div>
              
