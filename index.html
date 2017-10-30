@@ -8,6 +8,9 @@
         <script src="./jquery-ui.js"></script>
         
         <link rel="stylesheet" href="./bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
+        <!--glyphicons-->
 
         
         <style>
@@ -43,6 +46,39 @@
                 text-decoration:none;
             }
             /*make sure blue underline event gets taken out*/
+        
+            .fa {
+                padding: 5px;
+                font-size: 30px;
+                width: 40px;
+                height:40px;
+                text-align: center;
+                text-decoration: none;
+                border-radius: 50%;
+                color:white;
+            }
+            
+            .fa-facebook {
+                background-color: #3B5998;
+                
+            }
+
+            
+            .fa-twitter {
+                background-color:#55ACEE;
+            }
+            
+            .fa-instagram {
+                background-image: linear-gradient(-135deg,#1400c8,#b900b4,#f50000);
+            }
+            
+            body {
+                background-image: linear-gradient(-135deg,#1400c8,#b900b4,#f50000);
+                background-size: 100% 100%;
+                /*background-repeat: no-repeat;*/
+                /*figure out how to make it bigger*/
+            }
+            
 
             
 
@@ -181,7 +217,7 @@
             $(".move_5").css({"margin-top" :"-200px" , "margin-left" :"0px" , "opacity" : ".5"});
             $(".move_6").css({ "margin-top": "-200px",  "opacity" : ".5"});
             $(".move_7").css({"margin-top" :"600px" ,  "opacity" : ".5"});
-            $(".start ,.move_2 > .heading").css("opacity","0");
+            $(".start , #heading").css("opacity","0");
             //border must be othe letters
             
                 // animation functions
@@ -236,13 +272,15 @@
 
                     },2000);
                     
-                $(".start , .move_2 > .heading").delay(2000).animate(
+                $(".start ,  #heading").delay(2000).animate(
+                    
                     {
                         // bottom: '200px',
                         opacity : '1'
                         //top: '450px'
 
                     },2000);
+                    console.log($(".move_2 > .well >  #heading"))
 
                 //want this to scroll to section instead of mouse hover
 
@@ -276,7 +314,7 @@
                     
                 }
             
-            animated_home_page();
+            // animated_home_page();
 
             // alert(document.body.scrollTop);
             // $("body").click(function() {
@@ -500,11 +538,17 @@
              
              </div>
         </div>
+
+
         <div class="container move_3" style = "position:relative;">
              <div class="well" id ="web_colors" style ="height: 200px; width: 200px; margin-left:890px; margin-top: -520px"   >
-                 <h3  id = "heading" style = "width:150px; margin-left: 5px; margin-top:-5px;">  Heading C
+                 <h3  id = "heading" style = "width:150px; margin-left: 5px; margin-top:-5px;">  Events and Social Media
                  </h3>
-                 <div style= "border-radius:500px;   height:120px; width:120px; border:1px solid pink; margin-left:18px;">
+                 <div style= "border-radius:500px;   height:120px; width:120px; border:2px solid pink; margin-left:18px;">
+                     <a href="#" class="fa fa-facebook" style = "margin-top:20px; margin-left:10px" ></a>
+                     <a href="#" class="fa fa-twitter" style = "margin-top:-40px; margin-left:60px" ></a>
+                     <a href="#" class="fa fa-instagram" style = "margin-top:10px; margin-left:35px" ></a>
+                     
                      
                  </div>
              </div>
