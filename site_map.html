@@ -1,5 +1,6 @@
-<!--Here I added link functionality to the navigation well and displaced the container divisers -->
-<!--that ignored the z-index property so now all links can be accessed, -->
+<!--I have idea for background-->
+<!--cracked rock with pink outline and different shades of pink-->
+<!--later when you have sites for your links, div construction will be blocking them, figure this out later-->
 
 <html >
     <head>
@@ -115,20 +116,8 @@
                     while (i != 9) {
                         
                         
-                        $("a > .square_bullets:last + p").text(nav_list[i]).css({"margin-left":"30px","opacity":"1", "margin-top":"-27px" ,"href" : "data.html"});
-                        
-                        if(nav_list[i] == "Home"){
-                            nav_list[i] = "index"
-                        }
-                        if(nav_list[i] == "Site Map"){
-                            nav_list[i] = "site_map"
-                        }
-                        $("a:has(.square_bullets+ p)").eq(-1).attr("href",nav_list[i].toLowerCase() + ".html");
-                        console.log($("a:has(.square_bullets + p)").attr("href"))
-                        // to add navigation links
+                        $(".square_bullets:last + p").text(nav_list[i]).css({"margin-left":"30px","opacity":"1", "margin-top":"-27px"}); // to add navigation links
                         //had to place p after div because the background color of div was applied to the p element in text color, only way to nullify was take it out and make sure margin adjustments
-                        //had to place selctor in <a> link so it works, logic here is if .square_bullets is last and a is parent at same time not the other way because the other way it looks for the last a element
-                        //those if statements make additional alterations so it can best fit my needs
                         
                         
                         
@@ -166,7 +155,7 @@
                     if (i < 50) {                //to make the rectangle
                         var sndArg = "px";
                         sndArg = change_i.toString() + "px";
-                        pen.css({ "margin-left": sndArg , "top": "50px" ,"height": "1px", "display":"block",  "background-color": "transparent", "border-left":"1px solid pink",  "border-right":"1px solid pink" , }); //this changes the type of pen it hides the scaffolding
+                        pen.css({ "margin-left": sndArg , "top": "50px" ,"height": "1px", "display":"block",  "background-color": "transparent", "border-left":"1px solid pink",  "border-right":"1px solid pink"}); //this changes the type of pen it hides the scaffolding
                         if (box_container === ".container_divisers_i") {
                             pen.css("border-left-width","0px");
                         }
@@ -190,9 +179,9 @@
                 // pen.css("margin-left","295px");
                 pen.css("margin-top","0px");
             }
-            custom_divider(-90,".container_divisers_i");
-            custom_divider(160,".container_divisers_ii");
-            custom_divider(410 ,".container_divisers_iii");
+            custom_divider(110,".container_divisers_i");
+            custom_divider(360,".container_divisers_ii");
+            custom_divider(610 ,".container_divisers_iii");
             // custom_divider(900, ".container_divisers_iv");
             
             
@@ -327,7 +316,7 @@
                     
                 }
             
-            // animated_home_page();
+            animated_home_page();
 
             // alert(document.body.scrollTop);
             // $("body").click(function() {
@@ -499,14 +488,12 @@
              <div class="well list" id ="web_colors"  style ="height: 500px; width: 200px; "   >
                 <h3 id ="heading">  Navigation</h3>
                 <div class = "container_square_bullets">
-                    <a style = "color:pink" href = "./">
                     <div class = "square_bullets" style =" display: none">
                         <!--<p style ="font-size:20px; word-wrap:initial; width:200px;  "></p>-->
                         <!--needed to set the width to 200 because p was only p inside the box-->
                         <!--jquery is also not smart enough to set the margin to have the text placed next to the div margin. You had to do this but what was really needed was to extend the width of the p to remove the ostensible word-wrap -->
                     </div>
                     <p style ="font-size:20px; word-wrap:initial; width:200px;  "></p>
-                    </a>
         
                 </div>
              
@@ -577,13 +564,13 @@
                 <!--<div style = "width: 1px; height: 200px; background-color:pink; margin-left:785px; margin-top:-200px">-->
                 <!--</div>-->
              </div>
-             <div class ="container_divisers_i" style ="margin-top:-220px; margin-left:200px; z-index:2">
+             <div class ="container_divisers_i" style ="margin-top:-220px">
                 <div  class = "custom_divider" style = "width: 200px; height:1px; background-color:pink; margin-left:295px; margin-top: 221px; display:none "></div>
              </div>
-             <div class ="container_divisers_ii" style ="margin-top:-200px; margin-left:200px; z-index:1">
+             <div class ="container_divisers_ii" style ="margin-top:-200px">
                 <div  class = "custom_divider" style = "width: 200px; height:1px; background-color:pink; margin-left:295px; margin-top: -220px; "></div>
              </div>
-             <div class ="container_divisers_iii" style ="margin-top:-200px; margin-left:200px; z-index:0">
+             <div class ="container_divisers_iii" style ="margin-top:-200px">
                 <div  class = "custom_divider" style = "width: 200px; height:1px;  margin-left:295px; margin-top: -220px; "></div>
              </div>
              <!--<div class ="container_divisers_iv" style ="margin-top:-200px">-->
