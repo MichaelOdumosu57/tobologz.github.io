@@ -94,379 +94,67 @@
             
                 }
                 title();
-                console.log($("div"));
-                function sq_clone () {
-                    var i = 0;
-                    $(".square_bullets").css("display","block");
-                    
-                    $(".bulletin").css("margin-bottom","15px");
-                    var sqj_clone = $(".container_square_bullets");
-                    var bulj_clone = $(".container_bulletin");
-
-                    // var list = document.getElementsByClassName("list");
-                    // console.log(sq_clone)
-                    // console.log(list)
-                    var sq_clone = sqj_clone.html();
-                    var bul_clone = bulj_clone.html();
-                    
-                    var nav_list = ["Home","About","Technologies","Team","The Process ","Cost","Internships","Site Map","FAQ"];
-                    
-                    var connect_list = ["Your Account","Blog","Stories","Mails"];
-                    
-                    while (i != 9) {
-                        
-                        
-                        $(".square_bullets:last + p").text(nav_list[i]).css({"margin-left":"30px","opacity":"1", "margin-top":"-27px"}); // to add navigation links
-                        //had to place p after div because the background color of div was applied to the p element in text color, only way to nullify was take it out and make sure margin adjustments
-                        
-                        
-                        
-                        
-                        if(i < 8) {
-                            sqj_clone.append(sq_clone);
-                        }
-                        
-                        
-                        if (i < 3) {
-                            
-                            bulj_clone.append(bul_clone);
-                            $(".bulletin:nth-last-of-type(2) > p").text(connect_list[i]);
-                            //done here becuase I needed to stop placing bulletin covers
-                        }
-                        console.log(sq_clone);
-                        
-                        
+                
+                
+                function copy_box() {
+                    //this function copies the boxes that will be used as the boxes slowly slide around in the screen on site map
+                    var i  = 0;
+                    var shifter = $(".moving_box:last")
+                    var moving_box = $(".moving_box").clone();
+                    while (i < 8) {
+                        var moving_box = $(".moving_box:last").clone();
                         i += 1;
+                        $("body").append(moving_box);
+                        // console.log(moving_box)
+                        // console.log(i)
+                        // break;
                     }
-                }
-            sq_clone();
-            var pen = $(".custom_divider_hidden");
-            $(".custom_divider").hide();            // the hiden coppies are used but not the default ones so you have to hide them
- 
-            function custom_divider (height_offset, box_container)  {   //this function makes the divider for the middle well of the page
-                var i = 0;                  //variables that stay constant throughout the drawing process
-                var change_i = height_offset;
-                var change_ii = -22;
-
-                // console.log(pen)   keep outside so pen margin will reset
-                while( i != 200){
-                        var canvas = $(box_container);               //take from hidden because copy wont make double
-                        var canvas_hidden = $(".container_divisers_hidden");
-                    if (i < 50) {                //to make the rectangle
-                        var sndArg = "px";
-                        sndArg = change_i.toString() + "px";
-                        pen.css({ "margin-left": sndArg , "top": "50px" ,"height": "1px", "display":"block",  "background-color": "transparent", "border-left":"1px solid pink",  "border-right":"1px solid pink"}); //this changes the type of pen it hides the scaffolding
-                        if (box_container === ".container_divisers_i") {
-                            pen.css("border-left-width","0px");
-                        }
-                        
-                        var single_copy = canvas_hidden.html();
-                        canvas.delay(1).append(single_copy);
-                        
-
-                    }
-                    else {                                            //to create diagonal
-                        change_i += 1;
-                        sndArg = change_i.toString() + "px";
-                        pen.css({ "margin-left": sndArg, "height": "1px", "display":"block"});
-                        var single_copy = canvas_hidden.html();
-                        canvas.delay(1).append(single_copy);
-                        
-                    }
-                    i+= 1;
-                }
-                // $(box_container).draggable(); a little ui action
-                // pen.css("margin-left","295px");
-                pen.css("margin-top","0px");
-            }
-            custom_divider(110,".container_divisers_i");
-            custom_divider(360,".container_divisers_ii");
-            custom_divider(610 ,".container_divisers_iii");
-            // custom_divider(900, ".container_divisers_iv");
-            
-            
-            
-            function footer_boxes (recursive) {   //for different boxes below
-                var diff_sites = $("div:last");
-                var shift_right =  40;
-                var shift_top = -100;
-                var diff_site = ["<br> Market Website <br> Tel : xxx-xxx-xxxx <br> email: example@gmail.com","<br> Business Website <br> Tel : xxx-xxx-xxxx <br> email: example@gmail.com"];
-
-                while (recursive != 0) {
-                    var clone_diff_sites = diff_sites.clone();
-                    shift_right += 360;
-                    // shift_top -= 50;
-                    console.log(shift_right);
-                    // diff_sites.after(diff_sites.css("margin-left", shift_right.toString()+ "px"));
-                    clone_diff_sites.css({"margin-left": shift_right.toString() + "px", "margin-top" : shift_top.toString() + "px"});
-                    diff_sites.after(clone_diff_sites.html(diff_site[recursive-1]));
-                    recursive -=  1;
-                }
-            }
-            footer_boxes(2);
-            
-
-            // $(".move_1").css({"margin-left" :"-100px" , "opacity" : ".5"});
-            // $(".move_2").css({"margin-top" :"-100px" , "opacity" : ".5"});
-            // $(".move_3").css({"margin-top" :"-100px" ,"margin-left" :"375px" , "opacity" : ".5"});
-            // console.log($(".move_3").offset())
-            function animated_home_page () {
-            //using jquery to set initial positions
-            $(".move_1").css({"margin-left" :"-100px" , "opacity" : ".5"});
-            $(".move_2").css({"margin-top" :"-100px" , "opacity" : ".5"});
-            $(".move_3").css({"margin-top" :"-100px" ,"margin-left" :"375px" , "opacity" : ".5"});
-            $(".move_4").css({"margin-top" :"200px" , "margin-left" :"675px" , "opacity" : ".5"});
-            $(".move_5").css({"margin-top" :"-200px" , "margin-left" :"0px" , "opacity" : ".5"});
-            $(".move_6").css({ "margin-top": "-200px",  "opacity" : ".5"});
-            $(".move_7").css({"margin-top" :"600px" ,  "opacity" : ".5"});
-            $(".start , #heading").css("opacity","0");
-            //border must be othe letters
-            
-                // animation functions
-                $(".move_1").delay(2000).animate(
-                    {
-                        left: '200px',
-                        opacity : '1'
-                        //top: '450px'
-
-                    },2000);
                     
-                $(".move_2").delay(2000).animate(
-                    {
-                        top: '100px',
-                        opacity : '1'
-                        //top: '450px'
-
-                    },2000);
-                    
-                $(".move_3").delay(2000).animate(
-                    {
-                        right: '275px',
-                        top: '200px',
-                        opacity : '1'
-                        //top: '450px'
-
-                    },2000);
-
-                $(".move_4").delay(2000).animate(
-                    {
-                        right: '575px',
-                        opacity : '1'
-                        //top: '450px'
-
-                    },2000);
+                }
+                copy_box();
                 
-                $(".move_5").delay(2000).animate(
-                    {
-                        top: '200px',
-                        left: '100px',
-                        opacity : '1'
-                        //top: '450px'
-
-                    },2000);
-                    
-                $(".move_6").delay(2000).animate(
-                    {
-
-                        top: '400px',
-                        opacity : '1'
-                        //top: '450px'
-
-                    },2000);
-                    
-                $(".start ,  #heading").delay(2000).animate(
-                    
-                    {
-                        // bottom: '200px',
-                        opacity : '1'
-                        //top: '450px'
-
-                    },2000);
-                    console.log($(".move_2 > .well >  #heading"))
-
-                //want this to scroll to section instead of mouse hover
-
-            function wait_animate() {
-                if ($(window).scrollTop() >= 882)  {
-                        window.scrollTop = 882;
+                function declare_box() {
+                    //this function places all the information inside the boxes
+                    var site_infomation = [
+                                            ["Heading ","Info 1","Info 2",],
+                                            ["Heading ","Info 1","Info 2","Info 3","Info 4"],
+                                            ["Heading ","Info 1"],
+                                            ["Heading ","Info 1","Info 2"],
+                                            ["Heading ","Info 1","Info 2"],
+                                            ["Heading ","Info 1","Info 2","Info 3"],
+                                            ["Heading ","Info 1","Info 2","Info 3"],
+                                            ["Heading ","Info 1","Info 2","Info 3"],
+                                            ["Heading ","Info 1",],
+                                            ["Heading ","Info 1","Info 2","Info 3","Info 4"],
+                                            ["Heading ","Info 1","Info 2","Info 3","Info 4"],
+                                            ["Heading ","Info 1","Info 2","Info 3","Info 4"],
+                                            ["Heading ","Info 1","Info 2"],
+                                            ["Heading ","Info 1","Info 2"],
+                                            ["Heading ","Info 1","Info 2"],
+                                        ];
                         
-                        $(".move_7").delay(1000).animate(
-                        {
-                            bottom: '200px',
-                            opacity : '1'
-                            //top: '450px'
-    
-                        },2000);
-                        
-                        
-    
-                    }
-                }
-            $(window).scroll(wait_animate);
-                // $(".move_8").hover(function() {
-                //     $(this).delay(2000).animate(
-                //     {
-                //         bottom: '200px',
-                //         opacity : '1'
-                //         //top: '450px'
-
-                //     },2000);
+                    // huge array object containing all info about sites
                     
-                // });
+                    $(".moving_box").eq(0).addClass("no");
+                    console.log($(".moving_box").eq(0))
                     
                 }
-            
-            // animated_home_page();
-
-            // alert(document.body.scrollTop);
-            // $("body").click(function() {
-            //     console.log(document.body.scrollTop);
-            //     animated_home_page();
-            //     alert($(window).scrollTop()).hide();
-
-
+                declare_box()
                 
-                
-            //     });
-            // $("body").followTo(300);
-                // $(".move_6").click();
-                $(".move_6").delegate(" div:last","click",function(event) {
-                    event.preventDefault();
-
-                    $("h1").css("color","rgba(0,0,0,.8)");
-                    $(this).css("background-color","pink");
-                    $("h1").delay(2000).animate({
-                    
-                        bottom: '200px'
-                    }
-                        ,2000,link);
-                    function link () {
-                        window.location = $("a:last").attr("href");
-                    }
-                    //callback is the only thing that beats these things
-
-                    // console.log($(".move_6"));
-                    // $("html").delay(20000);
-                    
-                    // window.open($("a").attr('href'));
-                    // console.log(event);
-                    
-                    
-                    });
-
-            // $(".move_6").bind("click",delegation,function(event) {
-            //     event.preventDefault();
-            //     $(this).delay(20000);
-            //     delegation();
-            
-            
-            
-            // });
-            // action triggepink to move to the form
-            
-            var people = $(".container_person");    //to make the people
-            var bodies = $(".person").clone();
-            var skin = $(".body_overlap").clone();
-            
-            var body_height = 0;
-            var body_width = 55;
-            var body_proper_look = -6;
-            console.log(body_proper_look)
-            while (body_height != 74) {     //loop thap makes the rest of the body any clone adjustments must be done in the true loop
-                skin = skin.clone();
-                skin.css({
-                    "width": body_width.toString() + "px",
-                    "margin-top": "0px",
-                    "margin-left": body_proper_look.toString() + "px"
-                    
-                });
-                $(".person").append(skin);
-                
-                    if (body_height < 15) {
-                        body_width += 2;
-                        body_proper_look -= 1;
-                        
-                    }
-                body_height += 1;
-            }
-            
-            people = $(".container_person");
-            var bodies = $(".person").clone();
-            var body_position_x = 135; //so loop can take into accout the body z-index
-            var body_position_y = 15;
-            var body_position_z = 1;
-            
-            // console.log(bodies);
-            
-            while(true) {
-
-                bodies = bodies.clone(); //becuase bodies is just one clone
-                body_position_x += 40;
-                
-                if( body_position_y > 0) {
-                    body_position_y -= 15;
-                    body_position_z = 0;
-                    while(body_height != 59 && $(".person").length != 1) { //altering loop algorithms
-                        body_height -= 1;
-                        
-                        $(".person > .body_overlap:last ").remove();
-                    }
-                    body_height = 74;
-
+                function assemble_box() {
+                    //this function places the boxes in their orginial order for swapping later
                 }
-                
-                else {
-                    body_position_y += 15;
-                    body_position_z = 2;
 
-                }
-                if ( body_position_x > 360){
-                    
-                    while (body_height != 12) {  //to fit in the last body
-                        $(".person:last > .body_overlap  ").eq(body_height).css({
-                            "width":"81",
-                            "margin-left": body_proper_look.toString() + "px"
-                            
-                        });
-                        body_height -= 1;
-                    }
-                    // console.log($(".person:last"))
-                    break;
-                }
-                bodies.css({"margin-left": body_position_x.toString() + "px" ,"margin-top":  body_position_y.toString() + "px" ,"z-index": body_position_z.toString()});
-                $(".container_person").append(bodies);
-                
 
-                
-            }
-            // console.log($(".person"));
-            // var webpage_dividers = $(".body_dividers").clone();
-            // var index = 0;
-            var web_cyl = $(".webpage_final_touch:last").clone(); //needed to compact things to show two is done in one
-            while(  $(".body_dividers").length != 8 ) {
-                var webpage_dividers = $(".body_dividers:last").clone();
-                $(".body_dividers:last").after(webpage_dividers);
-                if ($(".body_dividers").length == 4) {
-                    $(".body_dividers:last").css("width","130px");
-                }
-                else {
-                    $(".body_dividers:last").css("width","60px");
-                }
-                if ( $(".webpage_final_touch").length <= 2) {
 
-                    var adjust_y = $(".webpage_final_touch:first").css("margin-top").split("p")[0] * -1 * (1/($(".webpage_final_touch").length * 2)).toString() + "px";
-                    var adjust_x =  ($(".webpage_final_touch").length * 20).toString() + "px";
-                    // console.log(adjust);
-                    $(".webpage_final_touch:last").after(web_cyl.css({"margin-top": adjust_y,"margin-left":adjust_x}).clone());
-                        
-                    
-                }
-                // index += 1;
-                // console.log($(".body_dividers").length);
-                
-            }
-            console.log($(".body_dividers"))
-            console.log(webpage_dividers);
+
+            
+            
+
+            
+
+
+
             
             
             
@@ -484,106 +172,15 @@
             </div>
         </div>
         
-        <div class="container move_1" style = "position:relative;">
-             <div class="well list" id ="web_colors"  style ="height: 500px; width: 200px; "   >
-                <h3 id ="heading">  Navigation</h3>
-                <div class = "container_square_bullets">
-                    <div class = "square_bullets" style =" display: none">
-                        <!--<p style ="font-size:20px; word-wrap:initial; width:200px;  "></p>-->
-                        <!--needed to set the width to 200 because p was only p inside the box-->
-                        <!--jquery is also not smart enough to set the margin to have the text placed next to the div margin. You had to do this but what was really needed was to extend the width of the p to remove the ostensible word-wrap -->
-                    </div>
-                    <p style ="font-size:20px; word-wrap:initial; width:200px;  "></p>
+
+
+
+
+
         
-                </div>
-             
-             </div>
-        </div>
-        <div class="container move_2"  style = "position:relative;">
-             <div class="well" id ="web_colors" style ="height: 230px; width: 600px; margin-left:250px; margin-top: -520px"   >
-                 <h3 id = "heading" style =" width:150px; margin-left: 200px; margin-top:-5px;">  How it works
-                 </h3>
-                 <h1 style ="margin-top:-30px; margin-left:-17px; font-size:30px;"> ___________________________________
-                 </h1>
-                 <div class = "container_person">
-                     <div class = "person"  style= "position:absolute; border-radius:500px;   height:55px; width:55px; border:6px solid pink; margin-left:40px; background-color: black">
-                         <div class = "body_overlap" style = "  height:1px; width:55px; border-left: 6px solid pink; border-right: 6px solid pink; margin-top:38px; margin-left:-6px">
-                             
-                         </div>
-                         
-                     </div>
-                 </div>
-
-
-                 
-                 <div class = "body_borders" style ="width:1px; height:175px; background-color:pink;margin-left:160px; margin-top:-10px "></div>
-                 <div class = "body_borders" style ="width:1px; height:175px; background-color:pink;margin-left:400px; margin-top:-175px "></div>
-                 <h1 style ="margin-top:-30px; margin-left:-17px; font-size:30px; margin-top:-70px"> ___________________________________</h1>
-                 <h3 id = "heading" style =" width:150px;  margin-top:-5px; font-size:21px">  Our Developer
-                 </h3>
-                 <h3 id = "heading" style =" width:150px; margin-left: 200px; margin-top:-35px;">  The Audience
-                 </h3>
-                 <h3 id = "heading" style =" width:150px; margin-left: 410px; margin-top:-35px;">  Your Website
-                 </h3>
-                 <div class = "webpage" style ="width:130px; height:100px; border:1px solid pink; margin-left:420px; margin-top:-160">
-                    <!--I am wdrawing the webpage from here-->
-                     <div style = "width:130px; height:10px; background-color:pink"></div>
-                     <div style = "width:1px; height:90px; background-color:pink; margin-left:60px; position:absolute "></div>
-                     <div class = "body_dividers" style = "width:60px; height:10px; border-bottom:1px solid pink"></div>
-                     <div style = "height:30px; width:60px; border: 1px solid pink; margin-left:65px; margin-top:-75px">
-                     <div style = "height:10px; width:10px; border: 1px solid pink; margin-left:2px; margin-top:2px"></div>
-                     <div class ="webpage_final_touch"  style = "height:20px; width:10px; border: 1px solid pink; margin-left:0px; margin-top:25px; border-top-left-radius: 50px; border-top-right-radius: 50px; border-bottom-left-radius: 50px; border-bottom-right-radius: 50px"></div>
-                     </div>
-                     </div>
-
-                     
-                 </div>
-             
-             </div>
-        </div>
-
-
-        <div class="container move_3" style = "position:relative;">
-             <div class="well" id ="web_colors" style ="height: 200px; width: 200px; margin-left:890px; margin-top: -520px"   >
-                 <h3  id = "heading" style = "width:150px; margin-left: 5px; margin-top:-5px;">  Events and Social Media
-                 </h3>
-                 <div style= "border-radius:500px;   height:120px; width:120px; border:2px solid pink; margin-left:18px;">
-                     <a href="#" class="fa fa-facebook" style = "margin-top:20px; margin-left:10px" ></a>
-                     <a href="#" class="fa fa-twitter" style = "margin-top:-40px; margin-left:60px" ></a>
-                     <a href="#" class="fa fa-instagram" style = "margin-top:10px; margin-left:35px" ></a>
-                     
-                     
-                 </div>
-             </div>
-        </div>
-        <div class="container move_4" style = "position:relative;">
-             <div class="well" id ="web_colors" style ="height: 200px; width: 850px; margin-left:250px; margin-top: -260px"   >
-                <!--<div style = "width: 1px; height: 200px; background-color:pink; margin-left:25px; margin-top:-20px">-->
-                <!--</div>-->
-                <!--lines for construction-->
-                <!--<div style = "width: 1px; height: 200px; background-color:pink; margin-left:785px; margin-top:-200px">-->
-                <!--</div>-->
-             </div>
-             <div class ="container_divisers_i" style ="margin-top:-220px">
-                <div  class = "custom_divider" style = "width: 200px; height:1px; background-color:pink; margin-left:295px; margin-top: 221px; display:none "></div>
-             </div>
-             <div class ="container_divisers_ii" style ="margin-top:-200px">
-                <div  class = "custom_divider" style = "width: 200px; height:1px; background-color:pink; margin-left:295px; margin-top: -220px; "></div>
-             </div>
-             <div class ="container_divisers_iii" style ="margin-top:-200px">
-                <div  class = "custom_divider" style = "width: 200px; height:1px;  margin-left:295px; margin-top: -220px; "></div>
-             </div>
-             <!--<div class ="container_divisers_iv" style ="margin-top:-200px">-->
-             <!--   <div  class = "custom_divider" style = "width: 200px; height:1px; background-color:pink; margin-left:295px; margin-top: -220px; "></div>-->
-             <!--</div>-->
-             <div class ="container_divisers_hidden">
-                <div  class = "custom_divider_hidden" style = "width: 250px; display:none; height:0px; background-color:pink; margin-left:295px; margin-top: 0px; "></div>
-             </div>
-        </div>
-        
-        <div class="container move_5" style = "position: relative">
+        <div class="container moving_box" style = "position: relative">
              <div class="well " id ="web_colors" style ="height: 300px; width: 300px; "   >
-                 <h3 id = "heading" style = " width:170px; margin-left: 50px; margin-top:-5px;">  Communication
+                 <h3 id = "heading" style = " width:170px; margin-left: 50px; margin-top:-5px;">Content Here
                  </h3>
                  <div class = "container_bulletin">
                     <div class = "bulletin" style= "height:40px; width 100px; border: 3px solid pink; ">
@@ -593,39 +190,8 @@
                  </div>
              </div>
         </div>
-        <div class="container move_6" style ="position:relative">
-             <div class="well " id ="web_colors" style ="height: 300px; width: 750px; margin-left:350px; margin-top: -320px"   >
 
-             </div>
-            
-            <a href ="./customer_form.html" style ="height:0px; width:0px">
-            <div class="well " id ="web_colors" style ="height: 200px; width: 650px; margin-left:400px; margin-top: -270px"   >
-                <h1 class = "start" style = "font-size:94px; text-align:center; margin-top:-30px "> Get Started Today</h1>
-                
-             </div>
-             </a>
 
-        </div>
-        <div class="container move_7" style = "position:relative">
-            <div class="well " id ="web_colors" style ="height: 300px; width: 1100px; margin-top: 25px; text-align:center;"   >
-                  2017 Tobologz inc.
-                  <br> All rights reserved
-                  <br> Contact information
-                  <br> Phone 929-353-8278
-                  <br> All images on this site are owned by Tobologz and Tobologz studios incoporated
-                  <br> All copyright infrigement are subject to prosecution by laws and all applicable means
-                  <br> Tobologz has no affilate resources and uses bootstrap styling,jquery, css ,javascript and html5 technologies for its work
-                  <br> for additional information requring website development see below
-                  <div class ="footer_box">
-                        <div id = "web_colors"  style ="width:200px; height:100px; border-radius:0px; background-color:transparent; border: 1px solid pink; margin-left:40px;" >
-                                <br> Personal Website
-                                <br> Tel : xxx-xxx-xxxx
-                                <br> email: example@gmail.com
-                       </div>
-                  </div>
-            </div>
-        </div>
-        
         
    
         
