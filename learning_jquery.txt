@@ -142,7 +142,8 @@ Select all div elements that have a p element     Select all elements that are e
       $("table:visible")                                    $(":root")
     select all visible tables                           select document root element
 
-          [attribute]                                       :lang(language)         $("[href]")                                     $("p:lang(de)")
+         $("[href]")                                     $("p:lang(de)")
+          [attribute]                                       :lang(language)
   Select all elements with a href attribute   select all  with lang atti starts with "de"
 
         [attribute=value]                                 [attribute!=value]
@@ -153,7 +154,8 @@ Select all div elements that have a p element     Select all elements that are e
       $("[href$='.jpg']")                             $("[title|='Tomorrow']")
     select all ending in jpg          kstarts with followed by a hyphen or attr value = ,Tomorrow
 
-      [attribute^=value]                                 [attribute~=value]	              $("[title^='Tom']")                              $("[title~='hello']")
+      $("[title^='Tom']")                              $("[title~='hello']")
+      [attribute^=value]                                 [attribute~=value]
     select all starts with Tom                       select all that contain word hello
 
       [attribute*=value]	                                        :input
