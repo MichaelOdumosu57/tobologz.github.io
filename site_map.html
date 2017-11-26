@@ -1,4 +1,4 @@
-<!--Here I updated the box headings for the navigation and replaced them with the approriate wellls-->
+<!--Here I connected the functions together in order to fully functionalize the boxes before they are brought to the browser-->
 
 <html >
     <head>
@@ -85,6 +85,24 @@
             
         </style>
         <script>
+        
+                    var site_info = [
+                                            ["Heading ","Info 1","Info 2"],
+                                            ["Heading ","Info 1","Info 2","Info 3","Info 4"],
+                                            ["Heading ","Info 1"],
+                                            ["Heading ","Info 1","Info 2"],
+                                            ["Heading ","Info 1","Info 2"],
+
+                                            ["Heading ","Info 1","Info 2","Info 3"],
+                                            ["Heading ","Info 1","Info 2","Info 3"],
+                                            
+                                            ["Heading ","Info 1","Info 2","Info 3","Info 4"],
+                                            
+                                            ["ala ","Info 1","Info 2","Info 3","Info 4"],
+                                            
+                                            
+                                        ];
+                                        
             $(document).ready(function() {
                 function title () {
                $(".title").fadeTo(10000, 1);
@@ -97,7 +115,7 @@
                 function copy_box() {
                     //this function copies the boxes that will be used as the boxes slowly slide around in the screen on site map
                     var i  = 0;
-                    var shifter = $(".moving_box:last")
+                    var shifter = $(".moving_box:last");
                     var moving_box = $(".moving_box").clone();
                     while (i < 8) {
                         var moving_box = $(".moving_box:last").clone();
@@ -109,50 +127,59 @@
                     }
                     
                 }
-                copy_box();
                 
-                function declare_box() {
+
+                
+                function declare_box(site_information, diff_specs, current_index) {
                     //this function places all the information inside the boxes
-                    var site_information = [
-                                            ["Heading ","Info 1","Info 2",],
-                                            ["Heading ","Info 1","Info 2","Info 3","Info 4"],
-                                            ["Heading ","Info 1"],
-                                            ["Heading ","Info 1","Info 2"],
-                                            ["Heading ","Info 1","Info 2"],
-                                            
-                                            ["Heading ","Info 1","Info 2","Info 3"],
-                                            ["Heading ","Info 1","Info 2","Info 3"],
-                                            
-                                            ["Heading ","Info 1","Info 2","Info 3","Info 4"],
-                                            
-                                            ["Heading ","Info 1","Info 2","Info 3","Info 4"],
-                                            
-                                            
-                                        ];
+                    
                         
                     // huge array object containing all info about sites
                     
-                    var total_shifters = site_information.length
+                    var total_shifters = site_information.length;
                     console.log(total_shifters)
                     
-                    var i = 0
-                    while (i != site_information.length) {
-                        //this loop places the headers in the heading section as well as the content info
-                        var $seperate_box = $(".moving_box > .well > .container_bulletin > .well > p").eq(i)
-                        $seperate_box.text(site_information[i][0]);
-                        i += 1;
-                        console.log($(".moving_box > .well > h3"))
+
+
+                    //this loop places the headers in the heading section as well as the content info
+                    var $seperate_box = $(".moving_box > .well > .container_bulletin > .well > p").eq(current_index);
+                    $seperate_box.text(site_information[current_index][0]); //heading
+                    // var $associated_sector = $(".moving_box > .well >.bulletin ").eq(i);// subsites
+                    // console.log($associated_sector)
+                    var j = 0 ; //
+                    console.log("this is what im looking at" + j.toString())
+                    console.log(site_information[current_index])
+                    $associated_sector = $(".moving_box:last > .well > .bulletin").clone();
+                    while (j  != site_information[current_index].length - 1) {
+                        $associated_sector_copy = $associated_sector.clone();
+                        // $(".moving_box > .well >.bulletin > p").text(site_information[i][j]);
+                        // var $associated_sector = $(".moving_box > .well >.bulletin:last").clone();
+                        // $(".moving_box > .well >.bulletin:first").eq(i).after($associated_sector);
+                        if(j == 0 ){
+                        console.log($(".moving_box > .well > .bulletin:last > p").text(site_information[current_index][j + 1]));
+                        }
+                        
+                        else {
+                        $(".moving_box > .well > .bulletin:last").after($associated_sector_copy)
+                        $(".moving_box > .well > .bulletin:last > p").text(site_information[current_index][j + 1]);
+                        }
+
+                        j += 1;
+
+                        // console.log($(".moving_box > .well > h3"))
                     
                     }
+
                     
                     
                 }
-                declare_box()
+
                 
                 function assemble_box() {
                     //this function places the boxes in their orginial order for swapping later
                 }
-
+                // copy_box();
+                declare_box(site_info,site_info.length,0);
 
 
 
@@ -193,16 +220,16 @@
                  <!--<h3 id = "heading" style = " width:170px; margin-left: 50px; margin-top:-5px;">Content Here-->
                  <!--</h3>-->
                  <div class = "container_bulletin">
-                <div class = "bulletin well " id = "web_colors" style= "height:40px; width 100px; border: 3px solid pink;  ">
+                    <div class = "bulletin well " id = "web_colors" style= "height:40px; width 100px; border: 3px solid pink;  ">
                         <p style = "font-size:30px; text-align:center; height:50px; margin-top:-20px"></p>
                         <!--had to use margin there because bootstrap css was overriding things-->
                     </div>
                  </div>
-                    <div class = "bulletin" style= "height:40px; width 100px; border: 3px solid pink; ">
-                        <p style = "font-size:30px; text-align:center; height:50px; margin:-5px">Mail</p>
+                <div class = "bulletin" style= "height:40px; width 100px; border: 3px solid pink; ">
+                     <p style = "font-size:30px; text-align:center; height:50px; margin:-5px">Mail</p>
                         <!--had to use margin there because bootstrap css was overriding things-->
                     </div>
-                 </div>
+                </div>
              </div>
         </div>
 
