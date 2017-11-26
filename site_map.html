@@ -1,6 +1,4 @@
-<!--I have idea for background-->
-<!--cracked rock with pink outline and different shades of pink-->
-<!--later when you have sites for your links, div construction will be blocking them, figure this out later-->
+<!--Here I updated the box headings for the navigation and replaced them with the approriate wellls-->
 
 <html >
     <head>
@@ -115,28 +113,38 @@
                 
                 function declare_box() {
                     //this function places all the information inside the boxes
-                    var site_infomation = [
+                    var site_information = [
                                             ["Heading ","Info 1","Info 2",],
                                             ["Heading ","Info 1","Info 2","Info 3","Info 4"],
                                             ["Heading ","Info 1"],
                                             ["Heading ","Info 1","Info 2"],
                                             ["Heading ","Info 1","Info 2"],
+                                            
                                             ["Heading ","Info 1","Info 2","Info 3"],
                                             ["Heading ","Info 1","Info 2","Info 3"],
-                                            ["Heading ","Info 1","Info 2","Info 3"],
-                                            ["Heading ","Info 1",],
+                                            
                                             ["Heading ","Info 1","Info 2","Info 3","Info 4"],
+                                            
                                             ["Heading ","Info 1","Info 2","Info 3","Info 4"],
-                                            ["Heading ","Info 1","Info 2","Info 3","Info 4"],
-                                            ["Heading ","Info 1","Info 2"],
-                                            ["Heading ","Info 1","Info 2"],
-                                            ["Heading ","Info 1","Info 2"],
+                                            
+                                            
                                         ];
                         
                     // huge array object containing all info about sites
                     
-                    $(".moving_box").eq(0).addClass("no");
-                    console.log($(".moving_box").eq(0))
+                    var total_shifters = site_information.length
+                    console.log(total_shifters)
+                    
+                    var i = 0
+                    while (i != site_information.length) {
+                        //this loop places the headers in the heading section as well as the content info
+                        var $seperate_box = $(".moving_box > .well > .container_bulletin > .well > p").eq(i)
+                        $seperate_box.text(site_information[i][0]);
+                        i += 1;
+                        console.log($(".moving_box > .well > h3"))
+                    
+                    }
+                    
                     
                 }
                 declare_box()
@@ -180,9 +188,16 @@
         
         <div class="container moving_box" style = "position: relative">
              <div class="well " id ="web_colors" style ="height: 300px; width: 300px; "   >
-                 <h3 id = "heading" style = " width:170px; margin-left: 50px; margin-top:-5px;">Content Here
-                 </h3>
+                 
+
+                 <!--<h3 id = "heading" style = " width:170px; margin-left: 50px; margin-top:-5px;">Content Here-->
+                 <!--</h3>-->
                  <div class = "container_bulletin">
+                <div class = "bulletin well " id = "web_colors" style= "height:40px; width 100px; border: 3px solid pink;  ">
+                        <p style = "font-size:30px; text-align:center; height:50px; margin-top:-20px"></p>
+                        <!--had to use margin there because bootstrap css was overriding things-->
+                    </div>
+                 </div>
                     <div class = "bulletin" style= "height:40px; width 100px; border: 3px solid pink; ">
                         <p style = "font-size:30px; text-align:center; height:50px; margin:-5px">Mail</p>
                         <!--had to use margin there because bootstrap css was overriding things-->
