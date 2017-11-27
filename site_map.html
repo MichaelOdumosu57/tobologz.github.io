@@ -1,10 +1,10 @@
-<!--Created the footer well and applied appropriate adjustment, so on the width resize, it can look appropriate as well-->
+<!--learned plenty about importing custom fonts and using them, found the glyphicon arrows used in the default bootstrap carousel-->
 
 <html >
     <head>
         <script src="./jquery-1.10.2.js"></script>
         <script src="./jquery-ui.js"></script>
-        <script src="./bootstrap.min.js"></script>
+        <!--<script src="./bootstrap.min.js"></script>-->
         <!--<title> Tobologz.com </title>-->
         <link rel="stylesheet" href="./bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -13,6 +13,22 @@
 
         
         <style>
+        
+            @font-face {
+              font-family: 'bootstrap_font';
+              src: url('./glyphicons-halflings-regular.woff2') format('woff2'),
+                     url('./glyphicons-halflings-regular.woff') format('woff'),
+                     url('./glyphicons-halflings-regular.ttf') format('truetype');
+                     
+              font-weight: normal;
+              font-style: normal;
+            }
+            
+            html {
+                font-family : "bootstrap_font";
+            }
+            
+            
             #web_colors{
                         color:pink;
                         background-color: rgba(0,0,0,.8);
@@ -243,8 +259,12 @@
                         // carousel_fill += 1;
                         $(".carousel-inner > .item").eq(carousel_fill).append($(".carousel_wrap").eq(carousel_fill).css("display","block"));
                         console.log(carousel_fill)
+                        console.log($(".carousel-control").eq(carousel_fill).css("height", "950px"))
+                        $(".carousel-control > .glyphicon").eq(carousel_fill).css("font-family", "bootstrap_font")
+                        console.log($(".carousel-control > .glyphicon").eq(carousel_fill))
                         carousel_fill += 1;
                     }
+                    
                     footer();
                     
                     
@@ -255,6 +275,7 @@
                     //simple function that puts the footer information below everything
                     console.log($(".move_7").offset())
                     $(".move_7").offset({top: 512, left:98})
+                    footer_boxes(2,parseInt($(".move_7 > .well").css("width").split("p")[0]));
                 }
                 
             function footer_boxes (recursive, well_length) {   //for different boxes below
@@ -274,7 +295,7 @@
                     recursive -=  1;
                 }
             }
-            footer_boxes(2,parseInt($(".move_7 > .well").css("width").split("p")[0]));
+            
             });
             
 
