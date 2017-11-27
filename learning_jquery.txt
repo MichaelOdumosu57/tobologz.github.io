@@ -525,13 +525,37 @@ jquery appendTo
 
 jquery clone
 
-  easy ,convenient way to duplicate elements on a page.
+  not easy ,convenient way to duplicate elements on a page.
+
+  when you continuosly clone and append an object what happens it takes all the selected elements and clones them again not one at a time.
+
+  to overcome this you need to deepcopy the object you want to copy several times
+
+    first you declare a variable and initialize it with the clone of the object
+
+        var [single_clone] = $([selector]).clone();
+
+    you are not finished here because this is only one object, if you append this several times
+        jquery still thinks you are appending 1 object. It is couterpoint because the purpose of the clone is to copy, but it technically makes sense, if you make one clone you make only one, so you must make more.
+
+    to make more clones you must clone the clone.
+
+        var [clone_copies] = [single_clone].clone()
+
+    because here you are not cloning an object you are cloining the function that makes the object, and in this initialization is a function call
+
+    Hence
+
+    every function call means something must be done, and here it means several single clones
 
   $(selector).clone(true|false)
     
   boolean; specifies whether an event should be copied or not
 
+
+
   file: jquery_clone.html
+        jquery_clone_2.html
 
 jquery remove
 
