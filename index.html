@@ -206,7 +206,7 @@
             
             
             
-            function footer_boxes (recursive) {   //for different boxes below
+            function footer_boxes (recursive, well_length) {   //for different boxes below
                 var diff_sites = $("div:last");
                 var shift_right =  40;
                 var shift_top = -100;
@@ -214,7 +214,7 @@
 
                 while (recursive != 0) {
                     var clone_diff_sites = diff_sites.clone();
-                    shift_right += 360;
+                    shift_right += well_length/3.05555555556 + ((well_length-1100)/3.07692307692);
                     // shift_top -= 50;
                     console.log(shift_right);
                     // diff_sites.after(diff_sites.css("margin-left", shift_right.toString()+ "px"));
@@ -223,7 +223,7 @@
                     recursive -=  1;
                 }
             }
-            footer_boxes(2);
+            footer_boxes(2,parseInt($(".move_7 > .well").css("width").split("p")[0]));
             
 
             // $(".move_1").css({"margin-left" :"-100px" , "opacity" : ".5"});
@@ -627,6 +627,7 @@
   
       <div class="item">
         <img src="./des_2.png" alt="jokes 2" >
+        <!--hi-->
       </div>
       
       <div class="item">
