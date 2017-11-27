@@ -1,4 +1,4 @@
-<!--Here I got copy box and declare box to work together to form properly formed boxes in the site map-->
+<!--Here the boxes assemled into the approrpiate order for the carousel-->
 
 <html >
     <head>
@@ -138,7 +138,7 @@
                     // huge array object containing all info about sites
                     
                     var total_shifters = site_information.length;
-                    console.log(total_shifters)
+                    // console.log(total_shifters)
                     
 
 
@@ -148,8 +148,8 @@
                     // var $associated_sector = $(".moving_box > .well >.bulletin ").eq(i);// subsites
                     // console.log($associated_sector)
                     var j = 0 ; //
-                    console.log("this is what im looking at" + j.toString())
-                    console.log(site_information[current_index])
+                    // console.log("this is what im looking at" + j.toString())
+                    // console.log(site_information[current_index])
                     $associated_sector = $(".moving_box:last > .well > .bulletin").clone();
                     while (j  != site_information[current_index].length - 1) {
                         $associated_sector_copy = $associated_sector.clone();
@@ -157,7 +157,7 @@
                         // var $associated_sector = $(".moving_box > .well >.bulletin:last").clone();
                         // $(".moving_box > .well >.bulletin:first").eq(i).after($associated_sector);
                         if(j == 0 ){
-                        console.log($(".moving_box > .well > .bulletin:last > p").text(site_information[current_index][j + 1]));
+                        $(".moving_box > .well > .bulletin:last > p").text(site_information[current_index][j + 1]);
                         }
                         
                         else {
@@ -170,10 +170,10 @@
                         // console.log($(".moving_box > .well > h3"))
                     
                     }
-                    if (diff_specs - 1 > current_index ) {
-                        current_index += 1;
-                        copy_box(current_index);
-                    }
+
+                    assemble_box(current_index,diff_specs);
+                        
+                    
                     //finished formatting now makes new boxes
 
                     
@@ -181,8 +181,27 @@
                 }
 
                 
-                function assemble_box() {
+                function assemble_box(current_index,diff_specs) {
                     //this function places the boxes in their orginial order for swapping later
+                    //places four boxes on the screen for the carousel
+                    if( $(".moving_box").length != 1){
+                        var box_width = parseInt($(".moving_box:last  ").css("width").split("p"));
+                        console.log(box_width)
+                        console.log($(".moving_box:last  ").offset({top: 150, left: (box_width/3.5* (current_index + 1)) - 325  }) )
+                        
+                        
+                        current_index += 1;
+                        if (diff_specs > current_index) {
+                            copy_box(current_index);
+                        }
+                    }
+                    
+                    else {
+                        $(".moving_box").offset({top: 150, left: 20})
+                        console.log($(".container > .title ").offset().left    )
+                        current_index += 1;
+                        copy_box(current_index);
+                    }
                 }
                 // copy_box();
                 declare_box(site_info,site_info.length,0);
