@@ -1,4 +1,4 @@
-<!--learned plenty about importing custom fonts and using them, found the glyphicon arrows used in the default bootstrap carousel-->
+<!--got carousel functionality going-->
 
 <html >
     <head>
@@ -122,6 +122,7 @@
                                         ];
                     var carousel_wrap_counter = 0; //counter for amount of boxes in the carousel item
                     var carousel_fill = -1; //counter for filling the carousel inner items (carousel functionality) for some reason it needs to be negative one not zero
+                    var carousel_item_move = 0; //lets carousel know which item it is showing
                                         
             $(document).ready(function() {
                 //jquery global objects
@@ -206,7 +207,7 @@
                     //places four boxes on the screen for the carousel
                     if( $(".moving_box").length != 1){
                         var box_width = parseInt($(".moving_box:last  ").css("width").split("p"));
-                        console.log(box_width)
+                        // console.log(box_width)
                         $(".moving_box:last  ").offset({top: 150, left: (box_width/3.5* (current_index + 1)) - 325  })
                         //positioning based on boxed width
                         
@@ -232,7 +233,7 @@
                 
                 function carousel_box (current_index) {
                     //this function puts the assembled boxes into a custom made carousel
-                    console.log($(".moving_box"));
+                    // console.log($(".moving_box"));
                     if (current_index > 4){
                         
                         $(".carousel_wrap:last").after($carousel_wrap.clone())
@@ -250,7 +251,7 @@
                 }
                 // copy_box();
                 declare_box(site_info,site_info.length ,0);
-                console.log(carousel_fill)
+                // console.log(carousel_fill)
                 
                 function animate_carousel () {
                     //function manifests the carousel in full working order
@@ -258,10 +259,10 @@
                     while( carousel_fill != $(".carousel_wrap").length ) {
                         // carousel_fill += 1;
                         $(".carousel-inner > .item").eq(carousel_fill).append($(".carousel_wrap").eq(carousel_fill).css("display","block"));
-                        console.log(carousel_fill)
-                        console.log($(".carousel-control").eq(carousel_fill).css("height", "950px"))
+                        // console.log(carousel_fill)
+                        $(".carousel-control").eq(carousel_fill).css("height", "950px")
                         $(".carousel-control > .glyphicon").eq(carousel_fill).css("font-family", "bootstrap_font")
-                        console.log($(".carousel-control > .glyphicon").eq(carousel_fill))
+                        // console.log($(".carousel-control > .glyphicon").eq(carousel_fill))
                         carousel_fill += 1;
                     }
                     
@@ -273,28 +274,62 @@
                 // animate_carousel();
                 function footer() {
                     //simple function that puts the footer information below everything
-                    console.log($(".move_7").offset())
+                    // console.log($(".move_7").offset())
                     $(".move_7").offset({top: 512, left:98})
                     footer_boxes(2,parseInt($(".move_7 > .well").css("width").split("p")[0]));
                 }
                 
-            function footer_boxes (recursive, well_length) {   //for different boxes below
-                var diff_sites = $("div:last");
-                var shift_right =  40;
-                var shift_top = -100;
-                var diff_site = ["<br> Market Website <br> Tel : xxx-xxx-xxxx <br> email: example@gmail.com","<br> Business Website <br> Tel : xxx-xxx-xxxx <br> email: example@gmail.com"];
-
-                while (recursive != 0) {
-                    var clone_diff_sites = diff_sites.clone();
-                    shift_right += (well_length/3.05555555556) + ((well_length-1100)/3.07692307692);
-                    // shift_top -= 50;
-                    console.log(shift_right);
-                    // diff_sites.after(diff_sites.css("margin-left", shift_right.toString()+ "px"));
-                    clone_diff_sites.css({"margin-left": shift_right.toString() + "px", "margin-top" : shift_top.toString() + "px"});
-                    diff_sites.after(clone_diff_sites.html(diff_site[recursive-1]));
-                    recursive -=  1;
+                function footer_boxes (recursive, well_length) {   //for different boxes below
+                    var diff_sites = $("div:last");
+                    var shift_right =  40;
+                    var shift_top = -100;
+                    var diff_site = ["<br> Market Website <br> Tel : xxx-xxx-xxxx <br> email: example@gmail.com","<br> Business Website <br> Tel : xxx-xxx-xxxx <br> email: example@gmail.com"];
+        
+                    while (recursive != 0) {
+                        var clone_diff_sites = diff_sites.clone();
+                        shift_right += (well_length/3.05555555556) + ((well_length-1100)/3.07692307692);
+                        // shift_top -= 50;
+                        // console.log(shift_right);
+                        // diff_sites.after(diff_sites.css("margin-left", shift_right.toString()+ "px"));
+                        clone_diff_sites.css({"margin-left": shift_right.toString() + "px", "margin-top" : shift_top.toString() + "px"});
+                        diff_sites.after(clone_diff_sites.html(diff_site[recursive-1]));
+                        recursive -=  1;
+                    }
+                    custom_carousel();
                 }
-            }
+                
+                function custom_carousel() {
+                    //this function minics the carousel found in the default bootstrap carousel
+                    $(".carousel_wrap").after($(".carousel_wrap:last").clone().html($(".title").clone()))
+                    //so it wont be based on two
+                    $(".carousel_wrap").eq(carousel_item_move ).addClass("active");
+                    $(".carousel_wrap:not(.active)").hide();
+                    //way to hide the others
+
+
+                    $(".left").click(function () {
+
+                        $(".carousel_wrap").eq(carousel_item_move ).removeClass("active");
+                        carousel_item_move -= 1;
+                        if(carousel_item_move < 0){
+                            carousel_item_move = 3
+                        }
+                        $(".carousel_wrap").eq(carousel_item_move ).addClass("active").show();
+                        $(".carousel_wrap:not(.active)").hide();
+                    });
+                    
+                    $(".right").click(function () {
+
+                        $(".carousel_wrap").eq(carousel_item_move ).removeClass("active");
+                        carousel_item_move += 1;
+                        if(carousel_item_move > 3){
+                            carousel_item_move = 0
+                        }
+                        $(".carousel_wrap").eq(carousel_item_move ).addClass("active").show();
+                        $(".carousel_wrap:not(.active)").hide();
+                    });
+                    
+                }
             
             });
             
@@ -303,7 +338,7 @@
         </script>
     </head>
     
-    <body style = "max-height:300px; overflow:scroll;">
+    <body style = "max-height:300px; overflow:scroll; height:1500px">
         
         <div class="container">
             <div class="well title" id ="web_colors" style ="height:20px; margin-top:30px;  text-align:center; font-size: 30px; padding: 30px;  ">
