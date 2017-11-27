@@ -1,9 +1,10 @@
-<!--Here the boxes assemled into the approrpiate order for the carousel-->
+<!--Created the carousel items by using a function to place the boxes into a div element carousel item association-->
 
 <html >
     <head>
         <script src="./jquery-1.10.2.js"></script>
         <script src="./jquery-ui.js"></script>
+        <!--<script src="./bootstrap.min.js"></script>-->
         <!--<title> Tobologz.com </title>-->
         <link rel="stylesheet" href="./bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -99,14 +100,16 @@
                                             
                                             ["Heading ","Info 1","Info 2","Info 3","Info 4"],
                                             
-                                            ["Heading ","Info 1","Info 2","Info 3","Info 4"],
+                                            
                                             
                                             
                                         ];
+                    var carousel_wrap_counter = 0; //counter for amount of boxes in the carousel item
                                         
             $(document).ready(function() {
                 //jquery global objects
                 var $model_box = $(".moving_box:first").clone();
+                var $carousel_wrap = $(".carousel_wrap").clone();
                 function title () {
                    $(".title").fadeTo(10000, 1);
           
@@ -187,10 +190,13 @@
                     if( $(".moving_box").length != 1){
                         var box_width = parseInt($(".moving_box:last  ").css("width").split("p"));
                         console.log(box_width)
-                        console.log($(".moving_box:last  ").offset({top: 150, left: (box_width/3.5* (current_index + 1)) - 325  }) )
-                        
+                        $(".moving_box:last  ").offset({top: 150, left: (box_width/3.5* (current_index + 1)) - 325  })
+                        //positioning based on boxed width
                         
                         current_index += 1;
+                        if (current_index % 4 == 0){
+                            carousel_box(current_index);
+                        }
                         if (diff_specs > current_index) {
                             copy_box(current_index);
                         }
@@ -198,26 +204,32 @@
                     
                     else {
                         $(".moving_box").offset({top: 150, left: 20})
-                        console.log($(".container > .title ").offset().left    )
+                        // console.log($(".container > .title ").offset().left)
                         current_index += 1;
                         copy_box(current_index);
                     }
                 }
+                
+                function carousel_box (current_index) {
+                    //this function puts the assembled boxes into a custom made carousel
+                    console.log($(".moving_box"));
+                    if (current_index > 4){
+                        
+                        $(".carousel_wrap:last").after($carousel_wrap.clone())
+                    }
+                    //already made initial carousel wrap
+                    while(carousel_wrap_counter != current_index) {
+                        $(".carousel_wrap:last").append($(".moving_box").eq(carousel_wrap_counter))
+
+                        carousel_wrap_counter += 1;
+                        
+                    }
+                    //places boxes in carousel wrap you do not need to place them again
+                    
+                    
+                }
                 // copy_box();
-                declare_box(site_info,site_info.length,0);
-
-
-
-            
-            
-
-            
-
-
-
-            
-            
-            
+                declare_box(site_info,site_info.length ,0);
             });
             
 
@@ -233,6 +245,7 @@
             </div>
         </div>
         
+        <div class = "carousel_wrap"></div>
 
 
 
@@ -258,6 +271,8 @@
                 </div>
              </div>
         </div>
+        
+        
 
 
         
