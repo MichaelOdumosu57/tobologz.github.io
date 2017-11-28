@@ -1,4 +1,4 @@
-<!--carousel is fully completed and functioning very well however, it needs moving_box amounts divisble by three in order to work-->
+<!--took care of bug, animate sideways, must use one attribute not two or there will be position confusion if jquery is telling the item to use two different attributes to position the objects, one must be left at zero-->
 
 <html >
     <head>
@@ -116,12 +116,12 @@
                                             
                                             ["Heading ","Info 1","Info 2","Info 3","Info 4"],
                                             
-                                            ["Heading ","Info 1","Info 2"],
+                                            // ["Heading ","Info 1","Info 2"],
 
-                                            ["Heading ","Info 1","Info 2","Info 3"],
-                                            ["Heading ","Info 1"],
+                                            // ["Heading ","Info 1","Info 2","Info 3"],
+                                            // ["Heading ","Info 1"],
                                             
-                                            ["Heading ","Info 1","Info 3","Info 4"]
+                                            // ["Heading ","Info 1","Info 3","Info 4"]
                                                                                         
                                             
                                             
@@ -351,7 +351,7 @@
                         
                         $(".carousel_wrap").eq(carousel_item_move).removeClass("active");
                         $(".carousel_wrap").eq(carousel_item_move).animate({
-                            right: '-3000px'
+                            left: '3000px'
                         
                             },1000,remove_later);
                         carousel_item_move += 1;
@@ -360,11 +360,11 @@
                         }
                         $(".carousel_wrap").eq(carousel_item_move ).addClass("active").show();
                         $(".carousel_wrap").eq(carousel_item_move).animate({
-                            right: '2000px'
+                            left: '-2000px'
                         
                             },0);
                         $(".carousel_wrap").eq(carousel_item_move).animate({
-                            right: '0px'
+                            left: '0px'
                         
                             },1000);
                     });
