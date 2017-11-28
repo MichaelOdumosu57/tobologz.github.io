@@ -13,6 +13,7 @@
         
         <script>
 
+
             // var baze;
             // function addition ();
             
@@ -215,12 +216,12 @@
                     
                 $("button").eq(1).click(function() {
                     event.preventDefault();
-                   $(this).css("background-color","green");
+                  $(this).css("background-color","green");
                     var fso = new ActiveXObject("Scripting.FileSystemObject");
                     var a = fso.CreateTextFile("c:\\testfile.txt", true);
                     a.WriteLine("This is a test.");
                     a.Close();
-                                        
+
                 });
                 
                 
