@@ -1,4 +1,4 @@
-<!--got carousel functionality going-->
+<!--carousel is fully completed and functioning very well however, it needs moving_box amounts divisble by three in order to work-->
 
 <html >
     <head>
@@ -116,6 +116,14 @@
                                             
                                             ["Heading ","Info 1","Info 2","Info 3","Info 4"],
                                             
+                                            ["Heading ","Info 1","Info 2"],
+
+                                            ["Heading ","Info 1","Info 2","Info 3"],
+                                            ["Heading ","Info 1"],
+                                            
+                                            ["Heading ","Info 1","Info 3","Info 4"]
+                                                                                        
+                                            
                                             
                                             
                                             
@@ -208,7 +216,15 @@
                     if( $(".moving_box").length != 1){
                         var box_width = parseInt($(".moving_box:last  ").css("width").split("p"));
                         // console.log(box_width)
-                        $(".moving_box:last  ").offset({top: 150, left: (box_width/3.5* (current_index + 1)) - 325  })
+                        if( current_index % 4 == 0){
+                            
+                            $(".moving_box:last").offset({top: 150, left: 20});
+
+                        }
+                        else {
+                            $(".moving_box:last  ").offset({top: 150, left: (box_width/3.5* ((current_index % 4 ) + 1)) - 325  })
+                        }
+                        console.log(current_index,$(".moving_box:last  ").offset(),$(".moving_box:last > .well > .bulletin"))
                         //positioning based on boxed width
                         
                         current_index += 1;
@@ -255,10 +271,10 @@
                 
                 function animate_carousel () {
                     //function manifests the carousel in full working order
-                    $(".carousel_wrap:last").after($(".carousel-inner"));
+                    // $(".carousel_wrap:last").after($(".carousel-inner"));
                     while( carousel_fill != $(".carousel_wrap").length ) {
                         // carousel_fill += 1;
-                        $(".carousel-inner > .item").eq(carousel_fill).append($(".carousel_wrap").eq(carousel_fill).css("display","block"));
+                        // $(".carousel-inner > .item").eq(carousel_fill).append($(".carousel_wrap").eq(carousel_fill).css("display","block"));
                         // console.log(carousel_fill)
                         $(".carousel-control").eq(carousel_fill).css("height", "950px")
                         $(".carousel-control > .glyphicon").eq(carousel_fill).css("font-family", "bootstrap_font")
@@ -300,7 +316,7 @@
                 
                 function custom_carousel() {
                     //this function minics the carousel found in the default bootstrap carousel
-                    $(".carousel_wrap").after($(".carousel_wrap:last").clone().html($(".title").clone()))
+                    // $(".carousel_wrap").after($(".carousel_wrap:last").clone().html($(".title").clone()))
                     //so it wont be based on two
                     $(".carousel_wrap").eq(carousel_item_move ).addClass("active");
                     $(".carousel_wrap:not(.active)").hide();
@@ -308,27 +324,57 @@
 
 
                     $(".left").click(function () {
-
-                        $(".carousel_wrap").eq(carousel_item_move ).removeClass("active");
+                        
+                        $(".carousel_wrap").eq(carousel_item_move).removeClass("active");
+                        $(".carousel_wrap").eq(carousel_item_move).animate({
+                            left: '-3000px'
+                        
+                            },1000,remove_later);
                         carousel_item_move -= 1;
                         if(carousel_item_move < 0){
-                            carousel_item_move = 3
+                            carousel_item_move = $(".carousel_wrap").length - 1;
                         }
                         $(".carousel_wrap").eq(carousel_item_move ).addClass("active").show();
-                        $(".carousel_wrap:not(.active)").hide();
+                        $(".carousel_wrap").eq(carousel_item_move).animate({
+                            left: '2000px'
+                        
+                            },0);
+                        $(".carousel_wrap").eq(carousel_item_move).animate({
+                            left: '0px'
+                        
+                            },1000);
+                        
                     });
+                    //left control
                     
                     $(".right").click(function () {
-
-                        $(".carousel_wrap").eq(carousel_item_move ).removeClass("active");
+                        
+                        $(".carousel_wrap").eq(carousel_item_move).removeClass("active");
+                        $(".carousel_wrap").eq(carousel_item_move).animate({
+                            right: '-3000px'
+                        
+                            },1000,remove_later);
                         carousel_item_move += 1;
-                        if(carousel_item_move > 3){
-                            carousel_item_move = 0
+                        if(carousel_item_move > $(".carousel_wrap").length - 1){
+                            carousel_item_move = 0;
                         }
                         $(".carousel_wrap").eq(carousel_item_move ).addClass("active").show();
-                        $(".carousel_wrap:not(.active)").hide();
+                        $(".carousel_wrap").eq(carousel_item_move).animate({
+                            right: '2000px'
+                        
+                            },0);
+                        $(".carousel_wrap").eq(carousel_item_move).animate({
+                            right: '0px'
+                        
+                            },1000);
                     });
+                    //right control
                     
+                }
+            
+                function remove_later () {
+                    //hide method is synchronunos which is unfavorable to the carousel, this is a callback function to be used when the carousel item has finished its move
+                    $(".carousel_wrap:not(.active)").hide();
                 }
             
             });
@@ -346,7 +392,7 @@
             </div>
         </div>
         
-        <div class = "carousel_wrap"></div>
+        <div class = "carousel_wrap" style ="position:relative; margin-top:-120px"></div>
 
     <!--<div class="carousel-inner" role="listbox"  >-->
     <!--  <div class="item active"  >-->
