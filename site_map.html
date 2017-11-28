@@ -1,4 +1,4 @@
-<!--took care of bug, animate sideways, must use one attribute not two or there will be position confusion if jquery is telling the item to use two different attributes to position the objects, one must be left at zero-->
+<!--I think i fixed a bug here with the carousel not sliding properly, there is also a major bug when there are not a even amount of moving boxes for the carousel wrap-->
 
 <html >
     <head>
@@ -116,12 +116,12 @@
                                             
                                             ["Heading ","Info 1","Info 2","Info 3","Info 4"],
                                             
-                                            // ["Heading ","Info 1","Info 2"],
+                                            ["Heading ","Info 1","Info 2"],
 
-                                            // ["Heading ","Info 1","Info 2","Info 3"],
-                                            // ["Heading ","Info 1"],
+                                            ["Heading ","Info 1","Info 2","Info 3"],
+                                            ["Heading ","Info 1"],
                                             
-                                            // ["Heading ","Info 1","Info 3","Info 4"]
+                                            ["Heading ","Info 1","Info 3","Info 4"]
                                                                                         
                                             
                                             
@@ -131,6 +131,7 @@
                     var carousel_wrap_counter = 0; //counter for amount of boxes in the carousel item
                     var carousel_fill = -1; //counter for filling the carousel inner items (carousel functionality) for some reason it needs to be negative one not zero
                     var carousel_item_move = 0; //lets carousel know which item it is showing
+                    var hold_on = 0; //fixes carousel functionality
                                         
             $(document).ready(function() {
                 //jquery global objects
@@ -323,13 +324,18 @@
                     //way to hide the others
 
 
-                    $(".left").click(function () {
+                    $(".left").click(function (event) {
                         
+                        if(hold_on > 1) {
+                            return;
+                        }
+                        hold_on += 1;
                         $(".carousel_wrap").eq(carousel_item_move).removeClass("active");
                         $(".carousel_wrap").eq(carousel_item_move).animate({
                             left: '-3000px'
                         
                             },1000,remove_later);
+                            // console.log(event,varplease)
                         carousel_item_move -= 1;
                         if(carousel_item_move < 0){
                             carousel_item_move = $(".carousel_wrap").length - 1;
@@ -347,8 +353,13 @@
                     });
                     //left control
                     
-                    $(".right").click(function () {
+                    $(".right").click(function (event) {
                         
+                        if(hold_on > 1) {
+                            return;
+                        }
+                        console.log(hold_on)
+                        hold_on += 1;
                         $(".carousel_wrap").eq(carousel_item_move).removeClass("active");
                         $(".carousel_wrap").eq(carousel_item_move).animate({
                             left: '3000px'
@@ -375,6 +386,7 @@
                 function remove_later () {
                     //hide method is synchronunos which is unfavorable to the carousel, this is a callback function to be used when the carousel item has finished its move
                     $(".carousel_wrap:not(.active)").hide();
+                    hold_on -=1;
                 }
             
             });
