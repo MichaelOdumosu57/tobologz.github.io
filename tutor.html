@@ -1,0 +1,663 @@
+://html.net/tutorials/css/lesson5.php
+LYNDA.COM/SMARTER
+
+<html>
+Console
+Console.log(object);
+
+"describes everything in the object, so you can find the right values
+
+Javascript functions
+callback functions,
+    (functions used as an argument
+higher order function
+    functions that call callback function
+
+
+Javascript definition
+let - to have a variable exist only in an algorithm
+    syntax:
+    let [expression]
+
+var - regular
+    syntax:
+    var [expression]
+
+const - allows you to change anything inside the object as long as you do not redefine it
+    syntax:
+    const [expression]
+Javascript window setting
+"window.scroll(400, 0)"
+puts the page at the preferred place for scrolling
+
+window.location = $("a").attr("href");
+when the console hits this code it is just like pressing the link itself
+however this one is really powerful and hard to stop to stop it you need a function that
+has a callback paramenter
+
+window.open($(this).attr('href') );
+opens in new window
+              
+
+
+
+JavaScript CSS editing
+to retrieve text from an elemnt
+document.getElementById([id]).textContent
+
+to change the style of an object
+
+document.getElementById(id).style.[property] = "new style"
+
+when there is more than one element to change
+
+var change = document.getElementsByTagName("button")[index]
+
+remember give javascript an id for the object to refer to
+
+JavaScript ShadowDOM
+https://www.html5rocks.com/en/tutorials/webcomponents/shadowdom-101/
+
+Javascript Time
+make timers
+   setTimeout(action, milliseconds) - browswer waits before execution
+   setInterval(codeToExecute, timeIntervalInMilliseconds) - executes code at intervals
+delete timers
+   clearTimeout(timerVariable) clears timeout
+   clearInterval(timerVariable) clears interval
+using inamges properly
+    var myNewImage = new Image();
+    myNewImage.src = "images/testimage.jpg";
+
+
+Javascript submitting forms
+<form id="myForm" action="#" method="post"> - makes submission form
+<fieldset> -- set of associated fields
+<label for = "text"><input type = 'text'>  - to label a box
+
+
+
+Javascript cookies
+! document.cookie - if no cookies left
+escape() = make sure var name has no unallowed characters
+
+Set expiry day
+   var expiryDate = new Date();
+   expiryDate.setTime(expiryDate.getTime() + (60 * 1000));
+
+create a cookie
+   var cookieName = "Test Cookie";
+   var myCookie = escape(cookieName)
+   document.cookie = "myCookie=" + myCookie + ";" + "expires=" + expiryDate.toGMTString() + ";";
+
+Using cookies
+   unescape() to unremove unallowed characters for use
+   var myCookieString = unescape(document.cookie);
+   var dataList = myCookieString.split(";");
+   var neededlist = dataList.split("=")
+   document.write(neededlist[1])
+
+
+
+Javascript DOM (Document Object)
+document.title;
+document.URL;
+document.lastModified;
+document.styleSheets; //returns list of all the stylesheets the page is using
+document.getElementsByTagName("li"); a list is made
+listElems[i].style.backgroundColor = "red";
+listElems[i].style.color = "white";
+How to create new elements
+   document.createElement("p");
+   document.body.appendChild(newParagraph);
+   document.createTextNode("Hello DOM standard");
+   newParagraph.appendChild(newTextPara);
+to set an attribute
+   newParagraph.setAttribute("id", "newParagraph");
+		
+to delete elements
+    var remove = document.getelementById()
+   document.body.removeChild();
+
+Javascript Arrays
+ways to make it
+   new Array();
+   new Array(item0, item1, item2 ...)
+   var colors = ["green", "red"];
+loop arrays
+    for(item in items)
+var colors = ["green", "red",]
+colors[1] = 'pick"
+array.sort()- sorts the array
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.push("Kiwi");
+array.indexOf(x), sees where x is in the program
+array.sort((function(a,b) {
+
+      return b - a;
+  });
+
+returns array in decreasing order, can also be used on
+objects
+make sure to use console log to know what you are doing
+to delete elements
+array.splice([index],[amt to be removed]);
+
+Javascript Math
+Math.PI = value of pi
+Math.sqrt() = sqrt of a value
+parseInt()/parseFloat() - to convert strings to numbers;
+isNaN() to check whether a value is or is not a number;
+function sortsAscending(a, b) -small to big # a-b
+function sortDescending(a, b)-big to small # b-a
+array.push(value) - to add to an array
+array.pop(value)- take a value
+array.shift- takes the first value
+
+
+
+JavaScript Dates
+new Date().toLocaleDateString(); - adjust the date
+new Date(milliseconds).toLocaleDateString(); - gives date counting milliseconds from 1/1/1970
+new Date("10 November, 2011").toLocaleDateString(); - you put in your own date
+//new Date(year, month, day, hours, minutes, seconds, milliseconds) - only year and month are req, others optional
+myDate.getDate()); - gets the number date
+myDate.getTime());-  gets the time in milliseconds from 1/1/1970
+myDate.getFullYear()); - gets the current year
+myDate.getMonth()); - gets number representation of month (Jan - Dec 0-11)
+myDate.getDay()); - gets number representation of the day of the week (Sunday -Sat , 0-6)
+ myDate.getHours(); - gets hours
+myDate.getMinutes();- gets minutes
+var mySetDate = myDate.setFullYear(2011, 9, 31); - create the object then change the date
+
+
+
+
+JavaScript strings
+length property;
+�toLowerCase()/toUpperCase();
+�match();
+�replace();
+�indexOf().
+toString();            changes a number to a string
+
+
+
+JavaScript loops
+var value = document.getelementbyID("element id")
+for( var i = 1; i >stop; i++)
+{  value.innerHTML += 'img  src = "png.jpg"'
+
+
+JavaScript comparison
+== equal to
+=== equal to and same type
+
+JavaScript Text
+Just like python
+
+JavaScript Events
+ onfocus, onblur, onmouseover, onmouseout and onsubmit attributes of an HTML element.
+onclick="alert('Going anywhere? Not so fast!'); return false;">
+
+
+
+
+
+
+
+
+
+
+
+CSS Fonts
+
+to import and use fonts directly in html
+
+<style>
+@font-face {
+  font-family: 'ciclefina';
+  src: url('fonts/cicle_fina-webfont.eot');
+  src: url('fonts/cicle_fina-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/cicle_fina-webfont.woff2') format('woff2'),
+         url('fonts/cicle_fina-webfont.woff') format('woff'),
+         url('fonts/cicle_fina-webfont.ttf') format('truetype'),
+         url('fonts/cicle_fina-webfont.svg#ciclefina') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+    font-family: 'ciclefina';
+}
+
+ass a css property
+
+eot ,woff2, wofff, ttf and otf are font files, newest to oldest respectively
+you want to use newest to oldest because newest file converter know about the older ones so there wont be conflict or bugs
+you use the optional format so the browser can find the right file converter faster
+after that the font is a font family you can use as regular
+</style>
+
+
+CSS attributes
+
+aria-hidden for people with disabilities
+    aria-hidden property tells screen-readers if they should ignore the element.
+
+
+
+CSS Zoom
+body {
+zoom: [percent value]%;
+}
+
+
+CSS selectors
+http://www.w3schools.com/cssref/css_selectors.asp
+
+
+CSS check
+not all browers agree when it comes to CSS
+go here to check
+http://jigsaw.w3.org/css-validator/
+CSS depth
+#id {
+	...
+	z-index: 1-as many pictures
+	
+}
+
+<img id = "id" src "gif.jpg">
+
+CSS position
+
+overflow:auto
+overflow: hidden                          // prevents unecessary view
+max-height:value; overflow:scroll  //starts document where you want it to see
+#box4 {
+		position:absolute;
+		bottom: 50px;
+		left: 50px;
+	}
+according to page
+
+#dog1 {
+		position:relative;
+		left: 350px;
+		bottom: 150px;
+	}
+	#dog2 {
+		position:relative;
+		left: 150px;
+		bottom: 500px;
+	}
+relative to each other
+top,right,bottom left
+
+CSS Dimensions
+
+Height
+Width
+
+height:
+width:
+
+rem, px, em, %, cm
+creates a box w/ dim for text
+
+CSS Float
+<div id = "this_pict">
+		<img src= "butterfly.gif"/>
+	</div>
+<p> ... </p>
+#this_pict {
+		float: right;
+		width: 500px
+	}
+put picture and text together
+
+-colums
+ make width under 50%
+
+float :left right
+clear left right, both none
+
+clear,
+<p class ="floatstop"> sdsag </p>
+for putting text under a picture
+
+
+CSS box model
+
+border:
+
+p {
+		border-width: 1px;
+		border-style: solid;
+		border-color: blue;
+	}
+p {
+		border: 1px solid blue;
+	}
+	
+	
+h1 {
+		border-top-width: thick;
+		border-top-style: solid;
+		border-top-color: red;
+
+		border-bottom-width: thick;
+		border-bottom-style: solid;
+		border-bottom-color: blue;
+
+		border-right-width: thick;
+		border-right-style: solid;
+		border-right-color: green;
+
+		border-left-width: thick;
+		border-left-style: solid;
+		border-left-color: orange;
+	}
+	[border-width] 1px - 10px, thin medium thick
+	[border-style] dotted dashed solid
+			double groove
+			ridge inset outset
+	[border-color] rgba(x,y,z,w) (0-255 fr values),-a is for dimness "color name #AAFFAA
+    [border-radius] 1px - 500px, from a square to a circle image
+margin:
+body {
+		margin-top: 100px;
+		margin-right: 40px;
+		margin-bottom: 10px;
+		margin-left: 70px;
+	}
+	
+body {
+	margin: 100px 40px 10px 70px;
+	}
+
+padding:
+h1 {
+		background: yellow;
+		padding: 20px 20px 20px 80px;
+	}
+
+h2 {
+	background: orange;
+	padding-left:120px;
+	}
+	
+	
+CSS class
+<h1 id="c1">Chapter 1</h1>
+
+#c1 {
+		color: red;
+	}
+
+<a href="ri.htm" class="whitewine">
+
+a class
+a.whitewine {
+		color: #FFBB00;
+	}
+
+{fill:   #AABBCC;}
+	#ABC;}
+	color;}
+	rgba();}
+
+class = "[class_1];[class_2]; ....;"
+be careful
+
+
+
+
+CSS links
+element : (unvisited)
+	   visited
+	   hover
+           active
+td {
+
+  opacity: 0.4;
+  transition: opacity 420ms ease-in-out;
+}
+td:hover {
+  opacity: 1;
+}
+
+
+//changes when you hover
+
+
+
+
+
+CSS text
+text-indent: 30px;         indents the paragraph
+
+text-align: right;           Like MS word
+            left;
+            center;
+            justify;          Straigtens it out
+
+text-decoration: underline;
+                 overline;
+                 line-through;
+                  blink;
+	               underline overline;
+
+text-transform:letter-spacing:text-decoration:text-align:text-indent:
+
+
+CSS font
+(not text)
+serif
+sans-serif
+cursive
+fantasy
+monospace
+font-style: italic;
+            normal;
+            oblique;
+
+
+font-variant: small-caps;
+              normal;
+
+font-weight:   bold;
+               normal
+               100-900                         In hundreds
+
+font-size: 30px;             absolute
+           12pt;
+           120%;             relative to zoom
+           1em;
+
+font family: family-name, generic-family     desired font if not available uses fonts
+                                             family which has fonts with similar
+                                             features
+                                              
+             "family name"                   if a font name includes more than one word
+                                             place in quotes
+
+
+The order of values for font is:
+font-style | font-variant | font-weight | font-size | font-family
+
+CSS irreg shapes
+stroke: #AABBCC;  //stroke = border
+	#ABC;
+	color;
+	rgba();
+
+stroke-width: px;
+
+stroke-dasharray: 1-9,1-12; //thickness, amount of dots
+
+stroke-linejoin: round;
+
+fill:   #AABBCC;
+	#ABC;
+	color;
+	rgba();
+
+display : none
+
+fill-opacity: .1-1 // how dim text is
+
+text-anchor: middle
+
+
+CSS Background
+background-color: #FFCC66;
+                  red;
+                  rgba(x,y,z);
+
+background-image: url("butterfly.gif");
+
+background-repeat: no-repeat; (prints image once
+                   repeat-x   (repeats horiz
+                   repeat-y   (repats vert
+                   repeat     (repeat horiz and vert
+
+background-attachment: fixed;   (stays on page
+                       scroll;  (scrolls with page
+
+background-position: right   bottom;
+                     left    top;
+                     middle  center;
+
+                     cm        cm        from top left
+                      %         %         from top left
+                      px        px         Where pixel is located on monitor
+
+background-size      cm        cm        from top left
+                      %         %         from top left
+                      px        px         from top left
+                      rem       rem
+
+The list of order is as follows:
+[background-color] | [background-image] | [background-repeat] | [background-attachment] | [background-position]
+If a property is left out, it will automatically be set to its default value.
+For example, if background-attachment and background-position are taken out of the example:
+
+CSS color
+color: #ff0000;
+       #fff
+        red;
+        rgb(x,y,z)
+        rgba(x,y,z,w); -a is for dimness
+
+    linear-gradient
+    ([number -360 to 360]deg,[color],[color] ,...);
+        [number -360 to 360] changes orientation on how color lines are drawn as they change across the screen
+        
+        you need at least 2 colors for the linear gradient function to work
+
+        it work with image and so to use it
+
+        also
+            background: linear-gradient(135deg, orange, orange 60%, cyan);
+            so instead of stopping at the middle it can stop at a certain point
+
+        for classic gradients
+            https://uigradients.com/
+
+        another function
+
+            repeating-linear-gradients
+            radial-gradient(shape size at position, start-color, ..., last-color);
+            repeating-radial-gradient(shape size at position, start-color, ..., last-color);
+
+        if in different browsers use -webkit -o or -moz before function call
+}
+CSS Files
+
+element
+{...
+}
+
+element.class
+{...
+}
+
+.class
+{...
+}
+
+#id
+{..
+}
+
+CSS Applied
+1. In line
+<element style = ";">
+
+2.Internal using own element (used in head element)
+<style type = "text/css">
+...
+</style>
+
+3. make a .css file
+in html
+<link rel="stylesheet" type="text/css" href="style/style.css" />
+
+HTML tables
+<table>
+border = "1" sets thickness
+width = "30%" sets table width relative to scrn
+<tr>         belongs in <td>
+<td>         belongs in <tr>
+align =      left
+             middle
+             right
+
+valign =    top
+            center
+            bottom
+colspan =   3 how many horizontal boxes a cell takes
+rowspan =   3 how many vertical boxes a cell takes
+
+
+
+HTML images
+<img>
+src =   " gif.jpg.png" opens image
+        " folder/gif.jpg.png" - goes through folder
+        " web.net/gif.jpg"  - gets it from website
+  
+alt =   if original image doesnot work
+
+width = '100px'   changes width and height of pictures
+height = '100px'  resizes in browers, actual same is not changed, use img editing
+
+
+
+        
+
+
+HTML links
+<a>
+href = "website.html"
+       "../website.html" - go up subdir
+        "subfolder/web.html" - go down dir
+       "mailto:nobody@html.net" open default email program
+        #heading - links to part in same page
+        
+title = 'value' (on mouse hover)
+
+put <img> after <a> to make image a link
+
+put [target = "_blank"] to make your link open up in a new page
+
+
+HTML text
+<h1-7> <p>
+style = background-color: #ff0000 ;
+                          red;
+                           rgba(x,y,z);
+
+</html>
