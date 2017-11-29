@@ -540,7 +540,7 @@ jquery clone
 
     to make more clones you must clone the clone.
 
-        var [clone_copies] = [single_clone].clone()
+        jquery_function_action([single_clone].clone());
 
     because here you are not cloning an object you are cloining the function that makes the object, and in this initialization is a function call
 
