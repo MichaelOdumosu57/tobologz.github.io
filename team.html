@@ -140,15 +140,23 @@
             $(document).ready(function() {
                 $(".bio_class").click(function (event) {
                     event.preventDefault();
+
                     $(".bio_resize").show(function () {
                        $(this).delay(1000).css({"z-index":"1","position":"fixed","opacity":"1"})
                        .animate({
                           height: "97%",
                           width: "97%",
                           left: "-47em",
-                          top:"20em"
+                          top:"20em",
+                          opacity:"1    "
     
                        },3000);
+                   $("div:not(.bio_resize), h1").animate({
+                       opacity:".5"
+                   },3000);
+                       console.log($("[display=block] "))
+                       console.log($("head ~ *"))
+
                     });
                     
                 });
@@ -162,6 +170,9 @@
                         top:"40em",
                         opacity :"0"
                     },2000)
+                   $("div:not(.bio_resize), h1   ").animate({
+                       opacity:"1"
+                   },3000);
                 });
             });
         </script>
@@ -314,7 +325,7 @@
 <!--</div>-->
 
         <div class="container move_7" style = "position:relative; ">
-            <div class="well " id ="web_colors" style ="height: 300px; width: ` ; margin-top: 25px; text-align:center; margin-left:-75px;"   >
+            <div class="well " id ="web_colors" style ="height: 300px; width:1300px ; margin-top: 25px; text-align:center; margin-left:-75px;"   >
                   2017 Tobologz inc.
                   <br> All rights reserved
                   <br> Contact information

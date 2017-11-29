@@ -1,0 +1,189 @@
+<!--Continued work on the about page describing the company and its goals for the present and the far future, also made a template html page for all the other site pages to follow -->
+
+<html>
+    <head>
+        <script src="./jquery-1.10.2.js"></script>
+        <script src="./jquery-ui.js"></script>
+        <script src="./footer.js"></script>
+        <!--<script src="./bootstrap.min.js"></script>-->
+        <!--<title> Tobologz.com </title>-->
+        <link rel="stylesheet" href="./bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Amatic+SC" />
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
+        <!--glyphicons-->
+
+        
+        <style>
+        
+            @font-face {
+              font-family: 'bootstrap_font';
+              src: url('./glyphicons-halflings-regular.woff2') format('woff2'),
+                     url('./glyphicons-halflings-regular.woff') format('woff'),
+                     url('./glyphicons-halflings-regular.ttf') format('truetype');
+                     
+              font-weight: normal;
+              font-style: normal;
+            }
+            
+            html {
+                font-family : "bootstrap_font";
+            }
+            
+            
+            #web_colors{
+                        color:pink;
+                        background-color: rgba(0,0,0,.8);
+                        border-radius: 25px;
+                        
+                        
+            }
+
+            #heading {
+                        text-align:center;
+                        color:rgba(0,0,0,.8);
+                        background-color:pink;
+                
+            }
+            
+            .square_bullets {
+                             margin-top: 20px;
+                             margin-left: -5px;
+                             opacity:.5;
+                             background-color:pink;
+                             height:25px;
+                             width:25px;
+                
+            }
+            
+            a:visited, a:hover{                         /* disables unwanted  link changes */
+                color:white;
+                text-decoration-line:none;
+                text-decoration-style: none;
+                text-decoration:none;
+            }
+            /*make sure blue underline event gets taken out*/
+        
+            .fa {
+                padding: 5px;
+                font-size: 30px;
+                width: 40px;
+                height:40px;
+                text-align: center;
+                text-decoration: none;
+                border-radius: 50%;
+                color:white;
+            }
+            
+            .fa-facebook {
+                background-color: #3B5998;
+                
+            }
+
+            
+            .fa-twitter {
+                background-color:#55ACEE;
+            }
+            
+            .fa-instagram {
+                background-image: linear-gradient(-135deg,#1400c8,#b900b4,#f50000);
+            }
+            
+            body {
+                background-image: linear-gradient(-135deg,#1400c8,#b900b4,#f50000);
+                /*background-size: 100% 100%;*/
+                /*background-repeat: no-repeat;*/
+                /*figure out how to change its size*/
+            }
+            
+            #homepage_well {
+                 
+                background-repeat: no-repeat;
+                background-size:4000px 1000px;
+                height: 800px;
+            
+            }
+            
+            #img_except2 {
+            	
+                width: 200px;
+                height:200px;
+            	text-align: center;
+            	background-color: white;
+            	z-index:1;
+            	border-radius:400px;
+                top: 275px;
+                right: 900px;
+                
+            }
+
+            h1 {
+              margin: .67em 0;
+              font-size: 2em;
+              background-color: yellow;
+              text-align: center;
+            }
+            
+            a.bio_class:hover,
+            a.bio_class:focus {
+              color: orange;
+              text-decoration: underline;
+            }
+
+            
+
+            
+
+            
+        </style>
+        <script>
+            $(document).ready(function() {
+                
+            });
+        </script>
+    </head>
+    <body>
+        
+        <div class="container ">
+            <div class="well title" id ="web_colors" style ="height:20px; margin-top:30px;  text-align:center; font-size: 30px; padding: 40px;  ">
+                <a href ="./index.html" style ="color:pink; text-decoration-line:none;">Tobologz.com </a>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="well title" id ="web_colors" style ="height:20px; margin-top:30px;  text-align:center; font-size: 30px; padding: 30px;  ">
+                <h3 style = "font-size: 30px; margin-top:-15px">About</h3>
+            </div>
+        </div>
+        
+        <div class = "container">
+            <div class = "well" style = "height:1000px; background-color:purple; background-image: url('./big_world.jpg')">
+                <h1 style= "font-size: 2.25em; position: relative; margin-top: 1em">  Our Mission </h1>
+                <div class = "well"style = "position:relative; height:90%; width:90%; background-color:white; opacity:.8; margin:auto">
+                    <h2 style ="text-align:center">An idea for a website that can create websites for people ranging from businesses to personal lives, tobologz was designed to be a step above the social media of the day. Why the word tobologz, why not Meredel , Runejet or something memeorable, well in this day and age creativity and color run dry as everything has become efficient and optimized. The president Michael Odumosu thought that creativity should be in the product not the name or the presentation alone. Tobologz plans to bring a new dimension in the software starting with website development. As we build your website, we learn along the way foster new relationship and work toward a brighter, diverse future were fastidious perfection and connection are not the goal but aesthetic manifestation of the desired traits of the website</h2>
+                    <br/>
+                    <h2 style ="text-align:center">Well if you are wondering who will be assisting you that will be me, yes my name is Tobologz and the president intended me to be more than a business, the president intended me to be person. See the president cares about our customers and want to provide the best support than we can. As a person I am growing, but I am growing fast and in the far future hopefully I grow to be the person you love and trust</h2>
+                </div>
+            </div>
+            
+        </div>
+        <div class="container move_7" style = "position:relative; ">
+            <div class="well " id ="web_colors" style ="height: 300px; width:1300px ; margin-top: 25px; text-align:center; margin-left:-75px;"   >
+                  2017 Tobologz inc.
+                  <br> All rights reserved
+                  <br> Contact information
+                  <br> Phone 929-353-8278
+                  <br> All images on this site are owned by Tobologz and Tobologz studios incoporated
+                  <br> All copyright infrigement are subject to prosecution by laws and all applicable means
+                  <br> Tobologz has no affilate resources and uses bootstrap styling,jquery, css ,javascript and html5 technologies for its work
+                  <br> for additional information requring website development see below
+                  <div class ="footer_box">
+                        <div id = "web_colors"  style ="width:200px; height:100px; border-radius:0px; background-color:transparent; border: 1px solid pink; margin-left:40px;" >
+                                <br> Personal Website
+                                <br> Tel : xxx-xxx-xxxx
+                                <br> email: example@gmail.com
+                       </div>
+                  </div>
+            </div>
+        </div>
+    </body>
