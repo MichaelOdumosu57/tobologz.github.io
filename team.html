@@ -1,4 +1,4 @@
-<!--Added heading to team bio as well as created links in the page -->
+<!--In each bio, converted from opening a new page to having an animated well which will contain the bio of every important worker of the company -->
 
 <html>
     <head>
@@ -138,7 +138,31 @@
         </style>
         <script>
             $(document).ready(function() {
-
+                $(".bio_class").click(function (event) {
+                    event.preventDefault();
+                    $(".bio_resize").show(function () {
+                       $(this).delay(1000).css({"z-index":"1","position":"fixed","opacity":"1"})
+                       .animate({
+                          height: "97%",
+                          width: "97%",
+                          left: "-47em",
+                          top:"20em"
+    
+                       },3000);
+                    });
+                    
+                });
+                
+                $(".bio_resize").click(function (event) {
+                    event.preventDefault();
+                    $(this).animate({
+                        height: "0em",
+                        width: "0em",
+                        left: "-1em",
+                        top:"40em",
+                        opacity :"0"
+                    },2000)
+                });
             });
         </script>
 
@@ -147,9 +171,11 @@
 
 <div class=" well well-sm">
 
-        <h1 style = "background-color:rgba(0,0,0,.8); color:pink; font-weight:bold; text-indent: 10px "><a href ="./index.html" style ="color:pink; text-decoration-line:none">        Tobologz.com </a></h1>
+        <h1 style = "background-color:rgba(0,0,0,.8); color:pink; font-weight:bold; text-indent: 10px "><a href ="./index.html" style ="color:pink; text-decoration-line:none">Tobologz.com </a></h1>
     
 </div>
+
+
 
 <!--<div class="well well-sm"  style ="background-color:yellow; text-align:center; fill-opacity:.1; height: 4em;" >-->
 <!--<h2 style = "position: relative; margin-top: -.00em">-->
@@ -194,6 +220,8 @@
     
 </div>
 </a>
+
+<div class = "well bio_resize" style = "position:absolute; width:50px; margin-top:-17em; margin-left:50%; display:none"></div>
 
 
 <!--<div class="container well" id ="homepage_well" style = "background-image:url(Current_Officers_Pictures/pictures/paint.png); height: 26.3em; width:90em; max-width:100%; background-size: 104.38em 26.3em; z-index:5; color:white">-->
@@ -286,7 +314,7 @@
 <!--</div>-->
 
         <div class="container move_7" style = "position:relative; ">
-            <div class="well " id ="web_colors" style ="height: 300px; width: 1300px; margin-top: 25px; text-align:center; margin-left:-75px;"   >
+            <div class="well " id ="web_colors" style ="height: 300px; width: ` ; margin-top: 25px; text-align:center; margin-left:-75px;"   >
                   2017 Tobologz inc.
                   <br> All rights reserved
                   <br> Contact information
