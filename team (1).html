@@ -198,6 +198,7 @@ xmlhttp.onload = function () {
       console.log(xmlhttp.responseXML);
       xmlDoc = xmlhttp.responseXML;
       console.log(xmlDoc);
+      console.log(xmlDoc.getElementsByTagName("header")[0].childNodes[0].nodeValue)
 $(".bio_resize > h1").text(xmlDoc.getElementsByTagName("header")[0].childNodes[0].nodeValue);
 $(".bio_resize > img").text(xmlDoc.getElementsByTagName("picture")[0].childNodes[0].nodeValue);
 $(".bio_resize > h2").text(xmlDoc.getElementsByTagName("sect1")[0].childNodes[0].nodeValue);
