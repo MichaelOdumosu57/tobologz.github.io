@@ -1,0 +1,482 @@
+<!--I think i fixed a bug here with the carousel not sliding properly, there is also a major bug when there are not a even amount of moving boxes for the carousel wrap-->
+
+<html >
+    <head>
+        <script src="./jquery-1.10.2.js"></script>
+        <script src="./jquery-ui.js"></script>
+        <script src="./footer.js"></script>
+        <!--<script src="./bootstrap.min.js"></script>-->
+        <!--<title> Tobologz.com </title>-->
+        <link rel="stylesheet" href="./bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
+        <!--glyphicons-->
+
+        
+        <style>
+        
+            @font-face {
+              font-family: 'bootstrap_font';
+              src: url('./glyphicons-halflings-regular.woff2') format('woff2'),
+                     url('./glyphicons-halflings-regular.woff') format('woff'),
+                     url('./glyphicons-halflings-regular.ttf') format('truetype');
+                     
+              font-weight: normal;
+              font-style: normal;
+            }
+            
+            html {
+                font-family : "bootstrap_font";
+            }
+            
+            
+            #web_colors{
+                        color:pink;
+                        background-color: rgba(0,0,0,.8);
+                        border-radius: 25px;
+                        
+                        
+            }
+
+            #heading {
+                        text-align:center;
+                        color:rgba(0,0,0,.8);
+                        background-color:pink;
+                
+            }
+            
+            .square_bullets {
+                             margin-top: 20px;
+                             margin-left: -5px;
+                             opacity:.5;
+                             background-color:pink;
+                             height:25px;
+                             width:25px;
+                
+            }
+            
+            a:visited, a:hover{                         /* disables unwanted  link changes */
+                color:white;
+                text-decoration-line:none;
+                text-decoration-style: none;
+                text-decoration:none;
+            }
+            /*make sure blue underline event gets taken out*/
+        
+            .fa {
+                padding: 5px;
+                font-size: 30px;
+                width: 40px;
+                height:40px;
+                text-align: center;
+                text-decoration: none;
+                border-radius: 50%;
+                color:white;
+            }
+            
+            .fa-facebook {
+                background-color: #3B5998;
+                
+            }
+
+            
+            .fa-twitter {
+                background-color:#55ACEE;
+            }
+            
+            .fa-instagram {
+                background-image: linear-gradient(-135deg,#1400c8,#b900b4,#f50000);
+            }
+            
+            body {
+                background-image: linear-gradient(-135deg,#1400c8,#b900b4,#f50000);
+                /*background-size: 100% 100%;*/
+                /*background-repeat: no-repeat;*/
+                /*figure out how to change its size*/
+            }
+            
+
+            
+
+            
+
+            
+        </style>
+        <script>
+                    
+
+                    var site_info = [
+                                            ["Heading ","Info 1","Info 2"],
+                                            ["Heading ","Info 1","Info 2","Info 3","Info 4"],
+                                            ["Heading ","Info 1"],
+                                            ["Heading ","Info 1","Info 2"],
+                                            ["Heading ","Info 1","Info 2"],
+
+                                            ["Heading ","Info 1","Info 2","Info 3"],
+                                            ["Heading ","Info 1","Info 2","Info 3"],
+                                            
+                                            ["Heading ","Info 1","Info 2","Info 3","Info 4"],
+                                            
+                                            ["Heading ","Info 1","Info 2"],
+
+                                            ["Heading ","Info 1","Info 2","Info 3"],
+                                            ["Heading ","Info 1"],
+                                            
+                                            ["Heading ","Info 1","Info 3","Info 4"]
+                                                                                        
+                                            
+                                            
+                                            
+                                            
+                                        ];
+                    var carousel_wrap_counter = 0; //counter for amount of boxes in the carousel item
+                    var carousel_fill = -1; //counter for filling the carousel inner items (carousel functionality) for some reason it needs to be negative one not zero
+                    var carousel_item_move = 0; //lets carousel know which item it is showing
+                    var hold_on = 0; //fixes carousel functionality
+                                        
+            $(document).ready(function() {
+                //jquery global objects
+                var $model_box = $(".moving_box:first").clone();
+                var $carousel_wrap = $(".carousel_wrap").clone();
+                function title () {
+                   $(".title").fadeTo(10000, 1);
+          
+                
+                    }
+                title();
+                
+                
+                function copy_box(current_index) {
+                    //this function copies the boxes that will be used as the boxes slowly slide around in the screen on site map
+                    // var i = 0;
+                    
+                    
+                    var $model = $model_box.clone();
+                    $("body").append($model);
+                    declare_box(site_info,site_info.length,current_index);
+                        
+                        
+                    
+                    
+                }
+                
+
+                
+                function declare_box(site_information, diff_specs, current_index) {
+                    //this function places all the information inside the boxes
+                    
+                        
+                    // huge array object containing all info about sites
+                    
+                    var total_shifters = site_information.length;
+                    // console.log(total_shifters)
+                    
+
+
+                    //this loop places the headers in the heading section as well as the content info
+                    var $seperate_box = $(".moving_box > .well > .container_bulletin > .well > p").eq(current_index);
+                    $seperate_box.text(site_information[current_index][0]); //heading
+                    // var $associated_sector = $(".moving_box > .well >.bulletin ").eq(i);// subsites
+                    // console.log($associated_sector)
+                    var j = 0 ; //
+                    // console.log("this is what im looking at" + j.toString())
+                    // console.log(site_information[current_index])
+                    $associated_sector = $(".moving_box:last > .well > .bulletin").clone();
+                    while (j  != site_information[current_index].length - 1) {
+                        $associated_sector_copy = $associated_sector.clone();
+                        // $(".moving_box > .well >.bulletin > p").text(site_information[i][j]);
+                        // var $associated_sector = $(".moving_box > .well >.bulletin:last").clone();
+                        // $(".moving_box > .well >.bulletin:first").eq(i).after($associated_sector);
+                        if(j == 0 ){
+                        $(".moving_box > .well > .bulletin:last > p").text(site_information[current_index][j + 1]);
+                        }
+                        
+                        else {
+                        $(".moving_box > .well > .bulletin:last").after($associated_sector_copy.css("margin-top" , "7px"))
+                        $(".moving_box > .well > .bulletin:last > p").text(site_information[current_index][j + 1]);
+                        }
+
+                        j += 1;
+
+                        // console.log($(".moving_box > .well > h3"))
+                    
+                    }
+
+                    assemble_box(current_index,diff_specs);
+                        
+                    
+                    //finished formatting now makes new boxes
+
+                    
+                    
+                }
+
+                
+                function assemble_box(current_index,diff_specs) {
+                    //this function places the boxes in their orginial order for swapping later
+                    //places four boxes on the screen for the carousel
+                    if( $(".moving_box").length != 1){
+                        var box_width = parseInt($(".moving_box:last  ").css("width").split("p"));
+                        // console.log(box_width)
+                        if( current_index % 4 == 0){
+                            
+                            $(".moving_box:last").offset({top: 150, left: 20});
+
+                        }
+                        else {
+                            $(".moving_box:last  ").offset({top: 150, left: (box_width/3.5* ((current_index % 4 ) + 1)) - 325  })
+                        }
+                        console.log(current_index,$(".moving_box:last  ").offset(),$(".moving_box:last > .well > .bulletin"))
+                        //positioning based on boxed width
+                        
+                        current_index += 1;
+                        if (current_index % 4 == 0){
+                            carousel_box(current_index);
+                        }
+                        if (diff_specs > current_index) {
+                            copy_box(current_index);
+                        }
+                        else {
+                            animate_carousel();
+                        }
+                    }
+                    
+                    else {
+                        $(".moving_box").offset({top: 150, left: 20})
+                        // console.log($(".container > .title ").offset().left)
+                        current_index += 1;
+                        copy_box(current_index);
+                    }
+                }
+                
+                function carousel_box (current_index) {
+                    //this function puts the assembled boxes into a custom made carousel
+                    // console.log($(".moving_box"));
+                    if (current_index > 4){
+                        
+                        $(".carousel_wrap:last").after($carousel_wrap.clone())
+                    }
+                    //already made initial carousel wrap
+                    while(carousel_wrap_counter != current_index) {
+                        $(".carousel_wrap:last").append($(".moving_box").eq(carousel_wrap_counter))
+
+                        carousel_wrap_counter += 1;
+                        
+                    }
+                    //places boxes in carousel wrap you do not need to place them again
+                    
+                    
+                }
+                // copy_box();
+                declare_box(site_info,site_info.length ,0);
+                // console.log(carousel_fill)
+                
+                function animate_carousel () {
+                    //function manifests the carousel in full working order
+                    // $(".carousel_wrap:last").after($(".carousel-inner"));
+                    while( carousel_fill != $(".carousel_wrap").length ) {
+                        // carousel_fill += 1;
+                        // $(".carousel-inner > .item").eq(carousel_fill).append($(".carousel_wrap").eq(carousel_fill).css("display","block"));
+                        // console.log(carousel_fill)
+                        $(".carousel-control").eq(carousel_fill).css("height", "950px")
+                        $(".carousel-control > .glyphicon").eq(carousel_fill).css("font-family", "bootstrap_font")
+                        // console.log($(".carousel-control > .glyphicon").eq(carousel_fill))
+                        carousel_fill += 1;
+                    }
+                    
+                    footer();
+                    
+                    
+                }
+                
+                // animate_carousel();
+                function footer() {
+                    //simple function that puts the footer information below everything
+                    // console.log($(".move_7").offset())
+                    $(".move_7").offset({top: 512, left:98})
+                    // footer_boxes(2,parseInt($(".move_7 > .well").css("width").split("p")[0]));
+                    custom_carousel()
+                }
+                
+
+                
+                function custom_carousel() {
+                    //this function minics the carousel found in the default bootstrap carousel
+                    // $(".carousel_wrap").after($(".carousel_wrap:last").clone().html($(".title").clone()))
+                    //so it wont be based on two
+                    $(".carousel_wrap").eq(carousel_item_move ).addClass("active");
+                    $(".carousel_wrap:not(.active)").hide();
+                    //way to hide the others
+
+
+                    $(".left").click(function (event) {
+                        
+                        if(hold_on > 1) {
+                            return;
+                        }
+                        hold_on += 1;
+                        $(".carousel_wrap").eq(carousel_item_move).removeClass("active");
+                        $(".carousel_wrap").eq(carousel_item_move).animate({
+                            left: '-3000px'
+                        
+                            },1000,remove_later);
+                            // console.log(event,varplease)
+                        carousel_item_move -= 1;
+                        if(carousel_item_move < 0){
+                            carousel_item_move = $(".carousel_wrap").length - 1;
+                        }
+                        $(".carousel_wrap").eq(carousel_item_move ).addClass("active").show();
+                        $(".carousel_wrap").eq(carousel_item_move).animate({
+                            left: '2000px'
+                        
+                            },0);
+                        $(".carousel_wrap").eq(carousel_item_move).animate({
+                            left: '0px'
+                        
+                            },1000);
+                        
+                    });
+                    //left control
+                    
+                    $(".right").click(function (event) {
+                        
+                        if(hold_on > 1) {
+                            return;
+                        }
+                        console.log(hold_on)
+                        hold_on += 1;
+                        $(".carousel_wrap").eq(carousel_item_move).removeClass("active");
+                        $(".carousel_wrap").eq(carousel_item_move).animate({
+                            left: '3000px'
+                        
+                            },1000,remove_later);
+                        carousel_item_move += 1;
+                        if(carousel_item_move > $(".carousel_wrap").length - 1){
+                            carousel_item_move = 0;
+                        }
+                        $(".carousel_wrap").eq(carousel_item_move ).addClass("active").show();
+                        $(".carousel_wrap").eq(carousel_item_move).animate({
+                            left: '-2000px'
+                        
+                            },0);
+                        $(".carousel_wrap").eq(carousel_item_move).animate({
+                            left: '0px'
+                        
+                            },1000);
+                    });
+                    //right control
+                    
+                }
+            
+                function remove_later () {
+                    //hide method is synchronunos which is unfavorable to the carousel, this is a callback function to be used when the carousel item has finished its move
+                    $(".carousel_wrap:not(.active)").hide();
+                    hold_on -=1;
+                }
+            
+            });
+            
+
+            
+        </script>
+    </head>
+    
+    <body style = "max-height:300px; overflow:scroll; height:1500px">
+        
+        <div class="container">
+            <div class="well title" id ="web_colors" style ="height:20px; margin-top:30px;  text-align:center; font-size: 30px; padding: 30px;  ">
+                <h3 style = "font-size: 30px; margin-top:-15px">Site Map</h3>
+            </div>
+        </div>
+        
+        <div class = "carousel_wrap" style ="position:relative; margin-top:-120px"></div>
+
+    <!--<div class="carousel-inner" role="listbox"  >-->
+    <!--  <div class="item active"  >-->
+
+    <!--  </div>-->
+  
+    <!--  <div class="item">-->
+
+    <!--  </div>-->
+
+    <!--</div>-->
+          
+
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+
+
+
+
+
+
+        
+        <div class="container moving_box" style = "position: absolute;">
+             <div class="well " id ="web_colors" style ="height: 300px; width: 300px; "   >
+                 
+
+                 <!--<h3 id = "heading" style = " width:170px; margin-left: 50px; margin-top:-5px;">Content Here-->
+                 <!--</h3>-->
+                 <div class = "container_bulletin">
+                    <div class = "bulletin well " id = "web_colors" style= "height:40px; width 100px; border: 3px solid pink;  ">
+                        <p style = "font-size:30px; text-align:center; height:50px; margin-top:-20px"></p>
+                        <!--had to use margin there because bootstrap css was overriding things-->
+                    </div>
+                 </div>
+                <div class = "bulletin" style= "height:40px; width 100px; border: 3px solid pink; ">
+                     <p style = "font-size:30px; text-align:center; height:50px; margin:-5px">Mail</p>
+                        <!--had to use margin there because bootstrap css was overriding things-->
+                    </div>
+                </div>
+             </div>
+        </div>
+        
+        <div class="container move_7" style = "position:relative; ">
+            <div class="well " id ="web_colors" style ="height: 300px; width: 1300px; margin-top: 25px; text-align:center; margin-left:-75px;"   >
+                  2017 Tobologz inc.
+                  <br> All rights reserved
+                  <br> Contact information
+                  <br> Phone 929-353-8278
+                  <br> All images on this site are owned by Tobologz and Tobologz studios incoporated
+                  <br> All copyright infrigement are subject to prosecution by laws and all applicable means
+                  <br> Tobologz has no affilate resources and uses bootstrap styling,jquery, css ,javascript and html5 technologies for its work
+                  <br> for additional information requring website development see below
+                  <div class ="footer_box">
+                        <div id = "web_colors"  style ="width:200px; height:100px; border-radius:0px; background-color:transparent; border: 1px solid pink; margin-left:40px;" >
+                                <br> Personal Website
+                                <br> Tel : xxx-xxx-xxxx
+                                <br> email: example@gmail.com
+                       </div>
+                  </div>
+            </div>
+        </div>
+        
+        
+
+
+        
+   
+        
+        
+        
+        
+        
+        
+    </body>
+  
+  
+  
+  
+  
+  
+  
+  
+</html>

@@ -1,0 +1,399 @@
+<!--In each bio, converted from opening a new page to having an animated well which will contain the bio of every important worker of the company -->
+
+<html>
+    <head>
+        <script src="./jquery-1.10.2.js"></script>
+        <script src="./jquery-ui.js"></script>
+        <script src="./footer.js"></script>
+        <!--<script src="./bootstrap.min.js"></script>-->
+        <!--<title> Tobologz.com </title>-->
+        <link rel="stylesheet" href="./bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Amatic+SC" />
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
+        <!--glyphicons-->
+
+        
+        <style>
+        
+            @font-face {
+              font-family: 'bootstrap_font';
+              src: url('./glyphicons-halflings-regular.woff2') format('woff2'),
+                     url('./glyphicons-halflings-regular.woff') format('woff'),
+                     url('./glyphicons-halflings-regular.ttf') format('truetype');
+                     
+              font-weight: normal;
+              font-style: normal;
+            }
+            
+            html {
+                font-family : "bootstrap_font";
+            }
+            
+            
+            #web_colors{
+                        color:pink;
+                        background-color: rgba(0,0,0,.8);
+                        border-radius: 25px;
+                        
+                        
+            }
+
+            #heading {
+                        text-align:center;
+                        color:rgba(0,0,0,.8);
+                        background-color:pink;
+                
+            }
+            
+            .square_bullets {
+                             margin-top: 20px;
+                             margin-left: -5px;
+                             opacity:.5;
+                             background-color:pink;
+                             height:25px;
+                             width:25px;
+                
+            }
+            
+            a:visited, a:hover{                         /* disables unwanted  link changes */
+                color:white;
+                text-decoration-line:none;
+                text-decoration-style: none;
+                text-decoration:none;
+            }
+            /*make sure blue underline event gets taken out*/
+        
+            .fa {
+                padding: 5px;
+                font-size: 30px;
+                width: 40px;
+                height:40px;
+                text-align: center;
+                text-decoration: none;
+                border-radius: 50%;
+                color:white;
+            }
+            
+            .fa-facebook {
+                background-color: #3B5998;
+                
+            }
+
+            
+            .fa-twitter {
+                background-color:#55ACEE;
+            }
+            
+            .fa-instagram {
+                background-image: linear-gradient(-135deg,#1400c8,#b900b4,#f50000);
+            }
+            
+            body {
+                background-image: linear-gradient(-135deg,#1400c8,#b900b4,#f50000);
+                /*background-size: 100% 100%;*/
+                /*background-repeat: no-repeat;*/
+                /*figure out how to change its size*/
+            }
+            
+            #homepage_well {
+                 
+                background-repeat: no-repeat;
+                background-size:4000px 1000px;
+                height: 800px;
+            
+            }
+            
+            #img_except2 {
+            	
+                width: 200px;
+                height:200px;
+            	text-align: center;
+            	background-color: white;
+            	z-index:1;
+            	border-radius:400px;
+                top: 275px;
+                right: 900px;
+                
+            }
+
+            h1 {
+              margin: .67em 0;
+              font-size: 2em;
+              background-color: yellow;
+              text-align: center;
+            }
+            
+            a.bio_class:hover,
+            a.bio_class:focus {
+              color: orange;
+              text-decoration: underline;
+            }
+
+            
+
+            
+
+            
+        </style>
+        <script>
+            $(document).ready(function() {
+                $(".bio_class").click(function (event) {
+                    event.preventDefault();
+
+                    $(".bio_resize").show(function () {
+                       $(this).delay(1000).css({"z-index":"1","position":"fixed","opacity":"1"})
+                       .animate({
+                          height: "97%",
+                          width: "97%",
+                          left: "-47em",
+                          top:"20em",
+                          opacity:"1    "
+    
+                       },3000);
+                   $("div:not(.bio_resize), h1").animate({
+                       opacity:".5"
+                   },3000);
+                       console.log($("[display=block] "))
+                       console.log($("head ~ *"))
+
+                    });
+                    
+                });
+                
+                $(".bio_resize").click(function (event) {
+                    event.preventDefault();
+                    $(this).animate({
+                        height: "0em",
+                        width: "0em",
+                        left: "-1em",
+                        top:"40em",
+                        opacity :"0"
+                    },2000)
+                   $("div:not(.bio_resize), h1   ").animate({
+                       opacity:"1"
+                   },3000);
+                });
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.open("GET","./michael_bio.xml",false);
+xmlhttp.send([body = null]);
+xmlDoc=xmlhttp.responseXML;
+$(".bio_resize > h1").text(xmlDoc.getElementsByTagName("header")[0].childNodes[0].nodeValue)
+$(".bio_resize > img").text(xmlDoc.getElementsByTagName("picture")[0].childNodes[0].nodeValue)
+$(".bio_resize > h2").text(xmlDoc.getElementsByTagName("sect1")[0].childNodes[0].nodeValue)
+$(".bio_resize > h2").text(xmlDoc.getElementsByTagName("sect2")[0].childNodes[0].nodeValue)
+$(".bio_resize > h2").text(xmlDoc.getElementsByTagName("sect3")[0].childNodes[0].nodeValue)
+$(".bio_resize > h2").text(xmlDoc.getElementsByTagName("sect4")[0].childNodes[0].nodeValue)
+$(".bio_resize > h2").text(xmlDoc.getElementsByTagName("sect5")[0].childNodes[0].nodeValue)
+$(".bio_resize > h2").text(xmlDoc.getElementsByTagName("sect6")[0].childNodes[0].nodeValue)
+
+            });
+
+
+
+        </script>
+        
+        
+
+    </head>
+<body style = "height:90em;">
+
+<div class=" well well-sm">
+
+        <h1 style = "background-color:rgba(0,0,0,.8); color:pink; font-weight:bold; text-indent: 10px "><a href ="./index.html" style ="color:pink; text-decoration-line:none">Tobologz.com </a></h1>
+    
+</div>
+
+
+
+<!--<div class="well well-sm"  style ="background-color:yellow; text-align:center; fill-opacity:.1; height: 4em;" >-->
+<!--<h2 style = "position: relative; margin-top: -.00em">-->
+<!--    <a href = "./index.html"> <button id = "orange" class="btn btn-default"  style = "font-size: .475em; background-color: yellow; color:purple;" onmouseover = "edit(0);" onmouseleave = "reset(0);" >Home <br /></button></a>-->
+<!--    <a href = "./Current_Officers.html"><button id = "orange" class="btn btn-default" style = "font-size: .475em; color:purple;" onmouseover = "edit(1);" onmouseleave = "reset(1);"> Current Officers<br /></button></a>-->
+<!--    <a href = "./OSF.html"><button id = "orange" class="btn btn-default" style = "font-size: .475em; background-color: yellow; color:purple;" onmouseover = "edit(2);" onmouseleave = "reset(2);">Open Source Festival 2017  <br/></button></a>-->
+<!--    <a href = "./workshops.html"><button id = "orange" class="btn btn-default" style = "font-size: .475em; color:purple;" onmouseover = "edit(3);" onmouseleave = "reset(3);"> Workshops <br/></button></a>-->
+<!--</h2>-->
+<!--</div>-->
+
+<h1 style= "font-size: 2.25em; position: relative; margin-top: -.3em">  Current Officers </h1>
+
+<!--<div class="container well" id ="homepage_well" style = "background-image:url(pictures/albany.jpg); height: 35.3em; width:90em; max-width:100%; background-size: 104.38em 35.3em;">-->
+<!--    <div class="container" id ="divexcept2" style = "height: 460px;">-->
+<!--        <h2 style ="font-size:1.7em; margin-top:.3em;;"> Presiding Chair </h2>-->
+<!--        <h3 style ="font-size:1em; margin-top:.3em;"> Arnodas Kurbanovas </h3>-->
+<!--        <h2 style ="font-size:1.7em; margin-top:.3em;">  Co-chair </h2>-->
+<!--        <h3 style ="font-size:1em; margin-top:.3em;"> Kevin Lassiter </h3>-->
+<!--        <h2 style ="font-size:1.7em; margin-top:.3em;"> Documentation Specialist </h2>-->
+<!--        <h3 style ="font-size:1em; margin-top:.3em;"> Stuti Mirsa </h3>-->
+<!--        <h2 style ="font-size:1.7em; margin-top:.3em;"> Treasurer </h2>-->
+<!--        <h3 style ="font-size:1em; margin-top:.3em;"> Will May </h3>-->
+<!--        <h2 style ="font-size:1.7em; margin-top:.3em;"> Web-developers </h2>-->
+<!--        <h3 style ="font-size:1em; margin-top:.3em;"> Michael Odumosu </h3>-->
+<!--        <h3 style ="font-size:1em; margin-top:.3em;"> Akeem Shane </h3>-->
+<!--        <h2 style ="font-size:1.7em; margin-top:.3em;"> Advisory Board Chair</h2>-->
+<!--        <h3 style ="font-size:1em; margin-top:.3em;"> Catherine Dumas </h3>-->
+<!--        <h2 style ="font-size:1.7em; margin-top:.3em;"> Faculty Advisor</h2>-->
+<!--        <h3 style ="font-size:1em; margin-top:.3em;"> Abebe Roissa </h3>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+<a href = "./32d_54.html" target = "_blank" class ="bio_class" >
+<div class="container well" id ="homepage_well" style = "background-image:url(./lion.png); height: 26.3em; width:90em; max-width:100%; background-size: 104.38em 26.3em; z-index:5; color:white">
+    
+        <img  class="center-block" src = "./michael.PNG" id ="img_except2"    />
+    
+    <h1 style= "background-color:transparent"> Michael Odumosu  </h1>
+    <h2 style="text-align:center; font-family:Amatic SC; font-size:5em; margin-top:-.1em;"> President</h2>
+    
+    
+</div>
+</a>
+
+<div class = "well bio_resize" style = "position:absolute; width:50px; margin-top:-17em; margin-left:50%; display:none">
+    <h1></h1>
+    <img>
+    <h2></h2>
+    <h2></h2>
+    <h2></h2>
+    <h2></h2>
+    <h2></h2>
+    <h2></h2>
+</div>
+
+
+<!--<div class="container well" id ="homepage_well" style = "background-image:url(Current_Officers_Pictures/pictures/paint.png); height: 26.3em; width:90em; max-width:100%; background-size: 104.38em 26.3em; z-index:5; color:white">-->
+<!--    <div class= "container">-->
+<!--        <img  class="center-block" src = "./Current_Officers_Pictures/kevin.PNG"  id ="img_except2" />-->
+<!--    </div>-->
+<!--    <h1 style= "background-color:transparent"> Vadim Castro</h1>-->
+<!--    <h2 style="text-align:center; font-family:Amatic SC; font-size:4em; "> Co-chair</h2>-->
+    
+    
+<!--</div>-->
+
+<!--<div class="container well" id ="homepage_well" style = "background-image:url(Current_Officers_Pictures/pictures/paint.png); height: 26.3em; width:90em; max-width:100%; background-size: 104.38em 26.3em; z-index:5; color:white">-->
+<!--    <div class= "container">-->
+<!--        <img  class="center-block" src = "./Current_Officers_Pictures/kevin.PNG"  id ="img_except2" />-->
+<!--    </div>-->
+<!--    <h1 style= "background-color:transparent"> Kevin Lassiter</h1>-->
+<!--    <h2 style="text-align:center; font-family:Amatic SC; font-size:4em; "> Co-chair</h2>-->
+    
+    
+<!--</div>-->
+
+
+<!--<div class="container well" id ="homepage_well" style = "background-image:url(Current_Officers_Pictures/pictures/blossom.png); height: 26.3em; width:90em; max-width:100%; background-size: 104.38em 26.3em; z-index:5; color:white">-->
+<!--    <div class= "container">-->
+<!--        <img  class="center-block" src = "./Current_Officers_Pictures/stuti.PNG"  id ="img_except2" />-->
+<!--    </div>-->
+<!--    <h1 style= "background-color:transparent"> Stuti Mirsa</h1>-->
+<!--    <h2 style="text-align:center; font-family:Amatic SC; font-size:4em; "> Documentation Specialist</h2>-->
+    
+    
+<!--</div>-->
+
+<!--<div class="container well" id ="homepage_well" style = "background-image:url(Current_Officers_Pictures/pictures/shine.png); height: 26.3em; width:90em; max-width:100%; background-size: 104.38em 26.3em; z-index:5; color:white">-->
+<!--    <div class= "container">-->
+<!--        <img  class="center-block" src = "./Current_Officers_Pictures/will.PNG"  id ="img_except2" />-->
+<!--    </div>-->
+<!--    <h1 style= "background-color:transparent"> Will May</h1>-->
+<!--    <h2 style="text-align:center; font-family:Amatic SC; font-size:4em; "> Treasurer</h2>-->
+    
+    
+<!--</div>-->
+
+<!--<a href = "./Current_Officers_Bio/32d_54.html" target = "_blank" >-->
+<!--	<div class="container well" id ="homepage_well" style = "background-image:url(Current_Officers_Pictures/pictures/lion.png); height: 26.3em; width:90em; max-width:100%; background-size: 104.38em 26.3em; z-index:5; color:white">-->
+    
+<!--    		<div class= "container">-->
+<!--        		<img  class="center-block" src = "./Current_Officers_Pictures/michael.PNG"  id ="img_except2" />-->
+<!--    		</div>-->
+<!--    		<h1 style= "background-color:transparent"> Michael Odumosu</h1>-->
+<!--    		<h2 style="text-align:center; font-family:Amatic SC; font-size:4em; "> Head Web Developer</h2>-->
+    
+    
+<!--	</div>-->
+<!--</a>-->
+
+<!--<div class="container well" id ="homepage_well" style = "background-image:url(Current_Officers_Pictures/pictures/autumn.png); height: 26.3em; width:90em; max-width:100%; background-size: 104.38em 26.3em; z-index:5; color:white">-->
+<!--    <div class= "container">-->
+<!--        <img  class="center-block" src = "./Current_Officers_Pictures/akeem.PNG"  id ="img_except2" />-->
+<!--    </div>-->
+<!--    <h1 style= "background-color:transparent"> Akeem Shane</h1>-->
+<!--    <h2 style="text-align:center; font-family:Amatic SC; font-size:4em; "> Digital Content Manager</h2>-->
+    
+    
+<!--</div>-->
+
+<!--<div class="container well" id ="homepage_well" style = "background-image:url(Current_Officers_Pictures/pictures/honda.png); height: 26.3em; width:90em; max-width:100%; background-size: 104.38em 26.3em; z-index:5; color:white; background-position: -4em 0em; ">-->
+<!--    <div class= "container">-->
+<!--        <img  class="center-block" src = "./Current_Officers_Pictures/dumas.PNG"  id ="img_except2" />-->
+<!--    </div>-->
+<!--    <h1 style= "background-color:transparent"> Catherine Dumas</h1>-->
+<!--    <h2 style="text-align:center; font-family:Amatic SC; font-size:4em; "> Advisory Board Chair</h2>-->
+    
+    
+<!--</div>-->
+
+<!--<div class = "container-fluid"  style = "height:90.75px; text-align:center; font-size:0.9375em; color:white;">-->
+<!--    <br/>-->
+<!--    <br/>-->
+<!--    <span style = "font-size:4.5em; color:white; font-style:italic; font-family: Sofia;">asis&t </span>-->
+<!--    <br/>-->
+<!--    1400 Washington Ave. <br/>-->
+<!--    Albany, New York, 12203, USA <br/>-->
+<!--    Email: <a href =-->
+<!--    "mailto:ualbanyasist@gmail.com" style=-->
+<!--    "color:white">ualbanyosf@albany.edu</a>-->
+<!--    <br/>-->
+<!--    <br/>-->
+<!--    All  copyright images on this site were used from commons.wikimedia.org-->
+<!--</div>-->
+
+        <div class="container move_7" style = "position:relative; ">
+            <div class="well " id ="web_colors" style ="height: 300px; width:1300px ; margin-top: 25px; text-align:center; margin-left:-75px;"   >
+                  2017 Tobologz inc.
+                  <br> All rights reserved
+                  <br> Contact information
+                  <br> Phone 929-353-8278
+                  <br> All images on this site are owned by Tobologz and Tobologz studios incoporated
+                  <br> All copyright infrigement are subject to prosecution by laws and all applicable means
+                  <br> Tobologz has no affilate resources and uses bootstrap styling,jquery, css ,javascript and html5 technologies for its work
+                  <br> for additional information requring website development see below
+                  <div class ="footer_box">
+                        <div id = "web_colors"  style ="width:200px; height:100px; border-radius:0px; background-color:transparent; border: 1px solid pink; margin-left:40px;" >
+                                <br> Personal Website
+                                <br> Tel : xxx-xxx-xxxx
+                                <br> email: example@gmail.com
+                       </div>
+                  </div>
+            </div>
+        </div>
+
+<script>
+  // alert("The date to submit proposals has been extendded to Monday April, 3 for any additional invitations to be sent")
+
+  function edit(a) {
+    var change = document.getElementsByTagName("button")[a]
+    change.style.color = "orange";
+    change.style.textDecoration = "underline";
+
+  }
+  
+  function reset (a) {
+    var change = document.getElementsByTagName("button")[a]
+    change.style.color = "purple";
+    change.style.textDecoration = "none";
+    
+  }
+</script>
+</body>
+</html>

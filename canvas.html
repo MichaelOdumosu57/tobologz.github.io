@@ -1,0 +1,217 @@
+<!--I use this page to make any images, I need, such as logos and additional picutres  -->
+
+<html>
+    <head>
+        <script src="./jquery-1.10.2.js"></script>
+        <script src="./jquery-ui.js"></script>
+        <!--<script src="./footer.js"></script>-->
+        <!--<script src="./bootstrap.min.js"></script>-->
+        <!--<title> Tobologz.com </title>-->
+        <link rel="stylesheet" href="./bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Amatic+SC" />
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
+        <!--glyphicons-->
+
+        
+        <style>
+        
+            @font-face {
+              font-family: 'bootstrap_font';
+              src: url('./glyphicons-halflings-regular.woff2') format('woff2'),
+                     url('./glyphicons-halflings-regular.woff') format('woff'),
+                     url('./glyphicons-halflings-regular.ttf') format('truetype');
+                     
+              font-weight: normal;
+              font-style: normal;
+            }
+            
+            html {
+                font-family : "bootstrap_font";
+            }
+            
+            
+            #web_colors{
+                        color:pink;
+                        background-color: rgba(0,0,0,.8);
+                        border-radius: 25px;
+                        
+                        
+            }
+
+            #heading {
+                        text-align:center;
+                        color:rgba(0,0,0,.8);
+                        background-color:pink;
+                
+            }
+            
+            .square_bullets {
+                             margin-top: 20px;
+                             margin-left: -5px;
+                             opacity:.5;
+                             background-color:pink;
+                             height:25px;
+                             width:25px;
+                
+            }
+            
+            a:visited, a:hover{                         /* disables unwanted  link changes */
+                color:white;
+                text-decoration-line:none;
+                text-decoration-style: none;
+                text-decoration:none;
+            }
+            /*make sure blue underline event gets taken out*/
+        
+            .fa {
+                padding: 5px;
+                font-size: 30px;
+                width: 40px;
+                height:40px;
+                text-align: center;
+                text-decoration: none;
+                border-radius: 50%;
+                color:white;
+            }
+            
+            .fa-facebook {
+                background-color: #3B5998;
+                
+            }
+
+            
+            .fa-twitter {
+                background-color:#55ACEE;
+            }
+            
+            .fa-instagram {
+                background-image: linear-gradient(-135deg,#1400c8,#b900b4,#f50000);
+            }
+            
+            body {
+                /*background-image: linear-gradient(-135deg,#1400c8,#b900b4,#f50000);*/
+                /*background-size: 100% 100%;*/
+                /*background-repeat: no-repeat;*/
+                /*figure out how to change its size*/
+            }
+            
+            #homepage_well {
+                 
+                background-repeat: no-repeat;
+                background-size:4000px 1000px;
+                height: 800px;
+            
+            }
+            
+            #img_except2 {
+            	
+                width: 200px;
+                height:200px;
+            	text-align: center;
+            	background-color: white;
+            	z-index:1;
+            	border-radius:400px;
+                top: 275px;
+                right: 900px;
+                
+            }
+
+            h1 {
+              margin: .67em 0;
+              font-size: 2em;
+              background-color: yellow;
+              text-align: center;
+            }
+            
+            a.bio_class:hover,
+            a.bio_class:focus {
+              color: orange;
+              text-decoration: underline;
+            }
+
+            
+
+            
+
+            
+        </style>
+        <script>
+            var red = 0;
+            var green = 255;
+            var blue = 0;
+            var opacity =.8
+            $(document).ready(function() {
+                
+                console.log($("button").eq(0))
+                
+                $("img").draggable();
+                $("button").eq(0).hover(function() {
+                    red += 3;
+                    console.log(red);
+
+                },change);
+                $("button").eq(1).hover(function() {
+                    green += 3;
+                    console.log(green);
+                },change);
+                $("button").eq(2).hover(function() {
+                    blue += 3;
+                    console.log(blue);
+                },change);
+                $("button").eq(3).hover(function() {
+                    red -= 3;
+                    console.log(red)
+                },change);
+                $("button").eq(4).hover(function() {
+                    green -= 3;
+                    console.log(green)
+                },change);
+                $("button").eq(5).hover(function() {
+                    blue -= 3;
+                    console.log(blue)
+                },change);
+                $("button").eq(6).hover(function() {
+                    opacity += .1;
+                    console.log(opacity)
+                },change);
+                $("button").eq(7).hover(function() {
+                    opacity -= .1;
+                    console.log(opacity)
+                },change);
+                
+                function change () {
+                    $(".well").css("background-color","rgba("+red.toString()+","+green.toString()+","+blue.toString()+","+opacity.toString()+ ")");
+                    console.log("rgba("+red.toString()+","+green.toString()+","+blue.toString()+","+opacity.toString()+ ")")
+                };
+                
+                
+                
+                
+                
+                
+                
+            });
+        </script>
+    </head>
+    <body>
+        <div class = "well" style ="height: 7.5em; width:5em; margin:auto; margin-top:10em; background-color: rgba(0,255,0,.3)"></div>
+        <img src = "canvas_folder/logo_cover.png" height = 110>
+        
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        
+        <button>enable change</button>
+        <button>Increase</button>
+        <button>Increase</button>
+        <button>Increase</button>
+        <button>Decrease</button>
+        <button>Decrease</button>
+        <button>Decrease</button>
+        <button>Increase opacity</button>
+        <button>Decrease opacity</button>
+    </body>
