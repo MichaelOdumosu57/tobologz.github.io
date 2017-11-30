@@ -142,7 +142,10 @@
                     event.preventDefault();
 
                     $(".bio_resize").show(function () {
-                       $(this).delay(1000).css({"z-index":"1","position":"fixed","opacity":"1"})
+                       $(this).scroll();
+                       
+                    //   $("body").css("position","fixed");overflow-y: scroll;
+                       $(this).delay(1000).css({"z-index":"1","position":"fixed","opacity":"1","overflow-y":"scroll"})
                        .animate({
                           height: "97%",
                           width: "97%",
@@ -163,6 +166,7 @@
                 
                 $(".bio_resize").click(function (event) {
                     event.preventDefault();
+                    
                     $(this).animate({
                         height: "0em",
                         width: "0em",
@@ -174,6 +178,10 @@
                        opacity:"1"
                    },3000);
                 });
+// function reqListener () {
+//   console.log(this.responseText);
+// }//
+                
 if (window.XMLHttpRequest)
   {// code for IE7+, Firefox, Chrome, Opera, Safari
   xmlhttp=new XMLHttpRequest();
@@ -182,17 +190,39 @@ else
   {// code for IE6, IE5
   xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
   }
-xmlhttp.open("GET","./michael_bio.xml",false);
-xmlhttp.send([body = null]);
-xmlDoc=xmlhttp.responseXML;
-$(".bio_resize > h1").text(xmlDoc.getElementsByTagName("header")[0].childNodes[0].nodeValue)
-$(".bio_resize > img").text(xmlDoc.getElementsByTagName("picture")[0].childNodes[0].nodeValue)
-$(".bio_resize > h2").text(xmlDoc.getElementsByTagName("sect1")[0].childNodes[0].nodeValue)
-$(".bio_resize > h2").text(xmlDoc.getElementsByTagName("sect2")[0].childNodes[0].nodeValue)
-$(".bio_resize > h2").text(xmlDoc.getElementsByTagName("sect3")[0].childNodes[0].nodeValue)
-$(".bio_resize > h2").text(xmlDoc.getElementsByTagName("sect4")[0].childNodes[0].nodeValue)
-$(".bio_resize > h2").text(xmlDoc.getElementsByTagName("sect5")[0].childNodes[0].nodeValue)
-$(".bio_resize > h2").text(xmlDoc.getElementsByTagName("sect6")[0].childNodes[0].nodeValue)
+// xmlhttp.addEventListener("load", reqListener);
+var xmlDoc;
+xmlhttp.open("GET","./michael_bio.xml");
+xmlhttp.responseType = 'document';
+xmlhttp.overrideMimeType('text/xml');
+xmlhttp.onload = function () {
+  if (xmlhttp.readyState === xmlhttp.DONE) {
+    if (xmlhttp.status === 200) {
+      console.log(xmlhttp.response);
+      console.log(xmlhttp.responseXML);
+      xmlDoc = xmlhttp.responseXML;
+      console.log(xmlDoc);
+      console.log(xmlDoc.getElementsByTagName("header"))
+$(".bio_resize > h1").text(xmlDoc.getElementsByTagName("header")[0].textContent);
+    $(".bio_resize > h1").attr("style",xmlDoc.getElementsByTagName("style")[0].childNodes[0].nodeValue);
+$(".bio_resize > img").attr("src",xmlDoc.getElementsByTagName("src")[0].childNodes[0].nodeValue);
+$(".bio_resize > h2").eq(0).text(xmlDoc.getElementsByTagName("sect1")[0].textContent);
+$(".bio_resize > h2").eq(1).text(xmlDoc.getElementsByTagName("sect2")[0].textContent);
+$(".bio_resize > h2").eq(2).text(xmlDoc.getElementsByTagName("sect3")[0].textContent);
+    $(".bio_resize > h2").eq(2).attr("style",xmlDoc.getElementsByTagName("style")[1].childNodes[0].nodeValue);
+$(".bio_resize > h2").eq(3).text(xmlDoc.getElementsByTagName("sect4")[0].textContent);
+$(".bio_resize > h2").eq(4).text(xmlDoc.getElementsByTagName("sect5")[0].textContent);
+    $(".bio_resize > h2").eq(5).attr("style",xmlDoc.getElementsByTagName("style")[1].childNodes[0].nodeValue);
+$(".bio_resize > h2").eq(5).text(xmlDoc.getElementsByTagName("sect6")[0].textContent);
+    $(".bio_resize > h2").eq(5).attr("style",xmlDoc.getElementsByTagName("style")[1].childNodes[0].nodeValue);
+$(".bio_resize > h2").eq(6).text(xmlDoc.getElementsByTagName("sect6")[0].textContent);
+      
+    }
+  }
+};
+xmlhttp.send(null);
+// xmlDoc=xmlhttp.responseXML;
+
 
             });
 
@@ -257,9 +287,9 @@ $(".bio_resize > h2").text(xmlDoc.getElementsByTagName("sect6")[0].childNodes[0]
 </div>
 </a>
 
-<div class = "well bio_resize" style = "position:absolute; width:50px; margin-top:-17em; margin-left:50%; display:none">
+<div class = "well bio_resize" style = "position:absolute; width:50px; margin-top:-17em; margin-left:50%; display:none; ">
     <h1></h1>
-    <img>
+    <img src = " "/>
     <h2></h2>
     <h2></h2>
     <h2></h2>
