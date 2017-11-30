@@ -195,11 +195,12 @@ xmlhttp.onload = function () {
     if (xmlhttp.status === 200) {
       console.log(xmlhttp.response);
       console.log(xmlhttp.responseXML);
+      xmlDoc = xmlhttp.responseXML
     }
   }
 };
 xmlhttp.send();
-xmlDoc=xmlhttp.responseXML;
+// xmlDoc=xmlhttp.responseXML;
 console.log(xmlDoc)
 $(".bio_resize > h1").text(xmlDoc.getElementsByTagName("header")[0].childNodes[0].nodeValue);
 $(".bio_resize > img").text(xmlDoc.getElementsByTagName("picture")[0].childNodes[0].nodeValue);
