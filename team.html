@@ -174,9 +174,9 @@
                        opacity:"1"
                    },3000);
                 });
-function reqListener () {
-  console.log(this.responseText);
-}//
+// function reqListener () {
+//   console.log(this.responseText);
+// }//
                 
 if (window.XMLHttpRequest)
   {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -186,7 +186,7 @@ else
   {// code for IE6, IE5
   xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
   }
-xmlhttp.addEventListener("load", reqListener);
+// xmlhttp.addEventListener("load", reqListener);
 xmlhttp.open("GET","./michael_bio.xml");
 xmlhttp.responseType = 'document';
 xmlhttp.overrideMimeType('text/xml');
