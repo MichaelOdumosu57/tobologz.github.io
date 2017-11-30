@@ -188,6 +188,16 @@ else
   }
 xmlhttp.addEventListener("load", reqListener);
 xmlhttp.open("GET","./michael_bio.xml");
+xmlhttp.responseType = 'document';
+xmlhttp.overrideMimeType('text/xml');
+xmlhttp.onload = function () {
+  if (xmlhttp.readyState === xmlhttp.DONE) {
+    if (xmlhttp.status === 200) {
+      console.log(xmlhttp.response);
+      console.log(xmlhttp.responseXML);
+    }
+  }
+};
 xmlhttp.send();
 xmlDoc=xmlhttp.responseXML;
 console.log(xmlDoc)
