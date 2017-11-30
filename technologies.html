@@ -1,4 +1,4 @@
-<!--Made the circles that will hold the technologies that are used to create the website, must make the circles bigger, and places them in cards and talk about what they are for so the non-tech venacular can be persuaded to use the site -->
+<!--got the star to setup but it strected the page out too where the copies would have been if the star_carousel function was not called -->
 
 <html>
     <head>
@@ -129,6 +129,13 @@
               color: orange;
               text-decoration: underline;
             }
+            
+            .tech_card {
+                width: 24.5em;
+                height: 35em;
+                background-color:purple;
+                border-radius: 50px;
+            }
 
             
 
@@ -137,13 +144,60 @@
             
         </style>
         <script>
+        
+            var tech_array = ["CSS","JavaScript","Bootstrap","Jquery"];
+            var offset_x = 500;
+            var offset_y = 244;
             $(document).ready(function() {
-                var $img_except2 = $("#img_except2").clone();
+                var $tech_card = $(".tech_card").clone();
                 // var img_except2 = img_except2;
                 var i = 0; //creates circle copies
-                while( i != 5){
-                    $("#img_except2:last").after($img_except2.clone());
+                star_carousel();
+                while( i != 4){
+                    
+                    $(".tech_card:last").after($tech_card.clone().hide());
+                    $(".tech_card:last > h1").text(tech_array[i]);
+                    star_carousel(0,0);
+                    // console.log($(".tech_card:last").offset())
                     i+=1;
+                }
+                
+                function star_carousel () {
+                    //a consideration to turn it to a star carousel but I will just leave it as a star for now
+                    //mabye if there are more cards, I could make a carousel in a way when it is done with the first five cards it can move to other cards as well
+                    
+                    $(".tech_card:last").show();
+                    $(".tech_card:last").offset({top:offset_y,left:offset_x});
+                    console.log($(".tech_card:last").offset())
+                    if(offset_x == 100){
+                        offset_y = 1094;
+                        offset_x += 150;
+                    }
+                    
+                    else if(offset_y == 1094){
+                        
+                        offset_x += 500;
+                    }
+                    
+                    else {
+                        if (offset_y < 1200) {
+                            offset_y += 300;
+                        }
+                        else {
+                            offset_y = 244;
+                        }
+    
+                        if (offset_x < 900) {
+                            offset_x += 400;
+                            
+                        }
+                        else {
+                            offset_x = 100;
+                            offset_y -= 300;
+                        }
+                    }
+                                        
+                    
                 }
             });
         </script>
@@ -162,7 +216,12 @@
             </div>
         </div>
         
-        <div  id ="img_except2"  style ="background-image:url('./michael.PNG')"  ></div>
+        <div  class = " tech_card well">
+            <img id ="img_except2" style ="background-image:url('./michael.PNG'); margin-left:4em;"  />
+            <h1>HTML</h1>
+            <div style ="height:170px; width:310px; background-color:white; opacity:.8"></div>
+        </div>
+        
         
         <div class="container move_7" style = "position:relative; ">
             <div class="well " id ="web_colors" style ="height: 300px; width:1300px ; margin-top: 25px; text-align:center; margin-left:-75px;"   >

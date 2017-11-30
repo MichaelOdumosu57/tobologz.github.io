@@ -1,3 +1,5 @@
+<!--made it so the h1 holding the associate number can slide up and down with the holder properly, remember customer form is not quite complete, each item has a specific set of properities you must apply to it-->
+
 <html>
     <head>
         <link rel="stylesheet" href="./bootstrap.min.css">
@@ -133,8 +135,8 @@
                     if(counter < 2){//make sure that if it sent back to zero the associate is the second
                         counter = 2;
                     }
-                    $(".form_copy").append("<h1>Associate  " + counter.toString() +"<br> ___________________________________________________________</h1>" )
                     addition();
+                    $(".form_copy > .holder:last").prepend("<h1>Associate  " + counter.toString() +"<br> ___________________________________________________________</h1>" );
                     event.preventDefault();
                     seguro = 0;  // way off helping browser know how much nodes to take off when necessary
                     counter += 1;
@@ -166,7 +168,8 @@
                     //(counter >= 3)  {
                     //  subtraction(seguro, max);
                     //   console.log("this is how long your holder was "+max.toString());
-                     $(".form_copy > h1:last").remove();  //needs to be selector not a parameter to the function
+                    //  $(".form_copy > h1:last").remove();
+                     //needs to be selector not a parameter to the function
                     //  var h1 = $(".form_copy > h1");
                     //  var holder = $(".form_copy > .holder");
                      
@@ -215,10 +218,16 @@
                     
                     console.log(last_total);
                     console.log(seguro);
-                    var form_spot = "."+ (last_total - seguro - 1).toString(); //finds and removes the associat form here
+                    var form_spot = "."+ (last_total - seguro - 1).toString(); //finds and removes the associate form here
+                    // $(form_spot + "> h1").remove();// if you dont care about the h1 slinding up
+                    // $(form_spot).slideUp(2000, function() {
+                    //     information[last_total - seguro] = $(this).remove(); //holds information in case user needs it again
+                    // });
+                    // if you dont care about the h1 slinding up
                     $(form_spot).slideUp(2000, function() {
-                        information[last_total - seguro] = $(this).remove(); //holds information in case user needs it again
+                        information[last_total - seguro] = $(form_spot + ":not( h1_").remove(); //holds information in case user needs it again
                     });
+                    //if you do care about the h1 slinding up
                     // console.log($(form_spot),form_spot);
                     console.log(information);
                     });
