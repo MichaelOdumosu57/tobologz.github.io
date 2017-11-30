@@ -1,4 +1,4 @@
-<!--got the star to setup but it strected the page out too where the copies would have been if the star_carousel function was not called -->
+<!--finally figured out how to control the body length to ignore the strecthing caused by the tech cards withouth moving the footer well, through everything into a div and set the height of it-->
 
 <html>
     <head>
@@ -146,58 +146,90 @@
         <script>
         
             var tech_array = ["CSS","JavaScript","Bootstrap","Jquery"];
+            var tech_array_info = [ "CSS is what gives everything you see shape, size, dimension and every other attribute you can see with the human eye. We use CSS for that reason, to make beautiful and excellent website so your visitors can see what you envision.",
+                                    "How do we make the shapes over and over again? Javascipt. Javascript is the mathematical foundation of the website which eliminates repetitive tasks. We use javascript to get our work done faster and your online business flying sooner",
+                                    "Bootstrap technology is the additional technology we use to modernize our website. Bootstrap is a popular front-end component library that not only achieves the attention of your audience, it also gives the market competition",
+                                    "Jquery is a major js library responible for animation and movement. Jquery is one of the main reasons why our website is different from so many sites. We use jquery to bring a new user experience to the world which will  pioneer us in time"
+                                    ]
+                
             var offset_x = 500;
             var offset_y = 244;
+            var five_corners = []; //will contain five stars needed for array
+            
             $(document).ready(function() {
                 var $tech_card = $(".tech_card").clone();
+                console.log($tech_card.offset())
+                
                 // var img_except2 = img_except2;
                 var i = 0; //creates circle copies
-                star_carousel();
+                // star_carousel();
+                $(".tech_card").offset({top:offset_y,left:offset_x});
+                
                 while( i != 4){
+                    var coordinates= star_carousel(i);
+
+
+                    $(".star_carousel").append($tech_card.clone());
+                    $(".tech_card:last").offset({top:coordinates[0],left:coordinates[1]})
+                    // $(".tech_card:last ").text(function() {
+                    $(" .tech_card:last > h1").text(tech_array[i]);
+                    $(" .tech_card:last > div > h4").text(tech_array_info[i]);
+                    // var  $wrap_tech_card = $(" .tech_card:last").unwrap();
+                        // five_corners[i] = $(".tech_card:last ").offset({top:coordinates[0],left:coordinates[1]}).remove();
+                        // console.log(five_corners)
+                        // $(".tech_card:last").after(five_corners[i].text(function () {
+                        //     $("h1").text(tech_array[i]);
+                        // }));
+                    // });
                     
-                    $(".tech_card:last").after($tech_card.clone().hide());
-                    $(".tech_card:last > h1").text(tech_array[i]);
-                    star_carousel(0,0);
+                    // $(".tech_card:first").after($(".tech_card:last");
+
                     // console.log($(".tech_card:last").offset())
                     i+=1;
                 }
                 
-                function star_carousel () {
+                // star_carousel($(".tech_card").length);
+                console.log($(".tech_card").length)
+                
+                // $(".tech_card").show();
+                
+                function star_carousel (index) {
                     //a consideration to turn it to a star carousel but I will just leave it as a star for now
                     //mabye if there are more cards, I could make a carousel in a way when it is done with the first five cards it can move to other cards as well
-                    
-                    $(".tech_card:last").show();
-                    $(".tech_card:last").offset({top:offset_y,left:offset_x});
-                    console.log($(".tech_card:last").offset())
-                    if(offset_x == 100){
-                        offset_y = 1094;
-                        offset_x += 150;
-                    }
-                    
-                    else if(offset_y == 1094){
+                    // var i = 0;
+                    // while( i < length){
+
+                        // console.log($(".tech_card").eq(index).offset())
+                        if(offset_x == 100){
+                            offset_y = 1094;
+                            offset_x += 150;
+                        }
                         
-                        offset_x += 500;
-                    }
-                    
-                    else {
-                        if (offset_y < 1200) {
-                            offset_y += 300;
-                        }
-                        else {
-                            offset_y = 244;
-                        }
-    
-                        if (offset_x < 900) {
-                            offset_x += 400;
+                        else if(offset_y == 1094){
                             
+                            offset_x += 500;
                         }
+                        
                         else {
-                            offset_x = 100;
-                            offset_y -= 300;
+                            if (offset_y < 1200) {
+                                offset_y += 300;
+                            }
+                            else {
+                                offset_y = 244;
+                            }
+        
+                            if (offset_x < 900) {
+                                offset_x += 400;
+                                
+                            }
+                            else {
+                                offset_x = 100;
+                                offset_y -= 300;
+                            }
                         }
-                    }
-                                        
-                    
+                        return [offset_y,offset_x];
+                    // i += 1;
+                    // }
                 }
             });
         </script>
@@ -216,10 +248,14 @@
             </div>
         </div>
         
-        <div  class = " tech_card well">
-            <img id ="img_except2" style ="background-image:url('./michael.PNG'); margin-left:4em;"  />
-            <h1>HTML</h1>
-            <div style ="height:170px; width:310px; background-color:white; opacity:.8"></div>
+        <div class = "star_carousel" style = "height:1400px">
+            <div  class = " tech_card well">
+                <img id ="img_except2" style ="background-image:url('./michael.PNG'); margin-left:4em;"  />
+                <h1>HTML</h1>
+                <div style ="height:12.625em; width:310px; background-color:white; opacity:.8">
+                    <h4 style ="text-align:center; font-size:20px"> HTML is the words you see on when you visit a website. It is also the framework and foundation for which everything is built. We use HTML as our measuring tool for building the website</h4>
+                </div>
+            </div>
         </div>
         
         
