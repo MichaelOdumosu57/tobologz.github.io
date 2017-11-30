@@ -175,7 +175,35 @@
                    },3000);
                 });
             });
+
+
+txt1="<note>";
+txt2="<to>Sania Mirza</to>";
+txt3="<from>Serena William</from>";
+txt4="<body>Don't forget me this weekend!</body>";
+txt5="</note>";
+txt=txt1+txt2+txt3+txt4+txt5;
+  
+if (window.DOMParser)
+  {
+  parser=new DOMParser();
+  xmlDoc=parser.parseFromString(txt,"text/xml");
+  }
+else // Internet Explorer
+  {
+  xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+  xmlDoc.async=false;
+  xmlDoc.loadXML(txt);
+  }
+document.getElementsByClassName("bio_resize").innerHTML=
+xmlDoc.getElementsByTagName("to")[0].childNodes[0].nodeValue;
+document.getElementsByClassName("bio_resize").innerHTML=
+xmlDoc.getElementsByTagName("from")[0].childNodes[0].nodeValue;
+document.getElementsByClassName("bio_resize").innerHTML=
+xmlDoc.getElementsByTagName("body")[0].childNodes[0].nodeValue;
         </script>
+        
+        
 
     </head>
 <body style = "height:90em;">
