@@ -187,7 +187,7 @@ else
   xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
   }
 // xmlhttp.addEventListener("load", reqListener);
-var xmlDoc
+var xmlDoc;
 xmlhttp.open("GET","./michael_bio.xml");
 xmlhttp.responseType = 'document';
 xmlhttp.overrideMimeType('text/xml');
@@ -200,7 +200,7 @@ xmlhttp.onload = function () {
     }
   }
 };
-xmlhttp.send();
+xmlhttp.send(null);
 // xmlDoc=xmlhttp.responseXML;
 console.log(xmlDoc)
 $(".bio_resize > h1").text(xmlDoc.getElementsByTagName("header")[0].childNodes[0].nodeValue);
