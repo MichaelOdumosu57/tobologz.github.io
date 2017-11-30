@@ -208,9 +208,23 @@
                     console.log(rotate)
                 });
                 
+                $("body").prepend("<img src = 'logo_part.png'/>");
                 
                 
+                var i = 6;
+                var init_height = 100;
+                var part_copies = $("img:last").clone();
+                // while(i != 0); {
+                    i -= 1;
+                    $("img:last").after(part_copies.clone());
+                    console.log(i)
+                    init_height -= 10;
+                    $("img:last").attr("height", init_height)
+                    
+                // }
                 
+                
+                $("img").draggable();
                 
                 
                 
@@ -218,12 +232,32 @@
         </script>
     </head>
     <body>
-        <div class = "well" style ="height: 7.5em; width:5em; margin:auto; margin-top:10em; background-color: rgba(0,255,0,.3)"></div>
-        <img src = "canvas_folder/logo_cover.png" height = 100>
-        <div class = "well" style ="height: 7.5em; width:5em; margin:auto; margin-top:10em; background-color: white"></div>
-        <div class = "well" style ="height: 7.5em; width:5em; margin:auto; margin-top:10em; background-color: white"></div>
+        <!--<div class = "well" style ="height: 7.5em; width:5em; margin:auto; margin-top:10em; background-color: rgba(0,255,0,.3)"></div>-->
+        <!--<img src = "canvas_folder/logo_cover.png" height = 100>-->
+        <!--<div class = "well" style ="height: 7.5em; width:5em; margin:auto; margin-top:10em; background-color: white"></div>-->
+        <!--<div class = "well" style ="height: 7.5em; width:5em; margin:auto; margin-top:10em; background-color: white"></div>-->
+        
+        
         
         <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+                <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+                <br/>
         <br/>
         <br/>
         <br/>
