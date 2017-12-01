@@ -1,4 +1,4 @@
-<!--I use this page to make any images, I need, such as logos and additional picutres  -->
+<!--Finished making the logo using the console of the browser, the final images are in the logo file -->
 
 <html>
     <head>
@@ -141,7 +141,8 @@
             var green = 255;
             var blue = 0;
             var opacity =.3;
-            var rotate = 32;
+            var rotate = 0;
+            var image_part = 0;
             $(document).ready(function() {
                 
                 console.log($("button").eq(0))
@@ -149,8 +150,8 @@
                 $("img, div").draggable();
                 
                     $("img").rotate({
-                        angle:32 - 1,
-                        animateTo:32
+                        angle:rotate - 1,
+                        animateTo:rotate
                     });
                 // $("button").eq(0).hover(function() {
                 //     red += 3;
@@ -193,7 +194,7 @@
                 
                 $("button").eq(9).hover(function() {
                     rotate += 1
-                    $("img").rotate({
+                    $("img").eq(image_part).rotate({
                         angle:rotate - 1,
                         animateTo:rotate
                     });
@@ -201,7 +202,7 @@
                 });
                 $("button").eq(10).hover(function() {
                     rotate -= 1
-                    $("img").rotate({
+                    $("img").eq(image_part).rotate({
                         angle:rotate + 1,
                         animateTo:rotate
                     });
@@ -211,21 +212,38 @@
                 $("body").prepend("<img src = 'logo_part.png'/>");
                 
                 
-                var i = 6;
+                var i = 5;
                 var init_height = 100;
                 var part_copies = $("img:last").clone();
-                // while(i != 0); {
-                    i -= 1;
-                    $("img:last").after(part_copies.clone());
-                    console.log(i)
+                var clones = part_copies.clone()
+                $("img:last").after(part_copies);
                     init_height -= 10;
-                    $("img:last").attr("height", init_height)
+                    $("img:last").attr("height", init_height);
+                while (i != 1){
+                    i -= 1;
+
+                $("img:last").after(part_copies.clone());
+                    init_height -= 10;
+                    $("img:last").attr("height", init_height);
+
+                }
                     
-                // }
+                
                 
                 
                 $("img").draggable();
+                console.log($("img"))
                 
+                $("button").eq(11).click(function() {
+                    image_part -= 1
+
+                    console.log(image_part)
+                });
+                $("button").eq(12).click(function() {
+                    image_part += 1
+
+                    console.log(image_part)
+                });
                 
                 
             });
@@ -276,4 +294,6 @@
         <br/>
         <button>Rotate left</button>
         <button>Rotate right</button>
+        <button>prev img</button>
+        <button>next img</button>
     </body>

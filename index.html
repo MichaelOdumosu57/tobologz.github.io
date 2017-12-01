@@ -134,6 +134,9 @@
                         if(nav_list[i] == "Site Map"){
                             nav_list[i] = "site_map"
                         }
+                        if(nav_list[i] == "The Process "){
+                            nav_list[i] = "process"
+                        }
                         $("a:has(.square_bullets+ p)").eq(-1).attr("href",nav_list[i].toLowerCase() + ".html");
                         console.log($("a:has(.square_bullets + p)").attr("href"))
                         // to add navigation links
