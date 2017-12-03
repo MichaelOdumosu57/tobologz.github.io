@@ -5,6 +5,7 @@
         <script src="./jquery-1.10.2.js"></script>
         <script src="./jquery-ui.js"></script>
         <script src="./footer.js"></script>
+        <script src="./jquery_rolodex.js"></script>
         <!--<script src="./bootstrap.min.js"></script>-->
         <!--<title> Tobologz.com </title>-->
         <link rel="stylesheet" href="./bootstrap.min.css">
@@ -231,6 +232,7 @@
                     // i += 1;
                     // }
                 }
+                $(".tech_card").rolodex("none",$(".carousel-control:has( .glyphicon-chevron-left)"),$(".carousel-control:has( .glyphicon-chevron-right)"));
             });
         </script>
     </head>
@@ -257,6 +259,16 @@
                 </div>
             </div>
         </div>
+        
+    <a class=" carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"  style ="color:black"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+
+    <a class="  carousel-control" href="#myCarousel" role="button" data-slide="next" style = "right: 0; left: auto;">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" style ="color:black"></span>
+      <span class="sr-only">Next</span>
+    </a>
         
         
         <div class="container move_7" style = "position:relative; ">
