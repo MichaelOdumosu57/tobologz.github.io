@@ -5,6 +5,7 @@
         <script src="./jquery-1.10.2.js"></script>
         <script src="./jquery-ui.js"></script>
         <script src="./footer.js"></script>
+        <script src="./jquery_rolodex.js"></script>
         <!--<script src="./bootstrap.min.js"></script>-->
         <!--<title> Tobologz.com </title>-->
         <link rel="stylesheet" href="./bootstrap.min.css">
@@ -144,6 +145,7 @@
             var add_y = 45;
             var add_x = 64;
             var index = 4;
+
             $(document).ready(function() {
                 
                 $(".carousel-control > .glyphicon").css({"font-family": "bootstrap_font","z-index":"10"});
@@ -160,7 +162,7 @@
                 $(".rolodex > div").prepend("<h1>The Process</h1>");
                 $(".rolodex  > div > h1").css("text-align","center").append("<h2>see me</h2>");
                 
-                console.log($(".rolodex").css("background-image"),$(".rolodex").css("height"),$(".rolodex").css("width"));
+                // console.log($(".rolodex").css("background-image"),$(".rolodex").css("height"),$(".rolodex").css("width"));
                 
                 
                 $(".rolodex").after($rolodex);
@@ -235,7 +237,7 @@
                     index -= 1;
                     $(".rolodex:last").offset({top:offset_y,left:offset_x}).css("z-index",index);
                     
-                    console.log($(".rolodex:last").offset(),$(".rolodex:last").css("z-index"))
+                    // console.log($(".rolodex:last").offset(),$(".rolodex:last").css("z-index"))
                     
                     i += 1;
                     logic += 1;
@@ -246,7 +248,7 @@
                 $(".rolodex ").eq(7).css("z-index","3");
                 
                 // $(".rolodex_holder").append($(".rolodex"));
-                console.log($(".rolodex_holder"))
+                // console.log($(".rolodex_holder"))
                 
                 
                 $(".rolodex_holder").offset({top:150,left:0});
@@ -284,6 +286,13 @@
                     });
                 });
                 
+                
+                //glyiphicon controls to make space
+                
+
+                $(".rolodex").rolodex("none",$(".carousel-control:has( .glyphicon-chevron-left)"),$(".carousel-control:has( .glyphicon-chevron-right)"));
+                
+                //rolodex jquery
                 
                 
                 
