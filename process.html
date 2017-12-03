@@ -117,7 +117,7 @@
                 
             }
 
-            h1 {
+            h1.bootstrap {
               margin: .67em 0;
               font-size: 2em;
               background-color: yellow;
@@ -140,18 +140,33 @@
             var i = 0;
                 //to make the rolodex clone
             var offset_y = 200;
-            var offset_x = 0;
+            var offset_x = 10;
             var add_y = 45;
-            var add_x = 75;
+            var add_x = 64;
             var index = 4;
             $(document).ready(function() {
-                var $rolodex = $(".rolodex").clone();
+                
+                $(".carousel-control > .glyphicon").css({"font-family": "bootstrap_font","z-index":"10"});
+                console.log($(".carousel-control > .glyphicon").css("z-index"));
+                
+                //giving the controls for the rolodex
+                var $rolodex = $(".rolodex:last").clone();
                 $(".rolodex").offset({top:offset_y,left:offset_x});
                     offset_y -= add_y;
                     offset_x += add_x;
                     index -= 1;
+                $(".rolodex").css("background-image","url('./logo_folder/final_logo.png')");
+                
+                $(".rolodex > div").prepend("<h1>The Process</h1>");
+                $(".rolodex  > div > h1").css("text-align","center").append("<h2>see me</h2>");
+                
+                console.log($(".rolodex").css("background-image"),$(".rolodex").css("height"),$(".rolodex").css("width"));
+                
+                
                 $(".rolodex").after($rolodex);
                 $(".rolodex:last").offset({top:offset_y,left:offset_x}).css("z-index",index);
+                // $(".rolodex:last").css({"background-image":"url('./logo_folder/final_logo.png')","z-index":index});
+                console.log($(".rolodex:last").css("z-index"))
                 
                 var $rolodex_clone = $rolodex.clone();
                 
@@ -218,7 +233,8 @@
                     
 
                     index -= 1;
-                    $(".rolodex:last").offset({top:offset_y,left:offset_x}).css("z-index",index)
+                    $(".rolodex:last").offset({top:offset_y,left:offset_x}).css("z-index",index);
+                    
                     console.log($(".rolodex:last").offset(),$(".rolodex:last").css("z-index"))
                     
                     i += 1;
@@ -229,9 +245,14 @@
                 $(".rolodex ").eq(3).css("z-index","-3");
                 $(".rolodex ").eq(7).css("z-index","3");
                 
-                $(".rolodex_holder").append($(".rolodex"));
+                // $(".rolodex_holder").append($(".rolodex"));
                 console.log($(".rolodex_holder"))
-                $(".rolodex_holder").offset({top:150,left:0})
+                
+                
+                $(".rolodex_holder").offset({top:150,left:0});
+                                
+                $(".carousel-control > .glyphicon").css({"font-family": "bootstrap_font","z-index":"10"});
+                //final adjustments
                 
                 
                 
@@ -251,12 +272,28 @@
         
 
         
-        <div class="container rolodex">
-            <div class="well" style = "height:30em; position:relative; z-index:5"></div>
+
+        
+        <div class ="rolodex_holder" style = "height:50em">
+            <div class="container rolodex well" style = "z-index:5; width:80em;">
+                <div  style = "height:30em; width:75em; position:relative; ">
+                    
+                </div>
+            </div>
+                        
         </div>
         
-        <div class ="rolodex_holder"></div>
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
         
+
                 
         <div class="container move_7" style = "position:relative; ">
             <div class="well " id ="web_colors" style ="height: 300px; width:1300px ; margin-top: 25px; text-align:center; margin-left:-75px;"   >
