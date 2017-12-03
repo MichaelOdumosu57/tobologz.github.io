@@ -1,12 +1,25 @@
-//look for function solution and shorten this code, $(this) was screwing you big time
+//added z-index capability
+//capabilities : place any amount of items into rolodex
+//             : rolodex clockwise core functionality
+//             : rolodex counterclockwise core functionality
+//             : 3d data consideration
 
+//
+
+// planned work: attribute options
+//             : easing functionality
+//             : 3d data consideration
+//             : order resort (if you built your items in one order and used another way to do it
+//             : object.rolodex_item concept, what will happen is that if can pass any amout of objects to the rolodex, and rolodex will give each item its item class so rolodex know what to do with it
 
 //global variables and functions
-var rolodex_array = new Array(1,1,1,1,1,1,1); //to see what items the function is working with
-var z_array = [] = new Array(1,1,1,1,1,1,1); //this variable sees what is facing to the front
+var rolodex_array = new Array(); //to see what items the function is working with
+var z_array  = new Array(); //this variable sees what is facing to the front
 var rolodex_item = 0; //refers to the items in the rolodex
 var its_ok = 1; //debugger
-var rolodex_set
+var rolodex_set;
+var decision = "object"; // lets function know whether to use this items or the the rolodex_array,$(this) once again is misleading and refers to the whole window
+
 
 
     
@@ -15,17 +28,19 @@ var rolodex_set
             //this function takes items and attempts to make a rolodex out of it. A rolodex is an object which behaves like a carousel but instead of left to right all the objects are part of a circle overlapping each other with the current items having the highest z-index and the others overlapping in proper fashion
             
             var rolodex_set = $(this).length; //this variable gives the size of the rolodex to let the function know what it has to do
- 
+            var rolodex_array = new Array(1 * rolodex_set); //to see what items the function is working with
+            var z_array = [] = new Array(1 * rolodex_set);
             var rolodex_item = 0; //refers to the items in the rolodex
-            var its_ok = 1; //debugger
+            var its_ok = 0; //debugger
 
             var decision_first = $.map($(this), function(value, index) {
-                return [[$(value),$(value)]];
+                return [[$(value),undefined]];
             });
             
             //turns jquery selector to an array for compatability from initialization to rolodex use
             //returned as such 1, needs selector for jquery function compatability
             //returned becuase the rolodex array will have the the items query as the first items in its subarrays
+            //need a rolodex array or without knowing about the prev and next necessary information, we would be using a highly unfavorable linked list
                     
 
 
@@ -64,19 +79,19 @@ var rolodex_set
             
             
             function data_collect (direction = "none") {
+                 rolodex_item = 0;
                  if (direction == 1 || direction == 2) {
                     rolodex_array.forEach(function(element){
     
                             consoles(direction,element);
-                            element[0].offset({top:element[direction][1][0].top,left:element[direction][1][0].left});
+                            element[0].offset({top:element[direction][1][0].top,left:element[direction][1][0].left}).css("z-index",element[1][1][1].split(" ")[1]);
     
                     });
                  }
                  //direction represent clockwise or counterclockwise functions, the offset is where the elements position is changed
  
             consoles("none");
-            var decision = "object",
-                index = 0; // lets function know whether to use this items or the the rolodex_array,$(this) once again is misleading and refers to the whole window
+
             
             if (direction == 1 || direction == 2) {
                 decision = rolodex_array;
@@ -85,29 +100,35 @@ var rolodex_set
             }
             //this means the function has all the coordinates and can edit effortesly
             else {
-                decision = $(this);
+                decision = decision_first;
 
             }
             
-            //this means the rolodex_array has yet to have all the offset variables to assort
+            //this means the rolodex_a rray has yet to have all the offset variables to assort
+            //cant use this, the init array you need is in decision_first, $(this) is very misleading
+            
+
             while(rolodex_item != rolodex_set){
-                var rolodex_prev_item = rolodex_item - 1; //refers to previous item in rolodex
-                var rolodex_next_item = rolodex_item + 1; //refers  to next item in rolodex
+                
+                
+                rolodex_prev_item = rolodex_item - 1; //refers to previous item in rolodex
+                rolodex_next_item = rolodex_item + 1; //refers  to next item in rolodex
                 if ( rolodex_prev_item  < 0){
                      rolodex_prev_item = decision.length - 1;
                 }
-                if ( rolodex_next_item  > 7){
+                if ( rolodex_next_item  > decision.length - 1){
                      rolodex_next_item = 0;
+                     
                 }
                 //so they do not break bounds and we have a big bug
-                
-                if (decision != rolodex_array){
-                    decision = decision_first;
-                }
+                consoles(3,[rolodex_prev_item,rolodex_next_item]);
+
+
                 //powerful jquery function which made everything work
                 
                 var prev_offset = [decision[rolodex_prev_item][0].offset(),"z-index "  +decision[rolodex_prev_item][0].css("z-index")];
                 var next_offset = [decision[rolodex_next_item][0].offset(),"z-index "  + decision[rolodex_next_item][0].css("z-index")];
+                
                 //receving coordinates for re-positioning
 
                 // if (decision != rolodex_array){
@@ -155,6 +176,7 @@ var rolodex_set
                     console.log(data)
                     console.log("where items is",data[0].offset());
                     console.log("where items must go",data[1][1][0]);
+                    console.log("new z -index",data[1][1][1].split(" ")[1]);
                     // console.log("i cant call this loop normally",execute)
                 }
                 
@@ -164,6 +186,13 @@ var rolodex_set
                     console.log("where items is",data[0].offset());
                     console.log("where items must go",data[2][1][0]);
                     // console.log("i cant call this loop normally",execute)
+                }
+                
+                if(action == 3){
+                    console.log("working on rolodex item #" + rolodex_item);
+                    console.log("should be one less that the length of the array", decision.length -1)
+                    console.log("what the prev_item returns on universal application", data[0])
+                    console.log("what the next_item returns on universal application", data[1])
                 }
                 else {
                     console.log("michael element\n",michael);
