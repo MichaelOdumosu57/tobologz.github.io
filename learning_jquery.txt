@@ -538,15 +538,17 @@ jquery clone
     you are not finished here because this is only one object, if you append this several times
         jquery still thinks you are appending 1 object. It is couterpoint because the purpose of the clone is to copy, but it technically makes sense, if you make one clone you make only one, so you must make more.
 
-    to make more clones you must clone the clone.
+    to make more clones the first clone object must be attached to the htlm
 
-        jquery_function_action([single_clone].clone());
+        jquery_function_[adding_to_html]([single_clone]);
 
-    because here you are not cloning an object you are cloining the function that makes the object, and in this initialization is a function call
+    the purpose of the clone function is to add to the html, if so if the clone is not in the html as of yet, how is it supposed to select it (which what jquery does) and clone it?
+
+    [single_clone_copy] = $([single_clone].clone()); //as many clones
 
     Hence
 
-    every function call means something must be done, and here it means several single clones
+    when making clone copies, you must add the first clone to the html in order for jquery to know what to clone
 
   $(selector).clone(true|false)
     
