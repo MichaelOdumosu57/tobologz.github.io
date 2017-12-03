@@ -1,4 +1,4 @@
-<!--In process I finished creating the rolodex I needed to continue -->
+<!--Got to customize the glyphicon chevrons to my liking so that they will not interfere when the reader is reading about the process of in the wells -->
 
 <html>
     <head>
@@ -251,8 +251,39 @@
                 
                 $(".rolodex_holder").offset({top:150,left:0});
                                 
-                $(".carousel-control > .glyphicon").css({"font-family": "bootstrap_font","z-index":"10"});
-                //final adjustments
+                $(" .carousel-control ").css({"font-family": "bootstrap_font","z-index":"10"});
+                
+                $(" .carousel-control > .glyphicon ").css({"font-family": "bootstrap_font","z-index":"10" ,"top":"70%"});
+                //semi-final adjustments
+                
+                $(".glyphicon-chevron-left").css("left","-1%");
+                $(".glyphicon-chevron-right").css("right","-1%");
+                
+            
+                $(" .carousel-control ").eq(0).mouseover(function () {
+                    $(".glyphicon-chevron-left").animate({
+                        'left':'50%'
+                    });
+                });
+                
+                $(" .carousel-control ").eq(1).mouseover(function () {
+                    $(".glyphicon-chevron-right").animate({
+                        'right':'50%'
+                    });
+                });
+                
+                $(" .carousel-control ").eq(0).mouseout(function () {
+                    $(".glyphicon-chevron-left").animate({
+                        'left':'-1%'
+                    });
+                });
+                
+                $(" .carousel-control ").eq(1).mouseout(function () {
+                    $(".glyphicon-chevron-right").animate({
+                        'right':'-1%'
+                    });
+                });
+                
                 
                 
                 
@@ -283,15 +314,17 @@
                         
         </div>
         
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    
+    <a class=" carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"  style ="color:black"></span>
       <span class="sr-only">Previous</span>
     </a>
 
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <a class="  carousel-control" href="#myCarousel" role="button" data-slide="next" style = "right: 0; left: auto;">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" style ="color:black"></span>
       <span class="sr-only">Next</span>
     </a>
+
         
 
                 
