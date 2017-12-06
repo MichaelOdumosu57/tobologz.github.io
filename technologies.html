@@ -232,7 +232,9 @@
                     // i += 1;
                     // }
                 }
-                $(".tech_card").rolodex("none",$(".carousel-control:has( .glyphicon-chevron-left)"),$(".carousel-control:has( .glyphicon-chevron-right)"));
+                $(".tech_card").rolodex({
+                    simple_3d: 'false'
+                },$(".carousel-control:has( .glyphicon-chevron-left)"),$(".carousel-control:has( .glyphicon-chevron-right)"));
             });
         </script>
     </head>

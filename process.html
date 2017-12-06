@@ -145,6 +145,12 @@
             var add_y = 45;
             var add_x = 64;
             var index = 4;
+            var images = ["./logo_folder/final_logo.png","./lion.png","./big_world.jpg"];
+            
+            function image_return(image_array,image_counter){
+                //we have a limited amount of pictures and we want to make the rolodex work by having 8 rolodex items but only using 3. This function takes an array of images and when it reaches the end of the array it starts again
+                    return image_array[image_counter % 3];
+            }
 
             $(document).ready(function() {
                 
@@ -157,7 +163,7 @@
                     offset_y -= add_y;
                     offset_x += add_x;
                     index -= 1;
-                $(".rolodex").css("background-image","url('./logo_folder/final_logo.png')");
+                $(".rolodex").css("background-image","url(" + images[0] +")");
                 
                 $(".rolodex > div").prepend("<h1>The Process</h1>");
                 $(".rolodex  > div > h1").css("text-align","center").append("<h2>see me</h2>");
@@ -167,10 +173,14 @@
                 
                 $(".rolodex").after($rolodex);
                 $(".rolodex:last").offset({top:offset_y,left:offset_x}).css("z-index",index);
-                // $(".rolodex:last").css({"background-image":"url('./logo_folder/final_logo.png')","z-index":index});
-                console.log($(".rolodex:last").css("z-index"))
                 
                 var $rolodex_clone = $rolodex.clone();
+                $(".rolodex:last").css({"background-image":"url(" + images[1] + ")","z-index":index});
+                $(".rolodex:last > div").prepend("<h1>Your part</h1>");
+                $(".rolodex:last  > div > h1").css({"text-align":"center","color":"white"}).append("<h2>see me</h2>");
+                console.log($(".rolodex:last").css("z-index"))
+                
+
                 
                 function do_things_differently(case_num,logic) {
                     switch (case_num) {
@@ -213,6 +223,12 @@
                 var logic = 0;
                 while (i !=6){
                     $(".rolodex:last").after($rolodex_clone.clone());
+                    $(".rolodex:last").css("background-image","url(" + image_return(images,i+2) + ")"); //image proper redistribution
+                    if(i == 0){
+                        $(".rolodex:last > div").prepend("<h1>Our part</h1>");
+                        $(".rolodex:last  > div > h1").css({"text-align":"center","color":"red"}).append("<h2>do x,y,z</h2>");
+                                       
+                    }
                     if(offset_y < 150 || offset_x >= 195) {
                         if(offset_x >= 260 || offset_y > 200){
                             do_things_differently("switch_left",logic);
@@ -290,13 +306,17 @@
                 //glyiphicon controls to make space
                 
 
-                $(".rolodex").rolodex("none",$(".carousel-control:has( .glyphicon-chevron-left)"),$(".carousel-control:has( .glyphicon-chevron-right)"));
+                $(".rolodex").rolodex({
+                    simple_3d: 'true',
+                    animate: 'false',
+                    xml_re_content: ['true','0','3']
+                },$(".carousel-control:has( .glyphicon-chevron-left)"),$(".carousel-control:has( .glyphicon-chevron-right)"));
                 
                 //rolodex jquery
                 
                 
                 
-                
+            
                 
                 
             });
