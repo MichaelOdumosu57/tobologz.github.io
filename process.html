@@ -166,7 +166,7 @@
                 $(".rolodex").css("background-image","url(" + images[0] +")");
                 
                 $(".rolodex > div").prepend("<h1>The Process</h1>");
-                $(".rolodex  > div > h1").css("text-align","center").append("<h2>see me</h2>");
+                $(".rolodex  > div > h1").css("text-align","center").append("<br/><br/><br/><h2>How we work at Tobologz is based on user input</h2><h2>Whether you want us to follow your exact footprint or suprise you with our own creativity is up to you</h2>");
                 
                 // console.log($(".rolodex").css("background-image"),$(".rolodex").css("height"),$(".rolodex").css("width"));
                 
@@ -177,7 +177,7 @@
                 var $rolodex_clone = $rolodex.clone();
                 $(".rolodex:last").css({"background-image":"url(" + images[1] + ")","z-index":index});
                 $(".rolodex:last > div").prepend("<h1>Your part</h1>");
-                $(".rolodex:last  > div > h1").css({"text-align":"center","color":"white"}).append("<h2>see me</h2>");
+                $(".rolodex:last  > div > h1").css({"text-align":"center","color":"white"}).append("<h2>Contact Information</h2><h2>Through the development project we are here to help and to keep you informed about the overall progess along the way without interfering heavily in your daily tasks</h2><h2>Also if you are interested we can teach you our technology as well</h2> ");
                 console.log($(".rolodex:last").css("z-index"))
                 
 
@@ -226,7 +226,7 @@
                     $(".rolodex:last").css("background-image","url(" + image_return(images,i+2) + ")"); //image proper redistribution
                     if(i == 0){
                         $(".rolodex:last > div").prepend("<h1>Our part</h1>");
-                        $(".rolodex:last  > div > h1").css({"text-align":"center","color":"red"}).append("<h2>do x,y,z</h2>");
+                        $(".rolodex:last  > div > h1").css({"text-align":"center","color":"rgb(0,255,0)","background-color":"rgba(0,0,0,.4)"}).append("<h2>We commit to two things:</h2><h2>1. Visual Display: We plan to use the amazing variety of technology in order to modernize your website and make it easy for users to navigate</h2><h2>2 .Functionality: for every visitng user we will do our best to help with every important piece of data, from retrieving customer information, to providing the web serivces of your business, Tobologz plans to keep assistance in maintenance of the website</h2> ");
                                        
                     }
                     if(offset_y < 150 || offset_x >= 195) {
@@ -307,9 +307,10 @@
                 
 
                 $(".rolodex").rolodex({
-                    simple_3d: 'true',
-                    animate: 'false',
-                    xml_re_content: ['true','0','3']
+                    simple_3d: 'false',
+                    animate: 'true',
+                    z_only: 'false',
+                    xml_re_content: ['false','0','2']
                 },$(".carousel-control:has( .glyphicon-chevron-left)"),$(".carousel-control:has( .glyphicon-chevron-right)"));
                 
                 //rolodex jquery
@@ -335,7 +336,7 @@
 
         
         <div class ="rolodex_holder" style = "height:50em">
-            <div class="container rolodex well" style = "z-index:5; width:80em;">
+            <div class="container rolodex well" style = "z-index:5; width:80em; position:relative">
                 <div  style = "height:30em; width:75em; position:relative; ">
                     
                 </div>
