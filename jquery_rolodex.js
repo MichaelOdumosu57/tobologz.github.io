@@ -74,6 +74,7 @@ var rolodex_execute_counterwise;
             var decision_first = $.map($(this), function(value, index) {
                 return [[$(value),undefined]];
             });
+            // console.log(jQuery._data( ))
             
             //turns jquery selector to an array for compatability from initialization to rolodex use
             //returned as such 1, needs selector for jquery function compatability
@@ -147,7 +148,7 @@ var rolodex_execute_counterwise;
                                         // console.log(difference)
                                         // console.log($("." + i.toString()).offset().top)
                                         console.log("wait executed")
-                                        wait(50);
+                                        
                                         
                                         if(  (difference < 1 && difference > 0) || (difference < 0 && difference > -1) ){
                                             
@@ -203,8 +204,12 @@ var rolodex_execute_counterwise;
                                             
                                             // console.log(difference)
     
+                                            // $(document).trigger('animate_offset');
+                                            // $(document).on('animate_offset', function() {
+                                                // wait(50);
+                                                $("." + i.toString()).offset({top:newPos.top,left:newPos.left});
+                                            // });
                                             
-                                            $("." + i.toString()).offset({top:newPos.top,left:newPos.left}).ready();
                                             // console.log(rolodex_element[0].offset())
                                         
                                             // break;
@@ -294,7 +299,8 @@ var rolodex_execute_counterwise;
                 return rolodex_execute;
             }
             
-            $left.click(function () {
+            $left.click( function (event,a,b,c) {
+                console.log(event,a,b,c)
                 data_collect(1);
                 rolodex_execute_counterwise +=1;
                 rolodex_execute_clockwise -= 1;
