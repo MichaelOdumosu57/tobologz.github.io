@@ -1,15 +1,15 @@
-<!--I use this page to make any images, I need, such as logos and additional picutres  -->
+<!--Finished making the logo using the console of the browser, the final images are in the logo file -->
 
 <html>
     <head>
         <script src="./jquery-1.10.2.js"></script>
         <script src="./jquery-ui.js"></script>
-        <!--<script src="./footer.js"></script>-->
+        <script src="./jquery_rotate.js"></script>
         <!--<script src="./bootstrap.min.js"></script>-->
         <!--<title> Tobologz.com </title>-->
         <link rel="stylesheet" href="./bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Amatic+SC" />
+        <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+        <!--<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Amatic+SC" />-->
         <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
         <!--glyphicons-->
 
@@ -140,65 +140,142 @@
             var red = 0;
             var green = 255;
             var blue = 0;
-            var opacity =.8
+            var opacity =.3;
+            var rotate = 0;
+            var image_part = 0;
             $(document).ready(function() {
                 
                 console.log($("button").eq(0))
                 
-                $("img").draggable();
-                $("button").eq(0).hover(function() {
-                    red += 3;
-                    console.log(red);
+                $("img, div").draggable();
+                
+                    $("img").rotate({
+                        angle:rotate - 1,
+                        animateTo:rotate
+                    });
+                // $("button").eq(0).hover(function() {
+                //     red += 3;
+                //     console.log(red);
 
-                },change);
-                $("button").eq(1).hover(function() {
-                    green += 3;
-                    console.log(green);
-                },change);
-                $("button").eq(2).hover(function() {
-                    blue += 3;
-                    console.log(blue);
-                },change);
-                $("button").eq(3).hover(function() {
-                    red -= 3;
-                    console.log(red)
-                },change);
-                $("button").eq(4).hover(function() {
-                    green -= 3;
-                    console.log(green)
-                },change);
-                $("button").eq(5).hover(function() {
-                    blue -= 3;
-                    console.log(blue)
-                },change);
-                $("button").eq(6).hover(function() {
-                    opacity += .1;
-                    console.log(opacity)
-                },change);
-                $("button").eq(7).hover(function() {
-                    opacity -= .1;
-                    console.log(opacity)
-                },change);
+                // },change);
+                // $("button").eq(1).hover(function() {
+                //     green += 3;
+                //     console.log(green);
+                // },change);
+                // $("button").eq(2).hover(function() {
+                //     blue += 3;
+                //     console.log(blue);
+                // },change);
+                // $("button").eq(3).hover(function() {
+                //     red -= 3;
+                //     console.log(red)
+                // },change);
+                // $("button").eq(4).hover(function() {
+                //     green -= 3;
+                //     console.log(green)
+                // },change);
+                // $("button").eq(5).hover(function() {
+                //     blue -= 3;
+                //     console.log(blue)
+                // },change);
+                // $("button").eq(6).hover(function() {
+                //     opacity += .1;
+                //     console.log(opacity)
+                // },change);
+                // $("button").eq(7).hover(function() {
+                //     opacity -= .1;
+                //     console.log(opacity)
+                // },change);
                 
                 function change () {
                     $(".well").css("background-color","rgba("+red.toString()+","+green.toString()+","+blue.toString()+","+opacity.toString()+ ")");
                     console.log("rgba("+red.toString()+","+green.toString()+","+blue.toString()+","+opacity.toString()+ ")")
                 };
                 
+                $("button").eq(9).hover(function() {
+                    rotate += 1
+                    $("img").eq(image_part).rotate({
+                        angle:rotate - 1,
+                        animateTo:rotate
+                    });
+                    console.log(rotate)
+                });
+                $("button").eq(10).hover(function() {
+                    rotate -= 1
+                    $("img").eq(image_part).rotate({
+                        angle:rotate + 1,
+                        animateTo:rotate
+                    });
+                    console.log(rotate)
+                });
+                
+                $("body").prepend("<img src = 'logo_part.png'/>");
+                
+                
+                var i = 5;
+                var init_height = 100;
+                var part_copies = $("img:last").clone();
+                var clones = part_copies.clone()
+                $("img:last").after(part_copies);
+                    init_height -= 10;
+                    $("img:last").attr("height", init_height);
+                while (i != 1){
+                    i -= 1;
+
+                $("img:last").after(part_copies.clone());
+                    init_height -= 10;
+                    $("img:last").attr("height", init_height);
+
+                }
+                    
                 
                 
                 
+                $("img").draggable();
+                console.log($("img"))
                 
+                $("button").eq(11).click(function() {
+                    image_part -= 1
+
+                    console.log(image_part)
+                });
+                $("button").eq(12).click(function() {
+                    image_part += 1
+
+                    console.log(image_part)
+                });
                 
                 
             });
         </script>
     </head>
     <body>
-        <div class = "well" style ="height: 7.5em; width:5em; margin:auto; margin-top:10em; background-color: rgba(0,255,0,.3)"></div>
-        <img src = "canvas_folder/logo_cover.png" height = 110>
+        <!--<div class = "well" style ="height: 7.5em; width:5em; margin:auto; margin-top:10em; background-color: rgba(0,255,0,.3)"></div>-->
+        <!--<img src = "canvas_folder/logo_cover.png" height = 100>-->
+        <!--<div class = "well" style ="height: 7.5em; width:5em; margin:auto; margin-top:10em; background-color: white"></div>-->
+        <!--<div class = "well" style ="height: 7.5em; width:5em; margin:auto; margin-top:10em; background-color: white"></div>-->
+        
+        
         
         <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+                <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+                <br/>
         <br/>
         <br/>
         <br/>
@@ -214,4 +291,9 @@
         <button>Decrease</button>
         <button>Increase opacity</button>
         <button>Decrease opacity</button>
+        <br/>
+        <button>Rotate left</button>
+        <button>Rotate right</button>
+        <button>prev img</button>
+        <button>next img</button>
     </body>

@@ -538,15 +538,17 @@ jquery clone
     you are not finished here because this is only one object, if you append this several times
         jquery still thinks you are appending 1 object. It is couterpoint because the purpose of the clone is to copy, but it technically makes sense, if you make one clone you make only one, so you must make more.
 
-    to make more clones you must clone the clone.
+    to make more clones the first clone object must be attached to the htlm
 
-        jquery_function_action([single_clone].clone());
+        jquery_function_[adding_to_html]([single_clone]);
 
-    because here you are not cloning an object you are cloining the function that makes the object, and in this initialization is a function call
+    the purpose of the clone function is to add to the html, if so if the clone is not in the html as of yet, how is it supposed to select it (which what jquery does) and clone it?
+
+    [single_clone_copy] = $([single_clone].clone()); //as many clones
 
     Hence
 
-    every function call means something must be done, and here it means several single clones
+    when making clone copies, you must add the first clone to the html in order for jquery to know what to clone
 
   $(selector).clone(true|false)
     
@@ -1109,6 +1111,17 @@ Jquery Events
       Function	    It is executed when the event occurs.
 
   file jquery_delegate.html
+
+Jquery map
+
+    map jquery object to array
+
+        var array = $.map(myObj, function(value, index) {
+            return [value];
+        });
+
+    the powerful thing about it is what you return, you can return the html or jquery select it and return each jquery index with which you can do plenty of things with
+
 
 scroll to 1200 to learn about jquery UI
 
@@ -2682,6 +2695,162 @@ Slide	Moves the element such that it appears to slide onto or off of the page.
 Transfer	Animates a transient outline element that makes the element appear to transfer to another element. the appearance of the outline element must be defined via css rules for the ui-effects-transfer class, or the class specified as an option.
 
 
-  
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Jquery extensions
+
+    Jquery is built in such a way where you can make it larger
+
+two ways to do it
+
+jQuery.fn.extend({
+    [method_name]:function([parameters]) {
+    
+        }
+    });
+
+or
+
+(function( $ ) {
+    $.fn.[method] = function ([parameters]) {
+
+ }(jQuery));
+
+you put your new methods into js files and run them after the inital js files,
+then you are free to use them any way you like
+  
+Jquery namespace
+
+            when you have too many plugins
+        
+        (function($) {
+            
+            var namespace;
+            
+            namespace = {
+                something : function() {
+                    alert('hello there!');
+                },
+                bodyInfo : function() {
+                    alert($('body').attr('id'));
+                }
+            };
+            
+            window.ns = namespace;
+            
+        })(this.jQuery);
+        
+        $(function() {
+            ns.something();
+            ns.bodyInfo();
+        });
+
+//but jquery is creative so do not ruin it
 
