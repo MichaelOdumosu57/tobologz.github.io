@@ -248,7 +248,7 @@
                       }
                     // xmlhttp.addEventListener("load", reqListener);
                     var xmlDoc;
-                    xmlhttp.open("GET","./michael_bi.xml");
+                    xmlhttp.open("GET","./customer_database.xml");
                     xmlhttp.responseType = 'document';
                     xmlhttp.overrideMimeType('text/xml');
                     xmlhttp.onload = function () {
@@ -258,7 +258,8 @@
                           console.log(xmlhttp.responseXML);
                           xmlDoc = xmlhttp.responseXML;
                           console.log(xmlDoc);
-                          console.log(xmlDoc.getElementsByTagName("header"))
+                          console.log(xmlDoc.getElementsByTagName("info"))
+                          xmlDoc.getElementsByTagName("info")[0].textContent ="some input data"
                     
                           
                         }
