@@ -235,10 +235,28 @@
                 $("button").eq(1).click(function() {
                     event.preventDefault();
                   $(this).css("background-color","green");
-                    var fso = new ActiveXObject("Scripting.FileSystemObject");
-                    var a = fso.CreateTextFile("c:\\testfile.txt", true);
-                    a.WriteLine("This is a test.");
-                    a.Close();
+
+                    var xmlDoc;
+                    xmlhttp.open("GET","./michael_bio.xml");
+                    xmlhttp.responseType = 'document';
+                    xmlhttp.overrideMimeType('text/xml');
+                    xmlhttp.onload = function () {
+                      if (xmlhttp.readyState === xmlhttp.DONE) {
+                        if (xmlhttp.status === 200) {
+                          console.log(xmlhttp.response);
+                          console.log(xmlhttp.responseXML);
+                          xmlDoc = xmlhttp.responseXML;
+                          console.log(xmlDoc);
+                          console.log(xmlDoc.getElementsByTagName("header"))
+                    
+                          
+                        }
+                      }
+                    };
+                    xmlhttp.send(null);
+
+
+// for infomration storage
 
                 });
                 
