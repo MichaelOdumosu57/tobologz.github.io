@@ -234,7 +234,7 @@
                     
 //                 $("button").eq(1).click(function() {
 //                     event.preventDefault();
-//                     window.location = "mailto:michaelodumosu57@gmail.com";
+                    
 //                   $(this).css("background-color","green");
                   
 // // for infomration storage ----------------------------------------
@@ -249,7 +249,7 @@
 //                       }
 //                     // xmlhttp.addEventListener("load", reqListener);
 //                     var xmlDoc;
-//                     xmlhttp.open("GET","https://tobologz.github.io/Tobologz/customer_database.xml");
+//                     xmlhttp.open("GET","https://tobologz.github.io/Tobologz/sendEmail.php");
 //                     xmlhttp.responseType = 'document';
 //                     xmlhttp.overrideMimeType('text/xml');
 //                     xmlhttp.onload = function () {
@@ -273,8 +273,10 @@
 
 //                 });
 
+
+
                   $("button").eq(1).click(function () {
-                		$(".error").hide();
+                		
                 		var hasError = false;
                 		var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
                 		
@@ -313,12 +315,13 @@
 
 
                 			
-                			$.post("/sendEmail.php",
-                   				{ emailTo: emailToVal, emailFrom: emailFromVal, subject: subjectVal, message: messageVal });
+                			$.post("https://tobologz.github.io/Tobologz/customer_form.html",
+                  				{ emailTo: emailToVal, emailFrom: emailFromVal, subject: subjectVal, message: messageVal });
                 		}
                 		
                 		return false;
                 	});
+                
 
                 
                 
@@ -333,7 +336,7 @@
         <h1 style = "background-color:rgba(0,0,0,.8); color:pink; font-weight:bold; text-indent: 10px "><a href ="./index.html" style ="color:pink; text-decoration-line:none">        Tobologz.com </a></h1>
         <div class="container">
           <h2>Website Request Form</h2>
-          <form class="form-inline" role="form">
+          <form class="form-inline" role="form" method="POST" action ="./sendEmail.php" >
             <form style="width:300px">
             <div class = "form_copy">
             <div class = "holder">
