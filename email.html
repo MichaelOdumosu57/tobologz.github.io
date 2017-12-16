@@ -8,7 +8,7 @@
           $('.success').hide
         $.ajax({
           type: 'POST',
-          url: 'email-php.php',
+          url: 'data:image/png;base64,PD9waHAKJG5hbWUgPSAkX1BPU1RbJ2Zvcm1fbmFtZSddOwokZW1haWwgPSAkX1BPU1RbJ2Zvcm1fZW1haWwnXTsKJG1lc3NhZ2UgPSAkX1BPU1RbJ2Zvcm1fbXNnJ107CgokdG8gPSAibWljaGFlbG9kdW1vc3U1N0BnbWFpbC5jb20iOwokc3ViamVjdCA9ICJSSUEgRW1haWxzIjsKJGJvZHkgPSAiTmFtZTogIi4kbmFtZS4iXG5FbWFpbDogIi4kZW1haWwuIlxuTWVzc2FnZTogIi4kbWVzc2FnZTsKJGhlYWRlcnMgPSAiRnJvbTogIiAuICRlbWFpbDsKCi8vc2VuZCBlbWFpbAptYWlsKCR0bywgJHN1YmplY3QsICRib2R5LCAkaGVhZGVycyk7Cj8+',
           data: $('#frmemail').serialize(),
           success: function() {
             $('.success').fadeIn(1000)
