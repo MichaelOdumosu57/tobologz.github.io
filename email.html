@@ -5,9 +5,10 @@
     $(document).ready(function() {
       $('#frmemail').submit(function(event) {
           event.preventDefault();
+          $('.success').hide
         $.ajax({
           type: 'POST',
-          url: 'data:text/html',
+          url: 'email-php.php',
           data: $('#frmemail').serialize(),
           success: function() {
             $('.success').fadeIn(1000)
