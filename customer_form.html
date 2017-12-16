@@ -232,15 +232,101 @@
                     console.log(information);
                     });
                     
-                $("button").eq(1).click(function() {
-                    event.preventDefault();
-                  $(this).css("background-color","green");
-                    var fso = new ActiveXObject("Scripting.FileSystemObject");
-                    var a = fso.CreateTextFile("c:\\testfile.txt", true);
-                    a.WriteLine("This is a test.");
-                    a.Close();
+//                 $("button").eq(1).click(function() {
+//                     event.preventDefault();
+//                     window.location = "mailto:michaelodumosu57@gmail.com";
+//                   $(this).css("background-color","green");
+                  
+// // for infomration storage ----------------------------------------
 
-                });
+//                     if (window.XMLHttpRequest)
+//                       {// code for IE7+, Firefox, Chrome, Opera, Safari
+//                       xmlhttp=new XMLHttpRequest();
+//                       }
+//                     else
+//                       {// code for IE6, IE5
+//                       xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+//                       }
+//                     // xmlhttp.addEventListener("load", reqListener);
+//                     var xmlDoc;
+//                     xmlhttp.open("GET","https://tobologz.github.io/Tobologz/customer_database.xml");
+//                     xmlhttp.responseType = 'document';
+//                     xmlhttp.overrideMimeType('text/xml');
+//                     xmlhttp.onload = function () {
+//                       if (xmlhttp.readyState === xmlhttp.DONE) {
+//                         if (xmlhttp.status === 200) {
+//                           console.log(xmlhttp.response);
+//                           console.log(xmlhttp.responseXML);
+//                           xmlDoc = xmlhttp.responseXML;
+//                           console.log(xmlDoc);
+//                           console.log(xmlDoc.getElementsByTagName("info"))
+//                           xmlDoc.getElementsByTagName("info")[0].textContent ="some input data"
+//                           console.log(xmlDoc.getElementsByTagName("info"))
+                          
+//                         }
+//                       }
+//                     };
+//                     xmlhttp.send(null);
+
+
+// // for infomration storage ---------------------------------
+
+//                 });
+
+                  $("button").eq(1).click(function () {
+                		$(".error").hide();
+                		var hasError = false;
+                		var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+                		
+                		var emailToVal = "michaelodumosu57@gmail.com";
+                		if(emailToVal == '') {
+                			console.log('<span class="error">You forgot to enter the email address to send to.</span>');
+                			hasError = true;
+                		} else if(!emailReg.test(emailToVal)) {
+                			console.log('<span class="error">Enter a valid email address to send to.</span>');
+                			hasError = true;
+                		}
+                		
+                		var emailFromVal = "michaelodumosu57@gmail.com";
+                		if(emailFromVal == '') {
+                			console.log('<span class="error">You forgot to enter the email address to send from.</span>');
+                			hasError = true;
+                		} else if(!emailReg.test(emailFromVal)) {
+                			console.log('<span class="error">Enter a valid email address to send from.</span>');
+                			hasError = true;
+                		}
+                		
+                		var subjectVal = "some subject";
+                		if(subjectVal == '') {
+                			console.log('<span class="error">You forgot to enter the subject.</span>');
+                			hasError = true;
+                		}
+                		
+                		var messageVal = "some data";
+                		if(messageVal == '') {
+                			console.log('<span class="error">You forgot to enter the message.</span>');
+                			hasError = true;
+                		}
+                		
+                		
+                		if(hasError == false) {
+                			$(this).hide();
+
+                			
+                			$.post("/sendEmail.php",
+                   				{ emailTo: emailToVal, emailFrom: emailFromVal, subject: subjectVal, message: messageVal },
+                   					function(data){
+                						$("#sendEmail").slideUp("normal", function() {
+                							
+                							$("#sendEmail").before('<h1>Success</h1><p>Your email was sent.</p>');
+                						});
+                   					}
+                				 );
+                		}
+                		
+                		return false;
+                	});
+
                 
                 
                 // console.log($("a"))
