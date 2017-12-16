@@ -232,51 +232,33 @@
                     console.log(information);
                     });
                     
-//                 $("button").eq(1).click(function() {
-//                     event.preventDefault();
+                $("button").eq(1).click(function() {
+                    event.preventDefault();
                     
-//                   $(this).css("background-color","green");
+                  $(this).css("background-color","green");
                   
-// // for infomration storage ----------------------------------------
+// for infomration storage ----------------------------------------
 
-//                     if (window.XMLHttpRequest)
-//                       {// code for IE7+, Firefox, Chrome, Opera, Safari
-//                       xmlhttp=new XMLHttpRequest();
-//                       }
-//                     else
-//                       {// code for IE6, IE5
-//                       xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-//                       }
-//                     // xmlhttp.addEventListener("load", reqListener);
-//                     var xmlDoc;
-//                     xmlhttp.open("GET","https://tobologz.github.io/Tobologz/sendEmail.php");
-//                     xmlhttp.responseType = 'document';
-//                     xmlhttp.overrideMimeType('text/xml');
-//                     xmlhttp.onload = function () {
-//                       if (xmlhttp.readyState === xmlhttp.DONE) {
-//                         if (xmlhttp.status === 200) {
-//                           console.log(xmlhttp.response);
-//                           console.log(xmlhttp.responseXML);
-//                           xmlDoc = xmlhttp.responseXML;
-//                           console.log(xmlDoc);
-//                           console.log(xmlDoc.getElementsByTagName("info"))
-//                           xmlDoc.getElementsByTagName("info")[0].textContent ="some input data"
-//                           console.log(xmlDoc.getElementsByTagName("info"))
-                          
-//                         }
-//                       }
-//                     };
-//                     xmlhttp.send(null);
-
-
-// // for infomration storage ---------------------------------
-
-//                 });
-
-
-
-                  $("button").eq(1).click(function () {
-                		
+                    if (window.XMLHttpRequest)
+                      {// code for IE7+, Firefox, Chrome, Opera, Safari
+                      xmlhttp=new XMLHttpRequest();
+                      }
+                    else
+                      {// code for IE6, IE5
+                      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                      }
+                    // xmlhttp.addEventListener("load", reqListener);
+                    var xmlDoc;
+                    xmlhttp.open("GET","https://tobologz.github.io/Tobologz/sendEmail.php");
+                    xmlhttp.responseType = 'document';
+                    xmlhttp.overrideMimeType('text/html');
+                    xmlhttp.onload = function () {
+                      if (xmlhttp.readyState === xmlhttp.DONE) {
+                        if (xmlhttp.status === 200) {
+                          console.log(xmlhttp.response);
+                        //   console.log(xmlhttp.responseXML);
+                          xmlDoc = xmlhttp.responseXML;
+                          console.log(xmlDoc);
                 		var hasError = false;
                 		var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
                 		
@@ -315,12 +297,72 @@
 
 
                 			
-                			$.post("https://tobologz.github.io/Tobologz/customer_form.html",
-                  				{ emailTo: emailToVal, emailFrom: emailFromVal, subject: subjectVal, message: messageVal });
+                			console.log($.post("data:text/html;base64,PD9waHAKZnVuY3Rpb24gY29ycygpIHsKCiAgICAvLyBBbGxvdyBmcm9tIGFueSBvcmlnaW4KICAgIGlmIChpc3NldCgkX1NFUlZFUlsnSFRUUF9PUklHSU4nXSkpIHsKICAgICAgICAvLyBEZWNpZGUgaWYgdGhlIG9yaWdpbiBpbiAkX1NFUlZFUlsnSFRUUF9PUklHSU4nXSBpcyBvbmUKICAgICAgICAvLyB5b3Ugd2FudCB0byBhbGxvdywgYW5kIGlmIHNvOgogICAgICAgIGhlYWRlcigiQWNjZXNzLUNvbnRyb2wtQWxsb3ctT3JpZ2luOiB7JF9TRVJWRVJbJ0hUVFBfT1JJR0lOJ119Iik7CiAgICAgICAgaGVhZGVyKCdBY2Nlc3MtQ29udHJvbC1BbGxvdy1DcmVkZW50aWFsczogdHJ1ZScpOwogICAgICAgIGhlYWRlcignQWNjZXNzLUNvbnRyb2wtTWF4LUFnZTogODY0MDAnKTsgICAgLy8gY2FjaGUgZm9yIDEgZGF5CiAgICB9CgogICAgLy8gQWNjZXNzLUNvbnRyb2wgaGVhZGVycyBhcmUgcmVjZWl2ZWQgZHVyaW5nIE9QVElPTlMgcmVxdWVzdHMKICAgIGlmICgkX1NFUlZFUlsnUkVRVUVTVF9NRVRIT0QnXSA9PSAnT1BUSU9OUycpIHsKCiAgICAgICAgaWYgKGlzc2V0KCRfU0VSVkVSWydIVFRQX0FDQ0VTU19DT05UUk9MX1JFUVVFU1RfTUVUSE9EJ10pKQogICAgICAgICAgICAvLyBtYXkgYWxzbyBiZSB1c2luZyBQVVQsIFBBVENILCBIRUFEIGV0YwogICAgICAgICAgICBoZWFkZXIoIkFjY2Vzcy1Db250cm9sLUFsbG93LU1ldGhvZHM6IEdFVCwgUE9TVCwgT1BUSU9OUyIpOwoKICAgICAgICBpZiAoaXNzZXQoJF9TRVJWRVJbJ0hUVFBfQUNDRVNTX0NPTlRST0xfUkVRVUVTVF9IRUFERVJTJ10pKQogICAgICAgICAgICBoZWFkZXIoIkFjY2Vzcy1Db250cm9sLUFsbG93LUhlYWRlcnM6IHskX1NFUlZFUlsnSFRUUF9BQ0NFU1NfQ09OVFJPTF9SRVFVRVNUX0hFQURFUlMnXX0iKTsKCiAgICAgICAgZXhpdCgwKTsKICAgIH0KCiAgICBlY2hvICJZb3UgaGF2ZSBDT1JTISI7Cn0KY29ycygpOwoKJG1haWxUbyA9ICRfUE9TVFsnZW1haWxUbyddOwokbWFpbEZyb20gPSAkX1BPU1RbJ2VtYWlsRnJvbSddOwokc3ViamVjdCA9ICRfUE9TVFsnc3ViamVjdCddOwokbWVzc2FnZSA9ICRfUE9TVFsnbWVzc2FnZSddOwoKCQkJCm1haWwoJG1haWxUbywgJHN1YmplY3QsICRtZXNzYWdlLCAiRnJvbTogIi4kbWFpbEZyb20pOwo",
+                  				{ emailTo: emailToVal, emailFrom: emailFromVal, subject: subjectVal, message: messageVal }))
                 		}
                 		
                 		return false;
-                	});
+                		
+                          
+                        }
+                      }
+                    };
+                    xmlhttp.send(null);
+
+
+// for infomration storage ---------------------------------
+
+                });
+
+
+
+                //   $("button").eq(1).click(function () {
+                		
+                		
+                // 		var hasError = false;
+                // 		var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+                		
+                // 		var emailToVal = "michaelodumosu57@gmail.com";
+                // 		if(emailToVal == '') {
+                // 			console.log('<span class="error">You forgot to enter the email address to send to.</span>');
+                // 			hasError = true;
+                // 		} else if(!emailReg.test(emailToVal)) {
+                // 			console.log('<span class="error">Enter a valid email address to send to.</span>');
+                // 			hasError = true;
+                // 		}
+                		
+                // 		var emailFromVal = "michaelodumosu57@gmail.com";
+                // 		if(emailFromVal == '') {
+                // 			console.log('<span class="error">You forgot to enter the email address to send from.</span>');
+                // 			hasError = true;
+                // 		} else if(!emailReg.test(emailFromVal)) {
+                // 			console.log('<span class="error">Enter a valid email address to send from.</span>');
+                // 			hasError = true;
+                // 		}
+                		
+                // 		var subjectVal = "some subject";
+                // 		if(subjectVal == '') {
+                // 			console.log('<span class="error">You forgot to enter the subject.</span>');
+                // 			hasError = true;
+                // 		}
+                		
+                // 		var messageVal = "some data";
+                // 		if(messageVal == '') {
+                // 			console.log('<span class="error">You forgot to enter the message.</span>');
+                // 			hasError = true;
+                // 		}
+                		
+                		
+                // 		if(hasError == false) {
+
+
+                			
+                // 			$.post("https://tobologz.github.io/Tobologz/sendEmail.php",
+                //   				{ emailTo: emailToVal, emailFrom: emailFromVal, subject: subjectVal, message: messageVal });
+                // 		}
+                		
+                // 		return false;
+                // 	});
                 
 
                 
