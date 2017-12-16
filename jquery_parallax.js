@@ -1,4 +1,4 @@
-//   here the above items are taken into account as an unfix attribute you must put as an array, this takes at most one item and fixes it once the parallax is done
+//   some sort of height relation to everything involved in the parallax and everything that is not shown in the positions of the unfix parallax objects
 
     //capabilities:core parallax functionality
     //            : paralllax items stick to the screen once they get to the offset points
@@ -38,9 +38,10 @@ var its_ok = 0;
                         var move = unfix_move;
                         consoles("unfix",michael.unfix,0);
                         michael.unfix[0].css("position","relative")
-                        move += (1044-338)/150;
+                        // move /= 15;
+                        move = (1065-538)/15
                         michael.unfix[0].css({"top":move.toString() + "em","left":"0em"})
-                        
+                        //probobaly something to do with everything that came before it
                         return;
                     }
                     //to stop the above items from moving and move along and treat the parallax like a big static object
