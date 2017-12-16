@@ -1,9 +1,21 @@
 <?php
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Credentials: true");
-header("Access-Control-Max-Age: 1000");
-header("Access-Control-Allow-Headers: X-Requested-With, Content-Type, Origin, Cache-Control, Pragma, Authorization, Accept, Accept-Encoding");
-header("Access-Control-Allow-Methods: PUT, POST, GET, OPTIONS, DELETE");
+    if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: POST, GET, DELETE, PUT, PATCH, OPTIONS');
+        header('Access-Control-Allow-Headers: token, Content-Type');
+        header('Access-Control-Max-Age: 1728000');
+        header('Content-Length: 0');
+        header('Content-Type: text/plain');
+        die();
+    }
+
+    header('Access-Control-Allow-Origin: *');
+    header('Content-Type: application/json');
+
+    $ret = [
+        'result' => 'OK',
+    ];
+    print json_encode($ret);
 
 $mailTo = $_POST['emailTo'];
 $mailFrom = $_POST['emailFrom'];
