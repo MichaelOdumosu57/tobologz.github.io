@@ -310,18 +310,11 @@
                 		
                 		
                 		if(hasError == false) {
-                			$(this).hide();
+
 
                 			
                 			$.post("/sendEmail.php",
-                   				{ emailTo: emailToVal, emailFrom: emailFromVal, subject: subjectVal, message: messageVal },
-                   					function(data){
-                						$("#sendEmail").slideUp("normal", function() {
-                							
-                							$("#sendEmail").before('<h1>Success</h1><p>Your email was sent.</p>');
-                						});
-                   					}
-                				 );
+                   				{ emailTo: emailToVal, emailFrom: emailFromVal, subject: subjectVal, message: messageVal });
                 		}
                 		
                 		return false;
