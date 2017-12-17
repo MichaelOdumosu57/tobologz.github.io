@@ -24,7 +24,7 @@
         
         <script>
 
-            alert("You do not need to enter information that you feel uncomfortable with, just enough for us to safely contact you")
+            // alert("You do not need to enter information that you feel uncomfortable with, just enough for us to safely contact you")
             // var baze;
             // function addition ();
             
@@ -70,6 +70,8 @@
                 
                 function addition ()  {           //bootstrap button still seems to refresh
                     
+                    var attr_addition;
+                    
                     if (information[counter] == null) { //see if information was place there before
                         $(".form_copy").append(single);
                     }
@@ -84,8 +86,29 @@
                     var attr_problem_array = $.map(attr_name_problem, function(value) {
                         return $(value)
                     });
-                    attr_problem_array.forEach(function(change) {
-                        console.log(change.attr("name"))
+                    attr_problem_array.forEach(function(change , i) {
+                    
+                    
+                        attr_addition = attr_problem_array[i].attr("name")
+                        attr_problem_array[i].attr("name",attr_addition + " " + counter.toString() )
+                        // console.log(attr_problem_array[i].attr("name").split(" "))
+                        if(i != 0){
+                            if(change.attr("name").split(" ")[0] ===  attr_problem_array[i-1].attr("name").split(" ")[0] ){
+                                
+                                attr_problem_array[i].remove()
+                                //remove the textarea associate unwanted clones, too much work and time to find why they are cloning in the first place
+                                
+                            }
+
+                        }
+                            if(change.attr("name").split(" ").length > 2){
+                                console.log(change.attr("name").split(" ")[0],change.attr("name").split(" ")[change.attr("name").split(" ").length-1])
+                                change.attr("name",change.attr("name").split(" ")[0] + " " + change.attr("name").split(" ")[change.attr("name").split(" ").length-1])
+                            }
+
+                            
+                        //append the associate number to each name attribute in order not to confuse formspree
+                        
                     })
 
                 };
