@@ -1,4 +1,4 @@
-<!--changed the footer to appear properly on the github website-->
+<!--able to retrieve attr name information of everything in the holder-->
 
 <html>
     <head>
@@ -79,51 +79,19 @@
                     $(".holder:last").hide();
                     $(".holder:last").slideDown(2000);
                     $(".holder:last").addClass(counter.toString());   //need a way to differentate the classes since jquery given methods cannot do the job
+                    
+                    var attr_name_problem = $(".holder:last  input,textarea:not([name = '_subject'])");
+                    var attr_problem_array = $.map(attr_name_problem, function(value) {
+                        return $(value)
+                    });
+                    attr_problem_array.forEach(function(change) {
+                        console.log(change.attr("name"))
+                    })
 
                 };
                 
                 var click_overload;
-                // function subtraction (clicks, leftovers) {
-                //     console.log("here are how many clicks I got " + clicks.toString());
-                //     console.log("here is how long the holder is " + leftovers.toString())
-                //     click_overload = clicks;
-                    
-                //     //while leftovers is not equal to 1 or while clicks is not equal to zero
-                //     while (click_overload != 0) {   //this needs to be changed to an onmouseup event function
-                //         if(leftovers >= 2) {
-                //             click_overload   -= 1;
-                //             leftovers -= 1;
-                //             // $(".holder:last").slideUp(2000);
-                //             // $(".holder:last").delay(2000).remove();
-                            
-                //             console.log($(".holder").hasClass((leftovers).toString()));
-                //             console.log($(" ." + (leftovers).toString()));
-                //             console.log(leftovers )
-                            
-                //                 $("." + (leftovers - click_overload).toString()).slideUp(2000, function(){
-                //                     $(this).remove();
-                //                 });
-                            
-                //             break;
-                //         }
-                //     }
-                //     //     $(".holder:last").slideUp(2000, function(){
-                //     //         $(this).remove();
 
-                //     console.log("so I processed the response action and this is the amount of clicks " + click_overload.toString())
-                    
-                //     console.log("I took out the field section this is how much left you should have in the holder " + leftovers.toString())
-                    
-                //     // $(".holder:last").animate({
-                //     //     bottom: '200px'
-                //     // },2000);
-                //     max = $(".holder").length;
-                //     console.log("but the holder has this much " + max.toString())
-                    
-                //     // });
-                    
-
-                // };
                 
                 $("button").eq(2).click(function(event) { //cheap workardound find selector that chooses a number from the list
                     // var x= 6;
