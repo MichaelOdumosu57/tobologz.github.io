@@ -8017,10 +8017,12 @@ jQuery.extend({
 		}
 
 		// Convert data if not already a string
+		
 		if ( s.data && s.processData && typeof s.data !== "string" ) {
 			s.data = jQuery.param( s.data, s.traditional );
 		}
-
+        
+        
 		// Apply prefilters
 		inspectPrefiltersOrTransports( prefilters, s, options, jqXHR );
 
@@ -8094,9 +8096,10 @@ jQuery.extend({
 
 		// Check for headers option
 		for ( i in s.headers ) {
+		    
 			jqXHR.setRequestHeader( i, s.headers[ i ] );
 		}
-
+        
 		// Allow custom headers/mimetypes and early abort
 		if ( s.beforeSend && ( s.beforeSend.call( callbackContext, jqXHR, s ) === false || state === 2 ) ) {
 			// Abort if not done already and return
@@ -8703,6 +8706,7 @@ if ( xhrSupported ) {
 					// Do send the request
 					// This may raise an exception which is actually
 					// handled in jQuery.ajax (so no try/catch here)
+
 					xhr.send( ( s.hasContent && s.data ) || null );
 
 					// Listener

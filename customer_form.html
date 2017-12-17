@@ -1,4 +1,4 @@
-<!--changed the footer to appear properly on the github website-->
+<!--able to retrieve attr name information of everything in the holder-->
 
 <html>
     <head>
@@ -24,7 +24,7 @@
         
         <script>
 
-
+            // alert("You do not need to enter information that you feel uncomfortable with, just enough for us to safely contact you")
             // var baze;
             // function addition ();
             
@@ -70,6 +70,8 @@
                 
                 function addition ()  {           //bootstrap button still seems to refresh
                     
+                    var attr_addition;
+                    
                     if (information[counter] == null) { //see if information was place there before
                         $(".form_copy").append(single);
                     }
@@ -79,51 +81,40 @@
                     $(".holder:last").hide();
                     $(".holder:last").slideDown(2000);
                     $(".holder:last").addClass(counter.toString());   //need a way to differentate the classes since jquery given methods cannot do the job
+                    
+                    var attr_name_problem = $(".holder:last  input,textarea:not([name = '_subject'])");
+                    var attr_problem_array = $.map(attr_name_problem, function(value) {
+                        return $(value)
+                    });
+                    attr_problem_array.forEach(function(change , i) {
+                    
+                    
+                        attr_addition = attr_problem_array[i].attr("name")
+                        attr_problem_array[i].attr("name",attr_addition + " " + counter.toString() )
+                        // console.log(attr_problem_array[i].attr("name").split(" "))
+                        if(i != 0){
+                            if(change.attr("name").split(" ")[0] ===  attr_problem_array[i-1].attr("name").split(" ")[0] ){
+                                
+                                attr_problem_array[i].remove()
+                                //remove the textarea associate unwanted clones, too much work and time to find why they are cloning in the first place
+                                
+                            }
+
+                        }
+                            if(change.attr("name").split(" ").length > 2){
+                                console.log(change.attr("name").split(" ")[0],change.attr("name").split(" ")[change.attr("name").split(" ").length-1])
+                                change.attr("name",change.attr("name").split(" ")[0] + " " + change.attr("name").split(" ")[change.attr("name").split(" ").length-1])
+                            }
+
+                            
+                        //append the associate number to each name attribute in order not to confuse formspree
+                        
+                    })
 
                 };
                 
                 var click_overload;
-                // function subtraction (clicks, leftovers) {
-                //     console.log("here are how many clicks I got " + clicks.toString());
-                //     console.log("here is how long the holder is " + leftovers.toString())
-                //     click_overload = clicks;
-                    
-                //     //while leftovers is not equal to 1 or while clicks is not equal to zero
-                //     while (click_overload != 0) {   //this needs to be changed to an onmouseup event function
-                //         if(leftovers >= 2) {
-                //             click_overload   -= 1;
-                //             leftovers -= 1;
-                //             // $(".holder:last").slideUp(2000);
-                //             // $(".holder:last").delay(2000).remove();
-                            
-                //             console.log($(".holder").hasClass((leftovers).toString()));
-                //             console.log($(" ." + (leftovers).toString()));
-                //             console.log(leftovers )
-                            
-                //                 $("." + (leftovers - click_overload).toString()).slideUp(2000, function(){
-                //                     $(this).remove();
-                //                 });
-                            
-                //             break;
-                //         }
-                //     }
-                //     //     $(".holder:last").slideUp(2000, function(){
-                //     //         $(this).remove();
 
-                //     console.log("so I processed the response action and this is the amount of clicks " + click_overload.toString())
-                    
-                //     console.log("I took out the field section this is how much left you should have in the holder " + leftovers.toString())
-                    
-                //     // $(".holder:last").animate({
-                //     //     bottom: '200px'
-                //     // },2000);
-                //     max = $(".holder").length;
-                //     console.log("but the holder has this much " + max.toString())
-                    
-                //     // });
-                    
-
-                // };
                 
                 $("button").eq(2).click(function(event) { //cheap workardound find selector that chooses a number from the list
                     // var x= 6;
@@ -165,45 +156,7 @@
                     //  console.log("this was the amout of clicks" + seguro.toString());
                        //how many associte fields there are left
                      max = $(".holder").length;
-                    //(counter >= 3)  {
-                    //  subtraction(seguro, max);
-                    //   console.log("this is how long your holder was "+max.toString());
-                    //  $(".form_copy > h1:last").remove();
-                     //needs to be selector not a parameter to the function
-                    //  var h1 = $(".form_copy > h1");
-                    //  var holder = $(".form_copy > .holder");
-                     
-                    //  console.log(h1.length);
-                    //  console.log(holder.length);
 
-                    //  while ((holder.length - 2) != h1.length ){
-                    //      console.log("situation");
-                    //      var i = (holder.length - 2) - h1.length;
-                    //      console.log(i)
-                    //      console.log(holder)
-                    //      while (i != 0) {
-                    //         console.log(holder[holder.length - 2])
-                    //         // holder[holder.length - 2].remove();
-                            
-                    //         subtraction();
-                    //         i -= 1;
-                            
-                    //      }
-                    //      break;
-                    //     //  if ((holder.length - 2) > h1.length) {
-                    //     //      holder[holder.length].remove();
-                    //     //      console.log(h1.length);
-                    //     //      console.log(holder.length);
-                    //     //      return;
-                    //     //  }
-                    //     //  else {
-                    //     //      h1[h1.length ].remove();
-                    //     //     console.log(h1.length);
-                    //     //     console.log(holder.length);
-                    //     //     return;
-                    //     //  }
-                         
-                    //  }
                      counter -= 1;
                     // //   console.log(counter);
 
@@ -234,98 +187,145 @@
                     
 //                 $("button").eq(1).click(function() {
 //                     event.preventDefault();
-//                     window.location = "mailto:michaelodumosu57@gmail.com";
+//                     window.location ="mailto:michaelodumosu57@gmail.com?subject=hey&send=&#8236&body=hey I have some data for you"
+                    
+//                     // window.location = "mailto:?javascript:alert('Hello World');"
+//                     // console.log($(this).trigger("click"))
+//                     console.log(event.path)
+//                     // window.location ="file:///home/chronos/u-8c76189d6d79b89d2195035f0cec044aa6fc2aff/Downloads/Jquery%20Folder/tobologz_website/customer_form.html?body=hey I have some data for you?su=customer"
+                    
+//                     //how to send information to local mail, now only to get jquery in there to get it to click
+//                     //seems to  be you can take plenty of infomration
+//                     //learn how to send attachments in url need to do this because there is a limit in the body parameter, and learn how to click submit once done your goal is achieved
 //                   $(this).css("background-color","green");
                   
 // // for infomration storage ----------------------------------------
+// // {
+// //                     if (window.XMLHttpRequest)
+// //                       {// code for IE7+, Firefox, Chrome, Opera, Safari
+// //                       xmlhttp=new XMLHttpRequest();
+// //                       }
+// //                     else
+// //                       {// code for IE6, IE5
+// //                       xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+// //                       }
+// //                     // xmlhttp.addEventListener("load", reqListener);
+// //                     var xmlDoc;
+// //                     xmlhttp.open("GET","https://tobologz.github.io/Tobologz/sendEmail.php");
+// //                     xmlhttp.responseType = 'document';
+// //                     xmlhttp.overrideMimeType('text/html');
+// //                     xmlhttp.onload = function () {
+// //                       if (xmlhttp.readyState === xmlhttp.DONE) {
+// //                         if (xmlhttp.status === 200) {
+// //                           console.log(xmlhttp.response);
+// //                         //   console.log(xmlhttp.responseXML);
+// //                           xmlDoc = xmlhttp.responseXML;
+// //                           console.log(xmlDoc);
+// //                 		var hasError = false;
+// //                 		var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+                		
+// //                 		var emailToVal = "michaelodumosu57@gmail.com";
+// //                 		if(emailToVal == '') {
+// //                 			console.log('<span class="error">You forgot to enter the email address to send to.</span>');
+// //                 			hasError = true;
+// //                 		} else if(!emailReg.test(emailToVal)) {
+// //                 			console.log('<span class="error">Enter a valid email address to send to.</span>');
+// //                 			hasError = true;
+// //                 		}
+                		
+// //                 		var emailFromVal = "michaelodumosu57@gmail.com";
+// //                 		if(emailFromVal == '') {
+// //                 			console.log('<span class="error">You forgot to enter the email address to send from.</span>');
+// //                 			hasError = true;
+// //                 		} else if(!emailReg.test(emailFromVal)) {
+// //                 			console.log('<span class="error">Enter a valid email address to send from.</span>');
+// //                 			hasError = true;
+// //                 		}
+                		
+// //                 		var subjectVal = "some subject";
+// //                 		if(subjectVal == '') {
+// //                 			console.log('<span class="error">You forgot to enter the subject.</span>');
+// //                 			hasError = true;
+// //                 		}
+                		
+// //                 		var messageVal = "some data";
+// //                 		if(messageVal == '') {
+// //                 			console.log('<span class="error">You forgot to enter the message.</span>');
+// //                 			hasError = true;
+// //                 		}
+                		
+                		
+// //                 		if(hasError == false) {
 
-//                     if (window.XMLHttpRequest)
-//                       {// code for IE7+, Firefox, Chrome, Opera, Safari
-//                       xmlhttp=new XMLHttpRequest();
-//                       }
-//                     else
-//                       {// code for IE6, IE5
-//                       xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-//                       }
-//                     // xmlhttp.addEventListener("load", reqListener);
-//                     var xmlDoc;
-//                     xmlhttp.open("GET","https://tobologz.github.io/Tobologz/customer_database.xml");
-//                     xmlhttp.responseType = 'document';
-//                     xmlhttp.overrideMimeType('text/xml');
-//                     xmlhttp.onload = function () {
-//                       if (xmlhttp.readyState === xmlhttp.DONE) {
-//                         if (xmlhttp.status === 200) {
-//                           console.log(xmlhttp.response);
-//                           console.log(xmlhttp.responseXML);
-//                           xmlDoc = xmlhttp.responseXML;
-//                           console.log(xmlDoc);
-//                           console.log(xmlDoc.getElementsByTagName("info"))
-//                           xmlDoc.getElementsByTagName("info")[0].textContent ="some input data"
-//                           console.log(xmlDoc.getElementsByTagName("info"))
+
+                			
+// //                 			console.log($.post('http://www.albany.edu/~mo422733/sendEmail.php',
+// //                   				{ emailTo: emailToVal, emailFrom: emailFromVal, subject: subjectVal, message: messageVal }))
+// //                 		}
+                		
+// //                 		return false;
+                		
                           
-//                         }
-//                       }
-//                     };
-//                     xmlhttp.send(null);
+// //                         }
+// //                       }
+// //                     };
+// //                     xmlhttp.send(null);
 
-
+// // }
 // // for infomration storage ---------------------------------
 
 //                 });
 
-                  $("button").eq(1).click(function () {
-                		$(".error").hide();
-                		var hasError = false;
-                		var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-                		
-                		var emailToVal = "michaelodumosu57@gmail.com";
-                		if(emailToVal == '') {
-                			console.log('<span class="error">You forgot to enter the email address to send to.</span>');
-                			hasError = true;
-                		} else if(!emailReg.test(emailToVal)) {
-                			console.log('<span class="error">Enter a valid email address to send to.</span>');
-                			hasError = true;
-                		}
-                		
-                		var emailFromVal = "michaelodumosu57@gmail.com";
-                		if(emailFromVal == '') {
-                			console.log('<span class="error">You forgot to enter the email address to send from.</span>');
-                			hasError = true;
-                		} else if(!emailReg.test(emailFromVal)) {
-                			console.log('<span class="error">Enter a valid email address to send from.</span>');
-                			hasError = true;
-                		}
-                		
-                		var subjectVal = "some subject";
-                		if(subjectVal == '') {
-                			console.log('<span class="error">You forgot to enter the subject.</span>');
-                			hasError = true;
-                		}
-                		
-                		var messageVal = "some data";
-                		if(messageVal == '') {
-                			console.log('<span class="error">You forgot to enter the message.</span>');
-                			hasError = true;
-                		}
+
+
+                //   $("button").eq(1).click(function () {
                 		
                 		
-                		if(hasError == false) {
-                			$(this).hide();
+                // 		var hasError = false;
+                // 		var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+                		
+                // 		var emailToVal = "michaelodumosu57@gmail.com";
+                // 		if(emailToVal == '') {
+                // 			console.log('<span class="error">You forgot to enter the email address to send to.</span>');
+                // 			hasError = true;
+                // 		} else if(!emailReg.test(emailToVal)) {
+                // 			console.log('<span class="error">Enter a valid email address to send to.</span>');
+                // 			hasError = true;
+                // 		}
+                		
+                // 		var emailFromVal = "michaelodumosu57@gmail.com";
+                // 		if(emailFromVal == '') {
+                // 			console.log('<span class="error">You forgot to enter the email address to send from.</span>');
+                // 			hasError = true;
+                // 		} else if(!emailReg.test(emailFromVal)) {
+                // 			console.log('<span class="error">Enter a valid email address to send from.</span>');
+                // 			hasError = true;
+                // 		}
+                		
+                // 		var subjectVal = "some subject";
+                // 		if(subjectVal == '') {
+                // 			console.log('<span class="error">You forgot to enter the subject.</span>');
+                // 			hasError = true;
+                // 		}
+                		
+                // 		var messageVal = "some data";
+                // 		if(messageVal == '') {
+                // 			console.log('<span class="error">You forgot to enter the message.</span>');
+                // 			hasError = true;
+                // 		}
+                		
+                		
+                // 		if(hasError == false) {
+
 
                 			
-                			$.post("/sendEmail.php",
-                   				{ emailTo: emailToVal, emailFrom: emailFromVal, subject: subjectVal, message: messageVal },
-                   					function(data){
-                						$("#sendEmail").slideUp("normal", function() {
-                							
-                							$("#sendEmail").before('<h1>Success</h1><p>Your email was sent.</p>');
-                						});
-                   					}
-                				 );
-                		}
+                // 			$.post("https://tobologz.github.io/Tobologz/sendEmail.php",
+                //   				{ emailTo: emailToVal, emailFrom: emailFromVal, subject: subjectVal, message: messageVal });
+                // 		}
                 		
-                		return false;
-                	});
+                // 		return false;
+                // 	});
+                
 
                 
                 
@@ -340,40 +340,45 @@
         <h1 style = "background-color:rgba(0,0,0,.8); color:pink; font-weight:bold; text-indent: 10px "><a href ="./index.html" style ="color:pink; text-decoration-line:none">        Tobologz.com </a></h1>
         <div class="container">
           <h2>Website Request Form</h2>
-          <form class="form-inline" role="form">
-            <form style="width:300px">
+
+          <form class="form-inline" role="form" action="https://formspree.io/tobologz@gmail.com"
+      method="POST"  >
+            <textarea name ="_subject" style ="display:none">customer</textarea>
             <div class = "form_copy">
             <div class = "holder">
+                <textarea name ="associate" style ="display:none"></textarea>
+                <!--for differentation of associates in website request-->
+                
               <h3 style ="text-indent:20px;"> Personal Information</h3>
               <div class="form-group">
                   <label class="control-label col-sm-5" for="first_name">First Name:</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="first" placeholder="First Name">
+                    <input type="text" class="form-control" id="first" placeholder="First Name" name ="first_name">
                   </div>
                 </div>
               <div class="form-group">
                   <label class="control-label col-sm-5" for="last_name">Last Name:</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="last" placeholder="Last Name">
+                    <input type="text" class="form-control" id="last" placeholder="Last Name" name ="last_name">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="control-label col-sm-5" for="email">Email:</label>
                   <div class="col-sm-10">
-                    <input type="email" class="form-control" id="pwd" placeholder="Enter email">
+                    <input type="email" class="form-control" id="pwd" placeholder="Enter email" name ="email">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="control-label col-sm-12" for="email">Age:</label>
                   <div class="col-sm-12">
-                    <input type="text" class="form-control" id="age" placeholder="Enter age">
+                    <input type="text" class="form-control" id="age" placeholder="Enter age" name = "age">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="control-label col-sm-2" >Gender:</label>
+                  <label class="control-label col-sm-2" >Telephone:</label>
                   <div class=" dropdown col-sm-12">
                       
-                    <input type="text" class="form-control dropdown-toggle" id="gender" placeholder="Enter gender">
+                    <input type="text" class="form-control dropdown-toggle" id="gender" placeholder="Enter phone number" name ="phone">
                     
                         <ul class="dropdown-menu">
                           <li class="dropdown-header">Dropdown header 1</li>
@@ -388,19 +393,19 @@
                 </div>
 
 
-                <div class="form-group">
-                  <label class="control-label col-sm-5" for="email">Date of Birth:</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="DOB" placeholder="MM/DD/YY">
-                  </div>
-                </div>
+                <!--<div class="form-group">-->
+                <!--  <label class="control-label col-sm-5" for="email">Date of Birth:</label>-->
+                <!--  <div class="col-sm-10">-->
+                <!--    <input type="text" class="form-control" id="DOB" placeholder="MM/DD/YY" name ="DOB">-->
+                <!--  </div>-->
+                <!--</div>-->
     
               <h1> ___________________________________________________________</h1>
               <h3 style ="text-indent:20px;"> Location </h3>
                 <div class="form-group">
                   <label class="control-label col-sm-12" for="email">Address:</label>
                   <div class="col-sm-12">
-                    <input type="text" class="form-control" id="gender" placeholder="Enter Address">
+                    <input type="text" class="form-control" id="gender" placeholder="Enter Address" name = "address">
                   </div>
                 </div>
                 
@@ -467,21 +472,21 @@
                 <div class="form-group">
                   <label class="control-label col-sm-12" for="email">City:</label>
                   <div class="col-sm-12">
-                    <input type="text" class="form-control" id="gender" placeholder="Enter City">
+                    <input type="text" class="form-control" id="gender" placeholder="Enter City" name = "City">
                   </div>
                 </div>
                 
                 <div class="form-group">
                   <label class="control-label col-sm-12" for="email">State:</label>
                   <div class="col-sm-12">
-                    <input type="text" class="form-control" id="gender" placeholder="Enter State">
+                    <input type="text" class="form-control" id="gender" placeholder="Enter State" name = "State">
                   </div>
                 </div>
                 
                 <div class="form-group">
                   <label class="control-label col-sm-12" for="email">Zipcode:</label>
                   <div class="col-sm-12">
-                    <input type="text" class="form-control" id="gender" placeholder="Enter Zipcode">
+                    <input type="text" class="form-control" id="gender" placeholder="Enter Zipcode" name ="Zipcode">
                   </div>
                 </div>
                 
@@ -491,20 +496,21 @@
                     <!--<input  type="text" class="form-control" id="gender" placeholder="Enter State">-->
                   </div>
                 </div>
+              
               </div>
               </div>
             
           <h1> ___________________________________________________________</h1>
-          <h3 style ="text-indent:20px;"> Account Information</h3>
+          <!--<h3 style ="text-indent:20px;" style = "display:none"> Account Information</h3>-->
           
-            <div class="form-group">
+            <div class="form-group" style = "display:none">
               <label class="control-label col-sm-5" for="pwd">Username:</label>
               <div class="col-sm-10">
                 <input type="password" class="form-control" id="pwd" placeholder="Enter username">
               </div>
             </div>
             
-            <div class="form-group" >
+            <div class="form-group" style = "display:none" >
               <label class="control-label col-sm-5" for="pwd">Password:</label>
               <div class="col-sm-10">
                 <input type="password" class="form-control" id="pwd" placeholder="Enter password">
@@ -521,7 +527,7 @@
             
           <div class="form-group">
               <div class=" col-sm-10">
-                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="submit" class="btn btn-default" value = "Send">Submit</button>
               </div>
             </div>
 
