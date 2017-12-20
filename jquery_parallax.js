@@ -1,30 +1,50 @@
-//   some sort of height relation to everything involved in the parallax and everything that is not shown in the positions of the unfix parallax objects
+//   parallax items can be brough to display upon click, now it also has the capability of bringing all the items to proper z-index so they can still be easily accessible
 
     //capabilities:core parallax functionality
     //            : paralllax items stick to the screen once they get to the offset points
     //            : functionality applied to multiple parallax items
     //            : non-parallax items treat object as a static object
+    //            : parallax items can be brough to display upon click
+    //            : all parallax items are still accessible through clicking
     
     //planned work :
+    //             : bug on zoom, on of the position attributes seems to fall out of place, fix this
     //             : universial understanding and appliacation of the parallax
-    //             : smoothening of the parallax animation
-    //             : object screen vsibility detection
+    //             : smoothening of the parallax animation in chrome browsers
+    //             : object screen vsibility detection (method awareness whether objects on the webpage are visible to the user)
+    //             : availbility of all parallax items through side panelling their header content in addition
+    //             : parallax item position realtime detection and correction by browser
+    
+    
+    // far in the future
+    //             : swapping parallax items for user experience
+    //             : a reset button for a return to the original state
     
 var its_ok = 0;
+var showcase = 0;
+var spotlight = 1; //this makes sure on the parallax click it shows up as the first item as display
 //global variables
 
     jQuery.fn.extend({
         parallax:function(michael){
             //a parallax is hard to explain in the real world but on a screen each parallax item slides regularly on the screen to a certain point, where it is then covered by the next parallax object to a certain point
-
+            
+            var item_selector = $(this).selector;
 
             if(michael.unfix != undefined){
                 consoles("unfix",michael.unfix,0)
                 
             }
             var parallax_array = $.map($(this), function(value, index) {
+                if(showcase <= parseInt($(value).css("z-index")) ){
+                    showcase = parseInt($(value).css("z-index")) + spotlight
+                }
+                $(value).addClass(index.toString());
                 return [$(value)];
             });
+            
+            //for use in clikcing to display first the parallax items
+            // also for use in changing the z-index of the parallax items upon correspective clicks
             consoles("parallax_items",[$(this),parallax_array],1);
             consoles("scrollTop",$(window).scrollTop())
             consoles("distance",[parallax_array[1].offset().top - $(".parallax:first > div > h1").offset().top ,$(".parallax:first > div > h1").css("height")])
@@ -32,12 +52,49 @@ var its_ok = 0;
             var unfix_move = parseFloat(michael.unfix[0].css("top").split("p")[0])
             var unfix_left_set = michael.unfix[0].css("left")
             console.log(unfix_move)
+            var i = 0;
+            var j = 0;
+            var distance_from_spotlight = 0;
+            while(i != parallax_array.length ){
+                
+                $(item_selector).eq(i).click(function () {
+                    
+                    spotlight += 1;
+                    console.log($(this).css("z-index"))
+                    console.log(spotlight,showcase)
+                    $(this).css("z-index",showcase + spotlight);
+                    
+                    while( j !=  parallax_array.length ){
+
+                        distance_from_spotlight = parseInt($(this)[0].classList.value.split(" ")[$(this)[0].classList.value.split(" ").length-1]) - j;
+                        if(distance_from_spotlight < 0){
+                            distance_from_spotlight += (-2*distance_from_spotlight)
+                        }
+                        else if(distance_from_spotlight == 0){
+                            j+= 1;
+                            console.log("execution")
+                            continue;
+                        }
+                        parallax_array[j].css("z-index", (showcase + spotlight) -distance_from_spotlight)
+                        consoles("front_display",[distance_from_spotlight,parseInt($(this)[0].classList.value.split(" ")[$(this)[0].classList.value.split(" ").length-1]),j,parallax_array[j].css("z-index")])
+                        // this code allows all parallax items to be seen otherwise they would be covered and would be very hard to access
+                        
+                        j += 1;
+                        
+                        
+                    }
+                    j = 0;
+                    
+                });
+                i+= 1;
+
+            }
             function react_on_scroll_offset() {
                 
                     if ($(window).scrollTop() >= 1044)  {
                         var move = unfix_move;
                         consoles("unfix",michael.unfix,0);
-                        michael.unfix[0].css("position","relative")
+                        michael.unfix[0].css({"position":"relative","margin":"auto"})
                         // move /= 15;
                         move = (1065-538)/15
                         michael.unfix[0].css({"top":move.toString() + "em","left":"0em"})
@@ -83,34 +140,19 @@ var its_ok = 0;
                         // consoles("coordinates",parallax_array,0);
 
                     }
-                    // if ($(window).scrollTop() >= 166)  {
-                    //     parallax_array[1].css("top",($(window).scrollTop()/10).toString() + "em")
-                    // }
-                    // if ($(window).scrollTop() <= 366)  {
-                    //     var move = 0;
-                    //     move -= $(window).scrollTop()/10;
-                    //     parallax_array[2].css("top",move.toString() + "em")
-                    //     // console.log(parallax_array[2].css("top"),$(window).scrollTop())
 
-                    // }
-                    // if ($(window).scrollTop() >= 366)  {
-                    //     parallax_array[2].css("top",($(window).scrollTop()/10).toString() + "em")
-                    // }
-                    // if ($(window).scrollTop() <= 906)  {
-                    //     var move = 0;
-                    //     move -= $(window).scrollTop()/10;
-                    //     parallax_array[3].css("top",move.toString() + "em")
-                    //     // console.log(parallax_array[2].css("top"),$(window).scrollTop())
-
-                    // }
-                    // if ($(window).scrollTop() >= 906)  {
-                    //     parallax_array[3].css("top",($(window).scrollTop()/10).toString() + "em")
-                    // }
+            
+            
 
                 wait(0)
             }
             
             $(window).scroll(react_on_scroll_offset);
+            
+            console.log($(item_selector).eq(1))
+            
+            
+
 
             // $(window).on("scroll",function () {
             //     // console.log("jacob");
@@ -145,6 +187,11 @@ var its_ok = 0;
                     data.forEach(function (selection,i) {
                         console.log("what i need to move",i,selection.css("top"), $(window).scrollTop())
                     })
+                }
+                
+                if(action == "front_display"){
+                    
+                    console.log(data[0],data[1],data[2],data[3])
                 }
                 
                 
