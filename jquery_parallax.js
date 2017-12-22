@@ -57,7 +57,7 @@ var spotlight = 1; //this makes sure on the parallax click it shows up as the fi
             var distance_from_spotlight = 0;
             while(i != parallax_array.length ){
                 
-                $(item_selector).eq(i).click(function () {
+                $(item_selector).eq(i).on("click",function () {
                     
                     spotlight += 1;
                     console.log($(this).css("z-index"))

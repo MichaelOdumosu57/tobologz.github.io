@@ -5,10 +5,11 @@
 
 $(document).ready(function() {
                     function footer_boxes (recursive, well_length) {   //for different boxes that make up the footer
+                    $("div:last").html("<br> Personal Website <br> Tel : xxx-xxx-xxxx <br> email: tobologz@gmail.com")
                     var diff_sites = $("div:last");
                     var shift_right =  40;
                     var shift_top = -100;
-                    var diff_site = ["<br> Market Website <br> Tel : xxx-xxx-xxxx <br> email: example@gmail.com","<br> Business Website <br> Tel : xxx-xxx-xxxx <br> email: example@gmail.com"];
+                    var diff_site = ["<br> Market Website <br> Tel : xxx-xxx-xxxx <br> email: tobologz@gmail.com","<br> Business Website <br> Tel : xxx-xxx-xxxx <br> email: tobologz@gmail.com"];
         
                     while (recursive != 0) {
                         var clone_diff_sites = diff_sites.clone();

@@ -1,14 +1,16 @@
-<!--I think i fixed a bug here with the carousel not sliding properly, there is also a major bug when there are not a even amount of moving boxes for the carousel wrap-->
+<!--Website links work for the every first subsection in their sections-->
 
 <html >
     <head>
         <script src="./jquery-1.10.2.js"></script>
         <script src="./jquery-ui.js"></script>
         <script src="./footer.js"></script>
+        <script src="./site_map_instruction.js"></script>
         <!--<script src="./bootstrap.min.js"></script>-->
         <!--<title> Tobologz.com </title>-->
         <link rel="stylesheet" href="./bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="shortcut icon" type="image/png" href="logo_folder/final_logo.ico.png">
         <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
         <!--glyphicons-->
 
@@ -110,17 +112,42 @@
                                             ["About","About Us"],
                                             ["What we use ","HTML","CSS","Jquery","Bootstrap"],
                                             ["Team","Lead Developer"],
-                                            ["Heading ","Info 1","Info 2"],
+                                            ["Interactive ","Canvas","Website builder"],
 
                                             ["Process ","Our Approach","Your Part","Our Part"],
-                                            ["Cost ","Package","Creation","Maintenance"],
+                                            ["Cost ","Package","Creation","Maintenance","Your Overlook"],
                                             
                                             ["Positions ","Internships","Management", "Part-time","Full-time"],
                                             
                                             ["Site Map ","Section A","Section B","Section C" ],
 
                                             ["FAQ ","Frequently Asked"],
-                                            ["Website Request","Form"],
+                                            ["Need a Site?","Form"],
+                                            
+                                            ["Social Media ","Facebook","Twitter","Instagram"]
+                                                                                        
+                                            
+                                            
+                                            
+                                            
+                                        ];
+                                        
+                    var site_info_links = [
+                                            ["Home","index.html"],
+                                            ["About","about.html"],
+                                            ["What we use ","technologies.html","technologies.html","technologies.html","technologies.html"],
+                                            ["Team","team.html"],
+                                            ["Interactive ","canvas.html","Website builder"],
+
+                                            ["Process ","process.html","process.html","process.html"],
+                                            ["Cost ","cost.html","cost.html","cost.html","cost.html"],
+                                            
+                                            ["Positions ","positions.html","positions.html", "positions.html","positions.html"],
+                                            
+                                            ["Site Map ","site_map.html","site_map.html","site_map.html" ],
+
+                                            ["FAQ ","faq.html"],
+                                            ["Need a Site?","customer_form.html"],
                                             
                                             ["Social Media ","Facebook","Twitter","Instagram"]
                                                                                         
@@ -164,15 +191,13 @@
                 
                 function declare_box(site_information, diff_specs, current_index) {
                     //this function places all the information inside the boxes
-                    
-                        
                     // huge array object containing all info about sites
                     
                     var total_shifters = site_information.length;
                     // console.log(total_shifters)
                     
 
-
+                    console.log(site_information)
                     //this loop places the headers in the heading section as well as the content info
                     var $seperate_box = $(".moving_box > .well > .container_bulletin > .well > p").eq(current_index);
                     $seperate_box.text(site_information[current_index][0]); //heading
@@ -189,11 +214,16 @@
                         // $(".moving_box > .well >.bulletin:first").eq(i).after($associated_sector);
                         if(j == 0 ){
                         $(".moving_box > .well > .bulletin:last > p").text(site_information[current_index][j + 1]);
+                        $(".moving_box > .well > .bulletin:last").attr("onclick",transfer(site_info_links[current_index][j+1],$(".moving_box > .well > .bulletin:last"),j));
+                        
                         }
                         
                         else {
                         $(".moving_box > .well > .bulletin:last").after($associated_sector_copy.css("margin-top" , "7px"))
+                        $(".moving_box > .well > .bulletin:last").attr("onclick",transfer(site_info_links[current_index][j+1],$(".moving_box > .well > .bulletin:last"),j));
                         $(".moving_box > .well > .bulletin:last > p").text(site_information[current_index][j + 1]);
+                        
+                        
                         }
 
                         j += 1;
@@ -211,6 +241,16 @@
                     
                 }
 
+
+                function transfer(site_link,$respective_box,switch_command){
+                    // this function gives links to the subsections of the site map making it altogether useful
+                    //for some reason the attr onclick executes right away, so I needed to make a more efficient jquery function to do the appropriate task, transfer gets the right div because it is given as a parameter upon attr creation
+                    console.log(switch_command)
+                    $respective_box.click(function () {
+                        window.location = site_link + "?" + switch_command.toString();
+                    });
+                    
+                }
                 
                 function assemble_box(current_index,diff_specs) {
                     //this function places the boxes in their orginial order for swapping later
@@ -226,7 +266,7 @@
                         else {
                             $(".moving_box:last  ").offset({top: 150, left: (box_width/3.5* ((current_index % 4 ) + 1)) - 325  })
                         }
-                        console.log(current_index,$(".moving_box:last  ").offset(),$(".moving_box:last > .well > .bulletin"))
+                        // console.log(current_index,$(".moving_box:last  ").offset(),$(".moving_box:last > .well > .bulletin"))
                         //positioning based on boxed width
                         
                         current_index += 1;
@@ -373,6 +413,15 @@
                     $(".carousel_wrap:not(.active)").hide();
                     hold_on -=1;
                 }
+
+                if(!isNaN(site_info_instruction)) {
+                    
+                    while(site_info_instruction != 0){
+                        $(".carousel-control:has( .glyphicon-chevron-left)").trigger("click")
+                        site_info_instruction -= 1;
+                    }
+                    
+                }
             
             });
             
@@ -383,7 +432,13 @@
     
     <body style = "max-height:300px; overflow:scroll; height:1500px">
         
-        <div class="container">
+        <div class=" well well-sm">
+        
+                <h1 style = "background-color:rgba(0,0,0,.8); color:pink; font-weight:bold; text-indent: 10px "><a href ="./index.html" style ="color:pink; text-decoration-line:none; margin-left:40%">Tobologz.com </a></h1>
+            
+        </div>
+        
+        <div class="container" >
             <div class="well title" id ="web_colors" style ="height:20px; margin-top:30px;  text-align:center; font-size: 30px; padding: 30px;  ">
                 <h3 style = "font-size: 30px; margin-top:-15px">Site Map</h3>
             </div>
@@ -404,7 +459,7 @@
           
 
     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" ></span>
       <span class="sr-only">Previous</span>
     </a>
 
@@ -440,7 +495,7 @@
         </div>
         
         <div class="container move_7" style = "position:relative; ">
-            <div class="well " id ="web_colors" style ="height: 300px; width: 1300px; margin-top: 25px; text-align:center; margin-left:-75px;"   >
+            <div class="well " id ="web_colors" style ="height: 300px; width: 1300px; margin-top: 6em; text-align:center; margin-left:-75px;"   >
                   2017 Tobologz inc.
                   <br> All rights reserved
                   <br> Contact information

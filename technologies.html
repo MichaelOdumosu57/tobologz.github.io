@@ -6,11 +6,14 @@
         <script src="./jquery-ui.js"></script>
         <script src="./footer.js"></script>
         <script src="./jquery_rolodex.js"></script>
+        <script src="./site_map_instruction.js"></script>
         <!--<script src="./bootstrap.min.js"></script>-->
         <!--<title> Tobologz.com </title>-->
         <link rel="stylesheet" href="./bootstrap.min.css">
+        <link rel="shortcut icon" type="image/png" href="logo_folder/final_logo.ico.png">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Amatic+SC" />
+        
         <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
         <!--glyphicons-->
 
@@ -146,11 +149,14 @@
         </style>
         <script>
         
-            var tech_array = ["CSS","JavaScript","Bootstrap","Jquery"];
+            console.log(site_info_instruction.length)
+            //controls if link was triggered from site info
+            
+            var tech_array = ["CSS","Jquery","Bootstrap","JavaScript"];
             var tech_array_info = [ "CSS is what gives everything you see shape, size, dimension and every other attribute you can see with the human eye. We use CSS for that reason, to make beautiful and excellent website so your visitors can see what you envision.",
-                                    "How do we make the shapes over and over again? Javascipt. Javascript is the mathematical foundation of the website which eliminates repetitive tasks. We use javascript to get our work done faster and your online business flying sooner",
+                                    "Jquery is a major js library responible for animation and movement. Jquery is one of the main reasons why our website is different from so many sites. We use jquery to bring a new user experience to the world which will  pioneer us in time",
                                     "Bootstrap technology is the additional technology we use to modernize our website. Bootstrap is a popular front-end component library that not only achieves the attention of your audience, it also gives the market competition",
-                                    "Jquery is a major js library responible for animation and movement. Jquery is one of the main reasons why our website is different from so many sites. We use jquery to bring a new user experience to the world which will  pioneer us in time"
+                                    "How do we make the shapes over and over again? Javascipt. Javascript is the mathematical foundation of the website which eliminates repetitive tasks. We use javascript to get our work done faster and your online business flying sooner"
                                     ]
                 
             var offset_x = 500;
@@ -158,6 +164,7 @@
             var five_corners = []; //will contain five stars needed for array
             
             $(document).ready(function() {
+
                 var $tech_card = $(".tech_card").clone();
                 console.log($tech_card.offset())
                 
@@ -236,6 +243,14 @@
                     simple_3d: 'false',
                     animate: 'false'
                 },$(".carousel-control:has( .glyphicon-chevron-left)"),$(".carousel-control:has( .glyphicon-chevron-right)"));
+                if(!isNaN(site_info_instruction)) {
+                    
+                    while(site_info_instruction != 0){
+                        $(".carousel-control:has( .glyphicon-chevron-left)").trigger("click")
+                        site_info_instruction -= 1;
+                    }
+                    
+                }
             });
         </script>
     </head>
