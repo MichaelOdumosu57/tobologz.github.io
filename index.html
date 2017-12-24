@@ -1,6 +1,7 @@
 <!--I have idea for background-->
 <!--cracked rock with pink outline and different shades of pink-->
 <!--later when you have sites for your links, div construction will be blocking them, figure this out later-->
+<!--fixed viewport problems here, if the devices is not on the laptop do not animate-->
 
 <html >
     <head>
@@ -8,6 +9,7 @@
         <script src="./jquery-ui.js"></script>
         <script src="./bootstrap.min.js"></script>
         <script src="./footer.js"></script>
+        <script src="./site_map_instruction.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=.21">
         <!--<title> Tobologz.com </title>-->
         <link rel="stylesheet" href="./bootstrap.min.css">
@@ -140,7 +142,7 @@
                             nav_list[i] = "process"
                         }
                         $("a:has(.square_bullets+ p)").eq(-1).attr("href",nav_list[i].toLowerCase() + ".html");
-                        console.log($("a:has(.square_bullets + p)").attr("href"))
+                        // console.log($("a:has(.square_bullets + p)").attr("href"))
                         // to add navigation links
                         //had to place p after div because the background color of div was applied to the p element in text color, only way to nullify was take it out and make sure margin adjustments
                         //had to place selctor in <a> link so it works, logic here is if .square_bullets is last and a is parent at same time not the other way because the other way it looks for the last a element
@@ -159,7 +161,7 @@
                             $(".bulletin:nth-last-of-type(2) > p").text(connect_list[i]);
                             //done here becuase I needed to stop placing bulletin covers
                         }
-                        console.log(sq_clone);
+                        // console.log(sq_clone);
                         
                         
                         i += 1;
@@ -220,8 +222,12 @@
             // $(".move_2").css({"margin-top" :"-100px" , "opacity" : ".5"});
             // $(".move_3").css({"margin-top" :"-100px" ,"margin-left" :"375px" , "opacity" : ".5"});
             // console.log($(".move_3").offset())
-            function animated_home_page () {
+            function animated_home_page (device) {
             //using jquery to set initial positions
+            
+            if(device[0] !== "lg"){
+                return;
+            }
             $(".move_1").css({"margin-left" :"-100px" , "opacity" : ".5"});
             $(".move_2").css({"margin-top" :"-100px" , "opacity" : ".5"});
             $(".move_3").css({"margin-top" :"-100px" ,"margin-left" :"375px" , "opacity" : ".5"});
@@ -326,7 +332,7 @@
                     
                 }
             
-            // animated_home_page();
+            animated_home_page(devices);
 
             // alert(document.body.scrollTop);
             // $("body").click(function() {

@@ -142,8 +142,12 @@
         </style>
         <script>
             $(document).ready(function() {
+                if(devices[0] != "lg"){
+                    $(".title").css("position","relative")
+                }
                 $(".parallax").parallax({
-                    unfix:[$(".title")]
+                    unfix:[$(".title")],
+                    
                 });
                 
                 var position
