@@ -1122,7 +1122,22 @@ Jquery map
 
     the powerful thing about it is what you return, you can return the html or jquery select it and return each jquery index with which you can do plenty of things with
 
+Jquery stop
 
+    the stop function is used to disable lag
+    
+    with multiple animattions, jquery places things on a queue and once it finishes its information update it moves to the next animation
+
+    this applies to events as well so if you run into animation lag, what you do place stop right before the event listener and before any animation that you do
+
+    syntax
+        $(selector).stop().[event listener or animation call]
+
+        clearQueue (default: false)
+        Type: Boolean
+        A Boolean indicating whether to remove queued animation as well. Defaults to false.
+
+        this is the first parameter when you set this to true, it ignores all recursive and unesscary calls to animation and completes the animation in a timely manner
 scroll to 1200 to learn about jquery UI
 
 
