@@ -42,7 +42,7 @@ First thing about Jquery
    $("p").css("color", "red");
    });
 
-  file shortjquery.html
+  file shortquery.html
 
 
 Jquery Selectors
@@ -60,7 +60,7 @@ Jquery Selectors
     Tag ID:	It represents a tag available with a specific ID in the DOM.
     For example: $('#[tag_ID]') selects a specific element in the document that has an ID of real-id.
     Tag Class:	It represents a tag available with a specific class in the DOM.
-    For example: $('tag_class]') selects all elements in the document that have a class of real-class.
+    For example: $('.[tag_class]') selects all elements in the document that have a class of real-class.
 
     --can use jQuery in place of $ in  $() , can used be combination
 
@@ -553,6 +553,8 @@ jquery clone
   $(selector).clone(true|false)
     
   boolean; specifies whether an event should be copied or not
+
+  does not deep copy children on complicated cloning
 
 
 
@@ -1138,7 +1140,7 @@ Jquery stop
         A Boolean indicating whether to remove queued animation as well. Defaults to false.
 
         this is the first parameter when you set this to true, it ignores all recursive and unesscary calls to animation and completes the animation in a timely manner
-scroll to 1200 to learn about jquery UI
+scroll to 1266 to learn about jquery UI
 
 
 

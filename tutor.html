@@ -100,6 +100,8 @@ Using cookies
 
 
 Javascript DOM (Document Object)
+https://www.html5rocks.com/en/tutorials/webcomponents/customelements/
+
 document.title;
 document.URL;
 document.lastModified;
@@ -180,6 +182,15 @@ length property;
 �replace();
 �indexOf().
 toString();            changes a number to a string
+charAt([number]) queries string for the desired character returns the character itself
+slice([number]) cuts string at index and returns the second half of the stiring
+
+to get length of the string itself
+            var canvas = document.createElement("canvas");
+            var ctx = canvas.getContext("2d");
+            ctx.font =  string_selector.css("font-size") + " " + string_selector.css("font-family") ;  // This can be set programmaticly from
+            var textWidth = ctx.measureText(string_selector.text()).width;
+            return textWidth
 
 
 JavaScript loops
@@ -200,6 +211,56 @@ JavaScript Events
 onclick="alert('Going anywhere? Not so fast!'); return false;">
 
 
+CSS Keyframes
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations
+<style>
+/* Chrome, Safari, Opera */
+@-webkit-keyframes [animation name] {}
+    
+
+/* Standard syntax */
+@keyframes [animation name] {}
+    
+to change from an image to a background color
+    <html>
+    background-image:url("./path/[background-color].svg");
+    literally take a snapshot of the color background and convert it to an svg using https://image.online-convert.com/convert-to-svg
+    </html>
+    
+    <css>
+            /* Chrome, Safari, Opera */
+            @-webkit-keyframes [animation name]{
+                  from
+                    background-image:url("./path/[IMAGE].[EXT]");
+                }
+                  to {
+                    
+                    background-color:[background-color];
+                  }
+            }
+            
+            /* Standard syntax */
+            @keyframes  [animation name] {
+                  from {
+                    background-image:url("./path/[IMAGE].[EXT]");
+                }
+                  to {
+                    
+                    background-color:[background-color];
+                  }
+            }
+    </css>
+    
+    <js>
+    
+    query for objects css and add this
+    /**/
+    "animation": "[animation name] [total_time] [number of times times]",
+    where "total time" is the amount of time it takes for the animation to complete
+    "number of times" how many times the animation repeats itself
+    /**/
+    </js>
+</style>
 
 
 CSS media
@@ -662,7 +723,7 @@ href = "website.html"
         "subfolder/web.html" - go down dir
        "mailto:nobody@html.net" open default email program
         #heading - links to part in same page
-        
+            
 title = 'value' (on mouse hover)
 
 put <img> after <a> to make image a link
@@ -677,3 +738,61 @@ style = background-color: #ff0000 ;
                            rgba(x,y,z);
 
 </html>
+
+
+
+
+
+additional info
+
+        // helper advnaced recursive function needs an outside variable to work
+    
+    {
+        var result;
+        the outside variable that will hold on to the desired result after the function dies
+        function find_child(parent,suspect,answer = undefined){
+            
+            
+            
+               if($(parent)["0"].tagName !== suspect){
+
+               }
+               else{
+
+                   return $(parent)
+                   buried in recursive calls wont make it as final return statement alone
+                   
+               }
+               
+               if($(parent)["0"].childElementCount == 0){
+                   return result
+                   returns something no matter what, this is what is used to return the answer
+               }
+            $.map( $($(parent)["0"].children),function(child) {
+                
+                // console.log("looking at children")
+                // console.log("___________________________________________________________________")
+                result = find_child(child,suspect,result)
+
+            });
+            
+            if(result != undefined){
+                // console.log("tring to shed light")
+                return result
+                
+                does not collect undesired answers
+            }
+
+            
+
+            
+
+            
+            
+        }
+    }
+        //////////////////////////////////////////////////////////////
+        // function finds necssary child of element
+        // var result is what makes this function special,
+        // to understand this is a new type of function, where the function cannot return the answer rather it needs an external variable to store data to help if you will "unbury" the desired return data
+        //////////////////////////////////////////////////////////////

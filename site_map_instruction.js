@@ -52,8 +52,8 @@
             });
             
             // to fix
-            // cost.html
-            // technologies.html
+            
+            // to fix this you must find the most common phones and adjust them to the viewport technologies.html
             //site_map.html
             //process.html
             

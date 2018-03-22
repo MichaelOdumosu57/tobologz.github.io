@@ -166,6 +166,7 @@
             
             $(document).ready(function() {
 
+                $(".tech_card").css("position","absolute")
                 var $tech_card = $(".tech_card").clone();
                 console.log($tech_card.offset())
                 
@@ -173,6 +174,7 @@
                 var i = 0; //creates circle copies
                 // star_carousel();
                 $(".tech_card").offset({top:offset_y,left:offset_x});
+                // $(".tech_card").css({"top":offset_y.toString()+"px","left":offset_x.toString()+"px"})
                 
                 while( i != 4){
                     var coordinates= star_carousel(i);
@@ -180,6 +182,7 @@
 
                     $(".star_carousel").append($tech_card.clone());
                     $(".tech_card:last").offset({top:coordinates[0],left:coordinates[1]})
+                    // $(".tech_card:last").css({"top":offset_y.toString()+"px","left":offset_x.toString()+"px"})
                     // $(".tech_card:last ").text(function() {
                     $(" .tech_card:last > h1").text(tech_array[i]);
                     $(" .tech_card:last > div > h4").text(tech_array_info[i]);
@@ -268,7 +271,7 @@
             </div>
         </div>
         
-        <div class = "star_carousel" style = "height:1400px">
+        <div class = "star_carousel" style = "height:1400px; margin-left:16em">
             <div  class = " tech_card well">
                 <img id ="img_except2" style ="background-image:url('./michael.PNG'); margin-left:4em;"  />
                 <h1>HTML</h1>
@@ -277,6 +280,7 @@
                 </div>
             </div>
         </div>
+        <!--i threw it into the star_carousel to control the body height-->
         
     <a class=" carousel-control" href="#myCarousel" role="button" data-slide="prev">
       <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"  style ="color:black"></span>

@@ -1,4 +1,4 @@
-<!--Worked on creating parallax items and filling them with approrpiate information -->
+<!--cost.html is fully responsive as a webpage to tablets and phones-->
 
 <html>
     <head>
@@ -143,12 +143,14 @@
         <script>
             $(document).ready(function() {
                 if(devices[0] != "lg"){
-                    $(".title").css("position","relative")
+                    $(".title").css({"position":"relative","top":"3em","left":"0em"})
                 }
-                $(".parallax").parallax({
+                else{
+                    $(".parallax").parallax({
                     unfix:[$(".title")],
                     
-                });
+                    });
+                }
                 
                 var position
                 if(!isNaN(site_info_instruction)) {
